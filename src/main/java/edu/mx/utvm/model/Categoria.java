@@ -2,16 +2,19 @@ package edu.mx.utvm.model;
 
 public class Categoria {
 	
-	//TODO: Implementar constructor para respetar 
-	// asosiacion de propiedades
-	
+	private int idCategoria;
 	private String descripcion;
+	
+	public Categoria(int idCategoria, String descripcion){
+		this.idCategoria = idCategoria;
+		this.descripcion = descripcion;
+	}
+
+	public int getIdCategoria() {
+		return idCategoria;
+	}
 
 	public String getDescripcion() {
 		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+	}	
 }

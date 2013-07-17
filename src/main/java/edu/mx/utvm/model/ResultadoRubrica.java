@@ -4,7 +4,11 @@ import java.util.List;
 
 public class ResultadoRubrica {
 	private List<CalificacionEvaluador> calificacionEvaluador;
-
+	
+	public ResultadoRubrica(List<CalificacionEvaluador> calificacionEvaluador){
+		this.calificacionEvaluador = calificacionEvaluador;
+	}
+	
 	public List<CalificacionEvaluador> getCalificacionEvaluador() {
 		return calificacionEvaluador;
 	}
