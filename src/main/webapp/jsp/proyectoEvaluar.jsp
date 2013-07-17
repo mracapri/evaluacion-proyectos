@@ -18,28 +18,41 @@
 </head>
 <body>		
 	<div class="container" >
-		
+		<div class="encabezado">
+			<div class="row-fluid">
+				<div class="span2">
+					<div class="logoUTVM">
+						<img src="${pageContext.request.contextPath}/web-resources/img/logo.jpg" alt="">
+					</div>
+				</div>
+				<div class="span9 show-grid">
+					<h3>UNIVERSIDAD TECNOLOGICA DEL VALLE DEL MEZQUITAL</h3>
+				</div>
+			</div>
+		</div> 
+		<div class="contenedor">
 			<div class="detalleProyecto">
-				<h2 >Proyectos a Evaluar</h2>
+				<h2>Proyectos a Evaluar</h2>
 				<div class="control-group">
 					<div class="controls">
 						<a class="btn btn-primary nav pull-right" data-toggle="modal" href="#nuevoProyecto"><i class="icon-plus-sign icon-white"></i> Nuevo</a>
 					</div>
-	            </div>
-	            <div class="control-group">
+		           </div>
+		           <div class="control-group">
 		            <section id="proyectos">
 		            	<ul class="the-icons clearfix" id="lstProyectos">
 		            		<li>
-		            			Ejemplo de Proyecto 1
+		            			DESARROLLO DE APLICACIONES MOBILES PARA ESTUDIANTES
+		            			<a  data-toggle="modal" href="#detalle"><i class="icon-info-sign"></i>Ver</a>
 							</li>
 		            	</ul>
 		            </section>
-	            </div>  
-	       </div>
-	       
-	       <div id="detalle" class="modal hide fade in" style="display: none;">
+		           </div>  
+		      </div>
+		      
+		      <div id="detalle" class="modal hide fade in" style="display: none;">
 			    <div class="modal-header">
-			        <a data-dismiss="modal" class="close">x</a>
+			        <a data-dismiss="modal" class="close">&times;</a>
 			        <h3>Detalles del Proyecto</h3>
 			     </div>
 			     
@@ -52,19 +65,19 @@
 						    </div>
 			            </div>
 			            <div class="span6">
-							<h5>Categor�a.</h5>
-							<span> Desarrollo de aplicaciones m�viles</span>
-							<h5>L�der de proyecto.</h5>
+							<h5>Categor&iacutea.</h5>
+							<span> Desarrollo de aplicaciones m&oacuteviles</span>
+							<h5>L&iacuteder de proyecto.</h5>
 							<span> Juan Alonso Mendoza Aguilar</span>
 			            </div>
 						<div class="span6">
-							<h5>Descripci�n.</h5>
+							<h5>Descripci&oacuten.</h5>
 							<p>
 							 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae mi lectus.
 							 	Fusce eu faucibus libero, sit amet auctor lacus. Praesent nec hendrerit sapien, 
 							 	ac consectetur augue. Praesent sit amet cursus lacus.
 							 </p>
-							 <span><a href="#">Presentaci�n PDF<i class="icon-folder-open"></i></a></span>
+							 <span><a href="#">Presentaci&oacuten PDF<i class="icon-folder-open"></i></a></span>
 						</div>
 			       </div>           
 			    </div>
@@ -77,7 +90,7 @@
 			
 			<div id="nuevoProyecto" class="modal hide fade in" style="display: none;">
 			    <div class="modal-header">
-			        <a data-dismiss="modal" class="close">�</a>
+			        <a data-dismiss="modal" class="close">&times;</a>
 			        <h3>Nuevo Proyecto</h3>
 			     </div>
 			     
@@ -107,11 +120,11 @@
 							<input id="liderProyecto" type="text"  placeholder="Lider de proyecto">
 			            </div>
 			            <div class="span6">
-			                <label>Categor�a</label>
+			                <label>Categor&iacutea</label>
 							<select>
 							  <option>Desarrollo Web</option>
 							  <option>Escritorio</option>
-							  <option>Desarrollo M�vil</option>
+							  <option>Desarrollo M&oacutevil</option>
 							  <option>Multimedia</option>
 							</select>
 			            </div>
@@ -121,7 +134,7 @@
 							<label>Integrantes</label>
 			              	<input id="integrantes" type="text"  placeholder="Integrantes">
 			                       					
-          					<span class="btn  btn-success fileinput-button">
+		        					<span class="btn  btn-success fileinput-button">
 			                    <i class="icon-file icon-white"></i>
 			                    <span>Add PDF...</span>
 			                </span>
@@ -132,18 +145,17 @@
 			                </span>
 			            </div>
 			            <div class="span6">
-			            	<label>Descripci�n</label>
+			            	<label>Descripci&oacuten</label>
 							<textarea rows="2"></textarea>
 			            </div>
 			        </div>                     
 			    </div>
-			    
 			    <div class="modal-footer">
 			        <a href="index.html" class="btn btn-success">Guardar</a>
 			        <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
 			    </div>
 			</div>
-		
+		</div>
 	</div>
 </body>
 </html>

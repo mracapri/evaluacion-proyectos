@@ -14,17 +14,66 @@
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     margin: 0 auto 20px;
-    max-width: 400px;
+    max-width: 500px;
     padding: 19px 29px 29px;
 }
+
 .proyectoEvaluar {
-   background-color: #FFFFFF;
+   	background-color: #FFFFFF;
     border: 1px solid #E5E5E5;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     margin: 0 auto 20px;
-    max-width: 500px;
+    max-width: 600px;
     padding: 19px 29px 29px;
+}
+
+.contenedor {
+   	background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin: 0 auto 20px;
+    width: 95%;
+    padding: 19px 29px 29px;
+}
+
+.encabezado{
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin: 0 auto 20px;
+    width: 95%;
+    padding: 19px 29px 29px;
+}
+
+.logoUTVM {
+	width: 100px;
+	height:100px
+}
+
+.logo {
+	width: 40px;
+	height:40px
+}
+
+.tdResultados {
+    font-size: 24.5px;
+}
+.show-grid {
+     margin-top:10px;
+     margin-bottom:20px;
+     text-align: center;
+}
+
+.show-grid [class*="span"] {
+    text-align: center;
+}
+
+.titulo-ventana{
+	font-size: 24.5px;
+	font-weight: bold;
 }
 
 #escala {
@@ -32,9 +81,16 @@
 }
 
 
-
 input[type='file'] {
-	position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;
+	position:absolute;
+	z-index:2;
+	top:0;
+	left:0;
+	filter: alpha(opacity=0);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	opacity:0;
+	background-color:transparent;
+	color:transparent;
 }
 
 input[type='text'],input[type='password'] {
@@ -47,6 +103,11 @@ input[type='text'],input[type='password'] {
 		padding-top: 40px;
         padding-bottom: 40px;
 		background-color:#F5F5F5;		
+	}
+	.container {
+	    margin-left: auto;
+	    margin-right: auto;
+	    width: 90%;
 	}
 	
 		
@@ -79,6 +140,11 @@ input[type='text'],input[type='password'] {
 		padding-top: 40px;
         padding-bottom: 40px;
 		background-color: #F5F5F5;
+	}
+	
+	.titulo-ventana{
+		font-size: 21px;
+		font-weight: bold;
 	}
 			
 }
