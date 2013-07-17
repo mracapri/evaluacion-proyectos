@@ -5,20 +5,33 @@ import java.util.Map;
 public class CalificacionEvaluador {
 	private Evaluador evaluador;
 	private Map<Integer, Integer> resultadoPorItem;
+	private Rubrica rubrica;
+	
+	public CalificacionEvaluador(Evaluador evaluador,
+			Map<Integer, Integer> resultadoPorItem, Rubrica rubrica) {
+		this.evaluador = evaluador;
+		this.resultadoPorItem = resultadoPorItem;
+		this.rubrica = rubrica;
+	}
+	
 	public Evaluador getEvaluador() {
 		return evaluador;
 	}
-	public void setEvaluador(Evaluador evaluador) {
-		this.evaluador = evaluador;
-	}
+
 	public Map<Integer, Integer> getResultadoPorItem() {
 		return resultadoPorItem;
 	}
-	public void setResultadoPorItem(Map<Integer, Integer> resultadoPorItem) {
-		this.resultadoPorItem = resultadoPorItem;
-	}
-	
+
 	public Double calcularTotal(){
-		return 0.0;
+		double total = 0;
+		for(Integer key : resultadoPorItem.keySet()){
+			total = total + resultadoPorItem.get(key);
+		}
+		total = total / resultadoPorItem.size();
+		return total;
+	}
+
+	public Rubrica getRubrica() {
+		return rubrica;
 	}
 }

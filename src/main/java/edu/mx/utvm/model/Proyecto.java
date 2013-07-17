@@ -11,7 +11,7 @@ public class Proyecto {
 	private byte[] foto;
 	private String responsable;
 	private List<String> integrantes;
-	private List<ResultadoRubrica> resultados;
+	private ResultadoFinal resultado;
 	
 	
 	public Proyecto(String nombre, Categoria categoria, String responsable) {
@@ -19,7 +19,6 @@ public class Proyecto {
 		this.categoria = categoria;
 		this.responsable = responsable;
 		integrantes = new ArrayList<String>();
-		resultados = new ArrayList<ResultadoRubrica>();
 	}
 
 
@@ -83,9 +82,13 @@ public class Proyecto {
 	}
 
 
-	public List<ResultadoRubrica> getResultados() {
-		return resultados;
+	public ResultadoFinal getResultado() {
+		return resultado;
 	}
 
+
+	public void setResultado(ResultadoFinal resultado) {
+		this.resultado = resultado;
+	}
 	
 }

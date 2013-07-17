@@ -23,8 +23,7 @@ public class TestEvaluacion {
 		escala1 = new Escala(0, 10);
 		
 		//Cargando categorias
-		Categoria categoria1 = new Categoria();
-		categoria1.setDescripcion("Disenio web");
+		Categoria categoria1 = new Categoria(0,"desarrollo web");		
 
 		categorias = new ArrayList<Categoria>();
 		categorias.add(categoria1);
