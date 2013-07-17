@@ -20,19 +20,7 @@
 <body>
 		
 	<div class="container" >
-		<div class="encabezado">
-			<div class="row-fluid">
-				<div class="span2">
-					<div class="logoUTVM">
-						<img src="${pageContext.request.contextPath}/web-resources/img/logo.jpg" alt="">
-					</div>
-				</div>
-				<div class="span9 show-grid">
-					<h3>UNIVERSIDAD TECNOLOGICA DEL VALLE DEL MEZQUITAL</h3>
-				</div>
-			</div>
-		</div> 
-		
+			
 		<div class="contenedor">
 			<div class="row-fluid">
 				<div class="span12 show-grid">

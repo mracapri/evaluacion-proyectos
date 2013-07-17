@@ -19,49 +19,34 @@
 </head>
 <body>		
 	<div class="container" >
-		<div class="encabezado">
+		<div class="proyectoEvaluar">
 			<div class="row-fluid">
-				<div class="span2">
-					<div class="logoUTVM">
-						<img src="${pageContext.request.contextPath}/web-resources/img/logo.jpg" alt="">
-					</div>
-				</div>
-				<div class="span9 show-grid">
-					<h3>UNIVERSIDAD TECNOLOGICA DEL VALLE DEL MEZQUITAL</h3>
-				</div>
-			</div>
-		</div> 
-		<div class="contenedor">
-			<div class="proyectoEvaluar">
-				
+			    <div class="span12 show-grid">
+			    	<span class="titulo-ventana">Evaluaci&oacuten de Proyectos</span>	
+			    </div>
+			</div> 
+			<div class="control-group">
 				<div class="row-fluid">
-				    <div class="span12 show-grid">
-				    	<span class="titulo-ventana">Evaluaci&oacuten de Proyectos</span>	
+	
+				    <div class="span10">
+				    	<b>1.-</b>
+						<span>Implementacion de dise&ntilde;o en casacada segun lo marca la w3e y el  estandar de programadores
+							<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo"><i class="icon-question-sign icon-white"></i></a>
+						</span>
+						<div id="demo" class="collapse">
+							<div class="alert alert-info">
+								<p class="text-info">El proyecto aplica de manera clara los conocimientos sobre modelado y va de acuerdo con su categoria</p>
+							</div>
+						</div>	
+				    </div>
+				    <div class="span2">
+					 	<select id="escala">
+					 		<option>1</option>
+					 		<option>2</option>
+					 		<option>3</option>
+					 	</select>
 				    </div>
 				</div> 
-				<div class="control-group">
-					<div class="row-fluid">
-	
-					    <div class="span10">
-					    	<b>1.-</b>
-							<span>Implementacion de dise&ntilde;o en casacada segun lo marca la w3e y el  estandar de programadores
-								<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo"><i class="icon-question-sign icon-white"></i></a>
-							</span>
-							<div id="demo" class="collapse">
-								<div class="alert alert-info">
-									<p class="text-info">El proyecto aplica de manera clara los conocimientos sobre modelado y va de acuerdo con su categoria</p>
-								</div>
-							</div>	
-					    </div>
-					    <div class="span2">
-						 	<select id="escala">
-						 		<option>1</option>
-						 		<option>2</option>
-						 		<option>3</option>
-						 	</select>
-					    </div>
-					</div> 
-				</div>
 			</div>
 		</div>
 	</div>

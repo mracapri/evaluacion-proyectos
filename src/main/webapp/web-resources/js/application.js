@@ -8,12 +8,12 @@ var DEMO = {
 	},
 	init: function(){
 		$this = this;
-		$this.cargaToolTip();
+		$this.cargaFunciones();
 	},
 	
 	//Carga los tooltips
-	cargaToolTip: function (){
-		$('#examples').popover()
+	cargaFunciones: function (){
+		$('#fechaEvaluacion').datepicker();
 	},
 	
 	
