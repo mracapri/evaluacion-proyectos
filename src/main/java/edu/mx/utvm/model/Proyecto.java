@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Proyecto {
+	private String idProyecto;
 	private String nombre;
 	private Categoria categoria;
 	private byte[] logo;
@@ -14,11 +15,17 @@ public class Proyecto {
 	private ResultadoFinal resultado;
 	
 	
-	public Proyecto(String nombre, Categoria categoria, String responsable) {
+	public Proyecto(String idProyecto, String nombre, Categoria categoria, String responsable) {
+		this.idProyecto = idProyecto;
 		this.nombre = nombre;
 		this.categoria = categoria;
 		this.responsable = responsable;
 		integrantes = new ArrayList<String>();
+	}
+
+
+	public String getIdProyecto() {
+		return idProyecto;
 	}
 
 

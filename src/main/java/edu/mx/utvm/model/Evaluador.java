@@ -1,12 +1,12 @@
 package edu.mx.utvm.model;
 
 public class Evaluador {
-	private int id;
+	private int idEvaluador;
 	private String nombre;
 	private String especialidad;
 
-	public Evaluador(int id, String nombre, String especialidad) {
-		this.id = id;
+	public Evaluador(int idEvaluador, String nombre, String especialidad) {
+		this.idEvaluador = idEvaluador;
 		this.nombre = nombre;
 		this.especialidad = especialidad;
 	}
@@ -27,7 +27,8 @@ public class Evaluador {
 		this.especialidad = especialidad;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdEvaluador() {
+		return idEvaluador;
 	}
+	
 }

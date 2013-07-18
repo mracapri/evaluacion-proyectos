@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rubrica {
+	private String idRubrica;
+	
+	public String getIdRubrica() {
+		return idRubrica;
+	}
+
 	private List<ItemRubrica> items;
 
 	public Rubrica() {

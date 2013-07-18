@@ -25,7 +25,7 @@ public class TestEvaluacion {
 	@Before
 	public void cargandoItemsRubricasConEscala() {
 		//Creando escala
-		escala1 = new Escala(0, 10);
+		escala1 = new Escala(01,0, 10);
 		
 		//Cargando categorias
 		Categoria categoria1 = new Categoria(0,"desarrollo web");		
@@ -33,17 +33,17 @@ public class TestEvaluacion {
 		categorias = new ArrayList<Categoria>();
 		categorias.add(categoria1);
 		
-		ItemRubrica itemRubrica1 = new ItemRubrica(
+		ItemRubrica itemRubrica1 = new ItemRubrica(1,
 				"Revision de estructura de codigo",
 				"Revisar que el codigo este estructurado, nombre de variables, utilizacion de elementos", escala1);
-		ItemRubrica itemRubrica2 = new ItemRubrica("Base de datos",
+		ItemRubrica itemRubrica2 = new ItemRubrica(2,"Base de datos",
 				"Estructura de base de datos y su administracion", escala1);
-		ItemRubrica itemRubrica3 = new ItemRubrica("Diseño web",
+		ItemRubrica itemRubrica3 = new ItemRubrica(3,"Diseño web",
 				"Adaptacion de estilos, Compatibilidad con navegadores",
 				escala1);
-		ItemRubrica itemRubrica4 = new ItemRubrica("Analisis del proyecto",
+		ItemRubrica itemRubrica4 = new ItemRubrica(4,"Analisis del proyecto",
 				"Metodologias utilizadas, Herramientas de analisis", escala1);
-		ItemRubrica itemRubrica5 = new ItemRubrica(
+		ItemRubrica itemRubrica5 = new ItemRubrica(5,
 				"Herraminetas de desarrollo",
 				"Utilizacion aceptable de la herramineta de desarrollo",
 				escala1);		
@@ -66,7 +66,7 @@ public class TestEvaluacion {
 	@Test
 	public void creandoEvaluacionVacia() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion("Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion(001,"Evaluacion 2013");
 		assertTrue(evaluacion.getEvaluadores() != null);
 		assertTrue(evaluacion.getEvaluadores().size() == 0);
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
@@ -75,7 +75,7 @@ public class TestEvaluacion {
 	@Test
 	public void agregandoEvaluadoresALaEvaluacionVacia() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion("Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion(001,"Evaluacion 2013");
 		evaluacion.getEvaluadores().add(new Evaluador(1, "Noe Abelino", "TIC"));
 		assertTrue(evaluacion.getEvaluadores() != null);
 		assertTrue(evaluacion.getEvaluadores().size() > 0);
@@ -85,9 +85,9 @@ public class TestEvaluacion {
 	@Test
 	public void agregandoProyectosALaEvaluacionVacia() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion("Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion(001, "Evaluacion 2013");
 
-		Proyecto p = new Proyecto("Desarrollo de videojuegos",
+		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
 		evaluacion.getProyectos().add(p);
 		assertTrue(evaluacion.getProyectos().size() == 1);
@@ -97,9 +97,9 @@ public class TestEvaluacion {
 	@Test
 	public void agregandoIntegrantesAlProyecto() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion("Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion(001, "Evaluacion 2013");
 
-		Proyecto p = new Proyecto("Desarrollo de videojuegos",
+		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
 		evaluacion.getProyectos().add(p);
 
@@ -115,9 +115,9 @@ public class TestEvaluacion {
 	@Test
 	public void agregandoProcesoDeEvaluacionConResultados() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion("Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion(001 ,"Evaluacion 2013");
 
-		Proyecto p = new Proyecto("Desarrollo de videojuegos",
+		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
 		evaluacion.getProyectos().add(p);
 		
@@ -139,9 +139,9 @@ public class TestEvaluacion {
 	@Test
 	public void agregandoProcesoDeEvaluacionConResultadosPorRubrica() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion("Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion(001,"Evaluacion 2013");
 
-		Proyecto p = new Proyecto("Desarrollo de videojuegos",
+		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
 		evaluacion.getProyectos().add(p);
 		
