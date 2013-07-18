@@ -4,10 +4,15 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+
+import edu.mx.utvm.model.factories.FactoryRubrica;
 
 public class TestEvaluacion {
 
@@ -42,8 +47,8 @@ public class TestEvaluacion {
 		ItemRubrica itemRubrica5 = new ItemRubrica(
 				"Herraminetas de desarrollo",
 				"Utilizacion aceptable de la herramineta de desarrollo",
-				escala1);
-
+				escala1);		
+		
 		itemsRubricas = new ArrayList<ItemRubrica>();
 		itemsRubricas.add(itemRubrica1);
 		itemsRubricas.add(itemRubrica2);
@@ -106,16 +111,75 @@ public class TestEvaluacion {
 		assertTrue(p.getIntegrantes().size() > 1);
 		System.out.println(ToStringBuilder.reflectionToString(p));
 	}
-
+	
 	@Test
-	public void agregandoRubricaAProyecto() {
+	public void agregandoProcesoDeEvaluacionConResultados() {
+		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion("Evaluacion 2013");
 
 		Proyecto p = new Proyecto("Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
-		evaluacion.getProyectos().add(p);		
+		evaluacion.getProyectos().add(p);
 		
 		
+		
+		
+		Map<Integer, Double> calificaciones;
+		calificaciones = new TreeMap<Integer, Double>();							
+		calificaciones.put(0, 9.8);
+		calificaciones.put(1, 9.0);
+		calificaciones.put(2, 8.0);
+		calificaciones.put(3, 8.0);
+		calificaciones.put(4, 9.0);									
+		
+		FactoryRubrica factoryRubrica = new FactoryRubrica();
+		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador(1, "Noe Abelino", "TIC"), calificaciones, factoryRubrica.getRubrica(categorias.get(0)));								
+				
+		System.out.println(calificacionEvaluador.calcularTotal());
+		System.out.println(ToStringBuilder.reflectionToString(calificacionEvaluador));
+	}
+	
+	@Test
+	public void agregandoProcesoDeEvaluacionConResultadosPorRubrica() {
+		/* Creando una evalucacion */
+		Evaluacion evaluacion = new Evaluacion("Evaluacion 2013");
+
+		Proyecto p = new Proyecto("Desarrollo de videojuegos",
+				categorias.get(0), "Isral Ochoa Paz");
+		evaluacion.getProyectos().add(p);
+		
+		Map<Integer, Double> calificaciones;
+		calificaciones = new TreeMap<Integer, Double>();
+		calificaciones.put(0, 9.8);
+		calificaciones.put(1, 9.0);
+		calificaciones.put(2, 8.0);
+		calificaciones.put(3, 8.0);
+		calificaciones.put(4, 9.0);
+		
+		Map<Integer, Double> calificaciones2;
+		calificaciones2 = new TreeMap<Integer, Double>();
+		calificaciones2.put(0, 9.8);
+		calificaciones2.put(1, 9.0);
+		calificaciones2.put(2, 8.0);
+		calificaciones2.put(3, 8.0);
+		calificaciones2.put(4, 10.0);
+		
+		FactoryRubrica factoryRubrica = new FactoryRubrica(); 
+		
+		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador(1, "Noe Abelino", "TIC"), calificaciones, factoryRubrica.getRubrica(new Categoria(0, "dessarrollo web")));					
+		CalificacionEvaluador calificacionEvaluador2 = new CalificacionEvaluador(new Evaluador(2, "Mario", "TIC"), calificaciones2, factoryRubrica.getRubrica());
+		
+		List<CalificacionEvaluador> calificacionEvaluadoresList = new ArrayList<CalificacionEvaluador>();		
+		calificacionEvaluadoresList.add(calificacionEvaluador);
+		calificacionEvaluadoresList.add(calificacionEvaluador2);
+		
+		ResultadoFinal resultado = new ResultadoFinal(calificacionEvaluadoresList);
+		
+		System.out.println("Ultima prueba");
+		System.out.println(resultado.calcularTotal());
+		System.out.println(resultado.calcularPorCategoria());
+		System.out.println(resultado.calcularPorPresentacion());		
+		System.out.println(ToStringBuilder.reflectionToString(calificacionEvaluadoresList)); 	
 	}
 
 }

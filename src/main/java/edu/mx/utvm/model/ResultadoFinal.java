@@ -6,8 +6,7 @@ import java.util.List;
 public class ResultadoFinal {
 	private List<CalificacionEvaluador> calificacionEvaluadores;
 	
-	public ResultadoFinal(List<CalificacionEvaluador> calificacionEvaluadores){
-		calificacionEvaluadores = new ArrayList<CalificacionEvaluador>();
+	public ResultadoFinal(List<CalificacionEvaluador> calificacionEvaluadores){		
 		this.calificacionEvaluadores = calificacionEvaluadores;
 	}
 	
@@ -23,6 +22,7 @@ public class ResultadoFinal {
 	private Double calcularPorTipoRubrica(Class rubrica){
 		double total = 0;
 		int numeroCategorias = 0;
+		
 		for (CalificacionEvaluador calificacionEvaluador : calificacionEvaluadores) {
 			if(calificacionEvaluador.getRubrica().getClass() == rubrica){
 				total = total + calificacionEvaluador.calcularTotal();

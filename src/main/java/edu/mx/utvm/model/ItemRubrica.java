@@ -3,7 +3,7 @@ package edu.mx.utvm.model;
 public class ItemRubrica {
 	private String descripcionCorta;
 	private String descripcionLarga;
-	private Escala escala;
+	private Escala escala;	
 	
 	public ItemRubrica(String descripcionCorta, String descripcionLarga, Escala escala){
 		this.descripcionCorta = descripcionCorta;
@@ -21,8 +21,6 @@ public class ItemRubrica {
 
 	public Escala getEscala() {
 		return escala;
-	}
-	
-	
+	}	
 	
 }

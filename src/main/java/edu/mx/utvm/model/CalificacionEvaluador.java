@@ -4,11 +4,11 @@ import java.util.Map;
 
 public class CalificacionEvaluador {
 	private Evaluador evaluador;
-	private Map<Integer, Integer> resultadoPorItem;
+	private Map<Integer, Double> resultadoPorItem;
 	private Rubrica rubrica;
 	
 	public CalificacionEvaluador(Evaluador evaluador,
-			Map<Integer, Integer> resultadoPorItem, Rubrica rubrica) {
+			Map<Integer, Double> resultadoPorItem, Rubrica rubrica) {
 		this.evaluador = evaluador;
 		this.resultadoPorItem = resultadoPorItem;
 		this.rubrica = rubrica;
@@ -18,7 +18,7 @@ public class CalificacionEvaluador {
 		return evaluador;
 	}
 
-	public Map<Integer, Integer> getResultadoPorItem() {
+	public Map<Integer, Double> getResultadoPorItem() {
 		return resultadoPorItem;
 	}
 
