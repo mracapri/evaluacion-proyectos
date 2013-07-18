@@ -21,7 +21,15 @@
 		
 	<div class="container" >
 		<div class="contenedor">
-			 <div class="row">
+			<a data-toggle="collapse" data-target="#activarProyecto"><i class=" icon-chevron-down"></i></a>
+			<div id="activarProyecto" class="row  collapse">
+				<div  class="span12">
+					<select>
+						<option>Proyecto de evaluacion</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
 				<div class="span12">
 					<h3>DESARROLLO DE APLICACIONES MOBILES PARA ESTUDIANTES</h3>
 				</div>

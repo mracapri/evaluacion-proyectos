@@ -30,8 +30,7 @@ public class TestEvaluacion {
 		
 		ItemRubrica itemRubrica1 = new ItemRubrica(
 				"Revision de estructura de codigo",
-				"Revisar que el codigo este estructurado, nombre de variables, utilizacion de elementos",
-				escala1);
+				"Revisar que el codigo este estructurado, nombre de variables, utilizacion de elementos", escala1);
 		ItemRubrica itemRubrica2 = new ItemRubrica("Base de datos",
 				"Estructura de base de datos y su administracion", escala1);
 		ItemRubrica itemRubrica3 = new ItemRubrica("Diseño web",
@@ -54,6 +53,7 @@ public class TestEvaluacion {
 		rubricasCategoria = new ArrayList<RubricaCategoria>();
 		RubricaCategoria rubricaCategoria = new RubricaCategoria(categorias.get(0), itemsRubricas);
 		rubricasCategoria.add(rubricaCategoria);
+
 	}
 
 
@@ -117,5 +117,7 @@ public class TestEvaluacion {
 		
 		
 	}
+	
+	
 
 }
