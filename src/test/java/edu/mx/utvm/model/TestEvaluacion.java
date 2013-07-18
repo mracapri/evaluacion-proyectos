@@ -121,9 +121,6 @@ public class TestEvaluacion {
 				categorias.get(0), "Isral Ochoa Paz");
 		evaluacion.getProyectos().add(p);
 		
-		
-		
-		
 		Map<Integer, Double> calificaciones;
 		calificaciones = new TreeMap<Integer, Double>();							
 		calificaciones.put(0, 9.8);
