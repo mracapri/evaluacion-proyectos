@@ -1,7 +1,11 @@
 package edu.mx.utvm.model.factories;
 
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("/AppCtx-Spring-Test.xml")
 public class TestFactoryRubrica {
 	@Test
 	public void prueba(){
