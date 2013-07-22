@@ -1,4 +1,4 @@
-package edu.mx.utvm.model;
+package edu.mx.utvm.eproyectos.model;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package edu.mx.utvm.model;
+package edu.mx.utvm.eproyectos.model;
 
 public class Evaluador {
 	private int idEvaluador;

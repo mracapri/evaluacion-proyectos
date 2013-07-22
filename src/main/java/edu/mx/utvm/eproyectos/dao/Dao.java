@@ -1,4 +1,4 @@
-package edu.mx.utvm.dao;
+package edu.mx.utvm.eproyectos.dao;
 
 import java.io.Serializable;
 import java.util.List;

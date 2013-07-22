@@ -1,4 +1,4 @@
-package edu.mx.utvm.model.factories;
+package edu.mx.utvm.eproyectos.dao;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.mx.utvm.dao.CategoriaDao;
-import edu.mx.utvm.model.Categoria;
+import edu.mx.utvm.eproyectos.dao.CategoriaDao;
+import edu.mx.utvm.eproyectos.model.Categoria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/AppCtx-Spring-Test.xml")

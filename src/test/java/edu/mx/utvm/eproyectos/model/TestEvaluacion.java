@@ -1,4 +1,4 @@
-package edu.mx.utvm.model;
+package edu.mx.utvm.eproyectos.model;
 
 import static org.junit.Assert.assertTrue;
 
@@ -12,7 +12,16 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import edu.mx.utvm.model.factories.FactoryRubrica;
+import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
+import edu.mx.utvm.eproyectos.model.Categoria;
+import edu.mx.utvm.eproyectos.model.Escala;
+import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Evaluador;
+import edu.mx.utvm.eproyectos.model.ItemRubrica;
+import edu.mx.utvm.eproyectos.model.Proyecto;
+import edu.mx.utvm.eproyectos.model.ResultadoFinal;
+import edu.mx.utvm.eproyectos.model.RubricaCategoria;
+import edu.mx.utvm.model.eproyectos.factories.FactoryRubrica;
 
 public class TestEvaluacion {
 

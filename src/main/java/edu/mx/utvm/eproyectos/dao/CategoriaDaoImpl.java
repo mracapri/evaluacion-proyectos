@@ -1,4 +1,4 @@
-package edu.mx.utvm.dao;
+package edu.mx.utvm.eproyectos.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import edu.mx.utvm.model.Categoria;
+import edu.mx.utvm.eproyectos.model.Categoria;
 
 @Repository
 public class CategoriaDaoImpl extends JdbcTemplate implements CategoriaDao{

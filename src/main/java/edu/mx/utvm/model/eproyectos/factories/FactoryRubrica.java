@@ -1,9 +1,9 @@
-package edu.mx.utvm.model.factories;
+package edu.mx.utvm.model.eproyectos.factories;
 
-import edu.mx.utvm.model.Categoria;
-import edu.mx.utvm.model.Rubrica;
-import edu.mx.utvm.model.RubricaCategoria;
-import edu.mx.utvm.model.RubricaPresentacion;
+import edu.mx.utvm.eproyectos.model.Categoria;
+import edu.mx.utvm.eproyectos.model.Rubrica;
+import edu.mx.utvm.eproyectos.model.RubricaCategoria;
+import edu.mx.utvm.eproyectos.model.RubricaPresentacion;
 
 public class FactoryRubrica {
 	public Rubrica getRubrica(Categoria categoria){
