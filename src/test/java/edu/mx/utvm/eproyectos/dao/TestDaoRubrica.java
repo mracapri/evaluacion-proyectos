@@ -31,16 +31,42 @@ public class TestDaoRubrica {
 	public void createNew() {
 		log.info("Test........................");
 		Assert.assertNotNull(rubricaDao);
-		//RubricaPresentacion rubrica = new RubricaPresentacion();
+		RubricaPresentacion rubricaPresentacion = new RubricaPresentacion("1301");
+		Rubrica rubrica = new Rubrica("1301");
+		
+		Categoria categoria = new Categoria(0, "desarrollo web");	
+		RubricaCategoria rubricaCategoria = new RubricaCategoria("1301",categoria);		
+		
+		rubricaDao.create(rubrica);
+		rubricaDao.create(rubricaPresentacion);
+		rubricaDao.create(rubricaCategoria);
+		
+		log.info("xxxxxxxxxxxxx"+rubricaDao);
+		
+		//Assert.assertTrue(all.size() == 0);
+	}
+	
+	@Test
+	public void findAll(){
+		log.info("Test2........................");
+		Assert.assertNotNull(rubricaDao);
+				
+		Assert.assertNotNull(rubricaDao);
+		RubricaPresentacion rubricaPresentacion = new RubricaPresentacion("1301");
 		//Rubrica rubrica = new Rubrica("1301");
 		
-		Categoria categoria = new Categoria(0, "web");	
-		RubricaCategoria rubrica = new RubricaCategoria("1301",categoria);
+		Categoria categoria = new Categoria(0, "desarrollo web");	
+		RubricaCategoria rubricaCategoria = new RubricaCategoria("1302",categoria);		
 		
-		//RubricaPresentacion rubrica2 = new RubricaPresentacion("as01");
-		//rubricaDao.create(rubrica2, categoria);
-		rubricaDao.create(rubrica);
-		//Assert.assertTrue(all.size() == 0);
+		//rubricaDao.create(rubrica);
+		rubricaDao.create(rubricaPresentacion);
+		rubricaDao.create(rubricaCategoria);
+		
+		List<Rubrica> all = rubricaDao.findAll();
+		log.info("xxxxxxxxxxxxx"+all.size());
+		log.info("xxxxxxxxxxxxx"+all.get(0).getId());
+		log.info("xxxxxxxxxxxxx"+all.get(1).getId());
+		
 	}
 		
 }
