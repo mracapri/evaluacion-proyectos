@@ -121,19 +121,17 @@ public class TestDaoEvaluacion {
 		log.info("------------Test creacion evaluacion  evaluadores----------------------");
 			
 		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
-		Assert.assertNotNull(evaluador);
-		evaluadorDao.create(evaluador);
-		
-		log.info("paso--->");
-		
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
-		Assert.assertNotNull(evaluacion);
-		evaluacionDao.create(evaluacion);
-		
-		log.info("EVALUACION--->"+evaluacionDao.read(1).getDescripcion());
+		  Assert.assertNotNull(evaluador);
+		  evaluadorDao.create(evaluador);
 
-		List<Evaluador> all = evaluadorDao.findAll();
-		Assert.assertTrue(all.size() == 1);
+		  
+		  Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
+		  Assert.assertNotNull(evaluacion);
+		  evaluacionDao.create(evaluacion);
+		  
+		  
+		  
+		  log.info("EVALUACION--->"+evaluacionDao.read(1).getFechaCreacion());
 				
 		/*
 		log.info("pasa 2"+evaluador.getNombre());
