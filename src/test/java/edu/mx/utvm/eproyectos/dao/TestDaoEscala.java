@@ -53,9 +53,12 @@ public class TestDaoEscala {
 		Escala escala = new Escala(1, 0, 10);
 		escalaDao.create(escala);
 		
-		List<Escala> all = escalaDao.findAll();
-		log.info(all.size());
-		Assert.assertTrue(all.size() == 1);
+		Escala escalaRecibida = escalaDao.read(1);
+				
+		log.info("id:"+escalaRecibida.getIdEscala());
+		log.info("inicio:"+escalaRecibida.getInicio());
+		log.info("fin:"+escalaRecibida.getFin());
+		Assert.assertNotNull(escalaRecibida);
 	}
 	
 	@Test

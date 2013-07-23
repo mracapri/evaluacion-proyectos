@@ -97,5 +97,22 @@ public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 		});
 		return result;
 	}
+	
+	/*
+	 * RubricaItemsRubrica functions
+	 * */
+	@Override
+	public void createRubricaItemRubricas(String idRubrica,
+			Integer idItemRubrica) {
+		String sql = "INSERT INTO rubrica_items_rubrica(id_rubrica, id_item_rubrica) VALUES(?,?)";		
 
+		this.update(sql, new Object[] { idRubrica, idItemRubrica });		
+	}
+
+	@Override
+	public List<ItemRubrica> findAllItemRubricasByRubrica() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
