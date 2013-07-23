@@ -2,7 +2,6 @@ package edu.mx.utvm.eproyectos.dao;
 
 import java.util.List;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
@@ -14,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.mx.utvm.eproyectos.dao.CategoriaDao;
 import edu.mx.utvm.eproyectos.model.Categoria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -45,7 +43,7 @@ public class TestDaoCategoria {
 		Assert.assertNotNull(categoria);
 		categoriaDao.create(categoria);
 
-		List<Categoria> all = categoriaDao.findAll();		
+		List<Categoria> all = categoriaDao.findAll();
 		Assert.assertTrue(all.size() == 1);	
 	}
 }
