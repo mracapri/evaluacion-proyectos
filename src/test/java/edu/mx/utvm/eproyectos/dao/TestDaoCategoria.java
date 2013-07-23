@@ -29,10 +29,11 @@ public class TestDaoCategoria {
 
 	@Test
 	public void findAll() {
-		log.info("Test........................");
+		log.info("Test daoCategoria........................");
 		Assert.assertNotNull(categoriaDao);
-		List<Categoria> all = categoriaDao.findAll();		
-		Assert.assertTrue(all.size() == 0);
+		List<Categoria> all = categoriaDao.findAll();
+		log.info("Test--> "+ all.size());
+		Assert.assertTrue(all.size() == 1);
 	}
 	
 	@Ignore

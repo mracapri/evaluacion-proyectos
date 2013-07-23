@@ -47,7 +47,24 @@ public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 	
 	@Override
 	public Rubrica read(String id) {
-		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM rubrica WHERE id_rubrica = ?";
+		try {
+			this.queryForObject(sql, new Object[] { id },
+					new RowMapper<Rubrica>() {
+
+						@Override
+						public Rubrica mapRow(ResultSet arg0, int arg1)
+								throws SQLException {
+								
+								//if(arg0.getInt("id_categoria") == 0)
+							
+							return null;
+						}
+
+					});
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 
