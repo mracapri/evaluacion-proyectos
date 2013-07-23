@@ -1,11 +1,7 @@
 package edu.mx.utvm.eproyectos.dao;
 
-import java.beans.Transient;
 import java.util.List;
 
-import javax.mail.Session;
-
-import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
@@ -17,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.mx.utvm.eproyectos.dao.EvaluadorDao;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 
 @RunWith(SpringJUnit4ClassRunner.class)

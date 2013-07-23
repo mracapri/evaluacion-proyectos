@@ -45,13 +45,6 @@ public class TestDaoCategoria {
 		categoriaDao.create(categoria);
 
 		List<Categoria> all = categoriaDao.findAll();		
-		Assert.assertTrue(all.size() == 1);
-	
+		Assert.assertTrue(all.size() == 1);	
 	}
-<<<<<<< HEAD
-	
-	
 }
-=======
-}
->>>>>>> 7388cfad1aa195382784adf6ba9218aaa5d3bc03
