@@ -9,13 +9,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Evaluador;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/AppCtx-Spring-Test.xml")
@@ -25,15 +24,17 @@ public class TestDaoEvaluacion {
 	protected final Log log = LogFactory.getLog(getClass());
 
 	@Autowired
-	EvaluacionDao evaluacionDao;
 	EvaluadorDao evaluadorDao;
+	
+	@Autowired
+	EvaluacionDao evaluacionDao;	
 
 	@Ignore
 	public void findAll() {
 		log.info("------------Test Find All----------------------");
 		Assert.assertNotNull(evaluacionDao);
 		List<Evaluacion> all = evaluacionDao.findAll();
-		Assert.assertTrue(all.size() == 1);
+		Assert.assertTrue(all.size() == 0);
 	}
 	
 	
@@ -119,7 +120,7 @@ public class TestDaoEvaluacion {
 	public void createEvaluadorEvaluacion(){
 		log.info("------------Test creacion evaluacion  evaluadores----------------------");
 			
-		Evaluador evaluador = new Evaluador(9, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador);
 		
@@ -133,7 +134,7 @@ public class TestDaoEvaluacion {
 
 		List<Evaluador> all = evaluadorDao.findAll();
 		Assert.assertTrue(all.size() == 1);
-		
+				
 		/*
 		log.info("pasa 2"+evaluador.getNombre());
 		evaluacionDao.inserEvaluacionEvaluador(evaluador, evaluacion);

@@ -28,11 +28,13 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	public void create(Evaluacion newInstance) {
 		this.update(
 				"INSERT INTO " +
-				"evaluacion(id_evaluacion, descripcion) " +
-				"VALUES(?,?)",
+				"evaluacion(id_evaluacion, descripcion, descripcion_detallada, fecha) " +
+				"VALUES(?,?,?,?)",
 				new Object[] {
 						newInstance.getIdEvaluacion(),
-						newInstance.getDescripcion()
+						newInstance.getDescripcion(),
+						newInstance.getDescripcionDetallada(),
+						newInstance.getFechaCreacion()
 				});
 		
 	}
