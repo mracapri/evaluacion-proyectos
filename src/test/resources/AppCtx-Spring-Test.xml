@@ -18,7 +18,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/evaluacion_proyectos" />
         <property name="username" value="root" />
-        <property name="password" value="root" />
+        <property name="password" value="root2012" />
     </bean>	
     
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
