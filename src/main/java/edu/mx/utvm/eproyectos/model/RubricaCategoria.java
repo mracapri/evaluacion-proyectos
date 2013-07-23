@@ -5,8 +5,8 @@ import java.util.List;
 public class RubricaCategoria extends Rubrica {
 	private Categoria categoria;
 
-	public RubricaCategoria(Categoria categoria) {
-		super();
+	public RubricaCategoria(String idRubrica,Categoria categoria) {
+		super(idRubrica);
 		this.categoria = categoria;
 	}
 	

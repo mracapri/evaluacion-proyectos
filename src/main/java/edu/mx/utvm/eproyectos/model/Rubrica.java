@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rubrica {
-	private String idRubrica;
+	private String id;		
 	
-	public String getIdRubrica() {
-		return idRubrica;
+	public String getId() {
+		return id;
 	}
-
+	
 	private List<ItemRubrica> items;
 
-	public Rubrica() {
+	public Rubrica(String id) {
 		this.items = new ArrayList<ItemRubrica>();
+		this.id = id;
 	}
 	
 	public Rubrica(List<ItemRubrica> items) {
