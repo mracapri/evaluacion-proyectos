@@ -4,16 +4,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
 
 public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 
+	@Autowired
+	private Catalogos catalogos;
+	
 	@Override
 	public void create(ItemRubrica newInstance) {
 		String sql = "INSERT INTO item_rubrica ";
@@ -39,7 +44,8 @@ public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 						public ItemRubrica mapRow(ResultSet arg0, int arg1)
 								throws SQLException {
 								/*Revisar si el constructor necesita solo el id e implementar seters*/
-								Escala escala = new Escala(arg0.getInt("id_escala"), 0, 0);								
+								
+								Escala escala = catalogos.getEscalas().get(arg0.getInt("id_escala"));								
 								ItemRubrica itemRubrica = new ItemRubrica(arg0.getInt("id_item_rubrica"), arg0.getString("descripcion_corta"), arg0.getString("descripcion_larga"), escala);
 							return itemRubrica;
 						}

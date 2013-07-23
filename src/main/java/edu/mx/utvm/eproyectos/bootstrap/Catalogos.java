@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import edu.mx.utvm.eproyectos.dao.CategoriaDao;
 import edu.mx.utvm.eproyectos.model.Categoria;
+import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Rubrica;
 @Component
 public final class Catalogos implements InitializingBean{
@@ -23,6 +24,7 @@ public final class Catalogos implements InitializingBean{
 	/* listas  */
 	private List<Categoria> categorias;
 	private List<Rubrica> rubricas;
+	private List<Escala> escala;
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
@@ -37,5 +39,9 @@ public final class Catalogos implements InitializingBean{
 	public final List<Rubrica> getRubricas() {
 		return rubricas;
 	}	
-
+	
+	public final List<Escala> getEscalas(){
+		return escala;
+		
+	}
 }
