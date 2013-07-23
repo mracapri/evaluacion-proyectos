@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
+import edu.mx.utvm.eproyectos.model.Rubrica;
 
 @Repository
 public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
@@ -30,15 +31,7 @@ public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 	
 	@Override
 	public void create(ItemRubrica newInstance) {
-		String sql = "INSERT INTO item_rubrica ";
-		sql = sql + "(id_item_rubrica, descripcion_corta, descripcion_larga, id_escala) VALUES(?,?,?,?)";		
 		
-		this.update(sql, new Object[]{
-				newInstance.getIdItemRubrica(),
-				newInstance.getDescripcionCorta(),
-				newInstance.getDescripcionLarga(),
-				newInstance.getEscala().getIdEscala()
-		});		
 	}
 
 	@Override
@@ -97,22 +90,48 @@ public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 		});
 		return result;
 	}
-	
-	/*
-	 * RubricaItemsRubrica functions
-	 * */
-	@Override
-	public void createRubricaItemRubricas(String idRubrica,
-			Integer idItemRubrica) {
-		String sql = "INSERT INTO rubrica_items_rubrica(id_rubrica, id_item_rubrica) VALUES(?,?)";		
 
-		this.update(sql, new Object[] { idRubrica, idItemRubrica });		
+	@Override
+	public void create(ItemRubrica newInstance, Rubrica rubrica) {
+		String sql = "INSERT INTO item_rubrica ";
+		sql = sql + "(id_item_rubrica, descripcion_corta, descripcion_larga, id_escala) VALUES(?,?,?,?)";		
+		
+		this.update(sql, new Object[]{
+				newInstance.getIdItemRubrica(),
+				newInstance.getDescripcionCorta(),
+				newInstance.getDescripcionLarga(),
+				newInstance.getEscala().getIdEscala()
+		});		
+		
+		sql = "INSERT INTO rubrica_items_rubrica(id_rubrica, id_item_rubrica) VALUES(?,?)";
+		this.update(sql, new Object[]{
+				rubrica.getId(),
+				newInstance.getIdItemRubrica()
+		});
+		
 	}
 
 	@Override
-	public List<ItemRubrica> findAllItemRubricasByRubrica() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ItemRubrica> findItemsRubricaByIdRubrica(String id) {
+		String sql = "";
+		sql += "SELECT ir.id_item_rubrica, ir.descripcion_corta, ir.descripcion_larga, ir.id_escala ";
+		sql += "FROM rubrica_items_rubrica rir, item_rubrica ir ";
+		sql += "WHERE ir.id_item_rubrica = rir.id_item_rubrica and rir.id_rubrica = ?";
+		Object[] parametros = {id};
+		List<ItemRubrica> result = this.query(sql, parametros, new RowMapper<ItemRubrica>() {
+			@Override
+			public ItemRubrica mapRow(ResultSet rs, int rowNum) throws SQLException {
+				int idEscala = rs.getInt("ir.id_escala");
+				Escala escala = catalogos.getEscalas().get(idEscala);
+				ItemRubrica itemRubrica = new ItemRubrica(
+						rs.getInt("ir.id_item_rubrica"), 
+						rs.getString("ir.descripcion_corta"), 
+						rs.getString("ir.descripcion_larga"), escala);
+				return itemRubrica;
+			}
+		});
+		return result;
 	}
+
 	
 }
