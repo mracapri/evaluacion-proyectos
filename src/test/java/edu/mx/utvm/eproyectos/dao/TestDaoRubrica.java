@@ -31,13 +31,11 @@ public class TestDaoRubrica {
 	public void createNew() {
 		log.info("Test........................");
 		Assert.assertNotNull(rubricaDao);
-		RubricaPresentacion rubricaPresentacion = new RubricaPresentacion("1301");
-		Rubrica rubrica = new Rubrica("1301");
+		RubricaPresentacion rubricaPresentacion = new RubricaPresentacion("1301");		
 		
 		Categoria categoria = new Categoria(0, "desarrollo web");	
 		RubricaCategoria rubricaCategoria = new RubricaCategoria("1301",categoria);		
-		
-		rubricaDao.create(rubrica);
+				
 		rubricaDao.create(rubricaPresentacion);
 		rubricaDao.create(rubricaCategoria);
 		
