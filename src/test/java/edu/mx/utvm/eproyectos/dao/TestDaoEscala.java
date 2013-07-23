@@ -57,4 +57,53 @@ public class TestDaoEscala {
 		log.info(all.size());
 		Assert.assertTrue(all.size() == 1);
 	}
+	
+	@Test
+	public void updateById(){
+		log.info("-----------------Test4--------------");
+		Assert.assertNotNull(escalaDao);
+		
+		Escala escala = new Escala(1, 0, 10);
+		escalaDao.create(escala);
+		
+		List<Escala> all = escalaDao.findAll();
+		log.info(all.size());
+		Assert.assertTrue(all.size() == 1);
+		
+		log.info("id:"+all.get(0).getIdEscala());
+		log.info("inicio:"+all.get(0).getInicio());
+		log.info("fin:"+all.get(0).getFin());
+				
+		Escala escala2 = new Escala(1, 10, 100);
+		
+		escalaDao.update(escala2);
+		
+		List<Escala> all2 = escalaDao.findAll();
+		log.info(all2.size());
+		Assert.assertTrue(all2.size() == 1);
+		
+		log.info("id:"+all2.get(0).getIdEscala());
+		log.info("inicio:"+all2.get(0).getInicio());
+		log.info("fin:"+all2.get(0).getFin());		
+	}
+	
+	@Test
+	public void deleteById(){
+		log.info("-----------------Test4--------------");
+		Assert.assertNotNull(escalaDao);
+		
+		Escala escala = new Escala(1, 0, 10);
+		escalaDao.create(escala);
+		
+		List<Escala> all = escalaDao.findAll();
+		log.info(all.size());
+		Assert.assertTrue(all.size() == 1);
+		
+		escalaDao.delete(escala);
+		
+		List<Escala> all2 = escalaDao.findAll();
+		log.info(all2.size());
+		Assert.assertTrue(all2.size() == 0);
+		
+	}
 }
