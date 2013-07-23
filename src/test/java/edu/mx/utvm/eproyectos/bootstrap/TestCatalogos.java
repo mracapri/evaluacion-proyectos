@@ -21,8 +21,19 @@ public class TestCatalogos {
 	private Catalogos catalogos;
 
 	@Test
-	public void findAll() {
-		log.info("<<<<<<<<<<<<findAll>>>>>>>>>>>>>>>>>");
+	public void testComponenteCatalogo() {
 		Assert.assertNotNull(catalogos);
 	}	
+	
+	@Test
+	public void testCatalogoCategorias() {
+		Assert.assertNotNull(catalogos.getCategorias());
+		Assert.assertTrue(catalogos.getCategorias().size() == 0);
+	}	
+	
+	@Test
+	public void testCatalogoRubricas() {
+		Assert.assertNotNull(catalogos.getRubricas());
+		Assert.assertTrue(catalogos.getCategorias().size() == 0);
+	}
 }
