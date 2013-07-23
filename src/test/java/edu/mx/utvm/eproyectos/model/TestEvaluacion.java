@@ -72,7 +72,7 @@ public class TestEvaluacion {
 
 
 
-	@Test
+	@Ignore
 	public void creandoEvaluacionVacia() {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion(001,"Evaluacion 2013");
@@ -81,7 +81,7 @@ public class TestEvaluacion {
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
 	}
 
-	@Test
+	@Ignore
 	public void agregandoEvaluadoresALaEvaluacionVacia() {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion(001,"Evaluacion 2013");
@@ -91,7 +91,7 @@ public class TestEvaluacion {
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
 	}
 
-	@Test
+	@Ignore
 	public void agregandoProyectosALaEvaluacionVacia() {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion(001, "Evaluacion 2013");
@@ -103,7 +103,7 @@ public class TestEvaluacion {
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
 	}
 
-	@Test
+	@Ignore
 	public void agregandoIntegrantesAlProyecto() {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion(001, "Evaluacion 2013");
@@ -121,7 +121,7 @@ public class TestEvaluacion {
 		System.out.println(ToStringBuilder.reflectionToString(p));
 	}
 	
-	@Test
+	@Ignore
 	public void agregandoProcesoDeEvaluacionConResultados() {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion(001 ,"Evaluacion 2013");
@@ -145,7 +145,7 @@ public class TestEvaluacion {
 		System.out.println(ToStringBuilder.reflectionToString(calificacionEvaluador));
 	}
 	
-	@Test
+	@Ignore
 	public void agregandoProcesoDeEvaluacionConResultadosPorRubrica() {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion(001,"Evaluacion 2013");
