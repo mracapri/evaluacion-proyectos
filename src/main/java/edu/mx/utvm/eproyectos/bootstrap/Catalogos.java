@@ -1,6 +1,7 @@
 package edu.mx.utvm.eproyectos.bootstrap;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import edu.mx.utvm.eproyectos.dao.CategoriaDao;
+import edu.mx.utvm.eproyectos.dao.EscalaDao;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Rubrica;
@@ -21,15 +23,19 @@ public final class Catalogos implements InitializingBean{
 	@Autowired
 	private CategoriaDao categoriaDao;
 	
+	@Autowired
+	private EscalaDao escalaDao;
+	
 	/* listas  */
 	private List<Categoria> categorias;
 	private List<Rubrica> rubricas;
-	private List<Escala> escala;
+	private Map<Integer, Escala> escalas;
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		log.info("CARGANDO CATALOGOS");
 		categorias = categoriaDao.findAll();
+		escalas = escalaDao.findAllMap();
 	}
 
 	public final List<Categoria> getCategorias() {
@@ -40,8 +46,7 @@ public final class Catalogos implements InitializingBean{
 		return rubricas;
 	}	
 	
-	public final List<Escala> getEscalas(){
-		return escala;
-		
+	public final Map<Integer, Escala> getEscalas(){
+		return escalas;
 	}
 }

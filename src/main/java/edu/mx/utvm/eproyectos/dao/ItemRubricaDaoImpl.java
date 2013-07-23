@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
-import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
 
@@ -44,8 +43,8 @@ public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 						public ItemRubrica mapRow(ResultSet arg0, int arg1)
 								throws SQLException {
 								/*Revisar si el constructor necesita solo el id e implementar seters*/
-								
-								Escala escala = catalogos.getEscalas().get(arg0.getInt("id_escala"));								
+								int idEscala = arg0.getInt("id_escala");
+								Escala escala = catalogos.getEscalas().get(idEscala);								
 								ItemRubrica itemRubrica = new ItemRubrica(arg0.getInt("id_item_rubrica"), arg0.getString("descripcion_corta"), arg0.getString("descripcion_larga"), escala);
 							return itemRubrica;
 						}
@@ -78,7 +77,9 @@ public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 			public ItemRubrica mapRow(ResultSet arg0, int arg1)
 					throws SQLException {
 					/*Revisar si el constructor necesita solo el id e implementar seters*/
-					Escala escala = new Escala(arg0.getInt("id_escala"), 0, 0);								
+					int idEscala = arg0.getInt("id_escala");
+					Escala escala = catalogos.getEscalas().get(idEscala);		
+					
 					ItemRubrica itemRubrica = new ItemRubrica(arg0.getInt("id_item_rubrica"), arg0.getString("descripcion_corta"), arg0.getString("descripcion_larga"), escala);
 				return itemRubrica;
 			}
