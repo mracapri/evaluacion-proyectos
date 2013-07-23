@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS evaluacion_evaluadores (
 
 CREATE TABLE IF NOT EXISTS rubrica (
   id_rubrica varchar(4) NOT NULL,    
-  id_categoria int(2) NOT NULL,
+  id_categoria int(2) NULL,
   PRIMARY KEY (id_rubrica),
   FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
