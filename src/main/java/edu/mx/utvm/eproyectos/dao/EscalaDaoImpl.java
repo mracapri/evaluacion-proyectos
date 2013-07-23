@@ -6,14 +6,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import edu.mx.utvm.eproyectos.model.Escala;
 
+@Repository
 public class EscalaDaoImpl extends JdbcTemplate implements EscalaDao {
-
+	
+	@Autowired
+	@Override
+	public void setDataSource(DataSource dataSource) {
+		super.setDataSource(dataSource);
+	}
+	
 	@Override
 	public void create(Escala newInstance) {
 		this.update(

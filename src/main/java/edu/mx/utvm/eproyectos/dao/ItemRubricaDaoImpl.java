@@ -4,17 +4,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
 
+@Repository
 public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
-
+	
+	@Autowired
+	@Override
+	public void setDataSource(DataSource dataSource) {
+		super.setDataSource(dataSource);
+	}
+	
 	@Autowired
 	private Catalogos catalogos;
 	
