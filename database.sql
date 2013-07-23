@@ -13,8 +13,8 @@ SET NAMES 'UTF8';
 CREATE TABLE IF NOT EXISTS evaluacion (
   id_evaluacion int(3) NOT NULL,  
   descripcion varchar(200) NOT NULL,
-  descripcion_detallada varchar(300) NOT NULL,
-  fecha date NOT NULL,  
+  descripcion_detallada varchar(300) NULL,
+  fecha date NULL,  
   PRIMARY KEY (id_evaluacion)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

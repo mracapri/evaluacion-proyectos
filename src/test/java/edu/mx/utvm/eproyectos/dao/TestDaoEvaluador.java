@@ -9,6 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,7 @@ public class TestDaoEvaluador {
 
 	@Ignore
 	public void findAll() {
+		log.info("------------Test Find All----------------------");
 		Assert.assertNotNull(evaluadorDao);
 		List<Evaluador> all = evaluadorDao.findAll();
 		Assert.assertTrue(all.size() == 0);
@@ -35,6 +37,7 @@ public class TestDaoEvaluador {
 	
 	@Ignore
 	public void insertAndfindAll(){
+		log.info("------------Test Insert and Find All----------------------");
 		Assert.assertNotNull(evaluadorDao);
 		
 		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
@@ -45,38 +48,69 @@ public class TestDaoEvaluador {
 		Assert.assertTrue(all.size() == 1);		
 	}
 	
-	@Test
-	public void redById(){
+	@Ignore//(expected=DataAccessException.class)
+	public void inserTwoId(){
+		log.info("------------Test Insert two IDS----------------------");
+		
+		Assert.assertNotNull(evaluadorDao);
+		
+		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Assert.assertNotNull(evaluador);
+		evaluadorDao.create(evaluador);
+
+		Evaluador evaluador1 = new Evaluador(1, "Nacho Camacho","Desarrollo Mobile");
+		Assert.assertNotNull(evaluador1);
+		evaluadorDao.create(evaluador1);
+
+		List<Evaluador> all = evaluadorDao.findAll();
+	}
+	
+	@Ignore
+	public void readById(){
+		log.info("------------Test Read by ID ----------------------");
 		
 		Assert.assertNotNull(evaluadorDao);
 		
 		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador);
-
-		evaluadorDao.read(1);		
-		System.out.println("RESULTADOS"+ evaluador.getNombre());
-
+		
+		evaluadorDao.read(2);
 	}
 	
-	@Test
+		
+	@Ignore
 	public void updateById(){
+		log.info("------------Test Update by ID ----------------------");
 
-			
-		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Assert.assertNotNull(evaluadorDao);
+
+		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre","Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador);
 		
 		List<Evaluador> all = evaluadorDao.findAll();
-		System.out.println("RESULTADOS"+ all.size());
-		System.out.println("RESULTADOS"+ all.get(0).getEspecialidad());
+		Assert.assertTrue(all.size() == 1);
 		
-		evaluador.setEspecialidad("prueba");
-		
-		evaluadorDao.update(evaluador);
-		List<Evaluador> all2 = evaluadorDao.findAll();
-		System.out.println("RESULTADOS"+ all2.get(0).getEspecialidad());
-
+		evaluadorDao.update(evaluador);		
 		
 	}
+	
+
+	@Test(expected=DataAccessException.class)
+	public void DeleteById(){
+		log.info("------------Test Delete by ID ----------------------");
+		
+		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Assert.assertNotNull(evaluador);
+		evaluadorDao.create(evaluador);
+		
+		log.info("RESUL--->"+evaluadorDao.read(1));
+		
+		evaluadorDao.delete(evaluador);
+		System.out.println("RESUL--->"+evaluadorDao.read(1));
+
+	}
+	
+
 }

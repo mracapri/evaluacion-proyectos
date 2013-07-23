@@ -72,7 +72,13 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 
 	@Override
 	public void delete(Evaluador persistentObject) {
-		
+		this.update(
+				"DELETE FROM evaluador " +
+				"WHERE id_evaluador = ?",
+				new Object[] {
+						persistentObject.getIdEvaluador()
+				}
+			);	
 		
 	}
 
