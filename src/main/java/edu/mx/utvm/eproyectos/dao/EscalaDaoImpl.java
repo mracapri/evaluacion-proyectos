@@ -2,7 +2,9 @@ package edu.mx.utvm.eproyectos.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -88,6 +90,16 @@ public class EscalaDaoImpl extends JdbcTemplate implements EscalaDao {
 			
 		});
 		return result;
+	}
+
+	@Override
+	public Map<Integer, Escala> findAllMap() {
+		Map<Integer, Escala> findAllMap = new HashMap<Integer, Escala>();
+		List<Escala> findAll = findAll();
+		for(Escala escala : findAll){
+			findAllMap.put(escala.getIdEscala(), escala);
+		}
+		return findAllMap;
 	}
 
 }
