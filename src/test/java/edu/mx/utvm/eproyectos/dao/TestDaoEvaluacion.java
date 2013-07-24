@@ -119,7 +119,7 @@ public class TestDaoEvaluacion {
 	@Test
 	public void createEvaluadorEvaluacion(){
 
-		
+		/*
 		log.info("------------Test creacion evaluacion  evaluadores----------------------");
 			
 		Evaluador evaluador = new Evaluador(8, "Jose Perez Aguirre", "Desarrollo Mobile");
@@ -139,16 +139,14 @@ public class TestDaoEvaluacion {
 		Assert.assertNotNull(evaluacion1);
 		evaluacionDao.create(evaluacion1);
 
-		/***************************INSERCION DE ID EVALAUDOR Y EVALUACION***************************************/
+		/***************************INSERCION DE ID EVALAUDOR Y EVALUACION**************************
 		evaluacionDao.inserEvaluacionEvaluador(1, 8);
 		evaluacionDao.inserEvaluacionEvaluador(1, 4);
 		evaluacionDao.inserEvaluacionEvaluador(2, 4);
 		
 		log.info("ID EVALUADOR-->"+evaluacionDao.findEvaluadorByEvaluacion(2).get(0));
 		
-		/*List<Evaluador> all2 = evaluacionDao.findEvaluadorByEvaluacion(1);
-		Assert.assertTrue(all2.size() == 1);		
-		log.info("RESULT UPDATE--->"+all2.size());*/
+		*/
 
 	}
 	

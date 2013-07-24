@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 
 @Repository
@@ -25,15 +26,6 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 	
 	@Override
 	public void create(Evaluador newInstance) {
-		this.update(
-				"INSERT INTO " +
-				"evaluador(id_evaluador, nombre, especialidad) " +
-				"VALUES(?,?,?)",
-				new Object[] {
-						newInstance.getIdEvaluador(),
-						newInstance.getNombre(),
-						newInstance.getEspecialidad()
-				});
 		
 	}
 
@@ -93,6 +85,30 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 			}
 		});
 		return result;
+	}
+
+	@Override
+	public void create(Evaluador evaluador, Evaluacion evaluacion) {
+		this.update(
+				"INSERT INTO " +
+				"evaluador(id_evaluador, nombre, especialidad) " +
+				"VALUES(?,?,?)",
+				new Object[] {
+						evaluador.getIdEvaluador(),
+						evaluador.getNombre(),
+						evaluador.getEspecialidad()
+				});
+		
+		this.update(
+				"INSERT INTO " +
+				"evaluacion_evaluadores(id_evaluacion, id_evaluador) " +
+				"VALUES(?,?)",
+				new Object[] {
+						evaluacion.getIdEvaluacion(),
+						evaluador.getIdEvaluador()
+				});
+
+		
 	}
 	
 	

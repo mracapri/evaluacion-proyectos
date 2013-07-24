@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mx.utvm.eproyectos.model.Evaluador;
+import edu.mx.utvm.eproyectos.model.Evaluacion;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/AppCtx-Spring-Test.xml")
@@ -25,6 +26,8 @@ public class TestDaoEvaluador {
 
 	@Autowired
 	EvaluadorDao evaluadorDao;
+	@Autowired
+	EvaluacionDao evaluacionDao;
 
 	@Ignore
 	public void findAll() {
@@ -40,9 +43,14 @@ public class TestDaoEvaluador {
 		log.info("------------Test Insert and Find All----------------------");
 		Assert.assertNotNull(evaluadorDao);
 		
+		Evaluacion evaluacion = new Evaluacion(1,"Evaluacion");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+		
 		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
-		evaluadorDao.create(evaluador);
+		
+		evaluadorDao.create(evaluador, evaluacion);
 
 		List<Evaluador> all = evaluadorDao.findAll();
 		Assert.assertTrue(all.size() == 1);		
@@ -97,7 +105,7 @@ public class TestDaoEvaluador {
 	}
 	
 
-	@Test(expected=DataAccessException.class)
+	@Ignore
 	public void DeleteById(){
 		log.info("------------Test Delete by ID ----------------------");
 		
@@ -110,6 +118,37 @@ public class TestDaoEvaluador {
 		evaluadorDao.delete(evaluador);
 		System.out.println("RESUL--->"+evaluadorDao.read(1));
 
+	}
+	
+	@Test
+	public void findAllEvaluadores(){
+		
+		log.info("-------------------Fin all evaluadores");
+		Assert.assertNotNull(evaluadorDao);
+		
+		Evaluacion evaluacion = new Evaluacion(1,"Evaluacion");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+		Evaluacion evaluacion2 = new Evaluacion(2,"Evaluacion");
+		Assert.assertNotNull(evaluacion2);
+		evaluacionDao.create(evaluacion2);
+		
+		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Assert.assertNotNull(evaluador);
+		
+		Evaluador evaluador2 = new Evaluador(2, "Yasser Cabrera", "Desarrollo Mobile");
+		Assert.assertNotNull(evaluador2);
+		
+		Evaluador evaluador3 = new Evaluador(3, "Noe Montoya", "Desarrollo Mobile");
+		Assert.assertNotNull(evaluador3);
+		
+		evaluadorDao.create(evaluador, evaluacion);
+		evaluadorDao.create(evaluador2, evaluacion);
+		evaluadorDao.create(evaluador3, evaluacion2);
+		
+		log.info(evaluacionDao.findAll().get(1).getEvaluadores().get(0).getNombre());
+
+		
 	}
 	
 

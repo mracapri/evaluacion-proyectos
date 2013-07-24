@@ -17,10 +17,12 @@ import org.springframework.stereotype.Repository;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
+import edu.mx.utvm.eproyectos.model.ItemRubrica;
 
 @Repository
 public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 
+	
 	@Autowired
 	@Override
 	public void setDataSource(DataSource dataSource) {
@@ -91,45 +93,33 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 		List<Evaluacion> result = this.query(sql, new RowMapper<Evaluacion>() {
 			@Override
 			public Evaluacion mapRow(ResultSet rs, int rowNum) throws SQLException {
+				List<Evaluador> evaluadores= findItemsRubricaByIdRubrica(rs.getInt("id_evaluacion"));
 				Evaluacion evaluacion = new Evaluacion(rs.getInt("id_evaluacion"), rs.getString("descripcion"));
+				evaluacion.getEvaluadores().addAll(evaluadores);
 				return evaluacion;
 			}
 		});
 		return result;
 	}
 
-
-
 	@Override
-	public void inserEvaluacionEvaluador(int idevaluacion, int idevaluador) {
-		try{
-			this.update(
-					"INSERT INTO " +
-					"evaluacion_evaluadores(id_evaluacion, id_evaluador) " +
-					"VALUES(?,?)",
-					new Object[] {
-							idevaluacion,
-							idevaluador							
-					});
-			}catch(Exception e){
-				e.getMessage();
+	public List<Evaluador> findItemsRubricaByIdRubrica(Integer id) {
+		String sql = "";
+		sql += "SELECT ev.id_evaluador, ev.nombre, ev.especialidad ";
+		sql += "FROM evaluacion_evaluadores ee,  evaluador ev ";
+		sql += "WHERE ee.id_evaluador = ev.id_evaluador and ee.id_evaluacion = ?";
+		Object[] parametros = {id};
+		List<Evaluador> result = this.query(sql, parametros, new RowMapper<Evaluador>() {
+			@Override
+			public Evaluador mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Evaluador evaluador = new Evaluador(
+						rs.getInt("ev.id_evaluador"), 
+						rs.getString("ev.nombre"), 
+						rs.getString("ev.especialidad"));
+				return evaluador;
 			}
-		
-	}
-
-	@Override
-	public List<Integer> findEvaluadorByEvaluacion(int idevaluacion) {
-		String sql = "select id_evaluador from evaluacion_evaluadores where id_evaluacion = ?";	
-		
-		List<Integer> ids = this.query(sql, 
-			  new Object[] { idevaluacion },
-			  new RowMapper() {
-		      public Object mapRow(ResultSet resultSet, int i) throws SQLException {
-		        return resultSet.getInt(1);
-		      }
-		    });
-		   return ids;
-		   
+		});
+		return result;
 	}
 
 
