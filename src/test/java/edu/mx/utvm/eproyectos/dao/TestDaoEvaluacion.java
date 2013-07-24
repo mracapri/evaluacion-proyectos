@@ -152,12 +152,6 @@ public class TestDaoEvaluacion {
 
 	}
 	
-	@Ignore
-	public void findAllMap(){
-		log.info("------------Test Selecciona IDS evaluadores y evaluacion ----------------------");
-		
-
-	}
 	
 
 }

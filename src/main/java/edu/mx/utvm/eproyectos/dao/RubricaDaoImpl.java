@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import edu.mx.utvm.eproyectos.model.Categoria;
+import edu.mx.utvm.eproyectos.model.ItemRubrica;
 import edu.mx.utvm.eproyectos.model.Rubrica;
 import edu.mx.utvm.eproyectos.model.RubricaCategoria;
 import edu.mx.utvm.eproyectos.model.RubricaPresentacion;
@@ -23,6 +24,9 @@ import edu.mx.utvm.eproyectos.model.RubricaPresentacion;
 public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 
 	protected final Log log = LogFactory.getLog(getClass());
+	
+	@Autowired
+	ItemRubricaDao itemRubricaDao;
 	
 	@Autowired
 	@Override
@@ -57,15 +61,15 @@ public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 						@Override
 						public Rubrica mapRow(ResultSet arg0, int arg1)
 								throws SQLException {
-								
+								Rubrica rubrica = null;
 								if(arg0.getObject("id_categoria") != null){
-									Categoria categoria = new Categoria(arg0.getInt("id_categoria"), "");
-									RubricaCategoria rubricaCategoria = new RubricaCategoria(arg0.getString("id_rubrica"), categoria);
-									return  rubricaCategoria;
+									Categoria categoria = new Categoria(arg0.getInt("id_categoria"), ""); // por catalogo
+									rubrica = new RubricaCategoria(arg0.getString("id_rubrica"), categoria);
 								}else{
-									RubricaPresentacion rubrica = new RubricaPresentacion(arg0.getString("id_rubrica"));
-									return  rubrica;
-								}
+									rubrica = new RubricaPresentacion(arg0.getString("id_rubrica"));
+								}								
+								
+								return  rubrica;
 																				
 						}
 
@@ -97,15 +101,19 @@ public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 			@Override
 			public Rubrica mapRow(ResultSet arg0, int arg1) throws SQLException {							
 				
-				if(arg0.getObject("id_categoria") != null){
-					Categoria categoria = new Categoria(arg0.getInt("id_categoria"), "");					
-					RubricaCategoria rubricaCategoria = new RubricaCategoria(arg0.getString("id_rubrica"), categoria);
-					return rubricaCategoria;
-				}else{
-					RubricaPresentacion rubrica = new RubricaPresentacion(arg0.getString("id_rubrica"));
-					return rubrica;
-				}				
+				Rubrica rubrica = null;
 				
+				List<ItemRubrica> itemsRubrica = itemRubricaDao.findItemsRubricaByIdRubrica(arg0.getString("id_rubrica"));
+				
+				if(arg0.getObject("id_categoria") != null){
+					Categoria categoria = new Categoria(arg0.getInt("id_categoria"), ""); // Por catalogo					
+					rubrica = new RubricaCategoria(arg0.getString("id_rubrica"), categoria);										
+				}else{
+					rubrica = new RubricaPresentacion(arg0.getString("id_rubrica"));					
+					
+				}				
+				rubrica.getItems().addAll(itemsRubrica);
+				return rubrica;												
 			}
 			
 		}); 
