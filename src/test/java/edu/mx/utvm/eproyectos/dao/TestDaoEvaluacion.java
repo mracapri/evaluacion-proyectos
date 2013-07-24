@@ -26,6 +26,7 @@ public class TestDaoEvaluacion {
 
 	@Autowired
 	EvaluacionDao evaluacionDao;
+	EvaluadorDao evaluadorDao;
 
 	@Ignore
 	public void findAll() {
@@ -98,9 +99,59 @@ public class TestDaoEvaluacion {
 	}
 	
 	
-	@Test(expected=DataAccessException.class)
+	@Ignore//(expected=DataAccessException.class)
 	public void DeleteById(){
 		log.info("------------Test Delete by ID Evaluacion ----------------------");
+		
+		Assert.assertNotNull(evaluacionDao);
+		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+		
+		log.info("RESUL--->"+evaluacionDao.read(1).getDescripcion());
+		
+		evaluacionDao.delete(evaluacion);
+		System.out.println("RESUL AFTER DELETE--->"+evaluacionDao.read(1));
+
+	}
+	
+	@Test
+	public void createEvaluadorEvaluacion(){
+		log.info("------------Test creacion evaluacion  evaluadores----------------------");
+			
+		Evaluador evaluador = new Evaluador(9, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Assert.assertNotNull(evaluador);
+		evaluadorDao.create(evaluador);
+		
+		log.info("paso--->");
+		
+		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+		
+		log.info("EVALUACION--->"+evaluacionDao.read(1).getDescripcion());
+
+		List<Evaluador> all = evaluadorDao.findAll();
+		Assert.assertTrue(all.size() == 1);
+		
+		/*
+		log.info("pasa 2"+evaluador.getNombre());
+		evaluacionDao.inserEvaluacionEvaluador(evaluador, evaluacion);
+
+		try {
+			evaluacionDao.findEvaluadorByEvaluacion(1);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+		}
+		
+		System.out.println("NOMBRE EVALUADOR--->"+evaluacionDao.findEvaluadorByEvaluacion(1));
+		*/
+
+	}
+	
+	@Ignore
+	public void selectEvaluadores(){
+		log.info("------------Test Selecciona evaluadores by ID Evaluacion ----------------------");
 		
 		Assert.assertNotNull(evaluacionDao);
 		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");

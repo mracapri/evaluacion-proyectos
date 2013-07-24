@@ -94,12 +94,40 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 		return result;
 	}
 
+
 	@Override
 	public List<Evaluador> findEvaluadorByEvaluacion(int idevaluacion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
+		String sql = "select id_evaluador from evaluacion_evaluadores where id_evaluacion = ?";
+		List<Evaluador> result = this.query(sql, 
+			new Object[] { idevaluacion },
+			new RowMapper<Evaluador>() {
+			@Override
+			public Evaluador mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Evaluador evaluador = new Evaluador(rs.getInt("id_evaluador"), rs.getString("nombre"),rs.getString("especialidad"));
+				return evaluador;
+			}
+		});
+		return result;
+		
+	}
+
+	@Override
+	public void inserEvaluacionEvaluador(Evaluador evaluador,Evaluacion evaluacion) {
+		try{
+		this.update(
+				"INSERT INTO " +
+				"evaluacion_evaluadores(id_evaluacion, id_evaluador) " +
+				"VALUES(?,?)",
+				new Object[] {
+						evaluacion.getIdEvaluacion(),
+						evaluador.getIdEvaluador()
+						
+				});
+		}catch(Exception e){
+			e.getMessage();
+		}
+	}
 	
 		
 	

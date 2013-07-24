@@ -105,7 +105,7 @@ public class TestDaoEvaluador {
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador);
 		
-		log.info("RESUL--->"+evaluadorDao.read(1));
+		log.info("RESUL--->"+evaluadorDao.read(1).getEspecialidad());
 		
 		evaluadorDao.delete(evaluador);
 		System.out.println("RESUL--->"+evaluadorDao.read(1));
