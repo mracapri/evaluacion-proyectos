@@ -2,7 +2,9 @@ package edu.mx.utvm.eproyectos.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -12,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 
@@ -28,13 +31,12 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	public void create(Evaluacion newInstance) {
 		this.update(
 				"INSERT INTO " +
-				"evaluacion(id_evaluacion, descripcion, descripcion_detallada, fecha) " +
-				"VALUES(?,?,?,?)",
+				"evaluacion(id_evaluacion, descripcion, descripcion_detallada) " +
+				"VALUES(?,?,?)",
 				new Object[] {
 						newInstance.getIdEvaluacion(),
 						newInstance.getDescripcion(),
-						newInstance.getDescripcionDetallada(),
-						newInstance.getFechaCreacion()
+						newInstance.getDescripcionDetallada()
 				});
 		
 	}
@@ -97,40 +99,38 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	}
 
 
+
 	@Override
-	public List<Evaluador> findEvaluadorByEvaluacion(int idevaluacion) {
-	
-		String sql = "select id_evaluador from evaluacion_evaluadores where id_evaluacion = ?";
-		List<Evaluador> result = this.query(sql, 
-			new Object[] { idevaluacion },
-			new RowMapper<Evaluador>() {
-			@Override
-			public Evaluador mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Evaluador evaluador = new Evaluador(rs.getInt("id_evaluador"), rs.getString("nombre"),rs.getString("especialidad"));
-				return evaluador;
+	public void inserEvaluacionEvaluador(int idevaluacion, int idevaluador) {
+		try{
+			this.update(
+					"INSERT INTO " +
+					"evaluacion_evaluadores(id_evaluacion, id_evaluador) " +
+					"VALUES(?,?)",
+					new Object[] {
+							idevaluacion,
+							idevaluador							
+					});
+			}catch(Exception e){
+				e.getMessage();
 			}
-		});
-		return result;
 		
 	}
 
 	@Override
-	public void inserEvaluacionEvaluador(Evaluador evaluador,Evaluacion evaluacion) {
-		try{
-		this.update(
-				"INSERT INTO " +
-				"evaluacion_evaluadores(id_evaluacion, id_evaluador) " +
-				"VALUES(?,?)",
-				new Object[] {
-						evaluacion.getIdEvaluacion(),
-						evaluador.getIdEvaluador()
-						
-				});
-		}catch(Exception e){
-			e.getMessage();
-		}
-	}
-	
+	public List<Integer> findEvaluadorByEvaluacion(int idevaluacion) {
+		String sql = "select id_evaluador from evaluacion_evaluadores where id_evaluacion = ?";	
 		
-	
+		List<Integer> ids = this.query(sql, 
+			  new Object[] { idevaluacion },
+			  new RowMapper() {
+		      public Object mapRow(ResultSet resultSet, int i) throws SQLException {
+		        return resultSet.getInt(1);
+		      }
+		    });
+		   return ids;
+		   
+	}
+
+
 }

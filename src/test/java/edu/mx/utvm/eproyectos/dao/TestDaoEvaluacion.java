@@ -118,51 +118,44 @@ public class TestDaoEvaluacion {
 	
 	@Test
 	public void createEvaluadorEvaluacion(){
+
+		
 		log.info("------------Test creacion evaluacion  evaluadores----------------------");
 			
-		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(8, "Jose Perez Aguirre", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador);
 		
-		log.info("paso--->");
+		Evaluador evaluador1 = new Evaluador(4, "Patricia Marquez Alvarado", "Multimedia");
+		Assert.assertNotNull(evaluador1);
+		evaluadorDao.create(evaluador1);
+
 		
 		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
-		log.info("EVALUACION--->"+evaluacionDao.read(1).getDescripcion());
+		Evaluacion evaluacion1 = new Evaluacion(2, "Evaluacion DOS");
+		Assert.assertNotNull(evaluacion1);
+		evaluacionDao.create(evaluacion1);
 
-		List<Evaluador> all = evaluadorDao.findAll();
-		Assert.assertTrue(all.size() == 1);
-				
-		/*
-		log.info("pasa 2"+evaluador.getNombre());
-		evaluacionDao.inserEvaluacionEvaluador(evaluador, evaluacion);
-
-		try {
-			evaluacionDao.findEvaluadorByEvaluacion(1);
-		} catch (Exception e) {
-			log.info(e.getMessage());
-		}
+		/***************************INSERCION DE ID EVALAUDOR Y EVALUACION***************************************/
+		evaluacionDao.inserEvaluacionEvaluador(1, 8);
+		evaluacionDao.inserEvaluacionEvaluador(1, 4);
+		evaluacionDao.inserEvaluacionEvaluador(2, 4);
 		
-		System.out.println("NOMBRE EVALUADOR--->"+evaluacionDao.findEvaluadorByEvaluacion(1));
-		*/
+		log.info("ID EVALUADOR-->"+evaluacionDao.findEvaluadorByEvaluacion(2).get(0));
+		
+		/*List<Evaluador> all2 = evaluacionDao.findEvaluadorByEvaluacion(1);
+		Assert.assertTrue(all2.size() == 1);		
+		log.info("RESULT UPDATE--->"+all2.size());*/
 
 	}
 	
 	@Ignore
-	public void selectEvaluadores(){
-		log.info("------------Test Selecciona evaluadores by ID Evaluacion ----------------------");
+	public void findAllMap(){
+		log.info("------------Test Selecciona IDS evaluadores y evaluacion ----------------------");
 		
-		Assert.assertNotNull(evaluacionDao);
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
-		Assert.assertNotNull(evaluacion);
-		evaluacionDao.create(evaluacion);
-		
-		log.info("RESUL--->"+evaluacionDao.read(1).getDescripcion());
-		
-		evaluacionDao.delete(evaluacion);
-		System.out.println("RESUL AFTER DELETE--->"+evaluacionDao.read(1));
 
 	}
 	
