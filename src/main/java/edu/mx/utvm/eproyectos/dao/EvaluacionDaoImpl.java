@@ -2,9 +2,7 @@ package edu.mx.utvm.eproyectos.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -14,10 +12,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
-import edu.mx.utvm.eproyectos.model.ItemRubrica;
 
 @Repository
 public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
@@ -93,7 +89,7 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 		List<Evaluacion> result = this.query(sql, new RowMapper<Evaluacion>() {
 			@Override
 			public Evaluacion mapRow(ResultSet rs, int rowNum) throws SQLException {
-				List<Evaluador> evaluadores= findItemsRubricaByIdRubrica(rs.getInt("id_evaluacion"));
+				List<Evaluador> evaluadores= findEvaluadoresByIdEvaluacion(rs.getInt("id_evaluacion"));
 				Evaluacion evaluacion = new Evaluacion(rs.getInt("id_evaluacion"), rs.getString("descripcion"));
 				evaluacion.getEvaluadores().addAll(evaluadores);
 				return evaluacion;
@@ -103,7 +99,7 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	}
 
 	@Override
-	public List<Evaluador> findItemsRubricaByIdRubrica(Integer id) {
+	public List<Evaluador> findEvaluadoresByIdEvaluacion(Integer id) {
 		String sql = "";
 		sql += "SELECT ev.id_evaluador, ev.nombre, ev.especialidad ";
 		sql += "FROM evaluacion_evaluadores ee,  evaluador ev ";
@@ -122,5 +118,6 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 		return result;
 	}
 
+	
 
 }

@@ -7,5 +7,5 @@ import edu.mx.utvm.eproyectos.model.Evaluador;
 
 
 public interface EvaluacionDao extends Dao<Evaluacion, Integer>{
-	List<Evaluador> findItemsRubricaByIdRubrica(Integer id);
+	List<Evaluador> findEvaluadoresByIdEvaluacion(Integer id);
 }
