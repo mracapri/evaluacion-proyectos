@@ -27,18 +27,18 @@ public final class Catalogos implements InitializingBean{
 	private EscalaDao escalaDao;
 	
 	/* listas  */
-	private List<Categoria> categorias;
+	private Map<Integer, Categoria> categorias;
 	private List<Rubrica> rubricas;
 	private Map<Integer, Escala> escalas;
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		log.info("CARGANDO CATALOGOS");
-		categorias = categoriaDao.findAll();
+		categorias = categoriaDao.findAllMap();
 		escalas = escalaDao.findAllMap();
 	}
 
-	public final List<Categoria> getCategorias() {
+	public final Map<Integer, Categoria> getCategorias() {
 		return categorias;
 	}
 	

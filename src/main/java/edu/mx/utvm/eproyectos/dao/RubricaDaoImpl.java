@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
 import edu.mx.utvm.eproyectos.model.Rubrica;
@@ -27,6 +28,9 @@ public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 	
 	@Autowired
 	ItemRubricaDao itemRubricaDao;
+	
+	@Autowired
+	Catalogos catalogos; 
 	
 	@Autowired
 	@Override
@@ -62,8 +66,8 @@ public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 						public Rubrica mapRow(ResultSet arg0, int arg1)
 								throws SQLException {
 								Rubrica rubrica = null;
-								if(arg0.getObject("id_categoria") != null){
-									Categoria categoria = new Categoria(arg0.getInt("id_categoria"), ""); // por catalogo
+								if(arg0.getObject("id_categoria") != null){											
+									Categoria categoria = catalogos.getCategorias().get(arg0.getInt("id_categoria"));																		
 									rubrica = new RubricaCategoria(arg0.getString("id_rubrica"), categoria);
 								}else{
 									rubrica = new RubricaPresentacion(arg0.getString("id_rubrica"));
@@ -106,7 +110,7 @@ public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 				List<ItemRubrica> itemsRubrica = itemRubricaDao.findItemsRubricaByIdRubrica(arg0.getString("id_rubrica"));
 				
 				if(arg0.getObject("id_categoria") != null){
-					Categoria categoria = new Categoria(arg0.getInt("id_categoria"), ""); // Por catalogo					
+					Categoria categoria = catalogos.getCategorias().get(arg0.getInt("id_categoria"));				
 					rubrica = new RubricaCategoria(arg0.getString("id_rubrica"), categoria);										
 				}else{
 					rubrica = new RubricaPresentacion(arg0.getString("id_rubrica"));					

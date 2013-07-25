@@ -2,7 +2,9 @@ package edu.mx.utvm.eproyectos.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -89,6 +91,16 @@ public class CategoriaDaoImpl extends JdbcTemplate implements CategoriaDao{
 			}
 		});
 		return result;
+	}
+
+	@Override
+	public Map<Integer, Categoria> findAllMap() {
+		Map<Integer, Categoria> findAllMap = new HashMap<Integer, Categoria>();
+		List<Categoria> findAll = findAll();
+		for(Categoria categoria : findAll){
+			findAllMap.put(categoria.getIdCategoria(), categoria);
+		}
+		return findAllMap;
 	}
 
 }
