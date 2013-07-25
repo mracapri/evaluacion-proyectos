@@ -2,7 +2,9 @@ package edu.mx.utvm.eproyectos.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -122,6 +124,16 @@ public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 			
 		}); 
 		return result;
+	}
+
+	@Override
+	public Map<String, Rubrica> findAllMap() {
+		Map<String, Rubrica> findAllMap = new HashMap<String, Rubrica>();
+		List<Rubrica> findAll = findAll();
+		for(Rubrica rubrica : findAll){
+			findAllMap.put(rubrica.getId(), rubrica);
+		}
+		return findAllMap;
 	}
 
 }
