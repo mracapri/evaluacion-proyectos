@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Categoria;
-import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Proyecto;

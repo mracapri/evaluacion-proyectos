@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Rubrica;
 import edu.mx.utvm.eproyectos.model.RubricaCategoria;
@@ -30,6 +31,9 @@ public class TestDaoRubrica {
 	
 	@Autowired
 	CategoriaDao categoriaDao;
+	
+	@Autowired
+	Catalogos catalogos;
 	
 	@Test
 	public void createNewSinCategoria() {
@@ -51,9 +55,17 @@ public class TestDaoRubrica {
 		log.info("-----------------Test2--------------");
 		Assert.assertNotNull(rubricaDao);						
 		
-		Categoria categoria = new Categoria(1, "desarrollo web");
-		categoriaDao.create(categoria);
-					
+		Categoria categoriaObj = new Categoria(1, "desarrollo web");
+		categoriaDao.create(categoriaObj);			
+		
+		try {
+			catalogos.afterPropertiesSet();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Categoria categoria = catalogos.getCategorias().get(1);
+		
 		RubricaCategoria rubricaCategoria = new RubricaCategoria("1302",categoria);		
 						
 		rubricaDao.create(rubricaCategoria);				
@@ -85,8 +97,16 @@ public class TestDaoRubrica {
 		log.info("-----------------Test4--------------");
 		Assert.assertNotNull(rubricaDao);								
 		
-		Categoria categoria = new Categoria(1, "desarrollo web");
-		categoriaDao.create(categoria);
+		Categoria categoriaObj = new Categoria(1, "desarrollo web");
+		categoriaDao.create(categoriaObj);
+		
+		try {
+			catalogos.afterPropertiesSet();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Categoria categoria = catalogos.getCategorias().get(1);
 		
 		RubricaCategoria rubricaCategoria = new RubricaCategoria("1302",categoria);		
 				
@@ -106,8 +126,16 @@ public class TestDaoRubrica {
 		log.info("-----------------Test5--------------");
 		Assert.assertNotNull(rubricaDao);								
 		
-		Categoria categoria = new Categoria(1, "desarrollo web");
-		categoriaDao.create(categoria);
+		Categoria categoriaObj = new Categoria(1, "desarrollo web");
+		categoriaDao.create(categoriaObj);
+		
+		try {
+			catalogos.afterPropertiesSet();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Categoria categoria = catalogos.getCategorias().get(1);
 		
 		RubricaCategoria rubricaCategoria = new RubricaCategoria("1302",categoria);		
 				

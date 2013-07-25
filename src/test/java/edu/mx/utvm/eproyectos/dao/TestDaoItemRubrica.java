@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
-import edu.mx.utvm.eproyectos.model.Rubrica;
 import edu.mx.utvm.eproyectos.model.RubricaPresentacion;
 
 @RunWith(SpringJUnit4ClassRunner.class)

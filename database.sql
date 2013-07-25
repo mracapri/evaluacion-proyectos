@@ -28,11 +28,11 @@ CREATE TABLE IF NOT EXISTS proyecto (
   id_proyecto varchar(6) NOT NULL,  
   nombre varchar(200) NOT NULL,
   id_categoria int(2) NOT NULL,
-  logo blob NOT NULL,
-  archivo_presentacion blob NOT NULL,
-  foto blob NOT NULL,
+  logo blob NULL,
+  archivo_presentacion blob NULL,
+  foto blob NULL,
   responsable varchar(120) NOT NULL,
-  integrantes varchar(700) NOT NULL,
+  integrantes varchar(700) NULL,
   PRIMARY KEY (id_proyecto),
   FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -84,6 +84,18 @@ CREATE TABLE IF NOT EXISTS item_rubrica (
 CREATE TABLE IF NOT EXISTS rubrica_items_rubrica (
   id_rubrica varchar(4) NOT NULL,  
   id_item_rubrica int(4) NOT NULL,
+  FOREIGN KEY (id_rubrica) REFERENCES rubrica(id_rubrica),
+  FOREIGN KEY (id_item_rubrica) REFERENCES item_rubrica(id_item_rubrica)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS resultado (
+  id_evaluacion int(3) NOT NULL,  
+  id_proyecto varchar(6) NOT NULL,
+  id_rubrica varchar(4) NOT NULL,
+  id_item_rubrica int(4) NOT NULL,
+  calificacion double NULL,
+  FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion),
+  FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto),
   FOREIGN KEY (id_rubrica) REFERENCES rubrica(id_rubrica),
   FOREIGN KEY (id_item_rubrica) REFERENCES item_rubrica(id_item_rubrica)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
