@@ -116,39 +116,9 @@ public class TestDaoEvaluacion {
 
 	}
 	
-	@Test
-	public void createEvaluadorEvaluacion(){
-
-		/*
-		log.info("------------Test creacion evaluacion  evaluadores----------------------");
-			
-		Evaluador evaluador = new Evaluador(8, "Jose Perez Aguirre", "Desarrollo Mobile");
-		Assert.assertNotNull(evaluador);
-		evaluadorDao.create(evaluador);
-		
-		Evaluador evaluador1 = new Evaluador(4, "Patricia Marquez Alvarado", "Multimedia");
-		Assert.assertNotNull(evaluador1);
-		evaluadorDao.create(evaluador1);
-
-		
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
-		Assert.assertNotNull(evaluacion);
-		evaluacionDao.create(evaluacion);
-		
-		Evaluacion evaluacion1 = new Evaluacion(2, "Evaluacion DOS");
-		Assert.assertNotNull(evaluacion1);
-		evaluacionDao.create(evaluacion1);
-
-		/***************************INSERCION DE ID EVALAUDOR Y EVALUACION**************************
-		evaluacionDao.inserEvaluacionEvaluador(1, 8);
-		evaluacionDao.inserEvaluacionEvaluador(1, 4);
-		evaluacionDao.inserEvaluacionEvaluador(2, 4);
-		
-		log.info("ID EVALUADOR-->"+evaluacionDao.findEvaluadorByEvaluacion(2).get(0));
-		
-		*/
-
-	}
+	
+	
+	
 	
 	
 

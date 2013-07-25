@@ -29,6 +29,8 @@ public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 	@Autowired
 	private Catalogos catalogos;
 	
+	
+	
 	@Override
 	public void create(ItemRubrica newInstance) {
 		

@@ -123,7 +123,7 @@ public class TestDaoEvaluador {
 	@Test
 	public void findAllEvaluadores(){
 		
-		log.info("-------------------Fin all evaluadores");
+		log.info("-------------------Fin all evaluadores--------------");
 		Assert.assertNotNull(evaluadorDao);
 		
 		Evaluacion evaluacion = new Evaluacion(1,"Evaluacion");
@@ -147,7 +147,6 @@ public class TestDaoEvaluador {
 		evaluadorDao.create(evaluador3, evaluacion2);
 		
 		log.info(evaluacionDao.findAll().get(1).getEvaluadores().get(0).getNombre());
-
 		
 	}
 	

@@ -1,0 +1,120 @@
+package edu.mx.utvm.eproyectos.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.authentication.dao.SystemWideSaltSource;
+import org.springframework.stereotype.Repository;
+
+
+import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
+import edu.mx.utvm.eproyectos.model.Categoria;
+import edu.mx.utvm.eproyectos.model.Escala;
+import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Evaluador;
+import edu.mx.utvm.eproyectos.model.Proyecto;
+
+@Repository
+public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
+	
+		
+	@Autowired
+	@Override
+	public void setDataSource(DataSource dataSource) {
+		super.setDataSource(dataSource);
+	}
+
+	@Autowired
+	private Catalogos catalogos;
+	
+
+	@Override
+	public void create(Proyecto newInstance) {
+		this.update(
+				"INSERT INTO " +
+				"proyecto(id_proyecto, nombre, id_categoria, responsable ) " +
+				"VALUES(?,?,?,?)",
+				new Object[] {
+						newInstance.getIdProyecto(),
+						newInstance.getNombre(),
+						newInstance.getCategoria().getIdCategoria(),
+						newInstance.getResponsable()
+				});
+		
+	}
+
+	@Override
+	public Proyecto read(Integer id) {
+		return null;
+	
+	}
+
+	@Override
+	public void update(Proyecto transientObject) {
+		this.update(
+				"UPDATE proyecto " +
+				"SET nombre = ? " +
+				"WHERE id_proyecto = ?",
+				new Object[] {
+						transientObject.getNombre(),
+						transientObject.getIdProyecto()
+				}
+			);	
+		
+	}
+
+	@Override
+	public void delete(Proyecto persistentObject) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Proyecto> findAll() {
+		String sql = "SELECT * FROM proyecto";
+		List<Proyecto> result = this.query(sql, new RowMapper<Proyecto>() {
+			@Override
+			public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Categoria categoria = new Categoria(1, "evaluacion");
+				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));
+				return proyecto;
+			}
+		});
+		return result;
+	}
+
+	@Override
+	public void create(Proyecto proyecto, Evaluacion evaluacion) {
+		this.update(
+				"INSERT INTO " +
+				"proyecto(id_proyecto, nombre, id_categoria, responsable ) " +
+				"VALUES(?,?,?,?)",
+				new Object[] {
+						proyecto.getIdProyecto(),
+						proyecto.getNombre(),
+						proyecto.getCategoria().getIdCategoria(),
+						proyecto.getResponsable()
+				});
+	
+		this.update(
+				"INSERT INTO " +
+				"evaluacion_proyectos(id_evaluacion, id_proyecto) " +
+				"VALUES(?,?)",
+				new Object[] {
+						evaluacion.getIdEvaluacion(),
+						proyecto.getIdProyecto()
+				});
+
+		
+	}
+
+
+	
+}

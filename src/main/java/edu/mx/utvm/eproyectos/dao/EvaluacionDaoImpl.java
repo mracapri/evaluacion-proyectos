@@ -12,8 +12,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
+import edu.mx.utvm.eproyectos.model.Categoria;
+import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
+import edu.mx.utvm.eproyectos.model.Proyecto;
 
 @Repository
 public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
@@ -24,6 +28,9 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	public void setDataSource(DataSource dataSource) {
 		super.setDataSource(dataSource);
 	}
+	
+	@Autowired
+	Catalogos catalogos;
 
 	@Override
 	public void create(Evaluacion newInstance) {
@@ -82,22 +89,27 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 			);	
 		
 	}
-
+	
 	@Override
 	public List<Evaluacion> findAll() {
 		String sql = "SELECT * FROM evaluacion";
 		List<Evaluacion> result = this.query(sql, new RowMapper<Evaluacion>() {
 			@Override
 			public Evaluacion mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
 				List<Evaluador> evaluadores= findEvaluadoresByIdEvaluacion(rs.getInt("id_evaluacion"));
+				List<Proyecto> proyecto= findProyectosByIdEvalaucion(rs.getInt("id_evaluacion")); //Carga a la lista proyectos el id de la evaluacion
+				
 				Evaluacion evaluacion = new Evaluacion(rs.getInt("id_evaluacion"), rs.getString("descripcion"));
-				evaluacion.getEvaluadores().addAll(evaluadores);
+					evaluacion.getProyectos().addAll(proyecto);
+					evaluacion.getEvaluadores().addAll(evaluadores);
 				return evaluacion;
 			}
 		});
 		return result;
 	}
-
+	
+	/*********************Busca Evaluadores por el id de evaluacion**************************/
 	@Override
 	public List<Evaluador> findEvaluadoresByIdEvaluacion(Integer id) {
 		String sql = "";
@@ -113,6 +125,30 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 						rs.getString("ev.nombre"), 
 						rs.getString("ev.especialidad"));
 				return evaluador;
+			}
+		});
+		return result;
+	}
+
+	/*********************Busca proyectos por el id de evaluacion**************************/
+	@Override
+	public List<Proyecto> findProyectosByIdEvalaucion(Integer id) {
+		String sql = "";
+		sql += "SELECT p.id_proyecto, p.nombre, p.id_categoria, p.responsable ";
+		sql += "FROM evaluacion_proyectos ep,  proyecto p ";
+		sql += "WHERE ep.id_proyecto = p.id_proyecto and ep.id_evaluacion = ?";
+		Object[] parametros = {id};
+		List<Proyecto> result = this.query(sql, parametros, new RowMapper<Proyecto>() {
+			@Override
+			public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
+				int idcategoria =  rs.getInt("p.id_categoria");
+				Categoria categoria = catalogos.getCategorias().get(idcategoria);
+				Proyecto proyecto = new Proyecto(
+						rs.getString("p.id_proyecto"), 
+						rs.getString("p.nombre"), 
+						categoria,
+						rs.getString("p.responsable"));
+				return proyecto;
 			}
 		});
 		return result;
