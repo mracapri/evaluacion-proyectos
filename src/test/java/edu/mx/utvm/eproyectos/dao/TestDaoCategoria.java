@@ -31,7 +31,7 @@ public class TestDaoCategoria {
 		Assert.assertNotNull(categoriaDao);
 		List<Categoria> all = categoriaDao.findAll();
 		log.info("Test--> "+ all.size());
-		Assert.assertTrue(all.size() == 1);
+		Assert.assertTrue(all.size() == 0);
 	}
 	
 	@Ignore

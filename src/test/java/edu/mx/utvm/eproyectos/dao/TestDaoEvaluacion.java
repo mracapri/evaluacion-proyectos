@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
 import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -27,7 +28,7 @@ public class TestDaoEvaluacion {
 	@Autowired
 	EvaluacionDao evaluacionDao;	
 
-	@Ignore
+	@Test
 	public void findAll() {
 		log.info("------------Test Find All----------------------");
 		Assert.assertNotNull(evaluacionDao);

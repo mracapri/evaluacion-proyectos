@@ -121,7 +121,7 @@ public class TestDaoRubrica {
 		log.info("result-->"+categoriaRecibida.getDescripcion());		
 	}
 	
-	@Test(expected = DataAccessException.class)
+	@Test
 	public void findbyId(){
 		log.info("-----------------Test5--------------");
 		Assert.assertNotNull(rubricaDao);								
@@ -137,16 +137,21 @@ public class TestDaoRubrica {
 		}
 		Categoria categoria = catalogos.getCategorias().get(1);
 		
-		RubricaCategoria rubricaCategoria = new RubricaCategoria("1302",categoria);		
+		RubricaCategoria rubricaCategoria = new RubricaCategoria("1301",categoria);		
 				
-		rubricaDao.create(rubricaCategoria);
-		
-		RubricaCategoria recibiRurbica = (RubricaCategoria) rubricaDao.read("1301");	
+		rubricaDao.create(rubricaCategoria);		
+		if(rubricaDao.read("1301").getClass() == RubricaCategoria.class){
+			RubricaCategoria rubrica = (RubricaCategoria) rubricaDao.read("1301");
+			log.info("id-->"+rubrica.getId());
+			log.info("categoria-->"+rubrica.getCategoria().getDescripcion());
+		}else{
+			RubricaPresentacion rubrica = (RubricaPresentacion) rubricaDao.read("1301");
+			log.info("id-->"+rubrica.getId());			
+		}
 		
 		List<Rubrica> all = rubricaDao.findAll();
-		log.info("result-->"+all.size());
-		log.info("result-->"+recibiRurbica.getId());
-		log.info("result-->"+recibiRurbica.getCategoria().getIdCategoria());
+		log.info("tamano-->"+all.size());		
+		
 	}
 		
 }

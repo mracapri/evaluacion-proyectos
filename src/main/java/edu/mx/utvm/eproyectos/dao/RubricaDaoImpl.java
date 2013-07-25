@@ -66,16 +66,15 @@ public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 
 						@Override
 						public Rubrica mapRow(ResultSet arg0, int arg1)
-								throws SQLException {
-								Rubrica rubrica = null;
-								if(arg0.getObject("id_categoria") != null){											
-									Categoria categoria = catalogos.getCategorias().get(arg0.getInt("id_categoria"));																		
-									rubrica = new RubricaCategoria(arg0.getString("id_rubrica"), categoria);
+								throws SQLException {																					
+								if(arg0.getObject("id_categoria") != null){
+									Categoria categoria = catalogos.getCategorias().get(arg0.getInt("id_categoria"));									
+									RubricaCategoria rubrica = new RubricaCategoria(arg0.getString("id_rubrica"), categoria);
+									return  rubrica;
 								}else{
-									rubrica = new RubricaPresentacion(arg0.getString("id_rubrica"));
-								}								
-								
-								return  rubrica;
+									RubricaPresentacion rubrica = new RubricaPresentacion(arg0.getString("id_rubrica"));
+									return  rubrica;
+								}																							
 																				
 						}
 
