@@ -27,13 +27,14 @@ public class TestCatalogos {
 	
 	@Test
 	public void testCatalogoCategorias() {
-		Assert.assertNotNull(catalogos.getCategorias());
+		Assert.assertNotNull(catalogos.getCategorias());		
 		Assert.assertTrue(catalogos.getCategorias().size() == 0);
 	}	
 	
 	@Test
 	public void testCatalogoRubricas() {
 		Assert.assertNotNull(catalogos.getRubricas());
+		log.info("tamano-->"+catalogos.getCategorias().size());
 		Assert.assertTrue(catalogos.getCategorias().size() == 0);
 	}
 }

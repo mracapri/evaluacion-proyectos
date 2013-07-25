@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +20,7 @@ import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Resultado;
-import edu.mx.utvm.eproyectos.model.Rubrica;
 import edu.mx.utvm.eproyectos.model.RubricaCategoria;
-import edu.mx.utvm.eproyectos.model.RubricaPresentacion;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/AppCtx-Spring-Test.xml")
@@ -54,6 +52,22 @@ public class TestDaoResultado {
 	@Autowired
 	private EscalaDao escalaDao;
 	
+	private Categoria categoria1;
+	private Escala escala1;
+	
+	@Before
+	public void cargaCatalogos(){
+		/*Cragando elementos en categorias*/
+		Categoria categoriaObj = new Categoria(1, "Desktop");
+		categoriaDao.create(categoriaObj);
+
+		Escala escala = new Escala(1, 0, 10);		
+		escalaDao.create(escala);
+		
+		categoria1 = categoriaObj;
+		escala1 = escala;
+	}
+	
 	@Test
 	public void findAll() {
 		log.info("-----------------Test1--------------");
@@ -68,22 +82,7 @@ public class TestDaoResultado {
 		log.info("-----------------Test2--------------");
 		Assert.assertNotNull(resultadoDao);
 		
-		/*Cragando elementos en categorias*/
-		Categoria categoriaObj = new Categoria(1, "Desktop");
-		categoriaDao.create(categoriaObj);
 		
-		Escala escala = new Escala(1, 0, 10);		
-		escalaDao.create(escala);
-		
-		try {
-			catalogos.afterPropertiesSet();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Categoria categoria1 = catalogos.getCategorias().get(1);
-		Escala escala1 = catalogos.getEscalas().get(1);
 		
 		
 		/*Create evaluacion*/
@@ -121,25 +120,7 @@ public class TestDaoResultado {
 	@Test
 	public void insertAndFindAllByProyecto(){
 		log.info("-----------------Test3--------------");
-		Assert.assertNotNull(resultadoDao);
-		
-		/*Cragando elementos en catalogos*/
-		Categoria categoriaObj = new Categoria(1, "Desktop");
-		categoriaDao.create(categoriaObj);
-		
-		Escala escala = new Escala(1, 0, 10);		
-		escalaDao.create(escala);
-		
-		try {
-			catalogos.afterPropertiesSet();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Categoria categoria1 = catalogos.getCategorias().get(1);
-		Escala escala1 = catalogos.getEscalas().get(1);
-		
+		Assert.assertNotNull(resultadoDao);					
 		
 		/*Create evaluacion*/
 		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion 2013");
