@@ -7,11 +7,7 @@
     http://www.springframework.org/schema/data/mongo
     http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
-<<<<<<< HEAD
-	<mongo:repositories base-package="edu.utvm"/>
-=======
 	<mongo:repositories base-package="edu.mx.utvm.eproyectos"/>
->>>>>>> c54b648dd1c205e3d59bf4cf5bcec723b58989a6
 	
 	<!-- Factory bean that creates the Mongo instance -->
 	<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
@@ -32,13 +28,9 @@
 
 	<!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-<<<<<<< HEAD
-	   <bean
-=======
-	
-	<!-- data sopurce mysql-->
+
+	<!-- data source mysql-->
 	<bean
->>>>>>> c54b648dd1c205e3d59bf4cf5bcec723b58989a6
         id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/evaluacion_proyectos" />
@@ -48,11 +40,7 @@
     
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
 		<property name="dataSource" ref="dataSource" />
-<<<<<<< HEAD
-    </bean>
-     
-=======
-    </bean>    
+
+    </bean>  
 	
->>>>>>> c54b648dd1c205e3d59bf4cf5bcec723b58989a6
 </beans>
