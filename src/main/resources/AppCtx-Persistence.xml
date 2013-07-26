@@ -7,8 +7,6 @@
     http://www.springframework.org/schema/data/mongo
     http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
-
-	<mongo:repositories base-package="edu.utvm"/>
 	<mongo:repositories base-package="edu.mx.utvm.eproyectos"/>
 	
 	<!-- Factory bean that creates the Mongo instance -->
@@ -30,7 +28,7 @@
 
 	<!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
 	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-	
+
 	<!-- data source mysql-->
 	<bean
         id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -42,5 +40,5 @@
     
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
 		<property name="dataSource" ref="dataSource" />
-    </bean>    
+    </bean>
 </beans>

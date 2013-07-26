@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class IndexController {
 
+
 	protected final Log log = LogFactory.getLog(getClass());
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
