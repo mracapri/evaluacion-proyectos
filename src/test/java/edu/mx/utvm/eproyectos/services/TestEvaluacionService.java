@@ -26,23 +26,23 @@ public class TestEvaluacionService {
 	@Test
 	public void testComportamientoSaveDelServicio(){
 
+		// Clase falsa del tipo evaluacion
 		Evaluacion evaluacion = Mockito.mock(Evaluacion.class);
 		
 		// resultado esperado
 		when(dao.read(1)).thenReturn(evaluacion);
 		when(dao.read(0)).thenReturn(null);
 		
-		// invocacion
-		/*Evaluacion read = service.read(-1);		
-		Assert.assertNull(read);*/
-		
+		// invocacion		
 		Evaluacion read = service.read(0);
+		
+		// comprobacion de resultado
 		Assert.assertNull(read);
 		read = service.read(1);
 		Assert.assertNotNull(read);
 		
-		// comprobacion
+		// comprobacion de interaccion
 		verify(dao, times(1)).read(1);
-		verify(dao, times(1)).read(0);
+		verify(dao, times(1)).create(evaluacion);
 	}
 }
