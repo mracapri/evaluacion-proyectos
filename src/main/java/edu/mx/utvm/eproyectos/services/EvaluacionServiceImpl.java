@@ -17,9 +17,9 @@ public class EvaluacionServiceImpl implements EvaluacionService{
 	}
 
 	@Override
-	public Evaluacion read(int id) {
+	public Evaluacion read(String id) {
 		Evaluacion read = dao.read(id);
-		dao.create(new Evaluacion(1, ""));
+		dao.create(read);
 		return read;
 	}
 

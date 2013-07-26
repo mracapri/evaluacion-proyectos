@@ -3,6 +3,6 @@ package edu.mx.utvm.eproyectos.dao;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 
-public interface EvaluadorDao extends Dao<Evaluador, Integer>{
+public interface EvaluadorDao extends Dao<Evaluador, String>{
 	void create(Evaluador evaluador, Evaluacion evaluacion);
 }

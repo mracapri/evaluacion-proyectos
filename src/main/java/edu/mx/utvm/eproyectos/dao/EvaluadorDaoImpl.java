@@ -30,7 +30,7 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 	}
 
 	@Override
-	public Evaluador read(Integer id) {
+	public Evaluador read(String id) {
 		 String sql = "select * from evaluador where id_evaluador = ?";
 			try {
 				Evaluador resultado = this.queryForObject(sql,
@@ -38,7 +38,7 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 						new RowMapper<Evaluador>() {
 							@Override
 							public Evaluador mapRow(ResultSet rs, int rowNum) throws SQLException {
-								Evaluador evaluador = new Evaluador(rs.getInt("id_evaluador"), rs.getString("nombre"), rs.getString("especialidad") );							
+								Evaluador evaluador = new Evaluador(rs.getString("id_evaluador"), rs.getString("nombre"), rs.getString("especialidad") );							
 								return evaluador;
 							}
 						});
@@ -80,7 +80,7 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 		List<Evaluador> result = this.query(sql, new RowMapper<Evaluador>() {
 			@Override
 			public Evaluador mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Evaluador evaluador = new Evaluador(rs.getInt("id_evaluador"), rs.getString("nombre"), rs.getString("especialidad"));
+				Evaluador evaluador = new Evaluador(rs.getString("id_evaluador"), rs.getString("nombre"), rs.getString("especialidad"));
 				return evaluador;
 			}
 		});

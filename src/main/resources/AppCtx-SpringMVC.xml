@@ -11,13 +11,8 @@
 
 	<mvc:annotation-driven />
 
-<<<<<<< HEAD
-
 	<context:component-scan base-package="edu.mx.utvm.eproyectos" />
 
-=======
-	<context:component-scan base-package="edu.mx.utvm.eproyectos" />
->>>>>>> cac0929bea39de8f6e7b1fa66b6c401153e67fdf
 	<context:annotation-config />	
 	
 	<bean id="messageSource" 
@@ -33,31 +28,16 @@
 	<!-- Definicion de vistas -->
 	<import resource="AppCtx-SpringMVC-View.xml" />			
 		
-	<!-- Email 
-<<<<<<< HEAD
 	<import resource="AppCtx-Mail.xml" />
-	-->
-	<!-- Upoad file 
+
+	<!-- Upoad file -->
 	<import resource="AppCtx-UploadFiles.xml" />
-	-->
-	<!-- Persistence -->
-	<import resource="AppCtx-Persistence.xml" />
-	
-	<!-- Seguridad 	
-	<import resource="AppCtx-Security.xml" />	
-	-->
-
-=======
-	<import resource="AppCtx-Mail.xml" />-->
-
-	<!-- Upoad file 
-	<import resource="AppCtx-UploadFiles.xml" />-->
 	
 	<!-- Persistence -->
 	<import resource="AppCtx-Persistence.xml" />
 	
 	<!-- Seguridad 
-	<import resource="AppCtx-Security.xml" />	-->
+	<import resource="AppCtx-Security.xml" />	
+	-->
 	
->>>>>>> cac0929bea39de8f6e7b1fa66b6c401153e67fdf
 </beans>

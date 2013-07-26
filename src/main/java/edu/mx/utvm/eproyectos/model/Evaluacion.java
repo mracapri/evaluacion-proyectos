@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 public class Evaluacion {
-	private int idEvaluacion;	
+	private String idEvaluacion;	
 	private String descripcion;
 	private Date fechaCreacion;
 	private List<Proyecto> proyectos;
 	private String descripcionDetallada;
 	private List<Evaluador> evaluadores;
 
-	public Evaluacion(int idEvaluacion, String descripcion) {
+	public Evaluacion(String idEvaluacion, String descripcion) {
 		this.idEvaluacion = idEvaluacion;
 		this.descripcion = descripcion;
 		this.fechaCreacion = new Date();
@@ -21,11 +21,11 @@ public class Evaluacion {
 		this.descripcionDetallada = "";
 	}
 	
-	public int getIdEvaluacion() {
+	public String getIdEvaluacion() {
 		return idEvaluacion;
 	}
 
-	public void setIdEvaluacion(int idEvaluacion) {
+	public void setIdEvaluacion(String idEvaluacion) {
 		this.idEvaluacion = idEvaluacion;
 	}
 	public String getDescripcion() {

@@ -86,7 +86,7 @@ public class TestDaoResultado {
 		
 		
 		/*Create evaluacion*/
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion 2013");
 		evaluacionDao.create(evaluacion);
 		
 		/*Create proyecto*/		
@@ -123,7 +123,7 @@ public class TestDaoResultado {
 		Assert.assertNotNull(resultadoDao);					
 		
 		/*Create evaluacion*/
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion 2013");
 		evaluacionDao.create(evaluacion);
 		
 		/*Create proyecto*/		
