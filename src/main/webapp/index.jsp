@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:redirect url="/resolver/login" />
+<!-- 
 <html>
 	<head>		
 	</head>
@@ -38,3 +41,4 @@
 		</nav>
 	</body>
 </html>
+-->
