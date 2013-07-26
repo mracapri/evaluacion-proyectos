@@ -7,10 +7,17 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd"
 	xmlns:context="http://www.springframework.org/schema/context">
+<<<<<<< HEAD
 
 		 
 	<beans:import 
 		resource="classpath:AppCtx-SpringMVC.xml"/>
 	 
 
+=======
+	
+	<beans:import 
+		resource="classpath:AppCtx-SpringMVC.xml"/>
+	
+>>>>>>> cac0929bea39de8f6e7b1fa66b6c401153e67fdf
 </beans:beans>
