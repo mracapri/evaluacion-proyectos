@@ -42,11 +42,11 @@ public class TestDaoEvaluador {
 		log.info("------------Test Insert and Find All----------------------");
 		Assert.assertNotNull(evaluadorDao);
 		
-		Evaluacion evaluacion = new Evaluacion(1,"Evaluacion");
+		Evaluacion evaluacion = new Evaluacion("1","Evaluacion");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
-		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador("1", "Jose Perez Aguirre", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		
 		evaluadorDao.create(evaluador, evaluacion);
@@ -61,11 +61,11 @@ public class TestDaoEvaluador {
 		
 		Assert.assertNotNull(evaluadorDao);
 		
-		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador("1", "Jose Perez Aguirre","Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador);
 
-		Evaluador evaluador1 = new Evaluador(1, "Nacho Camacho","Desarrollo Mobile");
+		Evaluador evaluador1 = new Evaluador("1", "Nacho Camacho","Desarrollo Mobile");
 		Assert.assertNotNull(evaluador1);
 		evaluadorDao.create(evaluador1);
 
@@ -78,11 +78,11 @@ public class TestDaoEvaluador {
 		
 		Assert.assertNotNull(evaluadorDao);
 		
-		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador("1", "Jose Perez Aguirre", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador);
 		
-		evaluadorDao.read(2);
+		evaluadorDao.read("2");
 	}
 	
 		
@@ -92,7 +92,7 @@ public class TestDaoEvaluador {
 
 		Assert.assertNotNull(evaluadorDao);
 
-		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador("1", "Jose Perez Aguirre","Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador);
 		
@@ -108,14 +108,14 @@ public class TestDaoEvaluador {
 	public void DeleteById(){
 		log.info("------------Test Delete by ID ----------------------");
 		
-		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador("1", "Jose Perez Aguirre", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador);
 		
-		log.info("RESUL--->"+evaluadorDao.read(1).getEspecialidad());
+		log.info("RESUL--->"+evaluadorDao.read("1").getEspecialidad());
 		
 		evaluadorDao.delete(evaluador);
-		System.out.println("RESUL--->"+evaluadorDao.read(1));
+		System.out.println("RESUL--->"+evaluadorDao.read("1"));
 
 	}
 	
@@ -125,20 +125,20 @@ public class TestDaoEvaluador {
 		log.info("-------------------Fin all evaluadores--------------");
 		Assert.assertNotNull(evaluadorDao);
 		
-		Evaluacion evaluacion = new Evaluacion(1,"Evaluacion");
+		Evaluacion evaluacion = new Evaluacion("1","Evaluacion");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
-		Evaluacion evaluacion2 = new Evaluacion(2,"Evaluacion");
+		Evaluacion evaluacion2 = new Evaluacion("2","Evaluacion");
 		Assert.assertNotNull(evaluacion2);
 		evaluacionDao.create(evaluacion2);
 		
-		Evaluador evaluador = new Evaluador(1, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador("1", "Jose Perez Aguirre", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador);
 		
-		Evaluador evaluador2 = new Evaluador(2, "Yasser Cabrera", "Desarrollo Mobile");
+		Evaluador evaluador2 = new Evaluador("2", "Yasser Cabrera", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador2);
 		
-		Evaluador evaluador3 = new Evaluador(3, "Noe Montoya", "Desarrollo Mobile");
+		Evaluador evaluador3 = new Evaluador("3", "Noe Montoya", "Desarrollo Mobile");
 		Assert.assertNotNull(evaluador3);
 		
 		evaluadorDao.create(evaluador, evaluacion);

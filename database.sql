@@ -11,7 +11,7 @@ SET NAMES 'UTF8';
 /*!40101 SET NAMES utf8 */;
 
 CREATE TABLE IF NOT EXISTS evaluacion (
-  id_evaluacion int(3) NOT NULL,  
+  id_evaluacion varchar(10) NOT NULL,  
   descripcion varchar(200) NOT NULL,
   descripcion_detallada varchar(300) NULL,
   fecha date NULL,  
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS categoria (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS proyecto (
-  id_proyecto varchar(6) NOT NULL,  
+  id_proyecto  varchar(10) NOT NULL,  
   nombre varchar(200) NOT NULL,
   id_categoria int(2) NOT NULL,
   logo blob NULL,
@@ -38,22 +38,22 @@ CREATE TABLE IF NOT EXISTS proyecto (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS evaluacion_proyectos (
-  id_evaluacion int(3) NOT NULL, 
-  id_proyecto varchar(6) NOT NULL, 
+  id_evaluacion  varchar(10) NOT NULL, 
+  id_proyecto  varchar(10) NOT NULL, 
   FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion),
   FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS evaluador (
-  id_evaluador int(2) NOT NULL,  
+  id_evaluador  varchar(10) NOT NULL,  
   nombre varchar(200) NOT NULL,
   especialidad varchar(300) NOT NULL,
   PRIMARY KEY (id_evaluador)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS evaluacion_evaluadores (
-  id_evaluacion int(3) NOT NULL, 
-  id_evaluador int(2) NOT NULL, 
+  id_evaluacion  varchar(10) NOT NULL, 
+  id_evaluador  varchar(10) NOT NULL, 
   FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion),
   FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -89,8 +89,8 @@ CREATE TABLE IF NOT EXISTS rubrica_items_rubrica (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS resultado (
-  id_evaluacion int(3) NOT NULL,  
-  id_proyecto varchar(6) NOT NULL,
+  id_evaluacion  varchar(10) NOT NULL,  
+  id_proyecto  varchar(10) NOT NULL,
   id_rubrica varchar(4) NOT NULL,
   id_item_rubrica int(4) NOT NULL,
   calificacion double NULL,

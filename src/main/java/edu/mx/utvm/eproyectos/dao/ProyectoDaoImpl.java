@@ -36,7 +36,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 	}
 
 	@Override
-	public Proyecto read(Integer id) {
+	public Proyecto read(String id) {
 		return null;
 	
 	}

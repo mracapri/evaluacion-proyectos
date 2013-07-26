@@ -66,7 +66,7 @@ public class TestEvaluacion {
 	@Ignore
 	public void creandoEvaluacionVacia() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion(001,"Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion("001","Evaluacion 2013");
 		assertTrue(evaluacion.getEvaluadores() != null);
 		assertTrue(evaluacion.getEvaluadores().size() == 0);
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
@@ -75,8 +75,8 @@ public class TestEvaluacion {
 	@Ignore
 	public void agregandoEvaluadoresALaEvaluacionVacia() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion(001,"Evaluacion 2013");
-		evaluacion.getEvaluadores().add(new Evaluador(1, "Noe Abelino", "TIC"));
+		Evaluacion evaluacion = new Evaluacion("001","Evaluacion 2013");
+		evaluacion.getEvaluadores().add(new Evaluador("1", "Noe Abelino", "TIC"));
 		assertTrue(evaluacion.getEvaluadores() != null);
 		assertTrue(evaluacion.getEvaluadores().size() > 0);
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
@@ -85,7 +85,7 @@ public class TestEvaluacion {
 	@Ignore
 	public void agregandoProyectosALaEvaluacionVacia() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion(001, "Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion("001", "Evaluacion 2013");
 
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
@@ -97,7 +97,7 @@ public class TestEvaluacion {
 	@Ignore
 	public void agregandoIntegrantesAlProyecto() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion(001, "Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion("001", "Evaluacion 2013");
 
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
@@ -115,7 +115,7 @@ public class TestEvaluacion {
 	@Ignore
 	public void agregandoProcesoDeEvaluacionConResultados() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion(001 ,"Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion("001" ,"Evaluacion 2013");
 
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
@@ -130,7 +130,7 @@ public class TestEvaluacion {
 		calificaciones.put(4, 9.0);									
 		
 		FactoryRubrica factoryRubrica = new FactoryRubrica();
-		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador(1, "Noe Abelino", "TIC"), calificaciones, factoryRubrica.getRubrica("1301",categorias.get(0)));								
+		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador("1", "Noe Abelino", "TIC"), calificaciones, factoryRubrica.getRubrica("1301",categorias.get(0)));								
 				
 		System.out.println(calificacionEvaluador.calcularTotal());
 		System.out.println(ToStringBuilder.reflectionToString(calificacionEvaluador));
@@ -139,7 +139,7 @@ public class TestEvaluacion {
 	@Ignore
 	public void agregandoProcesoDeEvaluacionConResultadosPorRubrica() {
 		/* Creando una evalucacion */
-		Evaluacion evaluacion = new Evaluacion(001,"Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion("001","Evaluacion 2013");
 
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
@@ -163,8 +163,8 @@ public class TestEvaluacion {
 		
 		FactoryRubrica factoryRubrica = new FactoryRubrica(); 
 		
-		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador(1, "Noe Abelino", "TIC"), calificaciones, factoryRubrica.getRubrica("1301",new Categoria(0, "dessarrollo web")));					
-		CalificacionEvaluador calificacionEvaluador2 = new CalificacionEvaluador(new Evaluador(2, "Mario", "TIC"), calificaciones2, factoryRubrica.getRubrica("1301"));
+		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador("1", "Noe Abelino", "TIC"), calificaciones, factoryRubrica.getRubrica("1301",new Categoria(0, "dessarrollo web")));					
+		CalificacionEvaluador calificacionEvaluador2 = new CalificacionEvaluador(new Evaluador("2", "Mario", "TIC"), calificaciones2, factoryRubrica.getRubrica("1301"));
 		
 		List<CalificacionEvaluador> calificacionEvaluadoresList = new ArrayList<CalificacionEvaluador>();		
 		calificacionEvaluadoresList.add(calificacionEvaluador);

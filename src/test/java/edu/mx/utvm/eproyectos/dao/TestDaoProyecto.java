@@ -52,7 +52,7 @@ public class TestDaoProyecto {
 		log.info("------------Test Insert and Find All EVALUACION----------------------");
 		Assert.assertNotNull(evaluacionDao);
 		
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion UNO");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 
@@ -107,7 +107,7 @@ public class TestDaoProyecto {
 		
 		Categoria categoria1 = catalogos.getCategorias().get(2);
 				
-		Evaluacion evaluacion = new Evaluacion(2,"Evaluacion");
+		Evaluacion evaluacion = new Evaluacion("2","Evaluacion");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		

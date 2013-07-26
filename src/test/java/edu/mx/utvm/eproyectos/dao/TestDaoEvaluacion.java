@@ -42,7 +42,7 @@ public class TestDaoEvaluacion {
 		log.info("------------Test Insert and Find All EVALUACION----------------------");
 		Assert.assertNotNull(evaluacionDao);
 		
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion UNO");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 
@@ -61,7 +61,7 @@ public class TestDaoEvaluacion {
 		
 		Assert.assertNotNull(evaluacionDao);
 		
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion UNO");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 
@@ -69,8 +69,8 @@ public class TestDaoEvaluacion {
 		Assert.assertTrue(all.size() == 1);	
 		
 
-		Assert.assertNotNull(evaluacionDao.read(1));		
-		log.info("RESULT--->"+evaluacionDao.read(1).getDescripcion());
+		Assert.assertNotNull(evaluacionDao.read("1"));		
+		log.info("RESULT--->"+evaluacionDao.read("1").getDescripcion());
 	}
 	
 	
@@ -80,7 +80,7 @@ public class TestDaoEvaluacion {
 
 		Assert.assertNotNull(evaluacionDao);
 
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion UNO");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
@@ -104,14 +104,14 @@ public class TestDaoEvaluacion {
 		log.info("------------Test Delete by ID Evaluacion ----------------------");
 		
 		Assert.assertNotNull(evaluacionDao);
-		Evaluacion evaluacion = new Evaluacion(1, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion UNO");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
-		log.info("RESUL--->"+evaluacionDao.read(1).getDescripcion());
+		log.info("RESUL--->"+evaluacionDao.read("1").getDescripcion());
 		
 		evaluacionDao.delete(evaluacion);
-		System.out.println("RESUL AFTER DELETE--->"+evaluacionDao.read(1));
+		System.out.println("RESUL AFTER DELETE--->"+evaluacionDao.read("1"));
 
 	}
 	
