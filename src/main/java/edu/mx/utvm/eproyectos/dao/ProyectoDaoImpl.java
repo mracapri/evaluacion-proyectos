@@ -32,17 +32,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 
 	@Override
 	public void create(Proyecto newInstance) {
-		this.update(
-				"INSERT INTO " +
-				"proyecto(id_proyecto, nombre, id_categoria, responsable ) " +
-				"VALUES(?,?,?,?)",
-				new Object[] {
-						newInstance.getIdProyecto(),
-						newInstance.getNombre(),
-						newInstance.getCategoria().getIdCategoria(),
-						newInstance.getResponsable()
-				});
-		
+
 	}
 
 	@Override
@@ -77,7 +67,8 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 		List<Proyecto> result = this.query(sql, new RowMapper<Proyecto>() {
 			@Override
 			public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Categoria categoria = new Categoria(1, "evaluacion");
+				int idcategoria =  rs.getInt("p.id_categoria");
+				Categoria categoria = catalogos.getCategorias().get(idcategoria);
 				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));
 				return proyecto;
 			}
