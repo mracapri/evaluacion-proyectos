@@ -65,13 +65,19 @@
 						<textarea class="textArea" rows="2" placeholder="Descripcion detallada..."></textarea>
 					</div>
 					<div class="span6">                       					
+						<!--  
 						<span class="btn  btn-success fileinput-button">
-							<i class="icon-file icon-white"></i>
+							<i class="icon-file icon-white"></i>							
 							<span>GUARDAR</span>
 						</span>
+						-->
+						<a class="btn btn-success fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/all"><i class="icon-file icon-white"></i>GUARDAR</a>
+						<a class="btn btn-danger fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/all">CANCELAR</a>
+						<!--
 						<span class="btn btn-danger fileinput-button">
 						    <span>CANCELAR</span>
 						</span>
+						-->
 					</div>
 				</div>                     
 			</div>

@@ -23,7 +23,7 @@
 				<span class="titulo-ventana">Proyectos a Evaluar</span>
 				<div class="control-group">
 					<div class="controls">
-						<a class="btn btn-primary nav pull-right"href="${pageContext.request.contextPath}/jsp/nuevoProyecto.jsp"><i class="icon-plus-sign icon-white"></i> Nuevo</a>
+						<a class="btn btn-primary nav pull-right"href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/form"><i class="icon-plus-sign icon-white"></i> Nuevo</a>
 					</div>
 				</div>
 				<div class="control-group">

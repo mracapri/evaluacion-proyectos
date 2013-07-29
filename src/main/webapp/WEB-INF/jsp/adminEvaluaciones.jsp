@@ -22,7 +22,7 @@
 			<span class="titulo-ventana">Evaluaciones</span>
 			<div class="control-group">
 				<div class="controls">
-					<a class="btn btn-primary nav pull-right"href="${pageContext.request.contextPath}/jsp/nuevaEvaluacion.jsp"><i class="icon-plus-sign icon-white"></i> Nuevo</a>
+					<a class="btn btn-primary nav pull-right"href="${pageContext.request.contextPath}/resolver/evaluacion/form"><i class="icon-plus-sign icon-white"></i> Nuevo</a>
 				</div>
 			</div>
 			<div class="control-group">
