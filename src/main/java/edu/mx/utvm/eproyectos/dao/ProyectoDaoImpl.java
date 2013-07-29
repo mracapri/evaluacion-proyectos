@@ -67,9 +67,13 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 		List<Proyecto> result = this.query(sql, new RowMapper<Proyecto>() {
 			@Override
 			public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
-				int idcategoria =  rs.getInt("p.id_categoria");
+				int idcategoria =  rs.getInt("id_categoria");
 				Categoria categoria = catalogos.getCategorias().get(idcategoria);
-				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));
+				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));			
+				proyecto.setLogo(rs.getBytes("logo"));
+				proyecto.setArchivoPresentacion(rs.getBytes("archivo_presentacion"));
+				proyecto.setFoto(rs.getBytes("foto"));
+				proyecto.getIntegrantes().add(rs.getString("integrantes"));
 				return proyecto;
 			}
 		});

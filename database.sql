@@ -11,7 +11,7 @@ SET NAMES 'UTF8';
 /*!40101 SET NAMES utf8 */;
 
 CREATE TABLE IF NOT EXISTS evaluacion (
-  id_evaluacion varchar(10) NOT NULL,  
+  id_evaluacion int(3) NOT NULL,  
   descripcion varchar(200) NOT NULL,
   descripcion_detallada varchar(300) NULL,
   fecha date NULL,  
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS categoria (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS proyecto (
-  id_proyecto  varchar(10) NOT NULL,  
+  id_proyecto  varchar(6) NOT NULL,  
   nombre varchar(200) NOT NULL,
   id_categoria int(2) NOT NULL,
   logo blob NULL,
@@ -99,10 +99,3 @@ CREATE TABLE IF NOT EXISTS resultado (
   FOREIGN KEY (id_rubrica) REFERENCES rubrica(id_rubrica),
   FOREIGN KEY (id_item_rubrica) REFERENCES item_rubrica(id_item_rubrica)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*
-insert into categoria (id_categoria, descripcion) 
-values (01, 'Desarrollo web'),
-(02, 'Desktop'),
-(03, 'Mobile'),
-(04, 'Pymes');*/

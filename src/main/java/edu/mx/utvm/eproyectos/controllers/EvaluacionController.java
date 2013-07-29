@@ -16,14 +16,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.services.EvaluacionService;
+import edu.mx.utvm.eproyectos.services.ProyectoService;
 
 @Controller
 @RequestMapping("/evaluacion")
 public class EvaluacionController {
 	
 	@Autowired
-	private EvaluacionService service;
+	private EvaluacionService evaluacionService;
+	
+	@Autowired
+	private ProyectoService proyectoService;
 	
 	/*Lista de evaluaciones*/
 	@RequestMapping(value="/all", method=RequestMethod.GET)
@@ -31,8 +36,8 @@ public class EvaluacionController {
     		HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("adminEvaluaciones");
-		//List<Evaluacion> evaluaciones = new ArrayList<Evaluacion>();
-		//model.addObject("evaluaciones", evaluaciones);
+		List<Evaluacion> evaluaciones = evaluacionService.findAll();
+		model.addObject("evaluaciones", evaluaciones);
 		return model;
     }
 	
@@ -60,8 +65,12 @@ public class EvaluacionController {
     		HttpServletRequest request, 
     		@PathVariable("idEvaluacion") String idEvaluacion,
     		HttpServletResponse response)
-            throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("proyectoEvaluar");		
+            throws ServletException, IOException {		
+		ModelAndView model = new ModelAndView("proyectoEvaluar");
+		
+		List<Proyecto> proyectos = proyectoService.findAll();
+		model.addObject("proyectos", proyectos);
+		
 		return model;
     }
 	

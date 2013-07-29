@@ -1,9 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
 <c:redirect url="resolver/login" />
-=======
-<c:redirect url="/resolver/login" />
->>>>>>> c54b648dd1c205e3d59bf4cf5bcec723b58989a6
 <!-- 
 <html>
 	<head>		
@@ -45,8 +41,4 @@
 		</nav>
 	</body>
 </html>
-<<<<<<< HEAD
  -->
-=======
--->
->>>>>>> c54b648dd1c205e3d59bf4cf5bcec723b58989a6

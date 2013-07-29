@@ -1,5 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -27,9 +27,15 @@
 			</div>
 			<div class="control-group">
 		       <section id="proyectos">
-	       			<span>Evaluacion numero</span>
+		       		</br>
+		       		<c:forEach var="evaluacion" items="${evaluaciones}">
+		       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos"><span>${evaluacion.descripcion}</span></a>
+		       			<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle"><i class="icon-question-sign icon-white"></i></a></br></br>
+		       		</c:forEach>
+	       			
+	       			<!--  <a href="${pageContext.request.contextPath}/resolver/evaluacion/1/proyectos"><span>Evaluacion numero</span></a>
 	       			<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle"><i class="icon-question-sign icon-white"></i></a>
-				
+					-->
 		       </section>
 			</div>
 	   </div>
