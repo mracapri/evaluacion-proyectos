@@ -3,6 +3,7 @@ package edu.mx.utvm.eproyectos.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mx.utvm.eproyectos.dao.EvaluacionDao;
@@ -12,6 +13,7 @@ import edu.mx.utvm.eproyectos.model.Evaluacion;
  * 
  * @author Mario Rivera
  */
+@Service
 public class EvaluacionServiceImpl implements EvaluacionService{
 
 
