@@ -1,6 +1,6 @@
 /*
  * Prueba de unidad de comportamiento 
- * para el servicio pertinente a Evaluacion
+ * para el servicio pertinente a Proyecto
  * 
  * @author Mario Rivera
  */
@@ -23,47 +23,47 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import edu.mx.utvm.eproyectos.dao.EvaluacionDao;
-import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.dao.ProyectoDao;
+import edu.mx.utvm.eproyectos.model.Proyecto;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TestEvaluacionService {	
+public class TestProyectoService {	
 	
 	@Mock
-	private EvaluacionDao dao;
+	private ProyectoDao dao;
 	
 	@InjectMocks
-	private EvaluacionService service = new EvaluacionServiceImpl();
+	private ProyectoService service = new ProyectoServiceImpl();
 
 	@Test
 	public void testComportamientoFindAllDelServicio(){
-		List<Evaluacion> findAll = service.findAll();
+		List<Proyecto> findAll = service.findAll();
 		verify(dao, times(1)).findAll();
 	}
 	
 	@Test
 	public void testComportamientoSaveDelServicio(){
 
-		Evaluacion evaluacion = (Evaluacion) anyObject();
+		Proyecto Proyecto = (Proyecto) anyObject();
 		
 		// invocacion		
-		service.create(evaluacion);
+		service.create(Proyecto);
 		
 		// comprobacion de interaccion
-		verify(dao, times(1)).create(evaluacion);
+		verify(dao, times(1)).create(Proyecto);
 	}
 	
 	@Test
 	public void testComportamientoReadDelServicio(){
 
-		// Clase falsa del tipo evaluacion
-		Evaluacion evaluacion = Mockito.mock(Evaluacion.class);
+		// Clase falsa del tipo Proyecto
+		Proyecto Proyecto = Mockito.mock(Proyecto.class);
 		
 		// resultado esperado
-		when(dao.read(anyString())).thenReturn(evaluacion);
+		when(dao.read(anyString())).thenReturn(Proyecto);
 		
 		// invocacion		
-		Evaluacion read = service.read("1ZX34EDc12");
+		Proyecto read = service.read("1ZX34EDc12");
 		
 		// comprobacion de resultado
 		Assert.assertNotNull(read);

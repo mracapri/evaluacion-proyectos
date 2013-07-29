@@ -5,46 +5,46 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.mx.utvm.eproyectos.dao.EvaluacionDao;
-import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.dao.ProyectoDao;
+import edu.mx.utvm.eproyectos.model.Proyecto;
 /*
- * Implementacion del servicio <Evaluacion>
+ * Implementacion del servicio <Proyecto>
  * 
  * @author Mario Rivera
  */
-public class EvaluacionServiceImpl implements EvaluacionService{
+public class ProyectoServiceImpl implements ProyectoService{
 
 
 	@Autowired
-	private EvaluacionDao dao;
+	private ProyectoDao dao;
 	
 
 	@Override
-	public Evaluacion read(String id) {
+	public Proyecto read(String id) {
 		return dao.read(id);
 	}
 
 	@Override
-	public List<Evaluacion> findAll() {
+	public List<Proyecto> findAll() {
 		return dao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public void create(Evaluacion newInstance) {
+	public void create(Proyecto newInstance) {
 		dao.create(newInstance);
 	}
 
 	@Override
 	@Transactional
-	public void update(Evaluacion transientObject) {
+	public void update(Proyecto transientObject) {
 		dao.update(transientObject);
 		
 	}
 
 	@Override
 	@Transactional
-	public void delete(Evaluacion persistentObject) {
+	public void delete(Proyecto persistentObject) {
 		dao.delete(persistentObject);
 	}
 
