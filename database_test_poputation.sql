@@ -21,10 +21,10 @@ values (1, 'Software Multimedia'),
 
 /*Proyectos*/
 insert into proyecto (id_proyecto, nombre, id_categoria, logo, archivo_presentacion, foto, responsable, integrantes) 
-values ('000001', 'Aplicacion para kinect', 1, null, null, null, 'Joel Morales', null),
-('000002', 'Pagina para el IFE', 2, null, null, null, 'Andres Dominguez', null);
+values ('96a3be3cf272e017046d1b2674a52bd3', 'Aplicacion para kinect', 1, null, null, null, 'Joel Morales', null),
+('a2ef406e2c2351e0b9e80029c909242d', 'Pagina para el IFE', 2, null, null, null, 'Andres Dominguez', null);
 
 /*Rubricas*/
 insert into rubrica ( id_rubrica, id_categoria ) 
-values ('0001', 1),
-('0002', 2);
+values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
+('93dd4de5cddba2c733c65f233097f05a', 2);
