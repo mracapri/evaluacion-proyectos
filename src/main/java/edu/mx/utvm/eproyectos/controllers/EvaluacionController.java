@@ -24,29 +24,31 @@ public class EvaluacionController {
     public ModelAndView getEvaluacionesPorUsuario(
     		HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("view-evaluaciones");
+		ModelAndView model = new ModelAndView("adminEvaluaciones");
 		//List<Evaluacion> evaluaciones = new ArrayList<Evaluacion>();
 		//model.addObject("evaluaciones", evaluaciones);
 		return model;
     }
 	
-	/**/
+	/*Formulario de nuevo y actualizar evaluacion*/
 	@RequestMapping(value="/form", method=RequestMethod.GET)
     public ModelAndView getEvaluadorForm(
     		HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("nuevaEvaluacion");		
+		ModelAndView model = new ModelAndView("altaEvaluacion");		
 		return model;
     }
 	
+	/*Guardar formulario de evaluacion*/
 	@RequestMapping(value="/form/save", method=RequestMethod.POST)
     public ModelAndView saveFormEvaluacion(
     		HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("all");		
+		ModelAndView model = new ModelAndView("adminEvaluaciones");	
 		return model;
     }
-	 
+	
+	/*Lista de proyectos por evaluacion*/
 	@RequestMapping(value="/proyecto/{idEvaluacion}", method=RequestMethod.GET)
     public ModelAndView getProyectoByEvaluacion(
     		HttpServletRequest request, 
@@ -57,20 +59,20 @@ public class EvaluacionController {
 		return model;
     }
 	
+	/*Formulario de nuevo y actualizar proyecto por evalaucion*/
 	@RequestMapping(value="/proyecto/form", method=RequestMethod.GET)
     public ModelAndView getProyectoByEvaluadorForm(
-    		HttpServletRequest request, 
-    		@PathVariable("idEvaluacion") String idEvaluacion,
+    		HttpServletRequest request,     		
     		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("nuevoProyecto");		
 		return model;
     }
 	
+	/*Guardar formulario de proyecto*/
 	@RequestMapping(value="/proyecto/form/save", method=RequestMethod.POST)
     public ModelAndView saveFormProyecto(
-    		HttpServletRequest request, 
-    		@PathVariable("idEvaluacion") String idEvaluacion,
+    		HttpServletRequest request,     		
     		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("proyectoEvaluar");		
