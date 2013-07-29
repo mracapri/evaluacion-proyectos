@@ -80,13 +80,16 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 	public void create(Proyecto proyecto, Evaluacion evaluacion) {
 		this.update(
 				"INSERT INTO " +
-				"proyecto(id_proyecto, nombre, id_categoria, responsable ) " +
-				"VALUES(?,?,?,?)",
+				"proyecto(id_proyecto, nombre, id_categoria, responsable, logo, archivo_presentacion, foto) " +
+				"VALUES(?,?,?,?,?,?,?)",
 				new Object[] {
 						proyecto.getIdProyecto(),
 						proyecto.getNombre(),
 						proyecto.getCategoria().getIdCategoria(),
-						proyecto.getResponsable()
+						proyecto.getResponsable(),
+						proyecto.getLogo(),
+						proyecto.getArchivoPresentacion(),
+						proyecto.getFoto()
 				});
 	
 		this.update(
