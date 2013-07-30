@@ -1,6 +1,10 @@
-DROP DATABASE evaluacion_proyectos;
-CREATE DATABASE IF NOT EXISTS evaluacion_proyectos;
-USE evaluacion_proyectos;
+/*DROP DATABASE evaluacion_proyectos_produccion;
+CREATE DATABASE IF NOT EXISTS evaluacion_proyectos_produccion;
+USE evaluacion_proyectos_produccion;*/
+
+DROP DATABASE evaluacion_proyectos_test;
+CREATE DATABASE IF NOT EXISTS evaluacion_proyectos_test;
+USE evaluacion_proyectos_test;
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET NAMES 'UTF8';
@@ -68,7 +72,7 @@ CREATE TABLE IF NOT EXISTS rubrica (
 CREATE TABLE IF NOT EXISTS escala (
   id_escala int(2) NOT NULL,  
   inicio int(4) NOT NULL,
-  fin int(4) NOT NULL,
+  fin int(4) NOT NULL,  
   PRIMARY KEY (id_escala)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
