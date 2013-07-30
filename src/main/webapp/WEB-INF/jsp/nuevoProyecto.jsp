@@ -15,6 +15,7 @@
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/jquery/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-collapse.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/angular/js/angular.js"></script>
 </head>
@@ -32,9 +33,9 @@
 						</div>
 						<div class="span6">
 							<div class="fileupload fileupload-new" data-provides="fileupload">
-								<div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img src="http://www.placehold.it/50x50/EFEFEF/AAAAAA" /></div>
+								<div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img src="${pageContext.request.contextPath}/web-resources/img/cincuenta.gif" /></div>
 								<div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
-								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Logo</span><span class="fileupload-exists">Cambiar</span><input type="file"  name="logo" /></span>
+								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Logo</span><span class="fileupload-exists">Cambiar</span><input type="file"  name="logo" id="logo" /></span>
 								<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
 							</div>
 					    </div>
@@ -47,32 +48,56 @@
 						</div>
 						<div class="span6">
 							<label>Categor&iacutea</label>
-								<form:select path="idCategoria">								
-									<form:options items="${categorias}" itemLabel="descripcion"/>									
+								<form:select path="idCategoria" cssClass="lista">								
+									<form:options items="${categorias}" itemLabel="descripcion" />									
 								</form:select>							
 						</div>
 					</div>
+
 					<div class="row-fluid">
 						<div class="span6">
 							<label>Integrantes</label>
-						   	<input id="integrantes" type="text"  placeholder="Integrantes">   					
-							<span class="btn  btn-success fileinput-button">
-						    	<i class="icon-file icon-white"></i>
-						        <span>Add PDF...</span>
-						     </span>
-						     <span class="btn btn-primary fileinput-button">
-						         <i class="icon-plus icon-white"></i>
-						         <span>Fotos...</span>
-						     </span>
+						   	<input id="integrantes" type="text"  placeholder="Integrantes"> 
 						</div>
 						<div class="span6">
 							<label>Descripci&oacuten</label>
 							<form:textarea path="descripcion" rows="2" class="textArea"/>							
 						</div>
 					</div> 
-				</div>
-				<div>
-					<button class="btn succes" type="submit">Guardar</button>
+					<div class="row-fluid">
+					   <div class="span6">
+							 <div class="fileupload fileupload-new lista" data-provides="fileupload">
+								  <div class="input-append lista">
+									    <div class="uneditable-input span3 lista">
+									    	<i class="icon-file fileupload-exists"></i> 
+									    	<span class="fileupload-preview"></span>
+									    </div>
+								  </div>
+								  <span class="btn btn-file">
+							    		<i class="icon-file"></i>
+							    		<span class="fileupload-new">A. Presentaci&oacuten</span>
+							    		
+							    		<input type="file" id="filePdf"/>
+							    	</span>
+							    	<span class="fileupload-exists">Cambiar</span>
+								    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
+							</div>
+						</div>
+						<div class="span6">					
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+								<div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img src="${pageContext.request.contextPath}/web-resources/img/cincuenta.gif" /></div>
+								<div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
+								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Foto del Equipo</span><span class="fileupload-exists">Cambiar</span><input type="file"  name="fotoEquipo" id="fotoEquipo" /></span>
+								<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
+							 </div>
+						</div>
+					</div> 
+					
+					<div class="row-fluid">
+						<div class="span6">
+							<button class="btn btn-success" type="submit">Guardar</button>					
+						</div>
+					</div> 					
 				</div>
 			</form:form>	           
 		</div>
