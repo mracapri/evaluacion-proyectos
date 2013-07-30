@@ -14,9 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Categoria;
-import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
-import edu.mx.utvm.eproyectos.model.ItemRubrica;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 
 @Repository
@@ -35,7 +33,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 
 	@Override
 	public void create(Proyecto newInstance) {
-
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
@@ -87,8 +85,13 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 
 	@Override
 	public void delete(Proyecto persistentObject) {
-		// TODO Auto-generated method stub
-		
+		this.update(
+				"DELETE FROM proyecto " +
+				"WHERE id_proyecto = ?",
+				new Object[] {
+						persistentObject.getIdProyecto()
+				}
+			);	
 	}
 
 	@Override

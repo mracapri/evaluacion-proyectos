@@ -131,5 +131,38 @@ public class TestDaoProyecto {
 		Assert.assertArrayEquals(read.getLogo(), logo);
 	}
 
+	@Test
+	public void deleteProyecto() throws Exception {
+		log.info("------------Test Delete Proyecto----------------------");
+		Assert.assertNotNull(evaluacionDao);
+		Assert.assertNotNull(proyectoDao);
 
+		String id32 = generateId32();
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+		
+		Categoria categoria = new Categoria(1, "Desarrollo web");
+		categoriaDao.create(categoria);
+		
+		catalogos.afterPropertiesSet();
+		
+		String idProyecto = generateId32();
+		Proyecto proyecto = new Proyecto(idProyecto, "Proyecto de Vida",
+				catalogos.getCategorias().get(1), "Mario Rivera");
+
+		proyecto.setArchivoPresentacion(generateBytes());
+		proyecto.setFoto(generateBytes());
+		proyecto.setLogo(generateBytes());
+		
+		proyectoDao.create(proyecto,evaluacion);
+		
+		List<Proyecto> all = proyectoDao.findAllByIdEvaluacion(id32);
+		Assert.assertTrue(all.size() == 1);
+		
+		proyectoDao.delete(proyecto);
+		Proyecto read = proyectoDao.read(idProyecto);
+		Assert.assertNull(read);
+		
+	}
 }

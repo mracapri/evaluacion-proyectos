@@ -26,7 +26,7 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 	
 	@Override
 	public void create(Evaluador newInstance) {
-		
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
@@ -52,10 +52,11 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 	public void update(Evaluador transientObject) {
 		this.update(
 				"UPDATE evaluador " +
-				"SET especialidad = ? " +
+				"SET especialidad = ?, nombre = ? " +
 				"WHERE id_evaluador = ?",
 				new Object[] {
 						transientObject.getEspecialidad(),
+						transientObject.getNombre(),
 						transientObject.getIdEvaluador()
 				}
 			);	
@@ -109,6 +110,22 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 				});
 
 		
+	}
+
+	@Override
+	public List<Evaluador> findAllByIdEvaluacion(String idEvaluacion) {
+		String sql = "SELECT e.id_evaluador, e.nombre, e.especialidad ";
+		sql += "FROM evaluador e, evaluacion_evaluadores ee ";
+		sql += "WHERE ee.id_evaluacion = ? AND e.id_evaluador = ee.id_evaluador";
+
+		List<Evaluador> result = this.query(sql, new Object[]{idEvaluacion}, new RowMapper<Evaluador>() {
+			@Override
+			public Evaluador mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Evaluador evaluador = new Evaluador(rs.getString("id_evaluador"), rs.getString("nombre"), rs.getString("especialidad"));
+				return evaluador;
+			}
+		});
+		return result;
 	}
 	
 	

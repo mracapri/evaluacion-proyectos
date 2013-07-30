@@ -39,19 +39,17 @@ public class ResultadoDaoImpl extends JdbcTemplate implements ResultadoDao {
 
 	@Override
 	public Resultado read(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
 	public void update(Resultado transientObject) {		
-		
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
 	public void delete(Resultado persistentObject) {
-		// TODO Auto-generated method stub
-		
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
