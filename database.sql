@@ -40,12 +40,12 @@ CREATE TABLE IF NOT EXISTS proyecto (
 CREATE TABLE IF NOT EXISTS evaluacion_proyectos (
   id_evaluacion varchar(32) NOT NULL, 
   id_proyecto  varchar(32) NOT NULL, 
-  FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion),
-  FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto)
+  FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion) ON DELETE CASCADE,
+  FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS evaluador (
-  id_evaluador  varchar(10) NOT NULL,  
+  id_evaluador  varchar(32) NOT NULL,  
   nombre varchar(200) NOT NULL,
   especialidad varchar(300) NOT NULL,
   PRIMARY KEY (id_evaluador)
@@ -53,9 +53,9 @@ CREATE TABLE IF NOT EXISTS evaluador (
 
 CREATE TABLE IF NOT EXISTS evaluacion_evaluadores (
   id_evaluacion  varchar(32) NOT NULL, 
-  id_evaluador  varchar(10) NOT NULL, 
-  FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion),
-  FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador)
+  id_evaluador  varchar(32) NOT NULL, 
+  FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion) ON DELETE CASCADE,
+  FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS rubrica (
