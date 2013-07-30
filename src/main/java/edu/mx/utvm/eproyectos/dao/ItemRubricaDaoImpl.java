@@ -33,7 +33,7 @@ public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 	
 	@Override
 	public void create(ItemRubrica newInstance) {
-		
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
@@ -63,13 +63,13 @@ public class ItemRubricaDaoImpl extends JdbcTemplate implements ItemRubricaDao {
 
 	@Override
 	public void update(ItemRubrica transientObject) {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Metodo no implementado");
 		
 	}
 
 	@Override
 	public void delete(ItemRubrica persistentObject) {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Metodo no implementado");
 		
 	}
 

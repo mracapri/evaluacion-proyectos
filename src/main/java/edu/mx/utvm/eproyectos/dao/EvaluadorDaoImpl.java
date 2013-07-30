@@ -26,7 +26,7 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 	
 	@Override
 	public void create(Evaluador newInstance) {
-		
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override

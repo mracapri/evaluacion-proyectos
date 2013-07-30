@@ -33,7 +33,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 
 	@Override
 	public void create(Proyecto newInstance) {
-
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override

@@ -88,13 +88,13 @@ public class RubricaDaoImpl extends JdbcTemplate implements RubricaDao {
 
 	@Override
 	public void update(Rubrica transientObject) {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Metodo no implementado");
 		
 	}
 
 	@Override
 	public void delete(Rubrica persistentObject) {
-		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Metodo no implementado");
 		
 	}
 
