@@ -1,11 +1,14 @@
 package edu.mx.utvm.eproyectos.dao;
 
+import static edu.mx.utvm.eproyectos.dao.util.TestData.generateBytes;
+import static edu.mx.utvm.eproyectos.dao.util.TestData.generateId32;
+
 import java.util.List;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +21,6 @@ import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/AppCtx-Spring-Test.xml")
 @Transactional
@@ -28,110 +30,105 @@ public class TestDaoProyecto {
 
 	@Autowired
 	ProyectoDao proyectoDao;
-	
+
 	@Autowired
 	EvaluacionDao evaluacionDao;
-	
+
 	@Autowired
 	CategoriaDao categoriaDao;
-	
+
 	@Autowired
 	Catalogos catalogos;
 
-	@Ignore
+	@Test
 	public void findAll() {
 		log.info("------------Test Find All----------------------");
 		Assert.assertNotNull(evaluacionDao);
-		List<Evaluacion> all = evaluacionDao.findAll();
+		Assert.assertNotNull(proyectoDao);
+
+		String id32 = generateId32();
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+
+		List<Proyecto> all = proyectoDao.findAllByIdEvaluacion(id32);
 		Assert.assertTrue(all.size() == 0);
 	}
-	
-	
-	@Ignore
-	public void insertAndfindAll(){
+
+	@Test
+	public void insertAndfindAll() throws Exception {
 		log.info("------------Test Insert and Find All EVALUACION----------------------");
 		Assert.assertNotNull(evaluacionDao);
-		
-		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion UNO");
+		Assert.assertNotNull(proyectoDao);
+
+		String id32 = generateId32();
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
-
-		List<Evaluacion> all = evaluacionDao.findAll();
-		Assert.assertTrue(all.size() == 1);	
 		
-		log.info("RESULT--->"+all.get(0).getDescripcion());
-	}
-	
-	@Ignore
-	public void updateProyecto(){
-		log.info("--------------Update Proyecto-------------------");
-		Categoria categoria = new Categoria(2, "Desarrollo web");
+		Categoria categoria = new Categoria(1, "Desarrollo web");
 		categoriaDao.create(categoria);
 		
-		try {
-			catalogos.afterPropertiesSet();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		catalogos.afterPropertiesSet();
 		
-		
-		Categoria categoria1 = catalogos.getCategorias().get(2);		
-		Proyecto proyecto = new Proyecto("1301Ca", "Proyecto1", categoria1, "Isidro Ramos");
-		Assert.assertNotNull(proyecto);
-		proyectoDao.create(proyecto);
-		
-		proyecto.setNombre("Proyecto Update");
-		proyectoDao.update(proyecto);
-		
-		List<Proyecto> all = proyectoDao.findAll();
-		log.info("Descripcion Actualizada--->"+all.get(1).getNombre());
+		Proyecto proyecto = new Proyecto(generateId32(), "Proyecto de Vida",
+				catalogos.getCategorias().get(1), "Mario Rivera");
 
+		proyecto.setArchivoPresentacion(generateBytes());
+		proyecto.setFoto(generateBytes());
+		proyecto.setLogo(generateBytes());
+		
+		proyectoDao.create(proyecto,evaluacion);
+		
+		List<Proyecto> all = proyectoDao.findAllByIdEvaluacion(id32);
+		Assert.assertTrue(all.size() == 1);
 	}
-	
+
 	@Test
-	public void findAllProyectos(){
-		
-		log.info("-------------------Fin all proyectos---------------------");
+	public void updateProyecto() throws Exception {
+		Assert.assertNotNull(evaluacionDao);
+		Assert.assertNotNull(proyectoDao);
 
-		Categoria categoria = new Categoria(2, "Desarrollo web");
-		categoriaDao.create(categoria);
-		
-		try {
-			catalogos.afterPropertiesSet();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		Categoria categoria1 = catalogos.getCategorias().get(2);
-				
-		Evaluacion evaluacion = new Evaluacion("2","Evaluacion");
+		String id32 = generateId32();
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
-		Proyecto proyecto = new Proyecto("1301Ca", "Proyecto1", categoria1, "Isidro Ramos");
-		Assert.assertNotNull(proyecto);
+		Categoria categoria = new Categoria(1, "Desarrollo web");
+		categoriaDao.create(categoria);
+		
+		catalogos.afterPropertiesSet();
+		
+		Proyecto proyecto = new Proyecto(generateId32(), "Proyecto de Vida",
+				catalogos.getCategorias().get(1), "Mario Rivera");
 
-		Proyecto proyecto1 = new Proyecto("1401Ba", "Creacion de paginas", categoria1, "Alonso Marquez");
-		Assert.assertNotNull(proyecto1);
-	
+		proyecto.setArchivoPresentacion(generateBytes());
+		proyecto.setFoto(generateBytes());
+		proyecto.setLogo(generateBytes());
 		
-		//LLenado de tabla evaluacion-proeyctos
-		proyectoDao.create(proyecto, evaluacion);
-		proyectoDao.create(proyecto1, evaluacion);
+		proyectoDao.create(proyecto,evaluacion);
+		
+		log.info(ToStringBuilder.reflectionToString(proyecto));
 		
 		
-		log.info("Result--------->"+evaluacionDao.findAll().get(0).getProyectos().size());
+		byte[] presentacion = generateBytes();
+		byte[] foto = generateBytes();
+		byte[] logo = generateBytes();
+		String nombre = "1,2,3 y mas...";
 		
+		proyecto.setNombre(nombre);
+		proyecto.setArchivoPresentacion(presentacion);
+		proyecto.setFoto(foto);
+		proyecto.setLogo(logo);
+		
+		proyectoDao.update(proyecto);
+		Proyecto read = proyectoDao.read(proyecto.getIdProyecto());
+		
+		Assert.assertTrue(read.getNombre().equals(nombre));
+		Assert.assertArrayEquals(read.getFoto(), foto);
+		Assert.assertArrayEquals(read.getArchivoPresentacion(), presentacion);
+		Assert.assertArrayEquals(read.getLogo(), logo);
 	}
-	
-		
-	
-	
-	
-	
-	
+
 
 }
