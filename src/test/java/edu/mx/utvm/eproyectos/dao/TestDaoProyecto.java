@@ -58,6 +58,7 @@ public class TestDaoProyecto {
 	@Test
 	public void insertAndfindAll() throws Exception {
 		log.info("------------Test Insert and Find All EVALUACION----------------------");
+		
 		Assert.assertNotNull(evaluacionDao);
 		Assert.assertNotNull(proyectoDao);
 

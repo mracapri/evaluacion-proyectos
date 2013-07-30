@@ -5,8 +5,10 @@
  */
 package edu.mx.utvm.eproyectos.services;
 
+import java.util.List;
+
 import edu.mx.utvm.eproyectos.model.Proyecto;
 
 public interface ProyectoService extends Service<Proyecto, String>{
-
+	List<Proyecto> findAllByIdEvaluacion(String id);
 }

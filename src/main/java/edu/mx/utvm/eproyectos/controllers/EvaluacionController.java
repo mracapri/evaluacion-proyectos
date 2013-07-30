@@ -10,11 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
+import edu.mx.utvm.eproyectos.controllers.formbeans.FormProyecto;
+import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.services.EvaluacionService;
@@ -29,6 +34,9 @@ public class EvaluacionController {
 	
 	@Autowired
 	private ProyectoService proyectoService;
+	
+	@Autowired
+	private Catalogos catalogos;
 	
 	/*Lista de evaluaciones*/
 	@RequestMapping(value="/all", method=RequestMethod.GET)
@@ -62,13 +70,13 @@ public class EvaluacionController {
 	/*Lista de proyectos por evaluacion*/
 	@RequestMapping(value="/{idEvaluacion}/proyectos", method=RequestMethod.GET)
     public ModelAndView getProyectoByEvaluacion(
-    		HttpServletRequest request, 
+    		HttpServletRequest request,     		
     		@PathVariable("idEvaluacion") String idEvaluacion,
     		HttpServletResponse response)
             throws ServletException, IOException {		
 		ModelAndView model = new ModelAndView("proyectoEvaluar");
 		
-		List<Proyecto> proyectos = proyectoService.findAll();
+		List<Proyecto> proyectos = proyectoService.findAllByIdEvaluacion(idEvaluacion);
 		model.addObject("proyectos", proyectos);
 		
 		return model;
@@ -76,21 +84,27 @@ public class EvaluacionController {
 	
 	/*Formulario de nuevo y actualizar proyecto por evalaucion*/
 	@RequestMapping(value="/proyecto/form", method=RequestMethod.GET)
-    public ModelAndView getProyectoByEvaluadorForm(
-    		HttpServletRequest request,     		
+    public ModelAndView getProyectoByEvaluadorForm(HttpServletRequest request,
+    		@ModelAttribute("formProyecto") FormProyecto formProyecto,
     		HttpServletResponse response)
             throws ServletException, IOException {
+		
 		ModelAndView model = new ModelAndView("nuevoProyecto");		
+		model.addObject("categorias",catalogos.getCategorias());				
 		return model;
     }
 	
 	/*Guardar formulario de proyecto*/
-	@RequestMapping(value="/proyecto/form/save", method=RequestMethod.POST)
-    public ModelAndView saveFormProyecto(
-    		HttpServletRequest request,     		
-    		HttpServletResponse response)
+	@RequestMapping(value="/proyecto/form", method=RequestMethod.POST)
+    public ModelAndView saveFormProyecto(HttpServletRequest request,
+    		@ModelAttribute("formProyecto") FormProyecto formProyecto,
+    		HttpServletResponse response,
+    		BindingResult result)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("proyectoEvaluar");		
+		ModelAndView model = new ModelAndView("nuevoProyecto");
+		if(result.hasErrors()){
+			model.setViewName("proyectoEvaluar");
+		}
 		return model;
     }
 }

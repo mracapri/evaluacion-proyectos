@@ -66,12 +66,7 @@
 										<h5>L&iacuteder de proyecto.</h5>
 										<span> ${proyecto.responsable}</span>
 									</div>
-									<div class="span6">
-										<h5>Descripci&oacuten.</h5>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit. Nunc vitae mi lectus. Fusce eu faucibus libero, sit
-											amet auctor lacus. Praesent nec hendrerit sapien, ac
-											consectetur augue. Praesent sit amet cursus lacus.</p>
+									<div class="span6">										
 										<span><a href="#">Presentaci&oacuten PDF<i
 												class="icon-folder-open"></i></a></span>
 									</div>

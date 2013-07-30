@@ -7,5 +7,5 @@ import edu.mx.utvm.eproyectos.model.Proyecto;
 
 public interface ProyectoDao extends Dao<Proyecto, String>{
 	void create(Proyecto proyecto, Evaluacion evaluacion);
-	List<Proyecto> findAllByIdEvaluacion(String idEvaluacion);
+	List<Proyecto> findAllByIdEvaluacion(String id);
 }

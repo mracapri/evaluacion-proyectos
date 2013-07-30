@@ -16,7 +16,6 @@ import edu.mx.utvm.eproyectos.model.Proyecto;
 @Service
 public class ProyectoServiceImpl implements ProyectoService{
 
-
 	@Autowired
 	private ProyectoDao dao;
 	
@@ -50,4 +49,9 @@ public class ProyectoServiceImpl implements ProyectoService{
 		dao.delete(persistentObject);
 	}
 
+	@Override
+	public List<Proyecto> findAllByIdEvaluacion(String id) {		
+		return dao.findAllByIdEvaluacion(id);
+	}
+	
 }
