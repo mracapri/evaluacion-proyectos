@@ -61,42 +61,42 @@
 							  <option>Multimedia</option>
 							</select>
 					    </div>
+					</div>				   
+					<div class="row-fluid">
+						<div class="span6">
+							<label>Descripci&oacuten</label>
+							<form:input path="descripcion" placeholder="Descripcion..."/>							
+						</div>
+						<div class="span6">
+							<label>Fecha</label>
+							<input id="fechaEvaluacion"  placeholder="Fecha">
+							<span><i class="icon-calendar"></i></span>
+						</div>
+					</div>    
+					<div class="row-fluid">
+						<div class="span6">                       					
+							<label>Descripci&oacuten Detallada</label>
+							<form:textarea path="descripcionDetallada" class="textArea" rows="2" placeholder="Descripcion detallada..."/>							
+						</div>
+					</div> 
+					<div class="row-fluid">
+						<div class="span6">                       					
+							<!--  
+							<span class="btn  btn-success fileinput-button">
+								<i class="icon-file icon-white"></i>							
+								<span>GUARDAR</span>
+							</span>
+							-->
+							<a class="btn btn-success fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/all"><i class="icon-file icon-white"></i>GUARDAR</a>
+							<a class="btn btn-danger fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/all">CANCELAR</a>
+							<!--
+							<span class="btn btn-danger fileinput-button">
+							    <span>CANCELAR</span>
+							</span>
+							-->
+						</div>
 					</div>
-				</div>    
-				<div class="row-fluid">
-					<div class="span6">
-						<label>Descripci&oacuten</label>
-						<input id="descripcion" type="text"  placeholder="Descripcion...">
-					</div>
-					<div class="span6">
-						<label>Fecha</label>
-						<input id="fechaEvaluacion"  placeholder="Fecha">
-						<span><i class="icon-calendar"></i></span>
-					</div>
-				</div>    
-				<div class="row-fluid">
-					<div class="span6">                       					
-						<label>Descripci&oacuten Detallada</label>
-						<textarea class="textArea" rows="2" placeholder="Descripcion detallada..."></textarea>
-					</div>
-				</div> 
-				<div class="row-fluid">
-					<div class="span6">                       					
-						<!--  
-						<span class="btn  btn-success fileinput-button">
-							<i class="icon-file icon-white"></i>							
-							<span>GUARDAR</span>
-						</span>
-						-->
-						<a class="btn btn-success fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/all"><i class="icon-file icon-white"></i>GUARDAR</a>
-						<a class="btn btn-danger fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/all">CANCELAR</a>
-						<!--
-						<span class="btn btn-danger fileinput-button">
-						    <span>CANCELAR</span>
-						</span>
-						-->
-					</div>
-				</div>                        
+				</form:form>				                       
 			</div>
 		</div>
 	</div>
