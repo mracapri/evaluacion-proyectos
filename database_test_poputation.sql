@@ -33,7 +33,10 @@ INSERT INTO evaluacion_proyectos (id_evaluacion,id_proyecto) VALUES
 /*Rubricas*/
 insert into rubrica ( id_rubrica, id_categoria ) 
 values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
-('93dd4de5cddba2c733c65f233097f05a', 2);
+('93dd4de5cddba2c733c65f233097f05a', 2),
+('e45ee7ce7e88149af8dd32b27f9512ce', 3),
+('7d0665438e81d8eceb98c1e31fca80c1', 4),
+('751d31dd6b56b26b29dac2c0e1839e34', null);
 
 /*Escalas*/
 insert into escala ( id_escala, inicio, fin)
@@ -82,4 +85,42 @@ values (1, 'No hay faltas de ortografía ni errores gramaticales presentadas en e
 (28,'El sitio web se integra con redes sociales','El sitio web se integra con redes sociales',1),
 (29,'El sitio web es tolerante y notifica posibles fallos: errores de conexion, servicios no disponibles, etc','El sitio web es tolerante y notifica posibles fallos: errores de conexion, servicios no disponibles, etc',1),
 (30,'El sitio web realiza conectividad a base de datos y/o a servicios externos','El sitio web realiza conectividad a base de datos y/o a servicios externos',1),
-(31,'El sitio web se dibuja correctamente en la pantalla','El sitio web se dibuja correctamente en la pantalla',1);
+(31,'El sitio web se dibuja correctamente en la pantalla','El sitio web se dibuja correctamente en la pantalla',1),
+
+(32,'Item Rubrica de exposicion', 'Item Rubrica de exposicion',1);
+
+
+insert into rubrica_items_rubrica ( id_rubrica,  id_item_rubrica ) 
+values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
+('dc5c7986daef50c1e02ab09b442ee34f', 2),
+('dc5c7986daef50c1e02ab09b442ee34f', 3),
+('dc5c7986daef50c1e02ab09b442ee34f', 4),
+('dc5c7986daef50c1e02ab09b442ee34f', 5),
+('93dd4de5cddba2c733c65f233097f05a', 6),
+('93dd4de5cddba2c733c65f233097f05a', 7),
+('93dd4de5cddba2c733c65f233097f05a', 8),
+('93dd4de5cddba2c733c65f233097f05a', 9),
+('93dd4de5cddba2c733c65f233097f05a', 10),
+('93dd4de5cddba2c733c65f233097f05a', 11),
+('93dd4de5cddba2c733c65f233097f05a', 12),
+('e45ee7ce7e88149af8dd32b27f9512ce', 13),
+('e45ee7ce7e88149af8dd32b27f9512ce', 14),
+('e45ee7ce7e88149af8dd32b27f9512ce', 15),
+('e45ee7ce7e88149af8dd32b27f9512ce', 16),
+('e45ee7ce7e88149af8dd32b27f9512ce', 17),
+('e45ee7ce7e88149af8dd32b27f9512ce', 18),
+('e45ee7ce7e88149af8dd32b27f9512ce', 19),
+('7d0665438e81d8eceb98c1e31fca80c1', 20),
+('7d0665438e81d8eceb98c1e31fca80c1', 21),
+('7d0665438e81d8eceb98c1e31fca80c1', 22),
+('7d0665438e81d8eceb98c1e31fca80c1', 23),
+('7d0665438e81d8eceb98c1e31fca80c1', 24),
+('7d0665438e81d8eceb98c1e31fca80c1', 25),
+('7d0665438e81d8eceb98c1e31fca80c1', 26),
+('7d0665438e81d8eceb98c1e31fca80c1', 27),
+('7d0665438e81d8eceb98c1e31fca80c1', 28),
+('7d0665438e81d8eceb98c1e31fca80c1', 29),
+('7d0665438e81d8eceb98c1e31fca80c1', 30),
+('7d0665438e81d8eceb98c1e31fca80c1', 31),
+('751d31dd6b56b26b29dac2c0e1839e34', 32);
+
