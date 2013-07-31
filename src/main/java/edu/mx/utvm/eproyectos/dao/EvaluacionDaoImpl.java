@@ -30,7 +30,10 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	
 	@Autowired
 	Catalogos catalogos;
-
+	
+	@Autowired
+	EvaluadorDao evaluadorDao;
+	
 	@Override
 	public void create(Evaluacion newInstance) {
 		this.update(
@@ -142,11 +145,15 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 			public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
 				int idcategoria =  rs.getInt("p.id_categoria");
 				Categoria categoria = catalogos.getCategorias().get(idcategoria);
+				
+				List<Evaluador> evaluadores = evaluadorDao.findAllByIdProyecto(rs.getString("p.id_proyecto"));
+				
 				Proyecto proyecto = new Proyecto(
 						rs.getString("p.id_proyecto"), 
 						rs.getString("p.nombre"), 
 						categoria,
-						rs.getString("p.responsable"));
+						rs.getString("p.responsable"),
+						evaluadores);
 				return proyecto;
 			}
 		});

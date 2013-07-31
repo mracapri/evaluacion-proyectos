@@ -124,3 +124,13 @@ values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
 ('7d0665438e81d8eceb98c1e31fca80c1', 31),
 ('751d31dd6b56b26b29dac2c0e1839e34', 32);
 
+/*evaluadores*/
+insert into evaluador ( id_evaluador, nombre, especialidad)
+values ('cd3dc8b6cffb41e4163dcbd857ca87da', 'Alfredo Perez', 'TIC'),
+('68a9e49bbc88c02083a062a78ab3bf30', 'Mario Rivera', 'TIC');
+
+/*evaluadores por proyecto*/
+insert into proyecto_evaluadores ( id_proyecto, id_evaluador)
+values ('96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da'),
+('96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30'),
+('a2ef406e2c2351e0b9e80029c909242d', '68a9e49bbc88c02083a062a78ab3bf30');

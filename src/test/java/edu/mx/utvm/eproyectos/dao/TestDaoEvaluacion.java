@@ -3,6 +3,7 @@ package edu.mx.utvm.eproyectos.dao;
 import static edu.mx.utvm.eproyectos.dao.util.TestData.generateBytes;
 import static edu.mx.utvm.eproyectos.dao.util.TestData.generateId32;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -164,8 +165,17 @@ public class TestDaoEvaluacion {
 		
 		catalogos.afterPropertiesSet();
 		
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
+		evaluadorDao.create(evaluador1, evaluacion);
+		evaluadorDao.create(evaluador2, evaluacion);
+		
+		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
+		evalaudores.add(evaluador1);
+		evalaudores.add(evaluador2);
+		
 		Proyecto proyecto = new Proyecto(generateId32(), "Proyecto de Vida",
-				catalogos.getCategorias().get(1), "Mario Rivera");
+				catalogos.getCategorias().get(1), "Mario Rivera", evalaudores);
 
 		proyecto.setArchivoPresentacion(generateBytes());
 		proyecto.setFoto(generateBytes());

@@ -13,14 +13,24 @@ public class Proyecto {
 	private String responsable;
 	private List<String> integrantes;
 	private ResultadoFinal resultado;
+	private List<Evaluador> evaluadores; 	
 	
-	
-	public Proyecto(String idProyecto, String nombre, Categoria categoria, String responsable) {
+	public Proyecto(String idProyecto, String nombre, Categoria categoria, String responsable, List<Evaluador> evaluadores) {
 		this.idProyecto = idProyecto;
 		this.nombre = nombre;
 		this.categoria = categoria;
 		this.responsable = responsable;
-		integrantes = new ArrayList<String>();
+		integrantes = new ArrayList<String>();	
+		this.evaluadores = evaluadores;
+	}
+
+	public List<Evaluador> getEvaluadores() {
+		return evaluadores;
+	}
+
+
+	public void setEvaluadores(List<Evaluador> evaluadores) {
+		this.evaluadores = evaluadores;
 	}
 
 

@@ -127,6 +127,22 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao{
 		});
 		return result;
 	}
+
+	@Override
+	public List<Evaluador> findAllByIdProyecto(String idProyecto) {		
+		String sql = "SELECT e.id_evaluador, e.nombre, e.especialidad ";
+		sql += "FROM evaluador e, proyecto_evaluadores pe ";
+		sql += "WHERE pe.id_proyecto = ? AND e.id_evaluador = pe.id_evaluador";
+
+		List<Evaluador> result = this.query(sql, new Object[]{idProyecto}, new RowMapper<Evaluador>() {
+			@Override
+			public Evaluador mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Evaluador evaluador = new Evaluador(rs.getString("id_evaluador"), rs.getString("nombre"), rs.getString("especialidad"));
+				return evaluador;
+			}
+		});
+		return result;
+	}
 	
 	
 	

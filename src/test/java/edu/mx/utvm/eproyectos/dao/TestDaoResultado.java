@@ -1,5 +1,6 @@
 package edu.mx.utvm.eproyectos.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -17,6 +18,7 @@ import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Resultado;
@@ -52,8 +54,12 @@ public class TestDaoResultado {
 	@Autowired
 	private EscalaDao escalaDao;
 	
+	@Autowired
+	private EvaluadorDao evaluadorDao;
+	
 	private Categoria categoria1;
 	private Escala escala1;
+	
 	
 	@Before
 	public void cargaCatalogos(){
@@ -89,8 +95,19 @@ public class TestDaoResultado {
 		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion 2013");
 		evaluacionDao.create(evaluacion);
 		
+		/*Create evaluadores*/
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
+		
+		evaluadorDao.create(evaluador1, evaluacion);
+		evaluadorDao.create(evaluador2, evaluacion);
+		
+		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
+		evalaudores.add(evaluador1);
+		evalaudores.add(evaluador2);
+		
 		/*Create proyecto*/		
-		Proyecto proyecto = new Proyecto("130101", "Kinect", categoria1, "Israel Paz");
+		Proyecto proyecto = new Proyecto("130101", "Kinect", categoria1, "Israel Paz", evalaudores);
 		proyectoDao.create(proyecto, evaluacion);
 		
 		/*Create Rubrica*/						
@@ -126,8 +143,19 @@ public class TestDaoResultado {
 		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion 2013");
 		evaluacionDao.create(evaluacion);
 		
+		/*Create evaluadores*/
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
+		
+		evaluadorDao.create(evaluador1, evaluacion);
+		evaluadorDao.create(evaluador2, evaluacion);
+		
+		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
+		evalaudores.add(evaluador1);
+		evalaudores.add(evaluador2);
+		
 		/*Create proyecto*/		
-		Proyecto proyecto = new Proyecto("130101", "Kinect", categoria1, "Israel Paz");
+		Proyecto proyecto = new Proyecto("130101", "Kinect", categoria1, "Israel Paz", evalaudores);
 		proyectoDao.create(proyecto, evaluacion);
 		
 		/*Create Rubrica*/						

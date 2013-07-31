@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
+import edu.mx.utvm.eproyectos.controllers.formbeans.FormEvaluacion;
 import edu.mx.utvm.eproyectos.controllers.formbeans.FormProyecto;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
@@ -51,17 +52,20 @@ public class EvaluacionController {
 	
 	/*Formulario de nuevo y actualizar evaluacion*/
 	@RequestMapping(value="/form", method=RequestMethod.GET)
-    public ModelAndView getEvaluadorForm(
-    		HttpServletRequest request, HttpServletResponse response)
+    public ModelAndView getEvaluadorForm(HttpServletRequest request,
+    		@ModelAttribute("formEvaluacion") FormEvaluacion formEvalaucion,
+    		HttpServletResponse response)    		
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("altaEvaluacion");		
 		return model;
     }
 	
 	/*Guardar formulario de evaluacion*/
-	@RequestMapping(value="/form/save", method=RequestMethod.POST)
+	@RequestMapping(value="/form", method=RequestMethod.POST)
     public ModelAndView saveFormEvaluacion(
-    		HttpServletRequest request, HttpServletResponse response)
+    		HttpServletRequest request,
+    		@ModelAttribute("formEvaluacion") FormEvaluacion formEvalaucion,
+    		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("adminEvaluaciones");	
 		return model;
