@@ -126,14 +126,11 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 				int idcategoria =  rs.getInt("p.id_categoria");
 				Categoria categoria = catalogos.getCategorias().get(idcategoria);
 				
-				List<Evaluador> evaluadores = evaluadorDao.findAllByIdProyecto(rs.getString("p.id_proyecto"));
-				
 				Proyecto proyecto = new Proyecto(
 						rs.getString("p.id_proyecto"), 
 						rs.getString("p.nombre"), 
 						categoria,
-						rs.getString("p.responsable"),
-						evaluadores);
+						rs.getString("p.responsable"));
 				return proyecto;
 			}
 		});

@@ -17,8 +17,7 @@ public class Evaluacion {
 		this.descripcion = descripcion;
 		this.fechaCreacion = new Date();
 		this.proyectos = new ArrayList<Proyecto>();
-		this.evaluadores = new ArrayList<Evaluador>();
-		this.descripcionDetallada = "";
+		this.evaluadores = new ArrayList<Evaluador>();		
 	}
 	
 	public String getIdEvaluacion() {
@@ -46,6 +45,10 @@ public class Evaluacion {
 
 	public Date getFechaCreacion() {
 		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	public List<Proyecto> getProyectos() {

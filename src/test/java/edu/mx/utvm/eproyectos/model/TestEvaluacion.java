@@ -87,16 +87,8 @@ public class TestEvaluacion {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion("001", "Evaluacion 2013");
 		
-		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasd");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasd");			
-		
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
-		
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
-				categorias.get(0), "Isral Ochoa Paz", evalaudores);
+				categorias.get(0), "Isral Ochoa Paz");
 		evaluacion.getProyectos().add(p);
 		assertTrue(evaluacion.getProyectos().size() == 1);
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
@@ -107,16 +99,8 @@ public class TestEvaluacion {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion("001", "Evaluacion 2013");
 
-		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasd");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasd");
-		
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
-		
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
-				categorias.get(0), "Isral Ochoa Paz", evalaudores);
+				categorias.get(0), "Isral Ochoa Paz");
 		evaluacion.getProyectos().add(p);
 
 		p.getIntegrantes().add("Gerardo");
@@ -133,16 +117,8 @@ public class TestEvaluacion {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion("001" ,"Evaluacion 2013");
 		
-		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasd");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasd");
-		
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
-		
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
-				categorias.get(0), "Isral Ochoa Paz", evalaudores);
+				categorias.get(0), "Isral Ochoa Paz");
 		evaluacion.getProyectos().add(p);
 		
 		Map<Integer, Double> calificaciones;
@@ -165,16 +141,8 @@ public class TestEvaluacion {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion("001","Evaluacion 2013");
 		
-		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasd");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasd");
-				
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
-		
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
-				categorias.get(0), "Isral Ochoa Paz", evalaudores);
+				categorias.get(0), "Isral Ochoa Paz");
 		evaluacion.getProyectos().add(p);
 		
 		Map<Integer, Double> calificaciones;

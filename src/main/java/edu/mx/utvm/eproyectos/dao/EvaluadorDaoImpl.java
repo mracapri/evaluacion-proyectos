@@ -136,11 +136,4 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 				});
 		return result;
 	}
-
-	@Override
-	public List<Evaluador> findAllByIdProyecto(String idProyecto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

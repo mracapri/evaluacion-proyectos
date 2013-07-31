@@ -51,11 +51,9 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 						public Proyecto mapRow(ResultSet rs, int arg1)
 								throws SQLException {
 							int idcategoria =  rs.getInt("id_categoria");
-							Categoria categoria = catalogos.getCategorias().get(idcategoria);
+							Categoria categoria = catalogos.getCategorias().get(idcategoria);										
 							
-							List<Evaluador> evaluadores = evaluadorDao.findAllByIdProyecto(rs.getString("id_proyecto"));
-							
-							Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"), evaluadores);			
+							Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));			
 							proyecto.setLogo(rs.getBytes("logo"));
 							proyecto.setArchivoPresentacion(rs.getBytes("archivo_presentacion"));
 							proyecto.setFoto(rs.getBytes("foto"));
@@ -97,17 +95,6 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 				}
 			);
 		
-		for (Evaluador evaluador: transientObject.getEvaluadores()) {
-			this.update(
-					"INSERT INTO " +
-					"proyecto_evaluadores(id_proyecto, id_evaluador) " +
-					"VALUES(?,?)",
-					new Object[] {
-							transientObject.getIdProyecto(),
-							evaluador.getIdEvaluador()			
-					});			
-		}
-		
 	}
 
 	@Override
@@ -128,11 +115,9 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 			@Override
 			public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
 				int idcategoria =  rs.getInt("id_categoria");
-				Categoria categoria = catalogos.getCategorias().get(idcategoria);
+				Categoria categoria = catalogos.getCategorias().get(idcategoria);				
 				
-				List<Evaluador> evaluadores = evaluadorDao.findAllByIdProyecto(rs.getString("id_proyecto"));
-				
-				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"), evaluadores);			
+				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));			
 				proyecto.setLogo(rs.getBytes("logo"));
 				proyecto.setArchivoPresentacion(rs.getBytes("archivo_presentacion"));
 				proyecto.setFoto(rs.getBytes("foto"));
@@ -167,17 +152,6 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 						evaluacion.getIdEvaluacion(),
 						proyecto.getIdProyecto()
 				});
-		
-		for (Evaluador evaluador: proyecto.getEvaluadores()) {
-			this.update(
-					"INSERT INTO " +
-					"proyecto_evaluadores(id_proyecto, id_evaluador) " +
-					"VALUES(?,?)",
-					new Object[] {
-							proyecto.getIdProyecto(),
-							evaluador.getIdEvaluador()			
-					});			
-		}			
 
 	}
 
@@ -193,9 +167,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 				int idcategoria =  rs.getInt("id_categoria");
 				Categoria categoria = catalogos.getCategorias().get(idcategoria);
 				
-				List<Evaluador> evaluadores = evaluadorDao.findAllByIdProyecto(rs.getString("id_proyecto"));
-				
-				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"), evaluadores);			
+				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));			
 				proyecto.setLogo(rs.getBytes("logo"));
 				proyecto.setArchivoPresentacion(rs.getBytes("archivo_presentacion"));
 				proyecto.setFoto(rs.getBytes("foto"));

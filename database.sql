@@ -63,13 +63,6 @@ CREATE TABLE IF NOT EXISTS evaluacion_evaluadores (
   FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS proyecto_evaluadores (
-	id_proyecto  varchar(32) NOT NULL,
-	id_evaluador  varchar(32) NOT NULL,
-	FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto) ON DELETE CASCADE,
-	FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE IF NOT EXISTS rubrica (
   id_rubrica varchar(32) NOT NULL,    
   id_categoria int(2) NULL,

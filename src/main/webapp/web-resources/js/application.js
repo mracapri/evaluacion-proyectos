@@ -9,12 +9,26 @@ var DEMO = {
 	init: function(){
 		$this = this;
 		$this.cargaFunciones();
+		$this.formsFunction();
 	},
 	
 	//Carga los tooltips
 	cargaFunciones: function (){
 		$('#fechaEvaluacion').datepicker();
 	},
+	
+	formsFunction: function(){
+		/*Elimina las etiquetas de errores vacias*/
+		$(".label-info").each(function(){
+			if($(this).children().size() == 0){
+				$(this).remove();
+			}
+		});
+		/*Limpia los campos cuando almacene los datos*/
+		if($(".alert-success").size() > 0){
+			$("input, textarea").val("");
+		}		
+	}
 	
 	
 	

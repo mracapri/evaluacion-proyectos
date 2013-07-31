@@ -1,12 +1,13 @@
 package edu.mx.utvm.eproyectos.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.controllers.formbeans.FormEvaluacion;
 import edu.mx.utvm.eproyectos.controllers.formbeans.FormProyecto;
-import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.services.EvaluacionService;
@@ -56,7 +56,7 @@ public class EvaluacionController {
     		@ModelAttribute("formEvaluacion") FormEvaluacion formEvalaucion,
     		HttpServletResponse response)    		
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("altaEvaluacion");		
+		ModelAndView model = new ModelAndView("nuevaEvaluacion");		
 		return model;
     }
 	
@@ -64,10 +64,22 @@ public class EvaluacionController {
 	@RequestMapping(value="/form", method=RequestMethod.POST)
     public ModelAndView saveFormEvaluacion(
     		HttpServletRequest request,
-    		@ModelAttribute("formEvaluacion") FormEvaluacion formEvalaucion,
-    		HttpServletResponse response)
+    		@ModelAttribute("formEvaluacion") @Valid FormEvaluacion formEvalaucion,    		
+    		BindingResult result)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("adminEvaluaciones");	
+		ModelAndView model = new ModelAndView("nuevaEvaluacion");
+		if(!result.hasErrors()){
+			
+			/*Save evaluacion*/					
+			Evaluacion evaluacion = new Evaluacion("aslhdkgadasasdasd", formEvalaucion.getDescripcion());
+			evaluacion.setDescripcionDetallada(formEvalaucion.getDescripcionDetallada());
+			evaluacion.setFechaCreacion(new Date());
+			
+			evaluacionService.create(evaluacion);
+			
+			model.addObject("message", "Evaluaci&oacuten almacenada");
+			model.setViewName("nuevaEvaluacion");			
+		}
 		return model;
     }
 	
@@ -101,12 +113,11 @@ public class EvaluacionController {
 	/*Guardar formulario de proyecto*/
 	@RequestMapping(value="/proyecto/form", method=RequestMethod.POST)
     public ModelAndView saveFormProyecto(HttpServletRequest request,
-    		@ModelAttribute("formProyecto") FormProyecto formProyecto,
-    		HttpServletResponse response,
+    		@ModelAttribute("formProyecto") FormProyecto formProyecto,    		
     		BindingResult result)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("nuevoProyecto");
-		if(result.hasErrors()){
+		if(!result.hasErrors()){
 			model.setViewName("proyectoEvaluar");
 		}
 		return model;
