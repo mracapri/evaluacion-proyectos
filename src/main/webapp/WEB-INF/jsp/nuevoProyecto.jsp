@@ -58,15 +58,16 @@
 						<div class="span6">
 							<label>Integrantes</label>
 						   	<input id="integrantes" type="text"  placeholder="Integrantes"> 
+
 						</div>
 						<div class="span6">
 							<label>Descripci&oacuten</label>
-							<form:textarea path="descripcion" rows="2" class="textArea"/>							
+							<form:textarea path="descripcion" rows="1" class="textArea"/>
 						</div>
-					</div> 
+					</div>
 					<div class="row-fluid">
 					   <div class="span6">
-							 <div class="fileupload fileupload-new lista" data-provides="fileupload">
+							<div class="fileupload fileupload-new " data-provides="fileupload">
 								  <div class="input-append lista">
 									    <div class="uneditable-input span3 lista">
 									    	<i class="icon-file fileupload-exists"></i> 
@@ -76,14 +77,14 @@
 								  <span class="btn btn-file">
 							    		<i class="icon-file"></i>
 							    		<span class="fileupload-new">A. Presentaci&oacuten</span>
-							    		
+							    		<span class="fileupload-exists">Cambiar</span>
 							    		<input type="file" id="filePdf"/>
 							    	</span>
-							    	<span class="fileupload-exists">Cambiar</span>
+							    	
 								    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
 							</div>
 						</div>
-						<div class="span6">					
+						<div class="span6">
 							<div class="fileupload fileupload-new" data-provides="fileupload">
 								<div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img src="${pageContext.request.contextPath}/web-resources/img/cincuenta.gif" /></div>
 								<div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
@@ -91,9 +92,23 @@
 								<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
 							 </div>
 						</div>
+						
 					</div> 
 					
 					<div class="row-fluid">
+						<div class="span6">	
+							<div class="form-group">
+									<label>
+									 Exposicion por:
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox"> Presentaci&oacuten
+									</label>
+									<label class="checkbox-inline">
+									  <input type="checkbox" > Categoria
+									</label>
+							</div>						
+						</div>
 						<div class="span6">
 							<button class="btn btn-success" type="submit">Guardar</button>					
 						</div>

@@ -61,6 +61,16 @@
 .tdResultados {
     font-size: 24.5px;
 }
+
+.checkbox-inline {
+display: inline-block;
+padding-left: 20px;
+margin-bottom: 0;
+font-weight: normal;
+vertical-align: middle;
+cursor: pointer;
+}
+
 .show-grid {
      margin-top:10px;
      margin-bottom:20px;

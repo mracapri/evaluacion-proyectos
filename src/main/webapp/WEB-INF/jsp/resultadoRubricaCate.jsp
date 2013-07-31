@@ -32,11 +32,11 @@
 					<thead>
 						<tr>
 							<th><h3>Nombre del Evaluador</h3></th>
-							<th><h3>1 Criterio</h3></th>
-							<th><h3>2 Criterio</h3></th>
-							<th><h3>3 Criterio</h3></th>
-							<th><h3>4 Criterio</h3></th>
-							<th><h3>5 Criterio</h3></th>
+							<th><h3>Criterio 1</h3></th>
+							<th><h3>Criterio 2</h3></th>
+							<th><h3>Criterio 3</h3></th>
+							<th><h3>Criterio 4</h3></th>
+							<th><h3>Criterio 5</h3></th>
 							<th><h3>Total</h3></th>
 						</tr>
 					</thead>

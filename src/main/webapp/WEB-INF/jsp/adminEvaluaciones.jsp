@@ -30,7 +30,6 @@
 		       		</br>
 		       		<c:forEach var="evaluacion" items="${evaluaciones}">
 		       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos"><span>${evaluacion.descripcion}</span></a>
-		       			<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle"><i class="icon-question-sign icon-white"></i></a></br></br>
 		       		</c:forEach>
 	       			
 	       			<!--  <a href="${pageContext.request.contextPath}/resolver/evaluacion/1/proyectos"><span>Evaluacion numero</span></a>

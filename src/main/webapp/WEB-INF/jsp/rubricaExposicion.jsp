@@ -48,6 +48,11 @@
 				    </div>
 				</div> 
 			</div>
+			<div class="row-fluid">
+				<div class="span6">                       					
+					<a class="btn btn-success fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/all"><i class="icon-file icon-white"></i>GUARDAR</a>
+				</div>
+			</div>  
 		</div>
 	</div>
 </body>
