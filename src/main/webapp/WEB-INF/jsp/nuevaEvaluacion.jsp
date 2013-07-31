@@ -34,31 +34,11 @@
 						<input id="descripcion" type="text"  placeholder="Descripcion...">
 					</div>
 					<div class="span6">
-						<label>Proyectos</label>
-						<select class="lista">
-					  		<option>Desarrollo Web</option>
-					  		<option>Escritorio</option>
-					  		<option>Desarrollo M&oacutevil</option>
-					  		<option>Multimedia</option>
-						</select>
-					</div>
-				</div>    
-				<div class="row-fluid">
-					<div class="span6">
 						<label>Fecha</label>
 						<input id="fechaEvaluacion" class="input-small" type="date"  placeholder="Fecha">
 						<span><i class="icon-calendar"></i></span>
 					</div>
-				    <div class="span6">
-				        <label>Evaluador</label>
-						<select class="lista">
-						  <option>Desarrollo Web</option>
-						  <option>Escritorio</option>
-						  <option>Desarrollo M&oacutevil</option>
-						  <option>Multimedia</option>
-						</select>
-				    </div>
-				</div>
+				</div>    
 				<div class="row-fluid">
 					<div class="span6">                       					
 						<label>Descripci&oacuten Detallada</label>

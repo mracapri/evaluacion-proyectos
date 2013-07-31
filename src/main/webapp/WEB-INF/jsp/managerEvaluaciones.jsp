@@ -28,8 +28,6 @@
 			<div class="control-group">
 		       <section id="proyectos">
 	       			<span>Evaluacion numero1</span>
-	       			<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle"><i class="icon-question-sign icon-white"></i></a>
-				
 		       </section>
 			</div>
 	   </div>
