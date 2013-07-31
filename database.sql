@@ -111,3 +111,39 @@ CREATE TABLE IF NOT EXISTS resultado (
   FOREIGN KEY (id_rubrica) REFERENCES rubrica(id_rubrica),
   FOREIGN KEY (id_item_rubrica) REFERENCES item_rubrica(id_item_rubrica)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS usuario (
+  nombre_usuario varchar(32) NOT NULL,  
+  clave varchar(32) NOT NULL,
+  fecha_creacion date NOT NULL,
+  activo tinyint(1) NOT NULL,
+  PRIMARY KEY (nombre_usuario)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS roles (
+  id_role int(2) NOT NULL,  
+  role varchar(32) NOT NULL,
+  UNIQUE(role),
+  PRIMARY KEY (id_role)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS usuario_roles (
+  nombre_usuario varchar(32) NOT NULL,
+  id_role int(2) NOT NULL, 
+  FOREIGN KEY (nombre_usuario) REFERENCES usuario(nombre_usuario) ON DELETE CASCADE,
+  FOREIGN KEY (id_role) REFERENCES roles(id_role) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS usuario_evaluador (
+  nombre_usuario varchar(32) NOT NULL,
+  id_evaluador  varchar(32) NOT NULL,
+  FOREIGN KEY(nombre_usuario) REFERENCES usuario(nombre_usuario) ON DELETE CASCADE,
+  FOREIGN KEY(id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+insert into roles (id_role, role) values (1, 'EVALUADOR');
+insert into roles (id_role, role) values (2, 'ADMINISTRADOR');
+insert into roles (id_role, role) values (3, 'MANAGER');
+

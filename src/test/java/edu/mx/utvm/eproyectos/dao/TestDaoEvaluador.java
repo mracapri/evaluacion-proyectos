@@ -1,6 +1,6 @@
 package edu.mx.utvm.eproyectos.dao;
 
-import static edu.mx.utvm.eproyectos.dao.util.TestData.generateId32;
+import static edu.mx.utvm.eproyectos.dao.util.TestData.*;
 
 import java.util.List;
 
@@ -51,7 +51,7 @@ public class TestDaoEvaluador {
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
-		Evaluador evaluador = new Evaluador(id32Evaluador, "Jose Perez Aguirre", "Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(id32Evaluador, "Jose Perez Aguirre", "Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador);
 		
 		evaluadorDao.create(evaluador, evaluacion);
@@ -76,11 +76,11 @@ public class TestDaoEvaluador {
 		evaluacionDao.create(evaluacion);
 				
 		
-		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador, evaluacion);
 
-		Evaluador evaluador1 = new Evaluador(id32Evaluador2, "Nacho Camacho","Desarrollo Mobile");
+		Evaluador evaluador1 = new Evaluador(id32Evaluador2, "Nacho Camacho","Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador1);
 		evaluadorDao.create(evaluador1, evaluacion);
 
@@ -103,11 +103,11 @@ public class TestDaoEvaluador {
 		evaluacionDao.create(evaluacion);
 				
 		
-		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador, evaluacion);
 
-		Evaluador evaluador1 = new Evaluador(id32Evaluador1, "Nacho Camacho","Desarrollo Mobile");
+		Evaluador evaluador1 = new Evaluador(id32Evaluador1, "Nacho Camacho","Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador1);
 		evaluadorDao.create(evaluador1, evaluacion);
 	}
@@ -127,7 +127,7 @@ public class TestDaoEvaluador {
 		evaluacionDao.create(evaluacion);
 				
 		
-		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador, evaluacion);
 		
@@ -151,7 +151,7 @@ public class TestDaoEvaluador {
 		evaluacionDao.create(evaluacion);
 				
 		
-		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador, evaluacion);
 		
@@ -186,7 +186,7 @@ public class TestDaoEvaluador {
 		evaluacionDao.create(evaluacion);
 				
 		
-		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador, evaluacion);
 		
@@ -219,9 +219,9 @@ public class TestDaoEvaluador {
 		Assert.assertNotNull(evaluacion2);
 		evaluacionDao.create(evaluacion2);
 		
-		Evaluador evaluador = new Evaluador(generateId32(), "Jose Perez Aguirre", "Desarrollo Mobile");		
-		Evaluador evaluador2 = new Evaluador(generateId32(), "Yasser Cabrera", "Desarrollo Mobile");		
-		Evaluador evaluador3 = new Evaluador(generateId32(), "Noe Montoya", "Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(generateId32(), "Jose Perez Aguirre", "Desarrollo Mobile", generateId10(), "123456");		
+		Evaluador evaluador2 = new Evaluador(generateId32(), "Yasser Cabrera", "Desarrollo Mobile", generateId10(), "123456");		
+		Evaluador evaluador3 = new Evaluador(generateId32(), "Noe Montoya", "Desarrollo Mobile", generateId10(), "123456");
 		
 		evaluadorDao.create(evaluador, evaluacion);
 		evaluadorDao.create(evaluador2, evaluacion);

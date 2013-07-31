@@ -32,8 +32,9 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	Catalogos catalogos;
 	
 	@Autowired
-	EvaluadorDao evaluadorDao;
-	
+	private EvaluadorDao evaluadorDao;
+
+
 	@Override
 	public void create(Evaluacion newInstance) {
 		this.update(
@@ -99,34 +100,13 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 			@Override
 			public Evaluacion mapRow(ResultSet rs, int rowNum) throws SQLException {
 				
-				List<Evaluador> evaluadores= findEvaluadoresByIdEvaluacion(rs.getString("id_evaluacion"));
+				List<Evaluador> evaluadores= evaluadorDao.findAllByIdEvaluacion(rs.getString("id_evaluacion"));
 				List<Proyecto> proyecto= findProyectosByIdEvalaucion(rs.getString("id_evaluacion")); //Carga a la lista proyectos el id de la evaluacion
 				
 				Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), rs.getString("descripcion"));
 					evaluacion.getProyectos().addAll(proyecto);
 					evaluacion.getEvaluadores().addAll(evaluadores);
 				return evaluacion;
-			}
-		});
-		return result;
-	}
-	
-	/*********************Busca Evaluadores por el id de evaluacion**************************/
-	@Override
-	public List<Evaluador> findEvaluadoresByIdEvaluacion(String id) {
-		String sql = "";
-		sql += "SELECT ev.id_evaluador, ev.nombre, ev.especialidad ";
-		sql += "FROM evaluacion_evaluadores ee,  evaluador ev ";
-		sql += "WHERE ee.id_evaluador = ev.id_evaluador and ee.id_evaluacion = ?";
-		Object[] parametros = {id};
-		List<Evaluador> result = this.query(sql, parametros, new RowMapper<Evaluador>() {
-			@Override
-			public Evaluador mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Evaluador evaluador = new Evaluador(
-						rs.getString("ev.id_evaluador"), 
-						rs.getString("ev.nombre"), 
-						rs.getString("ev.especialidad"));
-				return evaluador;
 			}
 		});
 		return result;

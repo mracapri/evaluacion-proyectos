@@ -1,6 +1,6 @@
 package edu.mx.utvm.eproyectos.dao;
 
-import static edu.mx.utvm.eproyectos.dao.util.TestData.generateBytes;
+import static edu.mx.utvm.eproyectos.dao.util.TestData.*;
 import static edu.mx.utvm.eproyectos.dao.util.TestData.generateId32;
 
 import java.util.ArrayList;
@@ -155,7 +155,7 @@ public class TestDaoEvaluacion {
 		
 		// creando evaluador
 		String id32Evaluador1 = generateId32();
-		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador, evaluacion);
 		
@@ -165,8 +165,8 @@ public class TestDaoEvaluacion {
 		
 		catalogos.afterPropertiesSet();
 		
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasdasd");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasdasd");
 		evaluadorDao.create(evaluador1, evaluacion);
 		evaluadorDao.create(evaluador2, evaluacion);
 		

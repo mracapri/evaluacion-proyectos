@@ -96,8 +96,8 @@ public class TestDaoResultado {
 		evaluacionDao.create(evaluacion);
 		
 		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasdasd");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasdasd");
 		
 		evaluadorDao.create(evaluador1, evaluacion);
 		evaluadorDao.create(evaluador2, evaluacion);
@@ -144,8 +144,8 @@ public class TestDaoResultado {
 		evaluacionDao.create(evaluacion);
 		
 		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasdasd");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasdasd");
 		
 		evaluadorDao.create(evaluador1, evaluacion);
 		evaluadorDao.create(evaluador2, evaluacion);

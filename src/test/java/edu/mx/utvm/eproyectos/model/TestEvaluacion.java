@@ -76,7 +76,7 @@ public class TestEvaluacion {
 	public void agregandoEvaluadoresALaEvaluacionVacia() {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion("001","Evaluacion 2013");
-		evaluacion.getEvaluadores().add(new Evaluador("1", "Noe Abelino", "TIC"));
+		evaluacion.getEvaluadores().add(new Evaluador("1", "Noe Abelino", "TIC", "QWE123", "ZXCZ"));
 		assertTrue(evaluacion.getEvaluadores() != null);
 		assertTrue(evaluacion.getEvaluadores().size() > 0);
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
@@ -88,8 +88,8 @@ public class TestEvaluacion {
 		Evaluacion evaluacion = new Evaluacion("001", "Evaluacion 2013");
 		
 		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");			
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasd");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasd");			
 		
 		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
 		evalaudores.add(evaluador1);
@@ -108,8 +108,8 @@ public class TestEvaluacion {
 		Evaluacion evaluacion = new Evaluacion("001", "Evaluacion 2013");
 
 		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasd");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasd");
 		
 		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
 		evalaudores.add(evaluador1);
@@ -134,8 +134,8 @@ public class TestEvaluacion {
 		Evaluacion evaluacion = new Evaluacion("001" ,"Evaluacion 2013");
 		
 		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasd");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasd");
 		
 		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
 		evalaudores.add(evaluador1);
@@ -154,7 +154,7 @@ public class TestEvaluacion {
 		calificaciones.put(4, 9.0);									
 		
 		FactoryRubrica factoryRubrica = new FactoryRubrica();
-		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador("1", "Noe Abelino", "TIC"), calificaciones, factoryRubrica.getRubrica("1301",categorias.get(0)));								
+		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador("1", "Noe Abelino", "TIC", "QWE123", "ZXCZ"), calificaciones, factoryRubrica.getRubrica("1301",categorias.get(0)));								
 				
 		System.out.println(calificacionEvaluador.calcularTotal());
 		System.out.println(ToStringBuilder.reflectionToString(calificacionEvaluador));
@@ -166,8 +166,8 @@ public class TestEvaluacion {
 		Evaluacion evaluacion = new Evaluacion("001","Evaluacion 2013");
 		
 		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
+		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC", "qweqwe", "asdasd");
+		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC", "qweqwe", "asdasd");
 				
 		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
 		evalaudores.add(evaluador1);
@@ -195,8 +195,8 @@ public class TestEvaluacion {
 		
 		FactoryRubrica factoryRubrica = new FactoryRubrica(); 
 		
-		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador("1", "Noe Abelino", "TIC"), calificaciones, factoryRubrica.getRubrica("1301",new Categoria(0, "dessarrollo web")));					
-		CalificacionEvaluador calificacionEvaluador2 = new CalificacionEvaluador(new Evaluador("2", "Mario", "TIC"), calificaciones2, factoryRubrica.getRubrica("1301"));
+		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(new Evaluador("1", "Noe Abelino", "TIC", "QWE123", "ZXCZ"), calificaciones, factoryRubrica.getRubrica("1301",new Categoria(0, "dessarrollo web")));					
+		CalificacionEvaluador calificacionEvaluador2 = new CalificacionEvaluador(new Evaluador("2", "Mario", "TIC", "QWE123", "ZXCZ"), calificaciones2, factoryRubrica.getRubrica("1301"));
 		
 		List<CalificacionEvaluador> calificacionEvaluadoresList = new ArrayList<CalificacionEvaluador>();		
 		calificacionEvaluadoresList.add(calificacionEvaluador);
