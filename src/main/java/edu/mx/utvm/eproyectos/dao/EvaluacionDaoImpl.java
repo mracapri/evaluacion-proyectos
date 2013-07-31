@@ -39,12 +39,13 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	public void create(Evaluacion newInstance) {
 		this.update(
 				"INSERT INTO " +
-				"evaluacion(id_evaluacion, descripcion, descripcion_detallada) " +
-				"VALUES(?,?,?)",
+				"evaluacion(id_evaluacion, descripcion, descripcion_detallada, fecha) " +
+				"VALUES(?,?,?,?)",
 				new Object[] {
 						newInstance.getIdEvaluacion(),
 						newInstance.getDescripcion(),
-						newInstance.getDescripcionDetallada()
+						newInstance.getDescripcionDetallada(),
+						newInstance.getFechaCreacion()
 				});
 		
 	}
@@ -104,6 +105,7 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 				List<Proyecto> proyecto= findProyectosByIdEvalaucion(rs.getString("id_evaluacion")); //Carga a la lista proyectos el id de la evaluacion
 				
 				Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), rs.getString("descripcion"));
+					evaluacion.setFechaCreacion(rs.getDate("fecha"));
 					evaluacion.getProyectos().addAll(proyecto);
 					evaluacion.getEvaluadores().addAll(evaluadores);
 				return evaluacion;

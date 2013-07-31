@@ -34,11 +34,12 @@
 		<div class="detalleProyecto">
 			<span class="titulo-ventana">Proyectos a Evaluar</span>
 			<div class="control-group">
-				<div class="controls">
-					<a class="btn btn-primary nav pull-right"
+				<div class="controls">										
+					<a class="btn btn-primary pull-right"
 						href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/form"><i
-						class="icon-plus-sign icon-white"></i> Nuevo</a>
-				</div>
+						class="icon-plus-sign icon-white"></i> Nuevo</a><br><br>
+					<a class="btn btn-danger nav pull-right" href="${pageContext.request.contextPath}/resolver/evaluacion/all">CANCELAR</a>											
+				</div>				
 			</div>
 			<div class="control-group">
 				<section id="proyectos">

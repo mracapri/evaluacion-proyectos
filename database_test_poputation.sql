@@ -22,7 +22,7 @@ values (1, 'Software Multimedia'),
 insert into proyecto (id_proyecto, nombre, id_categoria, logo, archivo_presentacion, foto, responsable, integrantes) 
 values ('96a3be3cf272e017046d1b2674a52bd3', 'Aplicacion para kinect', 2, null, null, null, 'Joel Morales', null),
 ('a2ef406e2c2351e0b9e80029c909242d', 'Pagina para el IFE', 4, null, null, null, 'Andres Dominguez', null),
-('e88a49bccde359f0cabb40db83ba6080', 'Aplicacion para Automoviles', 5, null, null, null, 'Jonatan Gutierrez', null);
+('e88a49bccde359f0cabb40db83ba6080', 'Aplicacion para Automoviles', 3, null, null, null, 'Jonatan Gutierrez', null);
 
 /*Proyectos por evaluacion*/
 INSERT INTO evaluacion_proyectos (id_evaluacion,id_proyecto) VALUES 

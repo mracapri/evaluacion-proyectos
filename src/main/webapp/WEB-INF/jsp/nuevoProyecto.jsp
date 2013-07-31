@@ -110,7 +110,8 @@
 							</div>						
 						</div>
 						<div class="span6">
-							<button class="btn btn-success" type="submit">Guardar</button>					
+							<button class="btn btn-success" type="submit">Guardar</button>	
+							<a class="btn btn-danger" href="${pageContext.request.contextPath}/resolver/evaluacion/25bbdcd06c32d477f7fa1c3e4a91b032/proyectos">CANCELAR</a>				
 						</div>
 					</div> 					
 				</div>

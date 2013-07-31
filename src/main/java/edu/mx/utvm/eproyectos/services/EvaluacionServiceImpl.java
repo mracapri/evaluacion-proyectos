@@ -2,6 +2,8 @@ package edu.mx.utvm.eproyectos.services;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +17,8 @@ import edu.mx.utvm.eproyectos.model.Evaluacion;
  */
 @Service
 public class EvaluacionServiceImpl implements EvaluacionService{
-
+	
+	protected final Log log = LogFactory.getLog(getClass());
 
 	@Autowired
 	private EvaluacionDao dao;
@@ -33,7 +36,7 @@ public class EvaluacionServiceImpl implements EvaluacionService{
 
 	@Override
 	@Transactional
-	public void create(Evaluacion newInstance) {
+	public void create(Evaluacion newInstance) {		
 		dao.create(newInstance);
 	}
 

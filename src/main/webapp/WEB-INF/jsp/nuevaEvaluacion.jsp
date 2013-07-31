@@ -64,9 +64,7 @@
 						</div>
 						<div class="span6">
 							<button class="btn btn-success fileinput-button" type="submit"><i class="icon-file icon-white"></i>GUARDAR</button>                       																	
-							<span class="btn btn-danger fileinput-button">
-							    <span>CANCELAR</span>
-							</span>
+							<a class="btn btn-danger fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/all">CANCELAR</a>							
 						</div>
 					</div> 
 				</form:form>					                   
