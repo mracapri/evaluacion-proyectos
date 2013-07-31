@@ -1,5 +1,5 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET NAMES 'UTF8';
+SET NAMES 'latin1';
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -52,33 +52,33 @@ values (1, 0, 50, 'Deficiente'),
 
 /*Items Rubricas*/
 insert into item_rubrica ( id_item_rubrica, descripcion_corta, descripcion_larga, id_escala ) 
-values (1, 'No hay faltas de ortografía ni errores gramaticales presentadas en el contenido', 'No hay faltas de ortografía ni errores gramaticales presentadas en el contenido', 1),
-(2, 'La organización del material es adecuada para el usuario o grupo al que va dirigido', 'La organización del material es adecuada para el usuario o grupo al que va dirigido', 1),
+values (1, 'No hay faltas de ortografï¿½a ni errores gramaticales presentadas en el contenido', 'No hay faltas de ortografï¿½a ni errores gramaticales presentadas en el contenido', 1),
+(2, 'La organizaciï¿½n del material es adecuada para el usuario o grupo al que va dirigido', 'La organizaciï¿½n del material es adecuada para el usuario o grupo al que va dirigido', 1),
 (3, 'El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)', 'El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)', 1),
-(4, 'Manejo diestro del software de diseño, con mucha habilidad y uso de herramientas especiales', 'Manejo diestro del software de diseño, con mucha habilidad y uso de herramientas especiales', 1),
-(5, 'Cubre la información necesaria para el tema del proyecto. La presentación y distribución de la información es excelente', 'Cubre la información necesaria para el tema del proyecto. La presentación y distribución de la información es excelente', 1),
+(4, 'Manejo diestro del software de diseï¿½o, con mucha habilidad y uso de herramientas especiales', 'Manejo diestro del software de diseï¿½o, con mucha habilidad y uso de herramientas especiales', 1),
+(5, 'Cubre la informaciï¿½n necesaria para el tema del proyecto. La presentaciï¿½n y distribuciï¿½n de la informaciï¿½n es excelente', 'Cubre la informaciï¿½n necesaria para el tema del proyecto. La presentaciï¿½n y distribuciï¿½n de la informaciï¿½n es excelente', 1),
 
-(6, 'No hay faltas de ortografía ni errores gramaticales en las pantallas del proyecto', 'No hay faltas de ortografía ni errores gramaticales en las pantallas del proyecto', 1),
+(6, 'No hay faltas de ortografï¿½a ni errores gramaticales en las pantallas del proyecto', 'No hay faltas de ortografï¿½a ni errores gramaticales en las pantallas del proyecto', 1),
 (7, 'El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)', 'El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)', 1),
-(8, 'Manejo diestro del software de diseño, con mucha habilidad y uso de herramientas especiales', 'Manejo diestro del software de diseño, con mucha habilidad y uso de herramientas especiales', 1),
-(9, 'Cubre la información necesaria para el tema del proyecto. La presentación y distribución de la información es excelente', 'Cubre la información necesaria para el tema del proyecto. La presentación y distribución de la información es excelente', 1),
+(8, 'Manejo diestro del software de diseï¿½o, con mucha habilidad y uso de herramientas especiales', 'Manejo diestro del software de diseï¿½o, con mucha habilidad y uso de herramientas especiales', 1),
+(9, 'Cubre la informaciï¿½n necesaria para el tema del proyecto. La presentaciï¿½n y distribuciï¿½n de la informaciï¿½n es excelente', 'Cubre la informaciï¿½n necesaria para el tema del proyecto. La presentaciï¿½n y distribuciï¿½n de la informaciï¿½n es excelente', 1),
 (10, 'El software es tolerante y notifica posibles fallos: errores de conexion, servicios no disponibles, etc', 'El software es tolerante y notifica posibles fallos: errores de conexion, servicios no disponibles, etc', 1),
 (11, 'El software realiza conectividad a base de datos y/o a recursos externos', 'El software realiza conectividad a base de datos y/o a recursos externos', 1),
-(12, 'El software maneja roles operativos en la aplicación para administración y o control del mismo', 'El software maneja roles operativos en la aplicación para administración y o control del mismo', 1),
+(12, 'El software maneja roles operativos en la aplicaciï¿½n para administraciï¿½n y o control del mismo', 'El software maneja roles operativos en la aplicaciï¿½n para administraciï¿½n y o control del mismo', 1),
 
-(13, 'No hay faltas de ortografía ni errores gramaticales en las pantallas del proyecto', 'No hay faltas de ortografía ni errores gramaticales en las pantallas del proyecto', 1),
+(13, 'No hay faltas de ortografï¿½a ni errores gramaticales en las pantallas del proyecto', 'No hay faltas de ortografï¿½a ni errores gramaticales en las pantallas del proyecto', 1),
 (14, 'El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)', 'El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)', 1),
-(15, 'Manejo diestro del software de diseño, con mucha habilidad y uso de herramientas especiales', 'Manejo diestro del software de diseño, con mucha habilidad y uso de herramientas especiales', 1),
-(16, 'Cubre la información necesaria para el tema del proyecto. La presentación y distribución de la información es excelente', 'Cubre la información necesaria para el tema del proyecto. La presentación y distribución de la información es excelente', 1),
-(17, 'La aplicación es tolerante y notifica posibles fallos: errores de conexion, servicios no disponibles, etc', 'La aplicación es tolerante y notifica posibles fallos: errores de conexion, servicios no disponibles, etc', 1),
-(18, 'La aplicación realiza conectividad a base de datos internas y/o a servicios externos', 'La aplicación realiza conectividad a base de datos internas y/o a servicios externos', 1),
-(19, 'La aplicación se dibuja correctamente en la pantalla', 'La aplicación se dibuja correctamente en la pantalla', 1),
+(15, 'Manejo diestro del software de diseï¿½o, con mucha habilidad y uso de herramientas especiales', 'Manejo diestro del software de diseï¿½o, con mucha habilidad y uso de herramientas especiales', 1),
+(16, 'Cubre la informaciï¿½n necesaria para el tema del proyecto. La presentaciï¿½n y distribuciï¿½n de la informaciï¿½n es excelente', 'Cubre la informaciï¿½n necesaria para el tema del proyecto. La presentaciï¿½n y distribuciï¿½n de la informaciï¿½n es excelente', 1),
+(17, 'La aplicaciï¿½n es tolerante y notifica posibles fallos: errores de conexion, servicios no disponibles, etc', 'La aplicaciï¿½n es tolerante y notifica posibles fallos: errores de conexion, servicios no disponibles, etc', 1),
+(18, 'La aplicaciï¿½n realiza conectividad a base de datos internas y/o a servicios externos', 'La aplicaciï¿½n realiza conectividad a base de datos internas y/o a servicios externos', 1),
+(19, 'La aplicaciï¿½n se dibuja correctamente en la pantalla', 'La aplicaciï¿½n se dibuja correctamente en la pantalla', 1),
 
-(20,'No hay faltas de ortografía ni errores gramaticales','No hay faltas de ortografía ni errores gramaticales',1),
+(20,'No hay faltas de ortografï¿½a ni errores gramaticales','No hay faltas de ortografï¿½a ni errores gramaticales',1),
 (21,'El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)','El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)',1),
-(22,'Manejo diestro del software de diseño, con mucha habilidad y uso de herramientas especiales.','Manejo diestro del software de diseño, con mucha habilidad y uso de herramientas especiales.',1),
-(23,'Cubre la información necesaria para el tema del proyecto. La presentación y distribución de la información es excelente','Cubre la información necesaria para el tema del proyecto. La presentación y distribución de la información es excelente',1),
-(24,'El sitio web presenta la estructura de (encabezado, contenido, menu y pie de página)','El sitio web presenta la estructura de (encabezado, contenido, menu y pie de página)',1),
+(22,'Manejo diestro del software de diseï¿½o, con mucha habilidad y uso de herramientas especiales.','Manejo diestro del software de diseï¿½o, con mucha habilidad y uso de herramientas especiales.',1),
+(23,'Cubre la informaciï¿½n necesaria para el tema del proyecto. La presentaciï¿½n y distribuciï¿½n de la informaciï¿½n es excelente','Cubre la informaciï¿½n necesaria para el tema del proyecto. La presentaciï¿½n y distribuciï¿½n de la informaciï¿½n es excelente',1),
+(24,'El sitio web presenta la estructura de (encabezado, contenido, menu y pie de pï¿½gina)','El sitio web presenta la estructura de (encabezado, contenido, menu y pie de pï¿½gina)',1),
 (25,'El sitio web presena adecuadamente la distribucion de controles','El sitio web presena adecuadamente la distribucion de controles',1),
 (26,'El sitio web trata adecudamente el manejo de colores','El sitio web trata adecudamente el manejo de colores',1),
 (27,'El sitio web define el objetivo para el cual fue desarrollado','El sitio web define el objetivo para el cual fue desarrollado',1),
