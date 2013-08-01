@@ -1,7 +1,6 @@
 package edu.mx.utvm.eproyectos.controllers.formbeans;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Null;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
