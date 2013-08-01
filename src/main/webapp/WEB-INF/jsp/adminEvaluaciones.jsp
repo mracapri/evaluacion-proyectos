@@ -29,7 +29,10 @@
 		       <section id="proyectos">
 		       		</br>
 		       		<c:forEach var="evaluacion" items="${evaluaciones}">
-		       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos"><span>${evaluacion.descripcion}</span></a><br>
+		       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos">
+		       				<span>${evaluacion.descripcion}</span>
+		       				</a>
+		       			<br>
 		       		</c:forEach>
 	       			
 	       			<!--  <a href="${pageContext.request.contextPath}/resolver/evaluacion/1/proyectos"><span>Evaluacion numero</span></a>

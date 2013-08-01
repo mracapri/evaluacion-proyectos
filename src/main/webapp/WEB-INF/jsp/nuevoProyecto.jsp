@@ -25,7 +25,7 @@
 	<div class="container" > 
 		<div class="detalleProyecto">
 			<h2>Nuevo proyecto a evaluar</h2>			
-			<form:form method="post" modelAttribute="formProyecto">
+			<form:form method="post" modelAttribute="formProyecto" enctype="multipart/form-data">
 				<c:if test="${message != null}">
 					<div class="alert alert-success">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>							
@@ -137,7 +137,7 @@
 					<div class="row-fluid">						
 						<div class="span12" style="text-align:center; margin-top:2em">
 							<button class="btn btn-success" type="submit">Guardar</button>	
-							<a class="btn btn-danger" href="${pageContext.request.contextPath}/resolver/evaluacion/25bbdcd06c32d477f7fa1c3e4a91b032/proyectos">CANCELAR</a>				
+							<a class="btn btn-danger" href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos">CANCELAR</a>			
 						</div>
 					</div> 					
 				</div>

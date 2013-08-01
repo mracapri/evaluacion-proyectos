@@ -3,6 +3,7 @@ package edu.mx.utvm.eproyectos.controllers.formbeans;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class FormProyecto {
 	@NotEmpty
@@ -17,9 +18,9 @@ public class FormProyecto {
 	@Min(1)
 	private int idCategoria;	
 	
-	private byte[] logo;
-	private byte[] filePdf;
-	private byte[] fotoEquipo;
+	private CommonsMultipartFile logo;
+	private CommonsMultipartFile filePdf;
+	private CommonsMultipartFile fotoEquipo;
 		
 	private int noPresentacion;	
 	private int noCategoria;
@@ -48,22 +49,22 @@ public class FormProyecto {
 	public void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
 	}
-	public byte[] getLogo() {
+	public CommonsMultipartFile getLogo() {
 		return logo;
 	}
-	public void setLogo(byte[] logo) {
+	public void setLogo(CommonsMultipartFile logo) {
 		this.logo = logo;
 	}
-	public byte[] getFilePdf() {
+	public CommonsMultipartFile getFilePdf() {
 		return filePdf;
 	}
-	public void setFilePdf(byte[] filePdf) {
+	public void setFilePdf(CommonsMultipartFile filePdf) {
 		this.filePdf = filePdf;
 	}
-	public byte[] getFotoEquipo() {
+	public CommonsMultipartFile getFotoEquipo() {
 		return fotoEquipo;
 	}
-	public void setFotoEquipo(byte[] fotoEquipo) {
+	public void setFotoEquipo(CommonsMultipartFile fotoEquipo) {
 		this.fotoEquipo = fotoEquipo;
 	}
 	public int getNoPresentacion() {

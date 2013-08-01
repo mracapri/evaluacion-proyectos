@@ -55,9 +55,7 @@
 								<div class="row-fluid">
 									<div class="span6">
 										<div class="thumbnail">
-											<img
-												src="${pageContext.request.contextPath}/web-resources/img/logo.jpg"
-												alt="">
+											<img width="100px" height="100px" src="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/logo/${proyecto.idProyecto}" alt="${proyecto.nombre}">
 											<h5>${proyecto.nombre}</h5>
 										</div>
 									</div>
@@ -68,8 +66,12 @@
 										<span> ${proyecto.responsable}</span>
 									</div>
 									<div class="span6">										
-										<span><a href="#">Presentaci&oacuten PDF<i
-												class="icon-folder-open"></i></a></span>
+										<span>
+											<a href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/presentacion/${proyecto.idProyecto}" target="_blank">
+												Presentaci&oacuten PDF
+												<i class="icon-folder-open"></i>
+											</a>
+										</span>
 									</div>
 								</div>
 							</div>
