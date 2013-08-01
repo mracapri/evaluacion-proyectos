@@ -128,3 +128,8 @@ values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
 insert into evaluador ( id_evaluador, nombre, especialidad)
 values ('cd3dc8b6cffb41e4163dcbd857ca87da', 'Alfredo Perez', 'TIC'),
 ('68a9e49bbc88c02083a062a78ab3bf30', 'Mario Rivera', 'TIC');
+
+insert into usuario (nombre_usuario, clave, fecha_creacion, activo) values('mracapri','12345',now(), 1), ('alfredop','12345',now(), 1);
+insert into usuario_evaluador (nombre_usuario, id_evaluador) values('mracapri','68a9e49bbc88c02083a062a78ab3bf30'),('alfredop','cd3dc8b6cffb41e4163dcbd857ca87da');
+insert into usuario_roles (nombre_usuario, id_role) values ('mracapri',1);
+insert into usuario_roles (nombre_usuario, id_role) values ('alfredop',1);
