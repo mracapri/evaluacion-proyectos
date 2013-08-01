@@ -26,14 +26,7 @@
 	<div class="container" >
 		<div class="proyectoEvaluar">
 			<div class="control-group">
-				<form:form method="post" modelAttribute="formEvaluacion">
-					
-					<c:if test="${message != null}">
-						<div class="alert alert-success">
-							<button type="button" class="close" data-dismiss="alert">&times;</button>							
-							<p>${message}</p>
-						</div>
-					</c:if>					
+				<form:form method="post" modelAttribute="formEvaluacion">												
 																			
 					<div class="row-fluid">
 						<div class="span12 show-grid ">

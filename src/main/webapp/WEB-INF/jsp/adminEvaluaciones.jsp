@@ -34,7 +34,7 @@
 			       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos">
 			       				proyectos
 			       			</a>
-			       			<a href="#">
+			       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores/">
 			       				evaluadores
 			       			</a>
 		       			</span>

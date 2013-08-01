@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.controllers.formbeans.FormEvaluacion;
@@ -62,7 +63,7 @@ public class EvaluacionController {
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("adminEvaluaciones");
 		List<Evaluacion> evaluaciones = evaluacionService.findAll();
-		model.addObject("evaluaciones", evaluaciones);
+		model.addObject("evaluaciones", evaluaciones);		
 		return model;
     }
 	
@@ -96,21 +97,20 @@ public class EvaluacionController {
 			model.addObject("evaluacionObj",evaluacion);
 			request.getSession().setAttribute("evaluacionObj", evaluacion);
 			
-			model.addObject("message", "Evaluaci&oacuten Almacenada");
-			model.setViewName("nuevaEvaluacion");			
+			
+			return new ModelAndView("redirect:/resolver/evaluacion/all");		
 		}
 		return model;
     }
 	
 	/*Lista de evaluadores*/
 	@RequestMapping(value="/evaluadores", method=RequestMethod.GET)
-    public ModelAndView getEvaluadoresList(HttpServletRequest request,    
+    public ModelAndView getEvaluadoresList(HttpServletRequest request,     		
     		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("adminEvaluadores");		
 				
-		model.addObject("evaluadores",evaluadorService.findAll());
-		
+		model.addObject("evaluadores",evaluadorService.findAll());				
 		return model;
     }
 	
@@ -127,17 +127,17 @@ public class EvaluacionController {
 	
 	/*Formulario evalaudores POST*/
 	@RequestMapping(value="/evaluadores/form", method=RequestMethod.POST)
-    public ModelAndView getEvaluadoresFormSave(HttpServletRequest request,  
+    public ModelAndView getEvaluadoresFormSave(HttpServletRequest request,      		
     		@ModelAttribute("formEvaluador") @Valid FormEvaluador formEvaluador,
     		BindingResult result)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("nuevoEvaluador");				
 		if(!result.hasErrors()){
 			
-			Evaluador evaluador = new Evaluador("6b2fce24fdd25725fe73908192125dd9", formEvaluador.getNombre(), formEvaluador.getEspecialidad(), formEvaluador.getUsuario(), formEvaluador.getPassword());
-			Evaluacion evaluacion = new Evaluacion("25bbdcd06c32d477f7fa1c3e4a91b032", "otra");
-			evaluadorService.create(evaluador,evaluacion);
-			
+			Evaluador evaluador = new Evaluador(KeyGenerator.uuid(), formEvaluador.getNombre(), formEvaluador.getEspecialidad(), formEvaluador.getUsuario(), formEvaluador.getPassword());
+			//Evaluacion evaluacion = new Evaluacion("25bbdcd06c32d477f7fa1c3e4a91b032", "otra");
+			//evaluadorService.create(evaluador,evaluacion);
+			log.info("xxxxxxxxxxxxxxxxxxxxxxxxxx"+request.getSession().getAttribute("evaluacionObj"));
 			model.addObject("message", "Evaluador Almacenado");
 			model.setViewName("nuevoEvaluador");	
 		}
