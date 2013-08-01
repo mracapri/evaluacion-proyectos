@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS proyecto (
   id_proyecto  varchar(32) NOT NULL,  
   nombre varchar(200) NOT NULL,
   id_categoria int(2) NOT NULL,
-  logo blob NULL,
-  archivo_presentacion blob NULL,
-  foto blob NULL,
+  logo longblob NULL,
+  archivo_presentacion longblob NULL,
+  foto longblob NULL,
   responsable varchar(120) NOT NULL,
   integrantes varchar(700) NULL,
   PRIMARY KEY (id_proyecto),
@@ -110,6 +110,7 @@ CREATE TABLE IF NOT EXISTS usuario (
   clave varchar(32) NOT NULL,
   fecha_creacion date NOT NULL,
   activo tinyint(1) NOT NULL,
+  UNIQUE(nombre_usuario),
   PRIMARY KEY (nombre_usuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
