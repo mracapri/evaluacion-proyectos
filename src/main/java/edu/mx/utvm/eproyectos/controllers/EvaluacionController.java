@@ -113,12 +113,14 @@ public class EvaluacionController {
 	/*Guardar formulario de proyecto*/
 	@RequestMapping(value="/proyecto/form", method=RequestMethod.POST)
     public ModelAndView saveFormProyecto(HttpServletRequest request,
-    		@ModelAttribute("formProyecto") FormProyecto formProyecto,    		
+    		@ModelAttribute("formProyecto") @Valid FormProyecto formProyecto,    		
     		BindingResult result)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("nuevoProyecto");
+		model.addObject("categorias",catalogos.getCategorias());
 		if(!result.hasErrors()){
-			model.setViewName("proyectoEvaluar");
+			model.addObject("message", "Evaluaci&oacuten almacenada");
+			model.setViewName("nuevoProyecto");
 		}
 		return model;
     }

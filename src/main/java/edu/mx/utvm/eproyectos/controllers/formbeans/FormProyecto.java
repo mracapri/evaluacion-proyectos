@@ -1,10 +1,19 @@
 package edu.mx.utvm.eproyectos.controllers.formbeans;
 
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class FormProyecto {
+	@NotEmpty
 	private String nombre;
+	@NotEmpty
 	private String lider;
+	@NotEmpty
 	private String integrantes;
+	@Min(1)
 	private int idCategoria;
+	@NotEmpty
 	private String descripcion;
 	
 	public String getNombre() {

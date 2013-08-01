@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 
 <html lang="es">
@@ -18,18 +19,29 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-collapse.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/angular/js/angular.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
 </head>
 <body>		
 	<div class="container" > 
 		<div class="detalleProyecto">
 			<h2>Nuevo proyecto a evaluar</h2>			
 			<form:form method="post" modelAttribute="formProyecto">
+				<c:if test="${message != null}">
+					<div class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>							
+						<p>${message}</p>
+					</div>
+				</c:if>	
 				<div class="control-group">
 					<div class="row-fluid">
 						<div class="span6">
 							<label>Nombre del Proyecto</label>
-							<form:input path="nombre" placeholder="Nombre del Proyecto"/>
-							<!-- <input id="surname" type="text"  placeholder="Nombre del Proyecto"> -->
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="nombre" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="nombre" placeholder="Nombre del Proyecto"/>														
 						</div>
 						<div class="span6">
 							<div class="fileupload fileupload-new" data-provides="fileupload">
@@ -43,26 +55,45 @@
 					<div class="row-fluid">
 						<div class="span6">
 							<label>Lider de Proyecto</label>
-							<form:input path="lider" placeholder="Lider de proyecto"/>
-							<!-- <input id="liderProyecto" type="text"  placeholder="Lider de proyecto"> -->
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="lider" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="lider" placeholder="Lider de proyecto"/><br>															
 						</div>
 						<div class="span6">
 							<label>Categor&iacutea</label>
-								<form:select path="idCategoria" cssClass="lista">								
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="idCategoria" />
+								</span>
+							</spring:hasBindErrors>
+								<form:select path="idCategoria" cssClass="lista">
+									<form:option value="0">Selecciona una opcion...</form:option>								
 									<form:options items="${categorias}" itemLabel="descripcion" />									
-								</form:select>							
+								</form:select>																
 						</div>
 					</div>
 
 					<div class="row-fluid">
 						<div class="span6">
 							<label>Integrantes</label>
-						   	<input id="integrantes" type="text"  placeholder="Integrantes"> 
-
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="integrantes" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="integrantes" placeholder="Integrantes"/><br>					   								
 						</div>
 						<div class="span6">
 							<label>Descripci&oacuten</label>
-							<form:textarea path="descripcion" rows="1" class="textArea"/>
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="descripcion" />
+								</span>
+							</spring:hasBindErrors>
+							<form:textarea path="descripcion" rows="1" class="textArea"/><br>							
 						</div>
 					</div>
 					<div class="row-fluid">
