@@ -14,7 +14,7 @@ var DEMO = {
 	
 	//Carga los tooltips
 	cargaFunciones: function (){
-		$('#fechaEvaluacion').datepicker();
+		
 	},
 	
 	formsFunction: function(){
@@ -26,7 +26,7 @@ var DEMO = {
 		});
 		/*Limpia los campos cuando almacene los datos*/
 		if($(".alert-success").size() > 0){
-			$("input, textarea").val("");
+			$("input, textarea, select").val("");
 		}		
 	}
 	

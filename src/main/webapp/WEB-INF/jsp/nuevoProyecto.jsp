@@ -47,7 +47,9 @@
 							<div class="fileupload fileupload-new" data-provides="fileupload">
 								<div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img src="${pageContext.request.contextPath}/web-resources/img/cincuenta.gif" /></div>
 								<div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
-								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Logo</span><span class="fileupload-exists">Cambiar</span><input type="file"  name="logo" id="logo" /></span>
+								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Logo</span><span class="fileupload-exists">Cambiar</span>
+									<form:input type="file" path="logo"/>									
+								</span>
 								<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
 							</div>
 					    </div>
@@ -86,14 +88,18 @@
 							</spring:hasBindErrors>
 							<form:input path="integrantes" placeholder="Integrantes"/><br>					   								
 						</div>
-						<div class="span6">
-							<label>Descripci&oacuten</label>
-							<spring:hasBindErrors name="formProyecto">								
-								<span class="label label-info">
-									<form:errors path="descripcion" />
-								</span>
-							</spring:hasBindErrors>
-							<form:textarea path="descripcion" rows="1" class="textArea"/><br>							
+						<div class="span6">	
+							<div class="form-group">
+									<label>
+									 Exposicion por:
+									</label>
+									<label class="checkbox-inline">
+									  <form:checkbox value="1" path="noPresentacion"/> Presentaci&oacuten									  
+									</label>
+									<label class="checkbox-inline">
+									  <form:checkbox value="2" path="noCategoria"/> Categoria									  
+									</label>
+							</div>						
 						</div>
 					</div>
 					<div class="row-fluid">
@@ -109,7 +115,7 @@
 							    		<i class="icon-file"></i>
 							    		<span class="fileupload-new">A. Presentaci&oacuten</span>
 							    		<span class="fileupload-exists">Cambiar</span>
-							    		<input type="file" id="filePdf"/>
+							    		<form:input type="file" path="filePdf"/>							    		
 							    	</span>
 							    	
 								    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
@@ -119,28 +125,17 @@
 							<div class="fileupload fileupload-new" data-provides="fileupload">
 								<div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img src="${pageContext.request.contextPath}/web-resources/img/cincuenta.gif" /></div>
 								<div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
-								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Foto del Equipo</span><span class="fileupload-exists">Cambiar</span><input type="file"  name="fotoEquipo" id="fotoEquipo" /></span>
+								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Foto del Equipo</span><span class="fileupload-exists">Cambiar</span>
+									<form:input type="file" path="fotoEquipo"/>									
+								</span>
 								<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
 							 </div>
 						</div>
 						
 					</div> 
 					
-					<div class="row-fluid">
-						<div class="span6">	
-							<div class="form-group">
-									<label>
-									 Exposicion por:
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Presentaci&oacuten
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" > Categoria
-									</label>
-							</div>						
-						</div>
-						<div class="span6">
+					<div class="row-fluid">						
+						<div class="span12" style="text-align:center; margin-top:2em">
 							<button class="btn btn-success" type="submit">Guardar</button>	
 							<a class="btn btn-danger" href="${pageContext.request.contextPath}/resolver/evaluacion/25bbdcd06c32d477f7fa1c3e4a91b032/proyectos">CANCELAR</a>				
 						</div>
