@@ -12,14 +12,13 @@
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/jquery/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-collapse.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/angular/js/angular.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/angular.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/resultadoFinal.js"></script>
 	
 </head>
-<body>
-		
-	<div class="container" >
+<body ng-app="myApp">
+	
+		<div class="container" ng-controller="MyCtrl">
 			
 		<div class="contenedor">
 			<div class="row-fluid">
@@ -38,26 +37,20 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr ng-repeat="item in items | orderBy:predicate:reverse" fadey=1500>
 							<td>
-								<h3>1</h3>
+								<h3>{{$index + 1}}valor{{data.name}}</h3>
 							</td>
 							<td>
 								<div class="fileupload-new thumbnail logo"><img src="${pageContext.request.contextPath}/web-resources/img/logo.jpg"/></div>
 							</td>
-							<td><span class="tdResultados">DESARROLLO DE APLICACIONES MOBILES PARA ESTUDIANTES</span></td>
-							<td><h2>9</h2></td>
-						</tr>
-						<tr>
-							<td>
-								<h3>2</h3>
+							<td >
+							<span class="tdResultados ">{{item.name}}</span>
+										
 							</td>
-							<td>
-								<div class="fileupload-new thumbnail logo"><img src="${pageContext.request.contextPath}/web-resources/img/logo.jpg"/></div>
-							</td>
-							<td><span class="tdResultados">DESARROLLO DE MODULOS DE TURISMO PARA EL VALLE DEL MEZQUITAL</span></td>
-							<td><h2>10</h2></td>
+							<td><h2 class="show-grid">{{item.cal}}</h2></td>
 						</tr>
+						
 					</tbody>
 				</table>
 			</div>

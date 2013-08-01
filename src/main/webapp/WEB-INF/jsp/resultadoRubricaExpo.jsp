@@ -17,15 +17,16 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
 	
 </head>
-<body>
+<body >
 		
 	<div class="container" >
 		<div class="contenedor">
-			<a data-toggle="collapse" data-target="#activarProyecto"><i class=" icon-chevron-down"></i></a>
+			<a id="showProyectos" data-toggle="collapse" data-target="#activarProyecto"><i class=" icon-chevron-down"></i></a>
 			<div id="activarProyecto" class="row  collapse">
 				<div  class="span12">
-					<select>
+					<select id="listProyectos" name="listProyectos">
 						<option>Proyecto de evaluacion</option>
+						<option>Proyecto de evaluacion11</option>
 					</select>
 				</div>
 			</div>
@@ -35,7 +36,7 @@
 				</div>
 			</div>
 			<div class="control-group">
-				<table class="table table-bordered table-striped">
+				<table class="table table-bordered table-striped" id="tablaResulExpo" name="tablaResulExpo">
 					<thead>
 						<tr>
 							<th><h3>Nombre del Evaluador</h3></th>
@@ -48,28 +49,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><span class="tdResultados">MARIA LEDESMA VALERA</span></td>
-							<td><span class="tdResultados">8</span></td>
-							<td><span class="tdResultados">9</span></td>
-							<td><span class="tdResultados">10</span></td>
-							<td><span class="tdResultados">9</span></td>
-							<td><span class="tdResultados">10</span></td>
-							<td><span class="tdResultados">9.5</span></td>
-						</tr>
-						<tr>
-							<td><span class="tdResultados">JOSE DE JESUS VELASQUEZ AGUILAR</span></td>
-							<td><span class="tdResultados">8</span></td>
-							<td><span class="tdResultados">9</span></td>
-							<td><span class="tdResultados">10</span></td>
-							<td><span class="tdResultados">9</span></td>
-							<td><span class="tdResultados">10</span></td>
-							<td><span class="tdResultados">9.5</span></td>
-						</tr>
-						<tr>
-							<td colspan="6"><h3>CALIFICACI&OacuteN TOTAL</h3></td>
-							<td><h3>9.5</h3></td>
-						</tr>
+						
 					</tbody>
 				</table>            
 			</div>

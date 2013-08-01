@@ -90,6 +90,14 @@ cursor: pointer;
    width: 50px;
 }
 
+/*Animacion de resultados*/
+
+.block {
+  display: none;
+}
+
+/*************************/
+
 input[type='file'] {
 	position:absolute;
 	z-index:2;

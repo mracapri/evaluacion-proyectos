@@ -1,0 +1,21 @@
+body {
+  background: gray;
+  font-family: sans-serif;
+}
+.wrapper {
+  background: white;
+  margin: auto;
+  min-height: 15em;
+  padding: 1em;
+  width: 40%;
+}
+.wrapper h1 {
+  text-align: center;
+}
+.block {
+  display: none;
+}
+.block img {
+  float: left;
+  margin-right: 1em;
+}
