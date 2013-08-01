@@ -15,7 +15,6 @@ import org.springframework.stereotype.Repository;
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
-import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 
 @Repository
@@ -84,17 +83,6 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 						transientObject.getIdProyecto()
 				}
 			);
-		/*
-		 * Eimina por idproyecto e inserta de nuevo la lista de evaluadores
-		 * */		
-		this.update(
-				"DELETE FROM proyecto_evaluadores " +
-				"WHERE id_proyecto = ?",
-				new Object[] {
-						transientObject.getIdProyecto()
-				}
-			);
-		
 	}
 
 	@Override

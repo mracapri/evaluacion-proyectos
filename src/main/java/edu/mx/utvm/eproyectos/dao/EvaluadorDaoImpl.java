@@ -58,6 +58,10 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 
 	@Override
 	public void update(Evaluador transientObject) {
+		// actualizar usuario
+		usuarioDao.update(transientObject);
+		
+		// actualizar evaluador
 		this.update(
 				"UPDATE evaluador " + "SET especialidad = ?, nombre = ? "
 						+ "WHERE id_evaluador = ?",
@@ -68,6 +72,10 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 
 	@Override
 	public void delete(Evaluador persistentObject) {
+		// elimina el usuario
+		usuarioDao.delete(persistentObject);
+		
+		// elimina al evaluador
 		this.update("DELETE FROM evaluador " + "WHERE id_evaluador = ?",
 				new Object[] { persistentObject.getIdEvaluador() });
 
@@ -93,6 +101,7 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 
 	@Override
 	public void create(Evaluador evaluador, Evaluacion evaluacion) {
+		// crea el evaluador
 		this.update(
 				"INSERT INTO " +
 				"evaluador(id_evaluador, nombre, especialidad) " +
@@ -103,6 +112,7 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 						evaluador.getEspecialidad()
 				});
 		
+		// asigna el evaluador a la evaluacion
 		this.update(
 				"INSERT INTO " +
 				"evaluacion_evaluadores(id_evaluacion, id_evaluador) " +
@@ -111,6 +121,9 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 						evaluacion.getIdEvaluacion(),
 						evaluador.getIdEvaluador()
 				});
+		
+		// crea un usuario para el evaluador
+		usuarioDao.createUsuario(evaluador);
 	}
 
 	@Override

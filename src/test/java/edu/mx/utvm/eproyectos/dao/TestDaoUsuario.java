@@ -48,6 +48,8 @@ public class TestDaoUsuario {
 		Assert.assertNotNull(evaluador);
 		
 		evaluadorDao.create(evaluador, evaluacion);
+		Evaluador read = evaluadorDao.read(id32Evaluador);
+		Assert.assertNotNull(read);
 
 		List<Evaluador> all = evaluadorDao.findAll();
 		Assert.assertTrue(all.size() == 1);
@@ -55,10 +57,78 @@ public class TestDaoUsuario {
 		Usuario usuario = new Usuario(generateId10(), "123456");
 		usuarioDao.create(usuario);
 		
-		// TODO: Terminar la prueba
 		
-		
+		Usuario read2 = usuarioDao.read(usuario.getUsuario());
+		Assert.assertNotNull(read2);
 	}
 	
+	
+	@Test
+	public void eliminaUsarioEvaluador() {
+		Assert.assertNotNull(evaluadorDao);
+		
+		String id32Evaluacion = generateId32();
+		String id32Evaluador = generateId32();
+		
+		Evaluacion evaluacion = new Evaluacion(id32Evaluacion,"Evaluacion");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+		
+		Evaluador evaluador = new Evaluador(id32Evaluador, "Jose Perez Aguirre", "Desarrollo Mobile", generateId10(), "123456");
+		Assert.assertNotNull(evaluador);
+		
+		evaluadorDao.create(evaluador, evaluacion);
+		Evaluador read = evaluadorDao.read(id32Evaluador);
+		Assert.assertNotNull(read);
 
+		List<Evaluador> all = evaluadorDao.findAll();
+		Assert.assertTrue(all.size() == 1);
+		
+		Usuario usuario = new Usuario(generateId10(), "123456");
+		usuarioDao.create(usuario);
+		
+		
+		Usuario read2 = usuarioDao.read(usuario.getUsuario());
+		Assert.assertNotNull(read2);
+		
+		usuarioDao.delete(read2);
+		read2 = usuarioDao.read(usuario.getUsuario());
+		Assert.assertNull(read2);
+	}
+	
+	@Test
+	public void modificaUsarioEvaluador() {
+		Assert.assertNotNull(evaluadorDao);
+		
+		String id32Evaluacion = generateId32();
+		String id32Evaluador = generateId32();
+		
+		Evaluacion evaluacion = new Evaluacion(id32Evaluacion,"Evaluacion");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+		
+		Evaluador evaluador = new Evaluador(id32Evaluador, "Jose Perez Aguirre", "Desarrollo Mobile", generateId10(), "123456");
+		Assert.assertNotNull(evaluador);
+		
+		evaluadorDao.create(evaluador, evaluacion);
+		Evaluador read = evaluadorDao.read(id32Evaluador);
+		Assert.assertNotNull(read);
+
+		List<Evaluador> all = evaluadorDao.findAll();
+		Assert.assertTrue(all.size() == 1);
+		
+		Usuario usuario = new Usuario(generateId10(), "123456");
+		usuarioDao.create(usuario);
+		
+		String nuevaClave = "rapidoYFurioso";
+		usuario.setClave(nuevaClave);
+		usuarioDao.update(usuario);
+		Usuario read2 = usuarioDao.read(usuario.getUsuario());
+		
+		Assert.assertNotNull(read2);
+		Assert.assertTrue(read2.getClave().equals(nuevaClave));
+		
+		
+
+	}
 }

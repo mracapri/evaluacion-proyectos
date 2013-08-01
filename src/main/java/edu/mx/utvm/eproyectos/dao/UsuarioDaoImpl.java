@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Usuario;
 
@@ -67,12 +66,26 @@ public class UsuarioDaoImpl extends JdbcTemplate implements UsuarioDao{
 
 	@Override
 	public void update(Usuario transientObject) {
-		throw new UnsupportedOperationException("Metodo no implementado");		
+		// modifica el usuario y relaciones
+		this.update(
+			"UPDATE usuario SET clave = ?, activo = ? WHERE nombre_usuario = ?",
+			new Object[] {
+				transientObject.getClave(),
+				transientObject.getActivo(),
+				transientObject.getUsuario()
+			}
+		);		
 	}
 
 	@Override
 	public void delete(Usuario persistentObject) {
-		throw new UnsupportedOperationException("Metodo no implementado");		
+		// elimina el usuario y relaciones
+		this.update(
+			"DELETE FROM usuario WHERE nombre_usuario = ?",
+			new Object[] {
+				persistentObject.getUsuario()
+			}
+		);
 	}
 
 	@Override
@@ -81,19 +94,24 @@ public class UsuarioDaoImpl extends JdbcTemplate implements UsuarioDao{
 	}
 
 	@Override
-	public void crearUsuarioEvaluador(Usuario usuario, Evaluador evaluador) {
+	public void createUsuario(Evaluador evaluador) {
+		// crea el usuario
+		create(evaluador);
+		
+		// asigna al usuario como evaluador
 		this.update(
 			"INSERT INTO usuario_evaluador(nombre_usuario, id_evaluador) VALUES(?,?)",
 			new Object[] {
-				usuario.getUsuario(),
+				evaluador.getUsuario(),
 				evaluador.getIdEvaluador()
 			}
 		);
 		
+		// le asigna el rol al usuario
 		this.update(
 			"INSERT INTO usuario_roles(nombre_usuario, id_role) VALUES(?,?)",
 			new Object[] {
-				usuario.getUsuario(),
+				evaluador.getUsuario(),
 				USUARIO_ROL_EVALUADOR
 			}
 		);

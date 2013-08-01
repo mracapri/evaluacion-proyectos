@@ -3,11 +3,13 @@ package edu.mx.utvm.eproyectos.model;
 public class Evaluador extends Usuario{
 	private String idEvaluador;
 	private String especialidad;
-
+	private String nombre;
+	
 	public Evaluador(String idEvaluador, String nombre, String especialidad,
 			String usuario, String clave) {
 		
-		super(usuario, clave, nombre);
+		super(usuario, clave);
+		this.nombre = nombre;
 		this.idEvaluador = idEvaluador;
 		this.especialidad = especialidad;		
 	}	
@@ -23,8 +25,13 @@ public class Evaluador extends Usuario{
 	public String getIdEvaluador() {
 		return idEvaluador;
 	}
-	
-	public Usuario convertUsuario(){
-		return this;
+
+	public String getNombre() {
+		return nombre;
 	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 }
