@@ -34,7 +34,7 @@ public class EvaluadorController {
     		@PathVariable("idEvaluador") String idEvaluador,
     		HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("proyectoEvaluar");	
+		ModelAndView model = new ModelAndView("proyectoParaEvaluar");	
 		return model;
     }
 	

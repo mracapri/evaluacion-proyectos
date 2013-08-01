@@ -23,11 +23,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.controllers.formbeans.FormEvaluacion;
+import edu.mx.utvm.eproyectos.controllers.formbeans.FormEvaluador;
 import edu.mx.utvm.eproyectos.controllers.formbeans.FormProyecto;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.services.EvaluacionService;
+import edu.mx.utvm.eproyectos.services.EvaluadorService;
 import edu.mx.utvm.eproyectos.services.ProyectoService;
 
 @Controller
@@ -42,6 +45,9 @@ public class EvaluacionController {
 	
 	@Autowired
 	private ProyectoService proyectoService;
+	
+	@Autowired
+	private EvaluadorService evaluadorService;
 	
 	@Autowired
 	private Catalogos catalogos;
@@ -87,8 +93,50 @@ public class EvaluacionController {
 			model.addObject("evaluacionObj",evaluacion);
 			request.getSession().setAttribute("evaluacionObj", evaluacion);
 			
-			model.addObject("message", "Evaluaci&oacuten almacenada");
+			model.addObject("message", "Evaluaci&oacuten Almacenada");
 			model.setViewName("nuevaEvaluacion");			
+		}
+		return model;
+    }
+	
+	/*Lista de evaluadores*/
+	@RequestMapping(value="/evaluadores", method=RequestMethod.GET)
+    public ModelAndView getEvaluadoresList(HttpServletRequest request,    
+    		HttpServletResponse response)
+            throws ServletException, IOException {
+		ModelAndView model = new ModelAndView("adminEvaluadores");		
+				
+		model.addObject("evaluadores",evaluadorService.findAll());
+		
+		return model;
+    }
+	
+	/*Formulario evalaudores*/
+	@RequestMapping(value="/evaluadores/form", method=RequestMethod.GET)
+    public ModelAndView getEvaluadoresForm(HttpServletRequest request,  
+    		@ModelAttribute("formEvaluador") FormEvaluador formEvaluador,
+    		HttpServletResponse response)
+            throws ServletException, IOException {
+		ModelAndView model = new ModelAndView("nuevoEvaluador");		
+		
+		return model;
+    }
+	
+	/*Formulario evalaudores POST*/
+	@RequestMapping(value="/evaluadores/form", method=RequestMethod.POST)
+    public ModelAndView getEvaluadoresFormSave(HttpServletRequest request,  
+    		@ModelAttribute("formEvaluador") @Valid FormEvaluador formEvaluador,
+    		BindingResult result)
+            throws ServletException, IOException {
+		ModelAndView model = new ModelAndView("nuevoEvaluador");				
+		if(!result.hasErrors()){
+			
+			Evaluador evaluador = new Evaluador("6b2fce24fdd25725fe73908192125dd9", formEvaluador.getNombre(), formEvaluador.getEspecialidad(), formEvaluador.getUsuario(), formEvaluador.getPassword());
+			Evaluacion evaluacion = new Evaluacion("25bbdcd06c32d477f7fa1c3e4a91b032", "otra");
+			evaluadorService.create(evaluador,evaluacion);
+			
+			model.addObject("message", "Evaluador Almacenado");
+			model.setViewName("nuevoEvaluador");	
 		}
 		return model;
     }
@@ -144,7 +192,7 @@ public class EvaluacionController {
 			
 			proyectoService.create(proyecto,evaluacion);
 			
-			model.addObject("message", "Evaluaci&oacuten almacenada");
+			model.addObject("message", "Proyecto Almacenado");
 			model.setViewName("nuevoProyecto");
 						
 		}

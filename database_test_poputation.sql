@@ -133,3 +133,11 @@ insert into usuario (nombre_usuario, clave, fecha_creacion, activo) values('mrac
 insert into usuario_evaluador (nombre_usuario, id_evaluador) values('mracapri','68a9e49bbc88c02083a062a78ab3bf30'),('alfredop','cd3dc8b6cffb41e4163dcbd857ca87da');
 insert into usuario_roles (nombre_usuario, id_role) values ('mracapri',1);
 insert into usuario_roles (nombre_usuario, id_role) values ('alfredop',1);
+
+/*Usuarios*/
+insert into usuario ( nombre_usuario, clave, fecha_creacion, activo)
+values ('mayri_022', '1452546', '2013-06-15', 1);
+
+/*Usuario evaluador*/
+insert into usuario_evaluador ( nombre_usuario, id_evaluador)
+values ('mayri_022', '68a9e49bbc88c02083a062a78ab3bf30');
