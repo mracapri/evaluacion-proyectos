@@ -130,7 +130,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 						proyecto.getLogo(),
 						proyecto.getArchivoPresentacion(),
 						proyecto.getFoto(),
-						proyecto.getIntegrantes()
+						proyecto.getIntegrantes() // TODO: Cambiar por string por que guarda el toString de la lista
 				});
 	
 		this.update(

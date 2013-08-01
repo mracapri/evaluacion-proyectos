@@ -56,4 +56,9 @@ public class EvaluadorServiceImpl implements EvaluadorService{
 		dao.create(newInstance, evaluacion);
 	}
 
+	@Override
+	public Evaluador readByNombreUsuario(String nombreUsuario) {
+		return dao.readByNombreUsuario(nombreUsuario);
+	}
+
 }

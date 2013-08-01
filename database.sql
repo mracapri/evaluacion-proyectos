@@ -1,10 +1,10 @@
-/*DROP DATABASE evaluacion_proyectos_produccion;
+DROP DATABASE evaluacion_proyectos_produccion;
 CREATE DATABASE IF NOT EXISTS evaluacion_proyectos_produccion;
-USE evaluacion_proyectos_produccion;*/
+USE evaluacion_proyectos_produccion;
 
-DROP DATABASE evaluacion_proyectos_test;
+/*DROP DATABASE evaluacion_proyectos_test;
 CREATE DATABASE IF NOT EXISTS evaluacion_proyectos_test;
-USE evaluacion_proyectos_test;
+USE evaluacion_proyectos_test;*/
 
 SET GLOBAL max_allowed_packet = 1024*1024*1024*10;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";

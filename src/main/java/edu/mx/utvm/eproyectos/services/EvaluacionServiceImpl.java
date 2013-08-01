@@ -53,4 +53,9 @@ public class EvaluacionServiceImpl implements EvaluacionService{
 		dao.delete(persistentObject);
 	}
 
+	@Override
+	public Evaluacion readByIdEvalauador(String idEvaluador) {
+		return dao.readByIdEvalauador(idEvaluador);
+	}
+
 }

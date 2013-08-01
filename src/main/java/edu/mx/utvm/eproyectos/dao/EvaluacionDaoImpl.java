@@ -52,21 +52,23 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 
 	@Override
 	public Evaluacion read(String id) {
-		 String sql = "select * from evaluacion where id_evaluacion = ?";
-			try {
-				Evaluacion resultado = this.queryForObject(sql,
-						new Object[] { id },
-						new RowMapper<Evaluacion>() {
-							@Override
-							public Evaluacion mapRow(ResultSet rs, int rowNum) throws SQLException {
-								Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), rs.getString("descripcion"));							
-								return evaluacion;
-							}
-						});
-				return resultado;
-			} catch (EmptyResultDataAccessException accessException) {
-				return null;
-			}
+		String sql = "select * from evaluacion where id_evaluacion = ?";
+		try {
+			Evaluacion resultado = this.queryForObject(sql,
+					new Object[] { id }, new RowMapper<Evaluacion>() {
+						@Override
+						public Evaluacion mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							Evaluacion evaluacion = new Evaluacion(rs
+									.getString("id_evaluacion"), rs
+									.getString("descripcion"));
+							return evaluacion;
+						}
+					});
+			return resultado;
+		} catch (EmptyResultDataAccessException accessException) {
+			return null;
+		}
 	}
 
 	@Override
@@ -137,6 +139,30 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 			}
 		});
 		return result;
+	}
+
+	@Override
+	public Evaluacion readByIdEvalauador(String idEvaluador) {
+		String sql = "";
+		sql += "select e.id_evaluacion, e.descripcion ";
+		sql += "from evaluacion e, evaluacion_evaluadores ee ";
+		sql += "where ee.id_evaluador = ? and e.id_evaluacion = ee.id_evaluacion";
+		try {
+			Evaluacion resultado = this.queryForObject(sql,
+					new Object[] { idEvaluador }, new RowMapper<Evaluacion>() {
+						@Override
+						public Evaluacion mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							Evaluacion evaluacion = new Evaluacion(rs
+									.getString("id_evaluacion"), rs
+									.getString("descripcion"));
+							return evaluacion;
+						}
+					});
+			return resultado;
+		} catch (EmptyResultDataAccessException accessException) {
+			return null;
+		}
 	}
 
 	

@@ -59,6 +59,27 @@ public class TestDaoEvaluador {
 		List<Evaluador> all = evaluadorDao.findAll();
 		Assert.assertTrue(all.size() == 1);		
 	}
+
+	@Test
+	public void insertAndfindByUsername(){
+		log.info("------------Test Insert and Find All----------------------");
+		Assert.assertNotNull(evaluadorDao);
+		
+		String id32Evaluacion = generateId32();
+		String id32Evaluador = generateId32();
+		
+		Evaluacion evaluacion = new Evaluacion(id32Evaluacion,"Evaluacion");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+		
+		Evaluador evaluador = new Evaluador(id32Evaluador, "Jose Perez Aguirre", "Desarrollo Mobile", "mracapri", "123456");
+		Assert.assertNotNull(evaluador);
+		
+		evaluadorDao.create(evaluador, evaluacion);
+
+		Evaluador readByNombreUsuario = evaluadorDao.readByNombreUsuario("mracapri");
+		Assert.assertNotNull(readByNombreUsuario);
+	}
 	
 	@Test
 	public void inserTwoId(){

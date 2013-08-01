@@ -6,15 +6,27 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Evaluador;
+import edu.mx.utvm.eproyectos.services.EvaluacionService;
+import edu.mx.utvm.eproyectos.services.EvaluadorService;
+
 @Controller
 @RequestMapping("/evaluador")
 public class EvaluadorController {
+	
+	@Autowired
+	private EvaluadorService evaluadorService;
+	
+	@Autowired
+	private EvaluacionService evaluacionService;
 	
 	/*Lista de evaluaciones por evaluador*/
 	@RequestMapping(value="/evaluacion/{idEvaluador}", method=RequestMethod.GET)
@@ -28,13 +40,22 @@ public class EvaluadorController {
     }
 	
 	/*Lista proyectos por evaluador*/
-	@RequestMapping(value="/proyecto/{idEvaluador}", method=RequestMethod.GET)
+	@RequestMapping(value="/proyectos", method=RequestMethod.GET)
     public ModelAndView getProyectosPorEvaluador(
     		HttpServletRequest request,
-    		@PathVariable("idEvaluador") String idEvaluador,
     		HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("proyectoParaEvaluar");	
+		ModelAndView model = new ModelAndView("proyectoParaEvaluar");
+		
+		String usuario = "mracapri";
+		Evaluador readByNombreUsuario = evaluadorService.readByNombreUsuario(usuario);
+		if(readByNombreUsuario !=  null){
+			Evaluacion evaluacion = evaluacionService.readByIdEvalauador(readByNombreUsuario.getIdEvaluador());
+			model.addObject("evaluacion", evaluacion);
+			model.addObject("proyectos", evaluacion.getProyectos());
+			
+			// TODO: Terminar la vista
+		}
 		return model;
     }
 	

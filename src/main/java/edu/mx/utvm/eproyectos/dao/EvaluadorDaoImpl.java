@@ -55,6 +55,30 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 			return null;
 		}
 	}
+	
+	@Override
+	public Evaluador readByNombreUsuario(String nombreUsuario) {
+		String sql = "";
+		sql += "SELECT e.id_evaluador, e.nombre, e.especialidad, u.nombre_usuario, u.clave ";
+		sql += "FROM evaluador e, usuario u, usuario_evaluador eu ";
+		sql += "WHERE e.id_evaluador = eu.id_evaluador and eu.nombre_usuario = u.nombre_usuario and u.nombre_usuario = ?";
+		try {
+			Evaluador resultado = this.queryForObject(sql, new Object[] { nombreUsuario },
+					new RowMapper<Evaluador>() {
+						@Override
+						public Evaluador mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							Evaluador evaluador = new Evaluador(
+									rs.getString("e.id_evaluador"), rs.getString("e.nombre"),
+									rs.getString("e.especialidad"), rs.getString("u.nombre_usuario"), rs.getString("u.clave"));
+							return evaluador;
+						}
+					});
+			return resultado;
+		} catch (EmptyResultDataAccessException accessException) {
+			return null;
+		}
+	}
 
 	@Override
 	public void update(Evaluador transientObject) {
