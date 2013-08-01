@@ -35,13 +35,14 @@
 		</session-management>
 	 </http>
 
-	 <authentication-manager>
-        <authentication-provider>
-			<user-service>
-				<user name="tey" password="123456" authorities="VENDEDOR" />
-			</user-service>
-        </authentication-provider>
-    </authentication-manager>
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service
+				authorities-by-username-query="select u.nombre_usuario, r.role from usuario u, usuario_roles ur, roles r where u.nombre_usuario = ?  and ur.nombre_usuario =  u.nombre_usuario and ur.id_role = r.id_role"
+				data-source-ref="dataSource"
+				users-by-username-query="select nombre_usuario, clave, activo from usuario where nombre_usuario = ?" />
+		</authentication-provider>
+	</authentication-manager>
 	 
 	<beans:bean id="securityHandler" class="edu.utvm.gencuesta.security.SecurityHandler"/>
 	 
