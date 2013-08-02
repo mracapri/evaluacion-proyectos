@@ -14,16 +14,23 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
+import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
+import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Proyecto;
+import edu.mx.utvm.eproyectos.model.ResultadoFinal;
 import edu.mx.utvm.eproyectos.services.EvaluacionService;
+import edu.mx.utvm.eproyectos.services.ProyectoService;
 import edu.mx.utvm.eproyectos.services.ResultadoService;
 
 @Controller
@@ -37,6 +44,15 @@ public class ManagerController {
 	
 	@Autowired
 	private ResultadoService resultadoService;
+	
+	@Autowired
+	private ProyectoService proyectoService;
+	
+	@Autowired
+	private Catalogos catalogos;
+	
+	@Autowired
+	private Gson gson;
 	
 	/*Lista de evaluaciones*/
 	@RequestMapping(value="/all", method=RequestMethod.GET)
@@ -83,28 +99,46 @@ public class ManagerController {
 	@RequestMapping(value="/resultados/finales", method=RequestMethod.GET)
     public ModelAndView getResultadoPorProyecto(
     		HttpServletRequest request,    		
-    		HttpServletResponse response)
+    		BindingResult result)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("resultadoFinal");
 		return model;
     }
 	
-	@RequestMapping(value="/jsonResult", method = RequestMethod.GET)
-	public String getEncuestas(ModelMap model, HttpServletRequest request, 								
-			HttpServletResponse response){								 		
+	@RequestMapping(value="/resultados-categoria.json", method = RequestMethod.GET)
+	public @ResponseBody String getEncuestas(HttpServletRequest request,			
+			HttpServletResponse response){								 				
+		response.setHeader("content-type", "application/json");	
 		
-		Categoria categoria = new Categoria(1, "nueva");
-		List<Proyecto> proyectos = new ArrayList<Proyecto>();
 		
-		Proyecto proyecto1 = new Proyecto("asdasd23423", "asdasdas", categoria, "asdasd");		
-		proyectos.add(proyecto1);
+		Evaluacion evaluacion = evaluacionService.read("25bbdcd06c32d477f7fa1c3e4a91b032");
 		
-		Proyecto proyecto2 = new Proyecto("asdas123", "aaaaaaaaaaa", categoria, "aaaaa");		
-		proyectos.add(proyecto2);
 		
-		model.put("proyectos", proyectos);
-							
-		return "jsonView"; 
-	}	
+		for (String idProyecto : evaluacion.getProyectos().keySet()) {
+			Proyecto proyecto = evaluacion.getProyectos().get(idProyecto);
+					
+			Evaluador evaluador = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario", "TIC", "aaaaa", "12345");
+			
+			Map<Integer, Double> resultadoPorItem = new HashMap<Integer, Double>();		
+			resultadoPorItem.put(1, 9.0);
+			resultadoPorItem.put(2, 9.0);
+			resultadoPorItem.put(3, 9.0);
+			resultadoPorItem.put(4, 9.0);
+			resultadoPorItem.put(5, 9.0);
+					
+			List<CalificacionEvaluador> calificacionEvaluadors = new ArrayList<CalificacionEvaluador>();
+			
+			CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(evaluador, resultadoPorItem, catalogos.getRubricas().get("dc5c7986daef50c1e02ab09b442ee34f"));
+			calificacionEvaluadors.add(calificacionEvaluador);
+			
+			ResultadoFinal resultadoFinal = new ResultadoFinal(calificacionEvaluadors);
+			//resultadoFinal.calcularPorCategoria();
+			
+			proyecto.setResultado(resultadoFinal);
+		
+		}
+		
+		return gson.toJson(evaluacion); 
+	}
 	
 }

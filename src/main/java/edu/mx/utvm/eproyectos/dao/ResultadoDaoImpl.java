@@ -25,11 +25,12 @@ public class ResultadoDaoImpl extends JdbcTemplate implements ResultadoDao {
 	public void create(Resultado newInstance) {
 		this.update(
 				"INSERT INTO " +
-				"resultado(id_evaluacion, id_proyecto, id_rubrica, id_item_rubrica, calificacion) " +
-				"VALUES(?,?,?,?,?)",
+				"resultado(id_evaluacion, id_proyecto, id_evaluador, id_rubrica, id_item_rubrica, calificacion) " +
+				"VALUES(?,?,?,?,?,?)",
 				new Object[] {
 						newInstance.getIdEvaluacion(),
 						newInstance.getIdProyecto(),
+						newInstance.getIdEvaluador(),
 						newInstance.getIdRubrica(),
 						newInstance.getIdItemRubrica(),
 						newInstance.getCalificacion()
@@ -60,7 +61,7 @@ public class ResultadoDaoImpl extends JdbcTemplate implements ResultadoDao {
 			@Override
 			public Resultado mapRow(ResultSet arg0, int arg1)
 					throws SQLException {
-					Resultado resultado = new Resultado(arg0.getInt("id_evaluacion"), arg0.getString("id_proyecto"), arg0.getString("id_rubrica"), arg0.getInt("id_item_rubrica"), arg0.getDouble("calificacion"));
+					Resultado resultado = new Resultado(arg0.getString("id_evaluacion"), arg0.getString("id_proyecto"), arg0.getString("id_evaluador"), arg0.getString("id_rubrica"), arg0.getInt("id_item_rubrica"), arg0.getDouble("calificacion"));
 				return resultado;
 			}
 			
@@ -78,8 +79,9 @@ public class ResultadoDaoImpl extends JdbcTemplate implements ResultadoDao {
 					public Resultado mapRow(ResultSet arg0, int arg1)
 							throws SQLException {
 						Resultado resultado = new Resultado(
-								arg0.getInt("id_evaluacion"), 
+								arg0.getString("id_evaluacion"), 
 								arg0.getString("id_proyecto"), 
+								arg0.getString("id_evaluador"),
 								arg0.getString("id_rubrica"), 
 								arg0.getInt("id_item_rubrica"), 
 								arg0.getDouble("calificacion"));

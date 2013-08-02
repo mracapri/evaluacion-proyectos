@@ -1,5 +1,6 @@
 package edu.mx.utvm.eproyectos.bootstrap;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
@@ -15,7 +16,7 @@ import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Rubrica;
 @Component
-public final class Catalogos implements InitializingBean{
+public class Catalogos implements InitializingBean{
 	
 	protected final Log log = LogFactory.getLog(getClass());
 	
@@ -30,9 +31,9 @@ public final class Catalogos implements InitializingBean{
 	private RubricaDao rubricaDao;
 	
 	/* listas  */
-	private Map<Integer, Categoria> categorias;
-	private Map<String, Rubrica> rubricas;
-	private Map<Integer, Escala> escalas;
+	private Map<Integer, Categoria> categorias = new HashMap<Integer, Categoria>();
+	private Map<String, Rubrica> rubricas = new HashMap<String, Rubrica>();
+	private Map<Integer, Escala> escalas = new HashMap<Integer, Escala>();
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
@@ -42,15 +43,15 @@ public final class Catalogos implements InitializingBean{
 		rubricas = rubricaDao.findAllMap();
 	}
 
-	public final Map<Integer, Categoria> getCategorias() {
+	public Map<Integer, Categoria> getCategorias() {
 		return categorias;
 	}
 	
-	public final Map<String, Rubrica> getRubricas() {
+	public Map<String, Rubrica> getRubricas() {
 		return rubricas;
 	}	
 	
-	public final Map<Integer, Escala> getEscalas(){
+	public Map<Integer, Escala> getEscalas(){
 		return escalas;
 	}
 }

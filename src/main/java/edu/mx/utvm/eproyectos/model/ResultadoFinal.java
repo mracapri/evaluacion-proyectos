@@ -4,9 +4,11 @@ import java.util.List;
 
 public class ResultadoFinal {
 	private List<CalificacionEvaluador> calificacionEvaluadores;
-	
+	private double calificacionPorCategoria = 0;
 	public ResultadoFinal(List<CalificacionEvaluador> calificacionEvaluadores){		
 		this.calificacionEvaluadores = calificacionEvaluadores;
+		calificacionPorCategoria = calcularPorCategoria();
+		//calcularPorPresentacion();
 	}
 	
 	public Double calcularTotal(){

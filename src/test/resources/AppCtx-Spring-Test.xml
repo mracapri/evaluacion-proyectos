@@ -23,7 +23,9 @@
     </bean>
      
 	<mvc:annotation-driven />
-	<context:component-scan base-package="edu.mx.utvm.eproyectos" />
+	<context:component-scan base-package="edu.mx.utvm.eproyectos.dao" />
+	<context:component-scan base-package="edu.mx.utvm.eproyectos.services" />
+	<context:component-scan base-package="edu.mx.utvm.eproyectos.bootstrap" />
 	<context:annotation-config />	
     
 </beans>

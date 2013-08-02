@@ -153,7 +153,7 @@ var DEMO = {
 				dataType: "JSON",
 	   			url:URL_APP_SERVICE + "/manager/resultados/exposicion",			  
 	   			 success: function(dato){
-					//Code
+					alert(dato);
 				}
 			});	
 			
