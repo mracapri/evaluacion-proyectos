@@ -6,12 +6,14 @@ public class CalificacionEvaluador {
 	private Evaluador evaluador;
 	private Map<Integer, Double> resultadoPorItem;
 	private Rubrica rubrica;
+	private double totalRubrica;
 	
 	public CalificacionEvaluador(Evaluador evaluador,
 			Map<Integer, Double> resultadoPorItem, Rubrica rubrica) {
 		this.evaluador = evaluador;
 		this.resultadoPorItem = resultadoPorItem;
 		this.rubrica = rubrica;
+		totalRubrica = calcularTotal();
 	}
 	
 	public Evaluador getEvaluador() {

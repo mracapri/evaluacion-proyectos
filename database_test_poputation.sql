@@ -146,9 +146,9 @@ insert into usuario_evaluador ( nombre_usuario, id_evaluador)
 values ('mayri_022', '68a9e49bbc88c02083a062a78ab3bf30');
 
 /*Resultados*/
-insert into resultado ( id_evaluacion, id_proyecto, id_rubrica, id_item_rubrica, calificacion)
-values ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'dc5c7986daef50c1e02ab09b442ee34f', 1, 9.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'dc5c7986daef50c1e02ab09b442ee34f', 2, 8.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'dc5c7986daef50c1e02ab09b442ee34f', 3, 8.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'dc5c7986daef50c1e02ab09b442ee34f', 4, 9.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'dc5c7986daef50c1e02ab09b442ee34f', 5, 9.0);
+insert into resultado ( id_evaluacion, id_proyecto, id_evaluador, id_rubrica, id_item_rubrica, calificacion)
+values ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 1, 9.0),
+('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 2, 8.0),
+('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 3, 8.0),
+('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 4, 9.0),
+('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 5, 9.0);

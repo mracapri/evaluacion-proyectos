@@ -94,11 +94,13 @@ CREATE TABLE IF NOT EXISTS rubrica_items_rubrica (
 CREATE TABLE IF NOT EXISTS resultado (
   id_evaluacion  varchar(32) NOT NULL,  
   id_proyecto  varchar(32) NOT NULL,
+  id_evaluador  varchar(32) NOT NULL,
   id_rubrica varchar(32) NOT NULL,
   id_item_rubrica int(4) NOT NULL,
   calificacion double NULL,
   FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion),
   FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto),
+   FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador),
   FOREIGN KEY (id_rubrica) REFERENCES rubrica(id_rubrica),
   FOREIGN KEY (id_item_rubrica) REFERENCES item_rubrica(id_item_rubrica)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

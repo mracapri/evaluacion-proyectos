@@ -1,24 +1,26 @@
 package edu.mx.utvm.eproyectos.model;
 
 public class Resultado {
-	private int idEvaluacion;
+	private String idEvaluacion;
 	private String idProyecto;
+	private String idEvaluador;
 	private String idRubrica;
 	private int idItemRubrica;
 	private double calificacion;
 	
-	public Resultado(Integer idEvaluacion, String idProyecto, String idRubrica, Integer idItemRubrica, double calificacion){
+	public Resultado(String idEvaluacion, String idProyecto, String idEvaluador,String idRubrica, Integer idItemRubrica, double calificacion){
 		this.idEvaluacion =idEvaluacion;
 		this.idProyecto = idProyecto;
+		this.idEvaluador = idEvaluador;
 		this.idRubrica = idRubrica;
 		this.idItemRubrica = idItemRubrica;
 		this.calificacion = calificacion;
 	}
 	
-	public int getIdEvaluacion() {
+	public String getIdEvaluacion() {
 		return idEvaluacion;
 	}
-	public void setIdEvaluacion(int idEvaluacion) {
+	public void setIdEvaluacion(String idEvaluacion) {
 		this.idEvaluacion = idEvaluacion;
 	}
 	public String getIdProyecto() {
@@ -27,6 +29,14 @@ public class Resultado {
 	public void setIdProyecto(String idProyecto) {
 		this.idProyecto = idProyecto;
 	}
+	public String getIdEvaluador() {
+		return idEvaluador;
+	}
+
+	public void setIdEvaluador(String idEvaluador) {
+		this.idEvaluador = idEvaluador;
+	}
+
 	public String getIdRubrica() {
 		return idRubrica;
 	}

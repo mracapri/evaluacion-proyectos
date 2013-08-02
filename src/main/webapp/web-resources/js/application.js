@@ -153,7 +153,7 @@ var DEMO = {
 				dataType: "JSON",
 	   			url: "URL_APP_SERVICE/manager/jsonResult",			  
 	   			 success: function(dato){
-					//Code
+					alert(dato);
 				}
 			});	
 			

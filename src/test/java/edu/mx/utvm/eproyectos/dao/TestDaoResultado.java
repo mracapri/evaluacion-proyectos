@@ -1,6 +1,5 @@
 package edu.mx.utvm.eproyectos.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -18,7 +17,6 @@ import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
-import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Resultado;
@@ -110,7 +108,7 @@ public class TestDaoResultado {
 		/*
 		 * Resultado
 		 * */
-		Resultado resultado = new Resultado(1,"130101","1301", 1, 10);
+		Resultado resultado = new Resultado("25bbdcd06c32d477f7fa1c3e4a91b032","130101", "68a9e49bbc88c02083a062a78ab3bf30","1301", 1, 10);
 		resultadoDao.create(resultado);
 		
 		List<Resultado> all = resultadoDao.findAll();
@@ -147,7 +145,7 @@ public class TestDaoResultado {
 		/*
 		 * Resultado
 		 * */
-		Resultado resultado = new Resultado(1,"130101","1301", 1, 10);
+		Resultado resultado = new Resultado("25bbdcd06c32d477f7fa1c3e4a91b032","130101", "68a9e49bbc88c02083a062a78ab3bf30", "1301", 1, 10);
 		resultadoDao.create(resultado);
 		
 		List<Resultado> all = resultadoDao.findAllByProyecto("130101");
