@@ -61,11 +61,11 @@
 								</span>
 						    </div>
 						    <div class="span2">
-								<a class="btn btn-mini btn-primary"  href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/${proyecto.value.idProyecto}"><i class="icon-comment icon-white"></i> Exposición</a>
+								<a class="btn btn-mini btn-primary"  href="#"><i class="icon-comment icon-white"></i> Exposición</a>
 				               	
 						    </div>
 						    <div class="span2">
-								<a class="btn btn-mini btn-primary"href="${pageContext.request.contextPath}/jsp/rubricaCategoria.jsp"><i class="icon-list-alt icon-white"></i>Categoria</a>
+								<a class="btn btn-mini btn-primary"href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/${proyecto.value.idProyecto}"><i class="icon-list-alt icon-white"></i>Categoria</a>
 						    </div>
 						</div> 
 					</c:forEach>
