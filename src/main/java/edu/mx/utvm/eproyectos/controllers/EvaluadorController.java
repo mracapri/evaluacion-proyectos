@@ -52,8 +52,6 @@ public class EvaluadorController {
 		if(readByNombreUsuario !=  null){
 			Evaluacion evaluacion = evaluacionService.readByIdEvalauador(readByNombreUsuario.getIdEvaluador());
 			model.addObject("evaluacion", evaluacion);
-			model.addObject("proyectos", evaluacion.getProyectos());
-			
 			// TODO: Terminar la vista
 		}
 		return model;

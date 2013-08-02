@@ -1,7 +1,3 @@
-/*DROP DATABASE evaluacion_proyectos_produccion;
-CREATE DATABASE IF NOT EXISTS evaluacion_proyectos_produccion;
-USE evaluacion_proyectos_produccion;*/
-
 DROP DATABASE evaluacion_proyectos_test;
 CREATE DATABASE IF NOT EXISTS evaluacion_proyectos_test;
 USE evaluacion_proyectos_test;
@@ -45,6 +41,7 @@ CREATE TABLE IF NOT EXISTS proyecto (
 CREATE TABLE IF NOT EXISTS evaluacion_proyectos (
   id_evaluacion varchar(32) NOT NULL, 
   id_proyecto  varchar(32) NOT NULL, 
+  UNIQUE(id_evaluacion, id_proyecto),
   FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion) ON DELETE CASCADE,
   FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -59,6 +56,7 @@ CREATE TABLE IF NOT EXISTS evaluador (
 CREATE TABLE IF NOT EXISTS evaluacion_evaluadores (
   id_evaluacion  varchar(32) NOT NULL, 
   id_evaluador  varchar(32) NOT NULL, 
+  UNIQUE(id_evaluacion, id_evaluador),
   FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion) ON DELETE CASCADE,
   FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

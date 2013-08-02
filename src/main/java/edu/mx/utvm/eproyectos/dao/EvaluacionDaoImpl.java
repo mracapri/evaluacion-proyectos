@@ -20,7 +20,6 @@ import edu.mx.utvm.eproyectos.model.Proyecto;
 
 @Repository
 public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
-
 	
 	@Autowired
 	@Override
@@ -34,6 +33,8 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	@Autowired
 	private EvaluadorDao evaluadorDao;
 
+	@Autowired
+	private ProyectoDao proyectoDao;
 
 	@Override
 	public void create(Evaluacion newInstance) {
@@ -59,12 +60,17 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 						@Override
 						public Evaluacion mapRow(ResultSet rs, int rowNum)
 								throws SQLException {
-							Evaluacion evaluacion = new Evaluacion(rs
-									.getString("id_evaluacion"), rs
-									.getString("descripcion"));
+							
+							Evaluacion evaluacion = new Evaluacion(
+									rs.getString("id_evaluacion"), 
+									rs.getString("descripcion"));
+
 							return evaluacion;
 						}
 					});
+
+			cargaProyectosYEvaluaciones(resultado);
+			
 			return resultado;
 		} catch (EmptyResultDataAccessException accessException) {
 			return null;
@@ -110,6 +116,9 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 					evaluacion.setFechaCreacion(rs.getDate("fecha"));
 					evaluacion.getProyectos().addAll(proyecto);
 					evaluacion.getEvaluadores().addAll(evaluadores);
+					
+				cargaProyectosYEvaluaciones(evaluacion);
+				
 				return evaluacion;
 			}
 		});
@@ -159,12 +168,28 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 							return evaluacion;
 						}
 					});
+			cargaProyectosYEvaluaciones(resultado);
 			return resultado;
 		} catch (EmptyResultDataAccessException accessException) {
 			return null;
 		}
 	}
 
-	
+	private void cargaProyectosYEvaluaciones(Evaluacion evaluacion){
+		
+		String idEvaluacion = evaluacion.getIdEvaluacion();
+		
+		// carga los proyectos
+		List<Proyecto> proyectos = proyectoDao.findAllByIdEvaluacion(idEvaluacion);
+		for(Proyecto proyecto : proyectos){
+			evaluacion.getProyectos().add(proyecto);
+		}
+		
+		// carga los evaluadores
+		List<Evaluador> evaluadores = evaluadorDao.findAllByIdEvaluacion(idEvaluacion);
+		for(Evaluador evaluador : evaluadores){
+			evaluacion.getEvaluadores().add(evaluador);
+		}
+	}
 
 }

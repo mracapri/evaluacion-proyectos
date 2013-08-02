@@ -1,3 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -46,23 +52,23 @@
 							</h5>
 					    </div>
 					</div> 
-					
-					<div class="row-fluid  show-grid">
-					    <div class="span8">
-							<b>1.-</b>
-							<span>
-								Desarrollo de Aplicacion Mobil para alumnos de la Utvm
-							</span>
-					    </div>
-					    <div class="span2">
-							<a class="btn btn-mini btn-primary"  href="${pageContext.request.contextPath}/jsp/rubricaExposicion.jsp"><i class="icon-comment icon-white"></i> Exposición</a>
-			               	
-					    </div>
-					    <div class="span2">
-							<a class="btn btn-mini btn-primary"href="${pageContext.request.contextPath}/jsp/rubricaCategoria.jsp"><i class="icon-list-alt icon-white"></i>Categoria</a>
-					    </div>
-					</div> 
-			        
+					<c:forEach var="proyecto" items="${evaluacion.proyectos}" varStatus="row">
+						<div class="row-fluid  show-grid">
+						    <div class="span8">
+								<b>${row.count}</b>
+								<span>
+									${proyecto.nombre}
+								</span>
+						    </div>
+						    <div class="span2">
+								<a class="btn btn-mini btn-primary"  href="${pageContext.request.contextPath}/jsp/rubricaExposicion.jsp"><i class="icon-comment icon-white"></i> Exposición</a>
+				               	
+						    </div>
+						    <div class="span2">
+								<a class="btn btn-mini btn-primary"href="${pageContext.request.contextPath}/jsp/rubricaCategoria.jsp"><i class="icon-list-alt icon-white"></i>Categoria</a>
+						    </div>
+						</div> 
+					</c:forEach>
 			        
 		        </div>  
 			</div>
