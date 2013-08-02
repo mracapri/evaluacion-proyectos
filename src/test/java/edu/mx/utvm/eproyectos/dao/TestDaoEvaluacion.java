@@ -1,6 +1,6 @@
 package edu.mx.utvm.eproyectos.dao;
 
-import static edu.mx.utvm.eproyectos.dao.util.TestData.generateBytes;
+import static edu.mx.utvm.eproyectos.dao.util.TestData.*;
 import static edu.mx.utvm.eproyectos.dao.util.TestData.generateId32;
 
 import java.util.ArrayList;
@@ -155,7 +155,7 @@ public class TestDaoEvaluacion {
 		
 		// creando evaluador
 		String id32Evaluador1 = generateId32();
-		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile");
+		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile", generateId10(), "123456");
 		Assert.assertNotNull(evaluador);
 		evaluadorDao.create(evaluador, evaluacion);
 		
@@ -165,17 +165,8 @@ public class TestDaoEvaluacion {
 		
 		catalogos.afterPropertiesSet();
 		
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
-		evaluadorDao.create(evaluador1, evaluacion);
-		evaluadorDao.create(evaluador2, evaluacion);
-		
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
-		
 		Proyecto proyecto = new Proyecto(generateId32(), "Proyecto de Vida",
-				catalogos.getCategorias().get(1), "Mario Rivera", evalaudores);
+				catalogos.getCategorias().get(1), "Mario Rivera");
 
 		proyecto.setArchivoPresentacion(generateBytes());
 		proyecto.setFoto(generateBytes());
@@ -195,5 +186,43 @@ public class TestDaoEvaluacion {
 	
 	
 	
+	@Test
+	public void readEvaluacionByIdEvaluador() throws Exception{
+		log.info("------------Test readEvaluacionByIdEvaluador ----------------------");
+		
+		Assert.assertNotNull(evaluacionDao);
+		String id32 = generateId32();
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Assert.assertNotNull(evaluacion);
+		evaluacionDao.create(evaluacion);
+		
+		log.info("RESUL--->"+evaluacionDao.read(id32).getDescripcion());
+		
+		// creando evaluador
+		String id32Evaluador1 = generateId32();
+		Evaluador evaluador = new Evaluador(id32Evaluador1, "Jose Perez Aguirre","Desarrollo Mobile", generateId10(), "123456");
+		Assert.assertNotNull(evaluador);
+		evaluadorDao.create(evaluador, evaluacion);
+		
+		// creando proyecto
+		Categoria categoria = new Categoria(1, "Desarrollo web");
+		categoriaDao.create(categoria);
+		
+		catalogos.afterPropertiesSet();
+		
+		Proyecto proyecto = new Proyecto(generateId32(), "Proyecto de Vida",
+				catalogos.getCategorias().get(1), "Mario Rivera");
 
+		proyecto.setArchivoPresentacion(generateBytes());
+		proyecto.setFoto(generateBytes());
+		proyecto.setLogo(generateBytes());
+		
+		proyectoDao.create(proyecto,evaluacion);
+		
+		
+		Evaluacion readByIdEvalauador = evaluacionDao.readByIdEvalauador(id32Evaluador1);
+		
+		Assert.assertNotNull(readByIdEvalauador);
+
+	}
 }

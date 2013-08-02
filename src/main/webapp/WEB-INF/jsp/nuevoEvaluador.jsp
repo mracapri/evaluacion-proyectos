@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 
 <html lang="es">
@@ -23,32 +26,68 @@
 	<div class="container" >
 		<div class="proyectoEvaluar">
 			<div class="control-group">
-				<div class="row-fluid">
-					<div class="span12 show-grid ">
-						<h4>Alta de evaluador</h4>
+				<form:form method="post" modelAttribute="formEvaluador">
+					<c:if test="${message != null}">
+						<div class="alert alert-success">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>							
+							<p>${message}</p>
+						</div>
+					</c:if>	
+				
+					<div class="row-fluid">
+						<div class="span12 show-grid ">
+							<h4>Alta de evaluador</h4>
+						</div>
+					</div>    
+					<div class="row-fluid">
+						<div class="span6">
+							<label>Nombre</label>
+							<spring:hasBindErrors name="formEvaluador">								
+								<span class="label label-info">
+									<form:errors path="nombre" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="nombre" placeholder="Nombre..."/>							
+						</div>
+						<div class="span6">
+							<label>Especialidad</label>
+							<spring:hasBindErrors name="formEvaluador">								
+								<span class="label label-info">
+									<form:errors path="especialidad" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="especialidad" placeholder="Descripcion..."/>							
+						</div>
 					</div>
-				</div>    
-				<div class="row-fluid">
-					<div class="span6">
-						<label>Nombre</label>
-						<input id="nombre" type="text"  placeholder="Descripcion...">
-					</div>
-					<div class="span6">
-						<label>Especialidad</label>
-						<input id="especialidad" type="text"  placeholder="Descripcion...">
-					</div>
-				</div>    				
-				<div class="row-fluid">
-					<div class="span6">                       					
-						<span class="btn  btn-success fileinput-button">
-							<i class="icon-file icon-white"></i>
-							<span>GUARDAR</span>
-						</span>
-						<span class="btn btn-danger fileinput-button">
-						    <span>CANCELAR</span>
-						</span>
-					</div>
-				</div>                     
+					<div class="row-fluid">
+						<div class="span6">
+							<br>
+							<label>Usuario</label>
+							<spring:hasBindErrors name="formEvaluador">								
+								<span class="label label-info">
+									<form:errors path="usuario" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="usuario" placeholder="Usuario..."/>							
+						</div>
+						<div class="span6">
+							<br>
+							<label>Password</label>
+							<spring:hasBindErrors name="formEvaluador">								
+								<span class="label label-info">
+									<form:errors path="password" />
+								</span>
+							</spring:hasBindErrors>
+							<form:password path="password" placeholder="Descripcion..."/>							
+						</div>
+					</div>    				
+					<div class="row-fluid">
+						<div class="span12" style="text-align:center; margin-top:2em">                       	
+							<button class="btn btn-success fileinput-button" type="submit"><i class="icon-file icon-white"></i>Guardar</button>							
+							<a class="btn btn-danger fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores">CANCELAR</a>							
+						</div>
+					</div> 
+				 </form:form>                   
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 
 <html lang="es">
@@ -18,24 +19,37 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-collapse.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/angular/js/angular.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
 </head>
 <body>		
 	<div class="container" > 
 		<div class="detalleProyecto">
-			<h2>Nuevo proyecto a evaluar</h2>			
-			<form:form method="post" modelAttribute="formProyecto">
+			<div><h2>Nuevo proyecto a evaluar</h2></div>			
+			<form:form method="post" modelAttribute="formProyecto" enctype="multipart/form-data">
+				<c:if test="${message != null}">
+					<div class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>							
+						<p>${message}</p>
+					</div>
+				</c:if>	
 				<div class="control-group">
 					<div class="row-fluid">
 						<div class="span6">
 							<label>Nombre del Proyecto</label>
-							<form:input path="nombre" placeholder="Nombre del Proyecto"/>
-							<!-- <input id="surname" type="text"  placeholder="Nombre del Proyecto"> -->
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="nombre" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="nombre" placeholder="Nombre del Proyecto"/>														
 						</div>
 						<div class="span6">
 							<div class="fileupload fileupload-new" data-provides="fileupload">
 								<div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img src="${pageContext.request.contextPath}/web-resources/img/cincuenta.gif" /></div>
 								<div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
-								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Logo</span><span class="fileupload-exists">Cambiar</span><input type="file"  name="logo" id="logo" /></span>
+								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Logo</span><span class="fileupload-exists">Cambiar</span>
+									<form:input type="file" path="logo"/>									
+								</span>
 								<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
 							</div>
 					    </div>
@@ -43,30 +57,39 @@
 					<div class="row-fluid">
 						<div class="span6">
 							<label>Lider de Proyecto</label>
-							<form:input path="lider" placeholder="Lider de proyecto"/>
-							<!-- <input id="liderProyecto" type="text"  placeholder="Lider de proyecto"> -->
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="lider" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="lider" placeholder="Lider de proyecto"/><br>															
 						</div>
 						<div class="span6">
 							<label>Categor&iacutea</label>
-								<form:select path="idCategoria" cssClass="lista">								
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="idCategoria" />
+								</span>
+							</spring:hasBindErrors>
+								<form:select path="idCategoria" cssClass="lista">
+									<form:option value="0">Selecciona una opcion...</form:option>								
 									<form:options items="${categorias}" itemLabel="descripcion" />									
-								</form:select>							
+								</form:select>																
 						</div>
 					</div>
 
 					<div class="row-fluid">
 						<div class="span6">
 							<label>Integrantes</label>
-						   	<input id="integrantes" type="text"  placeholder="Integrantes"> 
-
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="integrantes" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="integrantes" placeholder="Integrantes"/><br>					   								
 						</div>
 						<div class="span6">
-							<label>Descripci&oacuten</label>
-							<form:textarea path="descripcion" rows="1" class="textArea"/>
-						</div>
-					</div>
-					<div class="row-fluid">
-					   <div class="span6">
+							<label>Presentacion...</label>
 							<div class="fileupload fileupload-new " data-provides="fileupload">
 								  <div class="input-append lista">
 									    <div class="uneditable-input span3 lista">
@@ -78,39 +101,30 @@
 							    		<i class="icon-file"></i>
 							    		<span class="fileupload-new">A. Presentaci&oacuten</span>
 							    		<span class="fileupload-exists">Cambiar</span>
-							    		<input type="file" id="filePdf"/>
+							    		<form:input type="file" path="filePdf"/>							    		
 							    	</span>
 							    	
 								    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
 							</div>
 						</div>
+					</div>
+					<div class="row-fluid">
 						<div class="span6">
 							<div class="fileupload fileupload-new" data-provides="fileupload">
 								<div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img src="${pageContext.request.contextPath}/web-resources/img/cincuenta.gif" /></div>
 								<div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>
-								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Foto del Equipo</span><span class="fileupload-exists">Cambiar</span><input type="file"  name="fotoEquipo" id="fotoEquipo" /></span>
+								<span class="btn btn-file"><span class="fileupload-new"><i  class=" icon-picture"></i>Foto del Equipo</span><span class="fileupload-exists">Cambiar</span>
+									<form:input type="file" path="fotoEquipo"/>									
+								</span>
 								<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Eliminar</a>
 							 </div>
 						</div>
-						
 					</div> 
 					
-					<div class="row-fluid">
-						<div class="span6">	
-							<div class="form-group">
-									<label>
-									 Exposicion por:
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox"> Presentaci&oacuten
-									</label>
-									<label class="checkbox-inline">
-									  <input type="checkbox" > Categoria
-									</label>
-							</div>						
-						</div>
-						<div class="span6">
-							<button class="btn btn-success" type="submit">Guardar</button>					
+					<div class="row-fluid">						
+						<div class="span12" style="text-align:center; margin-top:2em">
+							<button class="btn btn-success" type="submit">Guardar</button>	
+							<a class="btn btn-danger" href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos">CANCELAR</a>			
 						</div>
 					</div> 					
 				</div>

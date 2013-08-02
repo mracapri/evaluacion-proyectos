@@ -22,7 +22,7 @@ values (1, 'Software Multimedia'),
 insert into proyecto (id_proyecto, nombre, id_categoria, logo, archivo_presentacion, foto, responsable, integrantes) 
 values ('96a3be3cf272e017046d1b2674a52bd3', 'Aplicacion para kinect', 2, null, null, null, 'Joel Morales', null),
 ('a2ef406e2c2351e0b9e80029c909242d', 'Pagina para el IFE', 4, null, null, null, 'Andres Dominguez', null),
-('e88a49bccde359f0cabb40db83ba6080', 'Aplicacion para Automoviles', 5, null, null, null, 'Jonatan Gutierrez', null);
+('e88a49bccde359f0cabb40db83ba6080', 'Aplicacion para Automoviles', 3, null, null, null, 'Jonatan Gutierrez', null);
 
 /*Proyectos por evaluacion*/
 INSERT INTO evaluacion_proyectos (id_evaluacion,id_proyecto) VALUES 
@@ -129,8 +129,15 @@ insert into evaluador ( id_evaluador, nombre, especialidad)
 values ('cd3dc8b6cffb41e4163dcbd857ca87da', 'Alfredo Perez', 'TIC'),
 ('68a9e49bbc88c02083a062a78ab3bf30', 'Mario Rivera', 'TIC');
 
-/*evaluadores por proyecto*/
-insert into proyecto_evaluadores ( id_proyecto, id_evaluador)
-values ('96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da'),
-('96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30'),
-('a2ef406e2c2351e0b9e80029c909242d', '68a9e49bbc88c02083a062a78ab3bf30');
+insert into usuario (nombre_usuario, clave, fecha_creacion, activo) values('mracapri','12345',now(), 1), ('alfredop','12345',now(), 1);
+insert into usuario_evaluador (nombre_usuario, id_evaluador) values('mracapri','68a9e49bbc88c02083a062a78ab3bf30'),('alfredop','cd3dc8b6cffb41e4163dcbd857ca87da');
+insert into usuario_roles (nombre_usuario, id_role) values ('mracapri',1);
+insert into usuario_roles (nombre_usuario, id_role) values ('alfredop',1);
+
+/*Usuarios*/
+insert into usuario ( nombre_usuario, clave, fecha_creacion, activo)
+values ('mayri_022', '1452546', '2013-06-15', 1);
+
+/*Usuario evaluador*/
+insert into usuario_evaluador ( nombre_usuario, id_evaluador)
+values ('mayri_022', '68a9e49bbc88c02083a062a78ab3bf30');

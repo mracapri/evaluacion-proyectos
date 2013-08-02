@@ -35,19 +35,21 @@
 			<span class="titulo-ventana">Evaluadores </span>
 			<div class="control-group">
 				<div class="controls">
-					<a class="btn btn-primary nav pull-right"
-						href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/form"><i
-						class="icon-plus-sign icon-white"></i> Nuevo</a>
-					<a class="btn btn-primary nav pull-right"
-						href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/form"><i
-						class="icon-list-alt icon-white"></i>Proyectos</a>
+					<a class="btn btn-primary pull-right"
+						href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores/form"><i
+						class="icon-plus-sign icon-white"></i> Nuevo</a><br><br>
+					<a class="btn btn-info nav pull-right"
+						href="${pageContext.request.contextPath}/resolver/evaluacion/all"><i
+						class="icon-list-alt icon-white"></i>Evaluaciones</a>
 				</div>
 			</div>
-			<div class="control-group">
+			<div class="control-group">												
 				<section id="evaluadores">
-					<c:forEach var="proyecto" items="${proyectos}">
-						<span>${proyecto.nombre}</span>
-					</c:forEach>
+					<ul class="list-group">
+						<c:forEach var="evaluador" items="${evaluadores}">
+							<li class="list-group-item">${evaluador.nombre} - ${evaluador.especialidad}</li>						
+						</c:forEach>
+					</ul>
 				</section>
 			</div>
 		</div>

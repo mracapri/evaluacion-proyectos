@@ -3,7 +3,7 @@ package edu.mx.utvm.eproyectos.model;
 import org.springframework.data.annotation.Id;
 
 public class Categoria {
-	@Id
+	
 	private int idCategoria;
 	private String descripcion;
 	

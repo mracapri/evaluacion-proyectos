@@ -25,7 +25,7 @@
 		<div class="contenedor">
 		<div class="row-fluid">
 			<div class="span12 show-grid">
-					<h2>TABLA DE POSICIONES</h2>
+					<h2>RESULTADOS DE EXPOSICI&OacuteN STAND</h2>
 				</div>
 			</div> 
 			<div class="control-group">

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mx.utvm.eproyectos.dao.EvaluadorDao;
+import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 /*
  * Implementacion del servicio <Evaluador>
@@ -48,6 +49,16 @@ public class EvaluadorServiceImpl implements EvaluadorService{
 	@Transactional
 	public void delete(Evaluador persistentObject) {
 		dao.delete(persistentObject);
+	}
+
+	@Override
+	public void create(Evaluador newInstance, Evaluacion evaluacion) {
+		dao.create(newInstance, evaluacion);
+	}
+
+	@Override
+	public Evaluador readByNombreUsuario(String nombreUsuario) {
+		return dao.readByNombreUsuario(nombreUsuario);
 	}
 
 }

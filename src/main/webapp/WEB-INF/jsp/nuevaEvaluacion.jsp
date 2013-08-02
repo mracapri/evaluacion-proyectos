@@ -1,3 +1,6 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 
 <html lang="es">
@@ -23,37 +26,53 @@
 	<div class="container" >
 		<div class="proyectoEvaluar">
 			<div class="control-group">
-				<div class="row-fluid">
-					<div class="span12 show-grid ">
-						<h4>Alta de evaluaci&oacuten</h4>
-					</div>
-				</div>    
-				<div class="row-fluid">
-					<div class="span6">
-						<label>Descripci&oacuten</label>
-						<input id="descripcion" type="text"  placeholder="Descripcion...">
-					</div>
-					<div class="span6">
-						<label>Fecha</label>
-						<input id="fechaEvaluacion" class="input-small" type="date"  placeholder="Fecha">
-						<span><i class="icon-calendar"></i></span>
-					</div>
-				</div>    
-				<div class="row-fluid">
-					<div class="span6">                       					
-						<label>Descripci&oacuten Detallada</label>
-						<textarea class="textArea" rows="2" placeholder="Descripcion detallada..."></textarea>
-					</div>
-					<div class="span6">                       					
-						<span class="btn  btn-success fileinput-button">
-							<i class="icon-file icon-white"></i>
-							<span>GUARDAR</span>
-						</span>
-						<span class="btn btn-danger fileinput-button">
-						    <span>CANCELAR</span>
-						</span>
-					</div>
-				</div>                     
+				<form:form method="post" modelAttribute="formEvaluacion">												
+																			
+					<div class="row-fluid">
+						<div class="span12 show-grid ">
+							<h4>Alta de evaluaci&oacuten</h4>
+						</div>
+					</div>    
+					<div class="row-fluid">
+						<div class="span6">
+							<label>Descripci&oacuten</label>
+							<spring:hasBindErrors name="formEvaluacion">								
+								<span class="label label-info">
+									<form:errors path="descripcion" />
+								</span>
+							</spring:hasBindErrors>
+							<form:input path="descripcion" placeholder="Descripcion..."/>													
+						</div>
+						 <div class="span6">	
+							<div class="form-group">
+									<label>
+									 Exposicion por:
+									</label>
+									<label class="checkbox-inline">
+									  <form:checkbox value="1" path="noPresentacion"/> Presentaci&oacuten									  
+									</label>
+									<label class="checkbox-inline">
+									  <form:checkbox value="2" path="noCategoria"/> Categoria									  
+									</label>
+							</div>						
+						</div>
+					</div>   					
+					<div class="row-fluid">
+						<div class="span6">                       					
+							<label>Descripci&oacuten Detallada</label>
+							<spring:hasBindErrors name="formEvaluacion">
+								<span class="label label-info">
+									<form:errors path="descripcionDetallada" />
+								</span>
+							</spring:hasBindErrors>	
+							<form:textarea path="descripcionDetallada" class="textArea" rows="2" placeholder="Descripcion detallada..."/>													
+						</div>
+						<div class="span6">
+							<button class="btn btn-success fileinput-button" type="submit"><i class="icon-file icon-white"></i>GUARDAR</button>                       																	
+							<a class="btn btn-danger fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/all">CANCELAR</a>							
+						</div>
+					</div> 
+				</form:form>					                   
 			</div>
 		</div>
 	</div>

@@ -21,20 +21,34 @@
 		<div class="detalleProyecto">
 			<span class="titulo-ventana">Evaluaciones</span>
 			<div class="control-group">
-				<div class="controls">
-					<a class="btn btn-primary nav pull-right"href="${pageContext.request.contextPath}/resolver/evaluacion/form"><i class="icon-plus-sign icon-white"></i> Nuevo</a>
+				<div class="row-fluid">
+			    	<div class="span12">
+						<a class="btn btn-primary nav pull-right"href="${pageContext.request.contextPath}/resolver/evaluacion/form"><i class="icon-plus-sign icon-white"></i> Nuevo</a>
+					</div>  
 				</div>
-			</div>
-			<div class="control-group">
 		       <section id="proyectos">
 		       		</br>
 		       		<c:forEach var="evaluacion" items="${evaluaciones}">
-		       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos"><span>${evaluacion.descripcion}</span></a>
+		       			<div class="row-fluid">
+			       			<div class="span6">
+				       			<span>${evaluacion.descripcion}</span>
+				       	 	</div>
+				       	 	<div class="span3">
+				       			<span>
+					       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos">
+					       				<i class="icon-list-alt"></i>proyectos
+					       			</a>
+				       			</span>
+				       	 	</div>  
+				       	 	<div class="span3">
+				       			<span>
+					       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores/">
+					       				<i class=" icon-user"></i>evaluadores
+					       			</a>
+				       			</span>
+				       	 	</div>  
+						</div> 
 		       		</c:forEach>
-	       			
-	       			<!--  <a href="${pageContext.request.contextPath}/resolver/evaluacion/1/proyectos"><span>Evaluacion numero</span></a>
-	       			<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle"><i class="icon-question-sign icon-white"></i></a>
-					-->
 		       </section>
 			</div>
 	   </div>

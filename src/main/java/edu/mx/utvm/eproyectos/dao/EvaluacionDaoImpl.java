@@ -32,39 +32,43 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	Catalogos catalogos;
 	
 	@Autowired
-	EvaluadorDao evaluadorDao;
-	
+	private EvaluadorDao evaluadorDao;
+
+
 	@Override
 	public void create(Evaluacion newInstance) {
 		this.update(
 				"INSERT INTO " +
-				"evaluacion(id_evaluacion, descripcion, descripcion_detallada) " +
-				"VALUES(?,?,?)",
+				"evaluacion(id_evaluacion, descripcion, descripcion_detallada, fecha) " +
+				"VALUES(?,?,?,?)",
 				new Object[] {
 						newInstance.getIdEvaluacion(),
 						newInstance.getDescripcion(),
-						newInstance.getDescripcionDetallada()
+						newInstance.getDescripcionDetallada(),
+						newInstance.getFechaCreacion()
 				});
 		
 	}
 
 	@Override
 	public Evaluacion read(String id) {
-		 String sql = "select * from evaluacion where id_evaluacion = ?";
-			try {
-				Evaluacion resultado = this.queryForObject(sql,
-						new Object[] { id },
-						new RowMapper<Evaluacion>() {
-							@Override
-							public Evaluacion mapRow(ResultSet rs, int rowNum) throws SQLException {
-								Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), rs.getString("descripcion"));							
-								return evaluacion;
-							}
-						});
-				return resultado;
-			} catch (EmptyResultDataAccessException accessException) {
-				return null;
-			}
+		String sql = "select * from evaluacion where id_evaluacion = ?";
+		try {
+			Evaluacion resultado = this.queryForObject(sql,
+					new Object[] { id }, new RowMapper<Evaluacion>() {
+						@Override
+						public Evaluacion mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							Evaluacion evaluacion = new Evaluacion(rs
+									.getString("id_evaluacion"), rs
+									.getString("descripcion"));
+							return evaluacion;
+						}
+					});
+			return resultado;
+		} catch (EmptyResultDataAccessException accessException) {
+			return null;
+		}
 	}
 
 	@Override
@@ -99,34 +103,14 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 			@Override
 			public Evaluacion mapRow(ResultSet rs, int rowNum) throws SQLException {
 				
-				List<Evaluador> evaluadores= findEvaluadoresByIdEvaluacion(rs.getString("id_evaluacion"));
+				List<Evaluador> evaluadores= evaluadorDao.findAllByIdEvaluacion(rs.getString("id_evaluacion"));
 				List<Proyecto> proyecto= findProyectosByIdEvalaucion(rs.getString("id_evaluacion")); //Carga a la lista proyectos el id de la evaluacion
 				
 				Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), rs.getString("descripcion"));
+					evaluacion.setFechaCreacion(rs.getDate("fecha"));
 					evaluacion.getProyectos().addAll(proyecto);
 					evaluacion.getEvaluadores().addAll(evaluadores);
 				return evaluacion;
-			}
-		});
-		return result;
-	}
-	
-	/*********************Busca Evaluadores por el id de evaluacion**************************/
-	@Override
-	public List<Evaluador> findEvaluadoresByIdEvaluacion(String id) {
-		String sql = "";
-		sql += "SELECT ev.id_evaluador, ev.nombre, ev.especialidad ";
-		sql += "FROM evaluacion_evaluadores ee,  evaluador ev ";
-		sql += "WHERE ee.id_evaluador = ev.id_evaluador and ee.id_evaluacion = ?";
-		Object[] parametros = {id};
-		List<Evaluador> result = this.query(sql, parametros, new RowMapper<Evaluador>() {
-			@Override
-			public Evaluador mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Evaluador evaluador = new Evaluador(
-						rs.getString("ev.id_evaluador"), 
-						rs.getString("ev.nombre"), 
-						rs.getString("ev.especialidad"));
-				return evaluador;
 			}
 		});
 		return result;
@@ -146,18 +130,39 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 				int idcategoria =  rs.getInt("p.id_categoria");
 				Categoria categoria = catalogos.getCategorias().get(idcategoria);
 				
-				List<Evaluador> evaluadores = evaluadorDao.findAllByIdProyecto(rs.getString("p.id_proyecto"));
-				
 				Proyecto proyecto = new Proyecto(
 						rs.getString("p.id_proyecto"), 
 						rs.getString("p.nombre"), 
 						categoria,
-						rs.getString("p.responsable"),
-						evaluadores);
+						rs.getString("p.responsable"));
 				return proyecto;
 			}
 		});
 		return result;
+	}
+
+	@Override
+	public Evaluacion readByIdEvalauador(String idEvaluador) {
+		String sql = "";
+		sql += "select e.id_evaluacion, e.descripcion ";
+		sql += "from evaluacion e, evaluacion_evaluadores ee ";
+		sql += "where ee.id_evaluador = ? and e.id_evaluacion = ee.id_evaluacion";
+		try {
+			Evaluacion resultado = this.queryForObject(sql,
+					new Object[] { idEvaluador }, new RowMapper<Evaluacion>() {
+						@Override
+						public Evaluacion mapRow(ResultSet rs, int rowNum)
+								throws SQLException {
+							Evaluacion evaluacion = new Evaluacion(rs
+									.getString("id_evaluacion"), rs
+									.getString("descripcion"));
+							return evaluacion;
+						}
+					});
+			return resultado;
+		} catch (EmptyResultDataAccessException accessException) {
+			return null;
+		}
 	}
 
 	

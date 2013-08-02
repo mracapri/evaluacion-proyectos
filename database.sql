@@ -1,10 +1,10 @@
-/*DROP DATABASE evaluacion_proyectos_produccion;
+DROP DATABASE evaluacion_proyectos_produccion;
 CREATE DATABASE IF NOT EXISTS evaluacion_proyectos_produccion;
-USE evaluacion_proyectos_produccion;*/
+USE evaluacion_proyectos_produccion;
 
-DROP DATABASE evaluacion_proyectos_test;
+/*DROP DATABASE evaluacion_proyectos_test;
 CREATE DATABASE IF NOT EXISTS evaluacion_proyectos_test;
-USE evaluacion_proyectos_test;
+USE evaluacion_proyectos_test;*/
 
 SET GLOBAL max_allowed_packet = 1024*1024*1024*10;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS proyecto (
   id_proyecto  varchar(32) NOT NULL,  
   nombre varchar(200) NOT NULL,
   id_categoria int(2) NOT NULL,
-  logo blob NULL,
-  archivo_presentacion blob NULL,
-  foto blob NULL,
+  logo longblob NULL,
+  archivo_presentacion longblob NULL,
+  foto longblob NULL,
   responsable varchar(120) NOT NULL,
   integrantes varchar(700) NULL,
   PRIMARY KEY (id_proyecto),
@@ -61,13 +61,6 @@ CREATE TABLE IF NOT EXISTS evaluacion_evaluadores (
   id_evaluador  varchar(32) NOT NULL, 
   FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion) ON DELETE CASCADE,
   FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE IF NOT EXISTS proyecto_evaluadores (
-	id_proyecto  varchar(32) NOT NULL,
-	id_evaluador  varchar(32) NOT NULL,
-	FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto) ON DELETE CASCADE,
-	FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS rubrica (
@@ -111,3 +104,40 @@ CREATE TABLE IF NOT EXISTS resultado (
   FOREIGN KEY (id_rubrica) REFERENCES rubrica(id_rubrica),
   FOREIGN KEY (id_item_rubrica) REFERENCES item_rubrica(id_item_rubrica)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS usuario (
+  nombre_usuario varchar(32) NOT NULL,  
+  clave varchar(32) NOT NULL,
+  fecha_creacion date NOT NULL,
+  activo tinyint(1) NOT NULL,
+  UNIQUE(nombre_usuario),
+  PRIMARY KEY (nombre_usuario)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS roles (
+  id_role int(2) NOT NULL,  
+  role varchar(32) NOT NULL,
+  UNIQUE(role),
+  PRIMARY KEY (id_role)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS usuario_roles (
+  nombre_usuario varchar(32) NOT NULL,
+  id_role int(2) NOT NULL, 
+  FOREIGN KEY (nombre_usuario) REFERENCES usuario(nombre_usuario) ON DELETE CASCADE,
+  FOREIGN KEY (id_role) REFERENCES roles(id_role) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS usuario_evaluador (
+  nombre_usuario varchar(32) NOT NULL,
+  id_evaluador  varchar(32) NOT NULL,
+  FOREIGN KEY(nombre_usuario) REFERENCES usuario(nombre_usuario) ON DELETE CASCADE,
+  FOREIGN KEY(id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+insert into roles (id_role, role) values (1, 'EVALUADOR');
+insert into roles (id_role, role) values (2, 'ADMINISTRADOR');
+insert into roles (id_role, role) values (3, 'MANAGER');
+

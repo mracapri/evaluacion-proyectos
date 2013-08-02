@@ -169,7 +169,24 @@ var DEMO = {
 			});
 			//******************************/
 		});
-		
+
+		//$this.cargaFunciones();
+		//$this.formsFunction();
+	},
+	
+
+	
+	formsFunction: function(){
+		/*Elimina las etiquetas de errores vacias*/
+		$(".label-info").each(function(){
+			if($(this).children().size() == 0){
+				$(this).remove();
+			}
+		});
+		/*Limpia los campos cuando almacene los datos*/
+		if($(".alert-success").size() > 0){
+			$("input, textarea, select").val("");
+		}		
 	},
 	
 	

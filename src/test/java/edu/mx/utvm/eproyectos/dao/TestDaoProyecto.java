@@ -51,7 +51,7 @@ public class TestDaoProyecto {
 		Assert.assertNotNull(evaluacionDao);
 		Assert.assertNotNull(proyectoDao);
 
-		String id32 = generateId32();
+		String id32 = generateId32();		
 		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
@@ -77,18 +77,9 @@ public class TestDaoProyecto {
 		
 		catalogos.afterPropertiesSet();
 		
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
-		
-		evaluadorDao.create(evaluador1, evaluacion);
-		evaluadorDao.create(evaluador2, evaluacion);
-		
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
 		
 		Proyecto proyecto = new Proyecto(generateId32(), "Proyecto de Vida",
-				catalogos.getCategorias().get(1), "Mario Rivera", evalaudores);
+				catalogos.getCategorias().get(1), "Mario Rivera");
 
 		proyecto.setArchivoPresentacion(generateBytes());
 		proyecto.setFoto(generateBytes());
@@ -115,18 +106,8 @@ public class TestDaoProyecto {
 		
 		catalogos.afterPropertiesSet();
 		
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
-		
-		evaluadorDao.create(evaluador1, evaluacion);
-		evaluadorDao.create(evaluador2, evaluacion);
-		
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
-		
 		Proyecto proyecto = new Proyecto(generateId32(), "Proyecto de Vida",
-				catalogos.getCategorias().get(1), "Mario Rivera", evalaudores);
+				catalogos.getCategorias().get(1), "Mario Rivera");
 
 		proyecto.setArchivoPresentacion(generateBytes());
 		proyecto.setFoto(generateBytes());
@@ -172,19 +153,9 @@ public class TestDaoProyecto {
 		
 		catalogos.afterPropertiesSet();
 		
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
-		
-		evaluadorDao.create(evaluador1, evaluacion);
-		evaluadorDao.create(evaluador2, evaluacion);
-		
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
-		
 		String idProyecto = generateId32();
 		Proyecto proyecto = new Proyecto(idProyecto, "Proyecto de Vida",
-				catalogos.getCategorias().get(1), "Mario Rivera", evalaudores);
+				catalogos.getCategorias().get(1), "Mario Rivera");
 
 		proyecto.setArchivoPresentacion(generateBytes());
 		proyecto.setFoto(generateBytes());

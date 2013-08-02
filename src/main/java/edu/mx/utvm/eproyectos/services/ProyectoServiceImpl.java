@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mx.utvm.eproyectos.dao.ProyectoDao;
+import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 /*
  * Implementacion del servicio <Proyecto>
@@ -52,6 +53,12 @@ public class ProyectoServiceImpl implements ProyectoService{
 	@Override
 	public List<Proyecto> findAllByIdEvaluacion(String id) {		
 		return dao.findAllByIdEvaluacion(id);
+	}
+
+	@Override
+	public void create(Proyecto newInstance, Evaluacion evaluacion) {
+		dao.create(newInstance, evaluacion);
+		
 	}
 	
 }

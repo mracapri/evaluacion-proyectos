@@ -94,20 +94,9 @@ public class TestDaoResultado {
 		/*Create evaluacion*/
 		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion 2013");
 		evaluacionDao.create(evaluacion);
-		
-		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
-		
-		evaluadorDao.create(evaluador1, evaluacion);
-		evaluadorDao.create(evaluador2, evaluacion);
-		
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
-		
+
 		/*Create proyecto*/		
-		Proyecto proyecto = new Proyecto("130101", "Kinect", categoria1, "Israel Paz", evalaudores);
+		Proyecto proyecto = new Proyecto("130101", "Kinect", categoria1, "Israel Paz");
 		proyectoDao.create(proyecto, evaluacion);
 		
 		/*Create Rubrica*/						
@@ -143,19 +132,8 @@ public class TestDaoResultado {
 		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion 2013");
 		evaluacionDao.create(evaluacion);
 		
-		/*Create evaluadores*/
-		Evaluador evaluador1 = new Evaluador("cd3dc8b6cffb41e4163dcbd857ca87da", "Alfredo Perez", "TIC");
-		Evaluador evaluador2 = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario Rivera", "TIC");
-		
-		evaluadorDao.create(evaluador1, evaluacion);
-		evaluadorDao.create(evaluador2, evaluacion);
-		
-		List<Evaluador> evalaudores = new ArrayList<Evaluador>();
-		evalaudores.add(evaluador1);
-		evalaudores.add(evaluador2);
-		
 		/*Create proyecto*/		
-		Proyecto proyecto = new Proyecto("130101", "Kinect", categoria1, "Israel Paz", evalaudores);
+		Proyecto proyecto = new Proyecto("130101", "Kinect", categoria1, "Israel Paz");
 		proyectoDao.create(proyecto, evaluacion);
 		
 		/*Create Rubrica*/						
