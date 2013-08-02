@@ -20,8 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Proyecto;
+import edu.mx.utvm.eproyectos.model.Rubrica;
 import edu.mx.utvm.eproyectos.services.EvaluacionService;
 import edu.mx.utvm.eproyectos.services.EvaluadorService;
+import edu.mx.utvm.eproyectos.services.RubricaService;
 
 @Controller
 @RequestMapping("/evaluador")
@@ -33,6 +35,9 @@ public class EvaluadorController {
 	
 	@Autowired
 	private EvaluacionService evaluacionService;
+	
+	@Autowired
+	private RubricaService rubricaService;	
 
 	protected final Log log = LogFactory.getLog(getClass());
 	
@@ -47,8 +52,11 @@ public class EvaluadorController {
 		ModelAndView model = new ModelAndView("rubricaCategoria");	
 		log.debug("idEvaluacion: " + evaluacion.getIdEvaluacion());
 		
-		// TODO: buscar el proyecto en la lista de proyectos
-		log.debug("Proyecto: " + evaluacion.getProyectos().get(idProyecto));
+		Proyecto proyecto = evaluacion.getProyectos().get(idProyecto);
+		log.debug("Proyecto: " + proyecto);
+		
+		Rubrica rubrica = rubricaService.obtenerRubricaPorCategoriaDeProyecto(proyecto);
+		model.addObject("rubrica", rubrica);
 		return model;
     }
 	

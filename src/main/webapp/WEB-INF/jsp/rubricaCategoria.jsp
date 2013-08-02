@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 
 <html lang="es">
@@ -25,40 +29,43 @@
 			    	<span class="titulo-ventana">Evaluaci&oacuten de Proyectos</span>	
 			    </div>
 			</div> 
-			<div class="control-group">
-				<div class="row-fluid">
-	
+			<div class="control-group">											
+				<c:forEach items="${rubrica.items}" var="itemRubrica" varStatus="row">
+				<div class="row-fluid">	
 				    <div class="span10">
 						<div class="row">
 					    	<div class="span1">
-					    		<b>1.-</b>
+					    		<b>${row.count}</b>
 					    	</div>
 					    	
 							<div class="span10">
-								Implementacion de dise&ntilde;o en casacada segun lo marca la w3e y el  estandar de programadores
+								${itemRubrica.descripcionCorta}
 							</div>
 							
 							<div class="span1">
-								<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo">
+								<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo-${itemRubrica.idItemRubrica}">
 									<i class="icon-question-sign icon-white"></i>
 								</a>
 							</div>	
 													
 						</div>
-						<div id="demo" class="collapse">
+						<div id="demo-${itemRubrica.idItemRubrica}" class="collapse">
 							<div class="alert alert-info">
-								<p class="text-info">El proyecto aplica de manera clara los conocimientos sobre modelado y va de acuerdo con su categoria</p>
+								<p class="text-info">
+									${itemRubrica.descripcionLarga}
+								</p>
 							</div>
 						</div>	
 				    </div>
 				    <div class="span2">
-					 	<select id="escala">
+					 	<select id="escala-${itemRubrica.idItemRubrica}">
 					 		<option>1</option>
 					 		<option>2</option>
 					 		<option>3</option>
 					 	</select>
 				    </div>
 				</div> 
+				</c:forEach>
 			</div>
 			<div class="row-fluid">
 				<div class="span6">                       					
