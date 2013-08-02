@@ -22,7 +22,7 @@
 		<div class="proyectoEvaluar">
 			<div class="row-fluid">
 			    <div class="span12 show-grid">
-			    	<span class="titulo-ventana">Evaluaci&oacuten de Proyectos</span>	
+			    	<span class="titulo-ventana">Rubrica Categoria - ${evaluacion}</span>	
 			    </div>
 			</div> 
 			<div class="control-group">

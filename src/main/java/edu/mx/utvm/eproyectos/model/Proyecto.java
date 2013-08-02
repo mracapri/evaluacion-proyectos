@@ -97,4 +97,13 @@ public class Proyecto {
 		this.resultado = resultado;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		String idProyecto = (String) obj;
+		if(idProyecto.equals(this.idProyecto)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
