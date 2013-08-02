@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <html lang="es">
@@ -27,7 +28,16 @@
 			</div>
 			<div class="control-group">
 		       <section id="proyectos">
-	       			<span>Evaluacion numero1</span>
+	       			<br>
+	       			<c:forEach var="evaluacion" items="${evaluaciones}">
+		       			<span>
+		       				${evaluacion.descripcion}
+			       			<a href="${pageContext.request.contextPath}/resolver/manager/option">
+			       				- proyectos
+			       			</a>			       			
+		       			</span>
+		       			<br>
+		       		</c:forEach>
 		       </section>
 			</div>
 	   </div>

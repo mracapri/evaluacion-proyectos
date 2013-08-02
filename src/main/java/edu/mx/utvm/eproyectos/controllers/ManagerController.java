@@ -1,28 +1,41 @@
 package edu.mx.utvm.eproyectos.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.services.EvaluacionService;
+
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
-	/*Lista de evaluaciones por evaluador*/
-	@RequestMapping(value="/evaluacion/{idEvaluador}", method=RequestMethod.GET)
-    public ModelAndView getEvaluacionesPorEvaluador(
-    		HttpServletRequest request,
-    		@PathVariable("idEvaluador") String idEvaluador,
-    		HttpServletResponse response)
+	
+	protected final Log log = LogFactory.getLog(getClass());
+	
+	@Autowired
+	private EvaluacionService evaluacionService;
+	
+	/*Lista de evaluaciones*/
+	@RequestMapping(value="/all", method=RequestMethod.GET)
+    public ModelAndView getEvaluacionesPorUsuario(
+    		HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("managerEvaluaciones");	
+		ModelAndView model = new ModelAndView("managerEvaluaciones");
+		List<Evaluacion> evaluaciones = evaluacionService.findAll();
+		model.addObject("evaluaciones", evaluaciones);		
 		return model;
     }
 	
@@ -32,7 +45,7 @@ public class ManagerController {
     		HttpServletRequest request,    		
     		HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("");	
+		ModelAndView model = new ModelAndView("managerOptions");	
 		return model;
     }
 	
@@ -47,25 +60,22 @@ public class ManagerController {
     }
 	
 	/*lista de proyectos*/
-	@RequestMapping(value="/proyecto/{idEvaluador}", method=RequestMethod.GET)
+	@RequestMapping(value="/resultados/exposicion", method=RequestMethod.GET)
     public ModelAndView getListProyectos(
-    		HttpServletRequest request,
-    		@PathVariable("idEvaluador") String idEvaluador,
+    		HttpServletRequest request,    		
     		HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("proyectoEvaluar");	
+		ModelAndView model = new ModelAndView("resultadoRubricaExpo");	
 		return model;
     }
 	
 	/*Resultados por proyecto generales*/
-	@RequestMapping(value="/resultados/proyecto/{idProyecto}", method=RequestMethod.GET)
+	@RequestMapping(value="/resultados/finales", method=RequestMethod.GET)
     public ModelAndView getResultadoPorProyecto(
-    		HttpServletRequest request,
-    		@PathVariable("idProyecto") String idProyecto,
+    		HttpServletRequest request,    		
     		HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("resultadoRubricaExpo");
-		//ModelAndView model = new ModelAndView("resultadoFinal");	
+		ModelAndView model = new ModelAndView("resultadoFinal");
 		return model;
     }
 	

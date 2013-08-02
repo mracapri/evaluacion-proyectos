@@ -25,41 +25,21 @@
 			<div class="proyectoEvaluar">
 				<div class="row-fluid">
 				    <div class="span12 show-grid">
-				    	<span class="titulo-ventana">Evaluaci&oacuten de Proyectos</span>
+				    	<span class="titulo-ventana">Opciones de Resultados</span>
 				    </div>
 				</div> 
 		        <div class="control-group">
-			        <div class="row-fluid">
-					    <div class="span8">
-							<h5 class="hidden-phone">
-								Nombre de proyecto
-							</h5>
+			        <div class="row-fluid">			        	
+					    <div class="span4">
+							<a class="btn btn-danger btn-large btn-block" href="${pageContext.request.contextPath}/resolver/manager/resultados/exposicion">Exposicion</a>
 					    </div>
-					    <div class="span2">
-						 	<h5 class="hidden-phone">
-								Rubrica Exposicion
-							</h5>
+					    <div class="span4">
+						 	<a class="btn btn-primary btn-large btn-block" href="${pageContext.request.contextPath}/resolver/manager/resultados/categoria">Categoria</a>
 					    </div>
-					    <div class="span2">
-						 	<h5 class="hidden-phone">
-								Rubrica Categoria
-							</h5>
+					    <div class="span4">
+						 	<a class="btn btn-success btn-large btn-block" href="${pageContext.request.contextPath}/resolver/manager/resultados/finales">Ranking</a>
 					    </div>
-					</div> 
-					
-					<div class="row-fluid  show-grid">
-					    <div class="span8">
-							<b>1.-</b>
-							<span>
-								Desarrollo de Aplicacion Mobil para alumnos de la Utvm
-							</span>
-					    </div>
-					    <div class="span2">
-							<a class="btn btn-mini btn-primary"  href="${pageContext.request.contextPath}/jsp/rubricaExposicion.jsp"><i class="icon-comment icon-white"></i> Exposición</a>
-			               	
-					    </div>
-					</div> 
-			        
+					</div> 										
 			        
 		        </div>  
 			</div>
