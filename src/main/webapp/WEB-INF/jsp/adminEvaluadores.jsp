@@ -33,23 +33,29 @@
 
 		<div class="detalleProyecto">
 			<span class="titulo-ventana">Evaluadores </span>
-			<div class="control-group">
-				<div class="controls">
+			<div class="row-fluid">
+		    	<div class="span12">
 					<a class="btn btn-primary pull-right"
 						href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores/form"><i
-						class="icon-plus-sign icon-white"></i> Nuevo</a><br><br>
-					<a class="btn btn-info nav pull-right"
+						class="icon-plus-sign icon-white"></i> Nuevo</a>
+					<a class="btn btn-success nav pull-right"
 						href="${pageContext.request.contextPath}/resolver/evaluacion/all"><i
 						class="icon-list-alt icon-white"></i>Evaluaciones</a>
 				</div>
 			</div>
 			<div class="control-group">												
 				<section id="evaluadores">
-					<ul class="list-group">
 						<c:forEach var="evaluador" items="${evaluadores}">
-							<li class="list-group-item">${evaluador.nombre} - ${evaluador.especialidad}</li>						
+							<div class="row-fluid">
+			       				<div class="span6">
+			       					<b>${evaluador.nombre}</b>
+				       	 		</div>
+				       	 		<div class="span6">
+				       	 			<span>Especialidad:</span>
+			       					<span class="label label-info">${evaluador.especialidad}</span>
+				       	 		</div>
+				       	 	</div>													
 						</c:forEach>
-					</ul>
 				</section>
 			</div>
 		</div>

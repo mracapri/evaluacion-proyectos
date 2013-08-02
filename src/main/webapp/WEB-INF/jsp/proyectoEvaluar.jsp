@@ -39,9 +39,12 @@
 			    	<div class="span12">										
 						<a class="btn btn-primary pull-right"
 							href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/form"><i
-							class="icon-plus-sign icon-white"></i> Nuevo</a><br><br>																								
-						<a class="btn btn-info nav pull-right" href="${pageContext.request.contextPath}/resolver/evaluacion/all"><i class="icon-list-alt icon-white"></i>Evaluaciones</a>											
-					</div>
+							class="icon-plus-sign icon-white"></i> Nuevo </a> 
+						
+						<a class="btn btn-success nav pull-right"
+							href="${pageContext.request.contextPath}/resolver/evaluacion/all"><i
+							class="icon-list-alt icon-white"></i>Evaluaciones</a>
+						</div>
 				</div>				
 			</div>
 			<div class="control-group">
@@ -49,8 +52,10 @@
 
 					<c:forEach var="proyecto" items="${proyectos}">
 						<div class="row-fluid">
-			    			<div class="span12">
+			    			<div class="span11">
 								<span>${proyecto.value.nombre}</span>
+							</div>
+							<div class="span1">
 								<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle-${proyecto.value.idProyecto}"><i class="icon-question-sign icon-white"></i></a>
 							</div>
 						</div>
