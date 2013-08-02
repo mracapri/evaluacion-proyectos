@@ -1,6 +1,7 @@
 package edu.mx.utvm.eproyectos.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,7 +52,7 @@ public class ProyectoServiceImpl implements ProyectoService{
 	}
 
 	@Override
-	public List<Proyecto> findAllByIdEvaluacion(String id) {		
+	public Map<String, Proyecto> findAllByIdEvaluacion(String id) {		
 		return dao.findAllByIdEvaluacion(id);
 	}
 

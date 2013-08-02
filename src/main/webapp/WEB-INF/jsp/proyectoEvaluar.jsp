@@ -50,28 +50,28 @@
 					<c:forEach var="proyecto" items="${proyectos}">
 						<div class="row-fluid">
 			    			<div class="span12">
-								<span>${proyecto.nombre}</span>
-								<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle-${proyecto.idProyecto}"><i class="icon-question-sign icon-white"></i></a>
+								<span>${proyecto.value.nombre}</span>
+								<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle-${proyecto.value.idProyecto}"><i class="icon-question-sign icon-white"></i></a>
 							</div>
 						</div>
 						
 						<!-- Detalles del proyecto -->
-						<div id="detalle-${proyecto.idProyecto}" class="collapse">
+						<div id="detalle-${proyecto.value.idProyecto}" class="collapse">
 							<div>
 								<div class="row-fluid">
 									<div class="span6">
 										<div class="thumbnail">
-											<img width="100px" height="100px" src="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/logo/${proyecto.idProyecto}" alt="${proyecto.nombre}">
-											<h5>${proyecto.nombre}</h5>
+											<img width="100px" height="100px" src="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/logo/${proyecto.value.idProyecto}" alt="${proyecto.value.nombre}">
+											<h5>${proyecto.value.nombre}</h5>
 										</div>
 									</div>
 									<div class="span6">
 										<h5>Categor&iacutea.</h5>
-										<span> ${proyecto.categoria.descripcion}</span>
+										<span> ${proyecto.value.categoria.descripcion}</span>
 										<h5>L&iacuteder de proyecto.</h5>
-										<span> ${proyecto.responsable}</span>
+										<span> ${proyecto.value.responsable}</span>
 											<div>										
-												<a href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/presentacion/${proyecto.idProyecto}" target="_blank">
+												<a href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/presentacion/${proyecto.value.idProyecto}" target="_blank">
 													Presentaci&oacuten PDF
 													<i class="icon-folder-open"></i>
 												</a>

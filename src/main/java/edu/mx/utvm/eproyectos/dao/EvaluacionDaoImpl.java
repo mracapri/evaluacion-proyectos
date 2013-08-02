@@ -2,7 +2,9 @@ package edu.mx.utvm.eproyectos.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -109,13 +111,14 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 			@Override
 			public Evaluacion mapRow(ResultSet rs, int rowNum) throws SQLException {
 				
-				List<Evaluador> evaluadores= evaluadorDao.findAllByIdEvaluacion(rs.getString("id_evaluacion"));
-				List<Proyecto> proyecto= findProyectosByIdEvalaucion(rs.getString("id_evaluacion")); //Carga a la lista proyectos el id de la evaluacion
+				Map<String, Evaluador> evaluadores= evaluadorDao.findAllByIdEvaluacion(rs.getString("id_evaluacion"));
+				Map<String, Proyecto> proyecto= findProyectosByIdEvalaucion(rs.getString("id_evaluacion")); //Carga a la lista proyectos el id de la evaluacion
 				
 				Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), rs.getString("descripcion"));
 					evaluacion.setFechaCreacion(rs.getDate("fecha"));
-					evaluacion.getProyectos().addAll(proyecto);
-					evaluacion.getEvaluadores().addAll(evaluadores);
+					
+					evaluacion.getProyectos().putAll(proyecto);
+					evaluacion.getEvaluadores().putAll(evaluadores);
 					
 				cargaProyectosYEvaluaciones(evaluacion);
 				
@@ -127,7 +130,7 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 
 	/*********************Busca proyectos por el id de evaluacion**************************/
 	@Override
-	public List<Proyecto> findProyectosByIdEvalaucion(String id) {
+	public Map<String, Proyecto> findProyectosByIdEvalaucion(String id) {
 		String sql = "";
 		sql += "SELECT p.id_proyecto, p.nombre, p.id_categoria, p.responsable ";
 		sql += "FROM evaluacion_proyectos ep,  proyecto p ";
@@ -147,7 +150,12 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 				return proyecto;
 			}
 		});
-		return result;
+		
+		Map<String, Proyecto> proyectos = new HashMap<String, Proyecto>();
+		for(Proyecto proyecto : result){
+			proyectos.put(proyecto.getIdProyecto(), proyecto);
+		}
+		return proyectos;
 	}
 
 	@Override
@@ -180,16 +188,12 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 		String idEvaluacion = evaluacion.getIdEvaluacion();
 		
 		// carga los proyectos
-		List<Proyecto> proyectos = proyectoDao.findAllByIdEvaluacion(idEvaluacion);
-		for(Proyecto proyecto : proyectos){
-			evaluacion.getProyectos().add(proyecto);
-		}
+		Map<String, Proyecto> proyectos = proyectoDao.findAllByIdEvaluacion(idEvaluacion);
+		evaluacion.getProyectos().putAll(proyectos);
 		
 		// carga los evaluadores
-		List<Evaluador> evaluadores = evaluadorDao.findAllByIdEvaluacion(idEvaluacion);
-		for(Evaluador evaluador : evaluadores){
-			evaluacion.getEvaluadores().add(evaluador);
-		}
+		Map<String, Evaluador> evaluadores = evaluadorDao.findAllByIdEvaluacion(idEvaluacion);
+		evaluacion.getEvaluadores().putAll(evaluadores);
 	}
 
 }

@@ -2,22 +2,24 @@ package edu.mx.utvm.eproyectos.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Evaluacion {
 	private String idEvaluacion;	
 	private String descripcion;
 	private Date fechaCreacion;
-	private List<Proyecto> proyectos;
+	private Map<String, Proyecto> proyectos;
 	private String descripcionDetallada;
-	private List<Evaluador> evaluadores;
+	private Map<String, Evaluador> evaluadores;
 
 	public Evaluacion(String idEvaluacion, String descripcion) {
 		this.idEvaluacion = idEvaluacion;
 		this.descripcion = descripcion;
 		this.fechaCreacion = new Date();
-		this.proyectos = new ArrayList<Proyecto>();
-		this.evaluadores = new ArrayList<Evaluador>();		
+		this.proyectos = new HashMap<String,Proyecto>();
+		this.evaluadores = new HashMap<String,Evaluador>();		
 	}
 	
 	public String getIdEvaluacion() {
@@ -51,11 +53,11 @@ public class Evaluacion {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public List<Proyecto> getProyectos() {
+	public Map<String, Proyecto> getProyectos() {
 		return proyectos;
 	}
 
-	public List<Evaluador> getEvaluadores() {
+	public Map<String, Evaluador> getEvaluadores() {
 		return evaluadores;
 	}
 	

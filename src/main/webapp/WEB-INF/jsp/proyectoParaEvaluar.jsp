@@ -57,11 +57,11 @@
 						    <div class="span8">
 								<b>${row.count}</b>
 								<span>
-									${proyecto.nombre}
+									${proyecto.value.nombre}
 								</span>
 						    </div>
 						    <div class="span2">
-								<a class="btn btn-mini btn-primary"  href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/${proyecto.idProyecto}"><i class="icon-comment icon-white"></i> Exposición</a>
+								<a class="btn btn-mini btn-primary"  href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/${proyecto.value.idProyecto}"><i class="icon-comment icon-white"></i> Exposición</a>
 				               	
 						    </div>
 						    <div class="span2">

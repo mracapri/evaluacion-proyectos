@@ -48,7 +48,7 @@ public class EvaluadorController {
 		log.debug("idEvaluacion: " + evaluacion.getIdEvaluacion());
 		
 		// TODO: buscar el proyecto en la lista de proyectos
-		log.debug("Proyecto: " + evaluacion.getProyectos().indexOf(idProyecto));
+		log.debug("Proyecto: " + evaluacion.getProyectos().get(idProyecto));
 		return model;
     }
 	

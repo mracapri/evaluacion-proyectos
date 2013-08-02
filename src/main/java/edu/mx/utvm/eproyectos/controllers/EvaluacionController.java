@@ -3,6 +3,7 @@ package edu.mx.utvm.eproyectos.controllers;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -157,7 +158,7 @@ public class EvaluacionController {
 		
 		model.addObject("evaluacion", read);
 		
-		List<Proyecto> proyectos = proyectoService.findAllByIdEvaluacion(idEvaluacion);
+		Map<String, Proyecto> proyectos = proyectoService.findAllByIdEvaluacion(idEvaluacion);
 		model.addObject("proyectos", proyectos);		
 		
 		return model;

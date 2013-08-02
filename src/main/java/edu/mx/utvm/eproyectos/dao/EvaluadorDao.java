@@ -1,12 +1,12 @@
 package edu.mx.utvm.eproyectos.dao;
 
-import java.util.List;
+import java.util.Map;
 
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 
 public interface EvaluadorDao extends Dao<Evaluador, String>{
 	void create(Evaluador evaluador, Evaluacion evaluacion);
-	List<Evaluador> findAllByIdEvaluacion(String idEvaluacion);
+	Map<String,Evaluador> findAllByIdEvaluacion(String idEvaluacion);
 	Evaluador readByNombreUsuario(String nombreUsuario);
 }

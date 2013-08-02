@@ -3,6 +3,7 @@ package edu.mx.utvm.eproyectos.dao;
 import static edu.mx.utvm.eproyectos.dao.util.TestData.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
+import edu.mx.utvm.eproyectos.model.Proyecto;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/AppCtx-Spring-Test.xml")
@@ -248,8 +250,8 @@ public class TestDaoEvaluador {
 		evaluadorDao.create(evaluador2, evaluacion);
 		evaluadorDao.create(evaluador3, evaluacion2);
 		
-		List<Evaluador> list1 = evaluadorDao.findAllByIdEvaluacion(id32Evaluacion);
-		List<Evaluador> list2 = evaluadorDao.findAllByIdEvaluacion(id32Evaluacion2);
+		Map<String, Evaluador> list1 = evaluadorDao.findAllByIdEvaluacion(id32Evaluacion);
+		Map<String, Evaluador> list2 = evaluadorDao.findAllByIdEvaluacion(id32Evaluacion2);
 		
 		
 		Assert.assertTrue(list1.size() == 2);

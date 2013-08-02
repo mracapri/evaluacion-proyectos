@@ -5,6 +5,7 @@ import static edu.mx.utvm.eproyectos.dao.util.TestData.generateId32;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.logging.Log;
@@ -56,7 +57,7 @@ public class TestDaoProyecto {
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 
-		List<Proyecto> all = proyectoDao.findAllByIdEvaluacion(id32);
+		Map<String, Proyecto> all = proyectoDao.findAllByIdEvaluacion(id32);
 		Assert.assertTrue(all.size() == 0);
 	}
 
@@ -87,7 +88,7 @@ public class TestDaoProyecto {
 		
 		proyectoDao.create(proyecto,evaluacion);
 		
-		List<Proyecto> all = proyectoDao.findAllByIdEvaluacion(id32);
+		Map<String, Proyecto> all = proyectoDao.findAllByIdEvaluacion(id32);
 		Assert.assertTrue(all.size() == 1);
 	}
 
@@ -163,7 +164,7 @@ public class TestDaoProyecto {
 		
 		proyectoDao.create(proyecto,evaluacion);
 		
-		List<Proyecto> all = proyectoDao.findAllByIdEvaluacion(id32);
+		Map<String, Proyecto> all = proyectoDao.findAllByIdEvaluacion(id32);
 		Assert.assertTrue(all.size() == 1);
 		
 		proyectoDao.delete(proyecto);

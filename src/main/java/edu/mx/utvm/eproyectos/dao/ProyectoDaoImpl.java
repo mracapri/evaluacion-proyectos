@@ -2,7 +2,9 @@ package edu.mx.utvm.eproyectos.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -145,7 +147,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 	}
 
 	@Override
-	public List<Proyecto> findAllByIdEvaluacion(String idEvaluacion) {
+	public Map<String, Proyecto> findAllByIdEvaluacion(String idEvaluacion) {
 		String sql = "";
 		sql+= "SELECT p.id_proyecto, p.nombre, p.id_categoria, p.responsable, p.logo, p.archivo_presentacion, p.foto, p.integrantes ";
 		sql+= "FROM proyecto p, evaluacion_proyectos ep ";
@@ -164,7 +166,13 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 				return proyecto;
 			}
 		});
-		return result;
+		
+		// transforma a mapa
+		Map<String, Proyecto> proyectos = new HashMap<String, Proyecto>();
+		for(Proyecto proyecto : result){
+			proyectos.put(proyecto.getIdProyecto(), proyecto);
+		}
+		return proyectos;
 	}
 
 

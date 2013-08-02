@@ -2,7 +2,9 @@ package edu.mx.utvm.eproyectos.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -151,7 +153,7 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 	}
 
 	@Override
-	public List<Evaluador> findAllByIdEvaluacion(String idEvaluacion) {
+	public Map<String, Evaluador> findAllByIdEvaluacion(String idEvaluacion) {
 		String sql = "";
 		sql += "SELECT e.id_evaluador, e.nombre, e.especialidad, u.nombre_usuario, u.clave ";
 		sql += "FROM evaluador e, usuario u, usuario_evaluador eu, evaluacion_evaluadores ee ";
@@ -171,6 +173,11 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 						return evaluador;
 					}
 				});
-		return result;
+		
+		Map<String, Evaluador> evaluadores = new HashMap<String, Evaluador>();
+		for(Evaluador evaluador : result){
+			evaluadores.put(evaluador.getIdEvaluador(), evaluador);
+		}
+		return evaluadores;
 	}
 }

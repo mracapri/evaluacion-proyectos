@@ -76,7 +76,7 @@ public class TestEvaluacion {
 	public void agregandoEvaluadoresALaEvaluacionVacia() {
 		/* Creando una evalucacion */
 		Evaluacion evaluacion = new Evaluacion("001","Evaluacion 2013");
-		evaluacion.getEvaluadores().add(new Evaluador("1", "Noe Abelino", "TIC", "QWE123", "ZXCZ"));
+		evaluacion.getEvaluadores().put(evaluacion.getIdEvaluacion(), new Evaluador("1", "Noe Abelino", "TIC", "QWE123", "ZXCZ"));
 		assertTrue(evaluacion.getEvaluadores() != null);
 		assertTrue(evaluacion.getEvaluadores().size() > 0);
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
@@ -89,7 +89,7 @@ public class TestEvaluacion {
 		
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
-		evaluacion.getProyectos().add(p);
+		evaluacion.getProyectos().put(p.getIdProyecto(), p);
 		assertTrue(evaluacion.getProyectos().size() == 1);
 		System.out.println(ToStringBuilder.reflectionToString(evaluacion));
 	}
@@ -101,7 +101,7 @@ public class TestEvaluacion {
 
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
-		evaluacion.getProyectos().add(p);
+		evaluacion.getProyectos().put(p.getIdProyecto(), p);
 
 		p.getIntegrantes().add("Gerardo");
 		p.getIntegrantes().add("Armando");
@@ -119,7 +119,7 @@ public class TestEvaluacion {
 		
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
-		evaluacion.getProyectos().add(p);
+		evaluacion.getProyectos().put(p.getIdProyecto(), p);
 		
 		Map<Integer, Double> calificaciones;
 		calificaciones = new TreeMap<Integer, Double>();							
@@ -143,7 +143,7 @@ public class TestEvaluacion {
 		
 		Proyecto p = new Proyecto("130101","Desarrollo de videojuegos",
 				categorias.get(0), "Isral Ochoa Paz");
-		evaluacion.getProyectos().add(p);
+		evaluacion.getProyectos().put(p.getIdProyecto(), p);
 		
 		Map<Integer, Double> calificaciones;
 		calificaciones = new TreeMap<Integer, Double>();
