@@ -19,16 +19,16 @@ public class JSController {
 	protected final Log log = LogFactory.getLog(getClass());	
 	
 	@Autowired
-	ServletContext context;
+	private ServletContext context;
 	
 	@RequestMapping(value = "/global", method = RequestMethod.GET)
 	public @ResponseBody
 	String byPath() {
-	HttpHeaders headers = new HttpHeaders();
-	headers.setContentType(MediaType.parseMediaType("application/x-javascript"));
-	String javascript = "var URL_APP = '/" + context.getServletContextName() + "';";
-	javascript = javascript + "var URL_APP_SERVICE = '/" + context.getServletContextName() + "/resolver';";
-	javascript = javascript + "var TEST = true;";
-	return javascript;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.parseMediaType("application/x-javascript"));
+		String javascript = "var URL_APP = '" + context.getContextPath() + "';";
+		javascript = javascript + "var URL_APP_SERVICE = '" + context.getContextPath() + "/resolver';";
+		javascript = javascript + "var TEST = true;";
+		return javascript;
 	}
 }
