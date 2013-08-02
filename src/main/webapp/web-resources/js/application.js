@@ -151,7 +151,7 @@ var DEMO = {
 			$.ajax({
 				type: "GET",
 				dataType: "JSON",
-	   			url: "URL_APP_SERVICE/manager/jsonResult",			  
+	   			url:URL_APP_SERVICE + "/manager/resultados/exposicion",			  
 	   			 success: function(dato){
 					//Code
 				}
