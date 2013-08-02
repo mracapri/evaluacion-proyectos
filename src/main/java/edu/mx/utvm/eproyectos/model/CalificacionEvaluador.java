@@ -30,7 +30,7 @@ public class CalificacionEvaluador {
 			total = total + resultadoPorItem.get(key);
 		}
 		total = total / resultadoPorItem.size();
-		return total;
+		return 0.0;
 	}
 
 	public Rubrica getRubrica() {

@@ -28,8 +28,11 @@ import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Proyecto;
+import edu.mx.utvm.eproyectos.model.Resultado;
 import edu.mx.utvm.eproyectos.model.ResultadoFinal;
+import edu.mx.utvm.eproyectos.model.Rubrica;
 import edu.mx.utvm.eproyectos.services.EvaluacionService;
+import edu.mx.utvm.eproyectos.services.EvaluadorService;
 import edu.mx.utvm.eproyectos.services.ProyectoService;
 import edu.mx.utvm.eproyectos.services.ResultadoService;
 
@@ -47,6 +50,9 @@ public class ManagerController {
 	
 	@Autowired
 	private ProyectoService proyectoService;
+	
+	@Autowired
+	private EvaluadorService evaluadorService;
 	
 	@Autowired
 	private Catalogos catalogos;
@@ -110,32 +116,51 @@ public class ManagerController {
 			HttpServletResponse response){								 				
 		response.setHeader("content-type", "application/json");	
 		
-		
+		/*Obtener proyectos por evaluacion*/
 		Evaluacion evaluacion = evaluacionService.read("25bbdcd06c32d477f7fa1c3e4a91b032");
 		
-		
+		/*
+		 * Ciclo de proyectos
+		 * */
 		for (String idProyecto : evaluacion.getProyectos().keySet()) {
 			Proyecto proyecto = evaluacion.getProyectos().get(idProyecto);
-					
-			Evaluador evaluador = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Mario", "TIC", "aaaaa", "12345");
 			
-			Map<Integer, Double> resultadoPorItem = new HashMap<Integer, Double>();		
-			resultadoPorItem.put(1, 9.0);
-			resultadoPorItem.put(2, 9.0);
-			resultadoPorItem.put(3, 9.0);
-			resultadoPorItem.put(4, 9.0);
-			resultadoPorItem.put(5, 9.0);
-					
-			List<CalificacionEvaluador> calificacionEvaluadors = new ArrayList<CalificacionEvaluador>();
+			/*Lista de resultados por proyecto*/
+			List<Resultado> resultados = resultadoService.findAllByProyecto(proyecto.getIdProyecto());
 			
-			CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(evaluador, resultadoPorItem, catalogos.getRubricas().get("dc5c7986daef50c1e02ab09b442ee34f"));
-			calificacionEvaluadors.add(calificacionEvaluador);
+			/*Lista vacia de calificacion evaluadores*/
+			List<CalificacionEvaluador> calificacionEvaluadores = new ArrayList<CalificacionEvaluador>();
 			
-			ResultadoFinal resultadoFinal = new ResultadoFinal(calificacionEvaluadors);
-			//resultadoFinal.calcularPorCategoria();
+			/*Objeto evaluador*/
+			Evaluador evaluador = null;
 			
-			proyecto.setResultado(resultadoFinal);
-		
+			/*Objeto rubrica*/
+			Rubrica rubrica = null;
+			
+			/*Mapa resultados por item*/
+			Map<Integer, Double> resultadoPorItem = new HashMap<Integer, Double>();
+			
+			/*
+			 * Ciclo de resultados
+			 * */
+			for (Resultado resultado : resultados) {
+				/*Evaluador por proyecto*/
+				evaluador = evaluadorService.read(resultado.getIdEvaluador());				
+				
+				/*Rubrica*/
+				rubrica = catalogos.getRubricas().get(resultado.getIdRubrica());				
+				
+				/*Asignando Calificaciones*/						
+				resultadoPorItem.put(resultado.getIdItemRubrica(), resultado.getCalificacion());
+				
+			}
+			
+			CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(evaluador, resultadoPorItem, rubrica);
+			calificacionEvaluadores.add(calificacionEvaluador);
+			
+			ResultadoFinal resultadoFinal = new ResultadoFinal(calificacionEvaluadores);			
+			
+			proyecto.setResultado(resultadoFinal);		
 		}
 		
 		return gson.toJson(evaluacion); 

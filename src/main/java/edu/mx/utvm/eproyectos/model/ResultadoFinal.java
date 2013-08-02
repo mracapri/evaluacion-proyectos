@@ -5,10 +5,11 @@ import java.util.List;
 public class ResultadoFinal {
 	private List<CalificacionEvaluador> calificacionEvaluadores;
 	private double calificacionPorCategoria = 0;
+	private double calificacionPorPresentacion = 0;
 	public ResultadoFinal(List<CalificacionEvaluador> calificacionEvaluadores){		
 		this.calificacionEvaluadores = calificacionEvaluadores;
 		calificacionPorCategoria = calcularPorCategoria();
-		//calcularPorPresentacion();
+		calificacionPorPresentacion = calcularPorPresentacion();
 	}
 	
 	public Double calcularTotal(){
@@ -24,14 +25,14 @@ public class ResultadoFinal {
 		double total = 0;
 		int numeroCategorias = 0;
 		
-		for (CalificacionEvaluador calificacionEvaluador : calificacionEvaluadores) {
+		/*for (CalificacionEvaluador calificacionEvaluador : calificacionEvaluadores) {
 			if(calificacionEvaluador.getRubrica().getClass() == rubrica){
 				total = total + calificacionEvaluador.calcularTotal();
 				numeroCategorias++;
 			}
-		}
-		total = total / numeroCategorias;
-		return total;
+		}*/
+		//total = total / numeroCategorias;
+		return 0.0;
 	}
 	
 	public Double calcularPorCategoria(){
