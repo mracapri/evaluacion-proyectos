@@ -14,7 +14,7 @@ function MyCtrl($scope, $http, $templateCache) {
 	  setInterval(function () {
 		 
 		  $scope.method = 'JSONP';
-		  $scope.url = 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero';
+		  $scope.url = 'http://localhost:8080/evaluacion-proyectos/resolver/manager/jsonResult';
 		  
 		  $http({method: $scope.method, url: 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero'}).
 	      success(function(data, status) {

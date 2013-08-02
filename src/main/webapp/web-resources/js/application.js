@@ -141,10 +141,23 @@ var DEMO = {
 			         		}]
 				}]
 			}
+			
 		
 		$("#listProyectos").live('change', function(){
+			
 			 $("table#tablaResulExpo td").remove();
 			 $('#showProyectos').trigger('click');
+			
+			$.ajax({
+				type: "GET",
+				dataType: "JSON",
+	   			url: "URL_APP_SERVICE/manager/jsonResult",			  
+	   			 success: function(dato){
+					//Code
+				}
+			});	
+			
+			
 			 
 			/*carga de JSON a tabla resultados proyectos presentacion*/ 
 			htmll='';
