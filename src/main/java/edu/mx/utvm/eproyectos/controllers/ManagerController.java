@@ -88,12 +88,17 @@ public class ManagerController {
 	@RequestMapping(value="/jsonResult", method = RequestMethod.GET)
 	public String getEncuestas(ModelMap model, HttpServletRequest request, 								
 			HttpServletResponse response){								 		
-						
-		Map<String, Map> proyecto = new HashMap<String, Map>();		
-		Categoria categoria = new Categoria(1, "nueva");
-		Proyecto proyecto1 = new Proyecto("asdasd23423", "asdasdas", categoria, "asdasd");		
 		
-		model.put("proyectos", proyecto1);
+		Categoria categoria = new Categoria(1, "nueva");
+		List<Proyecto> proyectos = new ArrayList<Proyecto>();
+		
+		Proyecto proyecto1 = new Proyecto("asdasd23423", "asdasdas", categoria, "asdasd");		
+		proyectos.add(proyecto1);
+		
+		Proyecto proyecto2 = new Proyecto("asdas123", "aaaaaaaaaaa", categoria, "aaaaa");		
+		proyectos.add(proyecto2);
+		
+		model.put("proyectos", proyectos);
 							
 		return "jsonView"; 
 	}	
