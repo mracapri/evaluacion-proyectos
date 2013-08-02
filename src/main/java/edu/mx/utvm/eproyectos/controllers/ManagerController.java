@@ -24,6 +24,7 @@ import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.services.EvaluacionService;
+import edu.mx.utvm.eproyectos.services.ResultadoService;
 
 @Controller
 @RequestMapping("/manager")
@@ -33,6 +34,9 @@ public class ManagerController {
 	
 	@Autowired
 	private EvaluacionService evaluacionService;
+	
+	@Autowired
+	private ResultadoService resultadoService;
 	
 	/*Lista de evaluaciones*/
 	@RequestMapping(value="/all", method=RequestMethod.GET)
