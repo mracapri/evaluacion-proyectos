@@ -22,30 +22,37 @@
 		<div class="proyectoEvaluar">
 			<div class="row-fluid">
 			    <div class="span12 show-grid">
-			    	<span class="titulo-ventana">Rubrica Categoria - ${evaluacion}</span>	
+			    	<span class="titulo-ventana">Rubrica por Categor&iacutea - ${evaluacion.descripcion}</span>	
 			    </div>
 			</div> 
 			<div class="control-group">
 				<div class="row-fluid">
-	
-				    <div class="span10">
-				    	<b>1.-</b>
-						<span>Manejo del escenario clara y conocimiento del proyecto
-							<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo"><i class="icon-question-sign icon-white"></i></a>
-						</span>
+			    	<div class="span1">
+			    		<b>1.-</b>
+			    	</div>
+			    	
+					<div class="span9">
+						Manejo del escenario clara y conocimiento del proyecto 
+						
 						<div id="demo" class="collapse">
 							<div class="alert alert-info">
 								<p class="text-info">Este punto califica la menera en que la persona que expone se comunica con la audiencia, asi como las gesticulaciones que realiza para convencer</p>
 							</div>
 						</div>	
-				    </div>
-				    <div class="span2">
+					</div>
+					
+					<div class="span1">
+						<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo">
+							<i class="icon-info-sign icon-white"></i>
+						</a>
+					</div>	
+					<div class="span1">
 					 	<select id="escala">
 					 		<option>1</option>
 					 		<option>2</option>
 					 		<option>3</option>
 					 	</select>
-				    </div>
+				 	</div>
 				</div> 
 			</div>
 			<div class="row-fluid">

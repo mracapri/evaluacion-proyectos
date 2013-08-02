@@ -22,42 +22,38 @@
 		<div class="proyectoEvaluar">
 			<div class="row-fluid">
 			    <div class="span12 show-grid">
-			    	<span class="titulo-ventana">Evaluaci&oacuten de Proyectos</span>	
+			    	<span class="titulo-ventana">Evaluaci&oacuten de Proyectos Categoria</span>	
 			    </div>
 			</div> 
 			<div class="control-group">
 				<div class="row-fluid">
-	
-				    <div class="span10">
-						<div class="row">
-					    	<div class="span1">
-					    		<b>1.-</b>
-					    	</div>
-					    	
-							<div class="span10">
-								Implementacion de dise&ntilde;o en casacada segun lo marca la w3e y el  estandar de programadores
-							</div>
-							
-							<div class="span1">
-								<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo">
-									<i class="icon-question-sign icon-white"></i>
-								</a>
-							</div>	
-													
-						</div>
+
+			    	<div class="span1">
+			    		<b>1.-</b>
+			    	</div>
+			    	
+					<div class="span9">
+						Implementacion de dise&ntilde;o en casacada segun lo marca la w3e y el  estandar de programadores
+						
 						<div id="demo" class="collapse">
 							<div class="alert alert-info">
 								<p class="text-info">El proyecto aplica de manera clara los conocimientos sobre modelado y va de acuerdo con su categoria</p>
 							</div>
 						</div>	
-				    </div>
-				    <div class="span2">
+					</div>
+					
+					<div class="span1">
+						<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo">
+							<i class="icon-info-sign icon-white"></i>
+						</a>
+					</div>	
+					<div class="span1">
 					 	<select id="escala">
 					 		<option>1</option>
 					 		<option>2</option>
 					 		<option>3</option>
 					 	</select>
-				    </div>
+				 	</div>
 				</div> 
 			</div>
 			<div class="row-fluid">
