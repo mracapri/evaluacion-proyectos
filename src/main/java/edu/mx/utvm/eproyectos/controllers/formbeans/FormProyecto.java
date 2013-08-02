@@ -22,8 +22,7 @@ public class FormProyecto {
 	private CommonsMultipartFile filePdf;
 	private CommonsMultipartFile fotoEquipo;
 		
-	private int noPresentacion;	
-	private int noCategoria;
+
 	
 	public String getNombre() {
 		return nombre;
@@ -67,16 +66,5 @@ public class FormProyecto {
 	public void setFotoEquipo(CommonsMultipartFile fotoEquipo) {
 		this.fotoEquipo = fotoEquipo;
 	}
-	public int getNoPresentacion() {
-		return noPresentacion;
-	}
-	public void setNoPresentacion(int noPresentacion) {
-		this.noPresentacion = noPresentacion;
-	}
-	public int getNoCategoria() {
-		return noCategoria;
-	}
-	public void setNoCategoria(int noCategoria) {
-		this.noCategoria = noCategoria;
-	}	
+	
 }

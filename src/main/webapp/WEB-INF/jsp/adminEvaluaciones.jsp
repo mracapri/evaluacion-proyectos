@@ -34,18 +34,18 @@
 				       			<span>${evaluacion.descripcion}</span>
 				       	 	</div>
 				       	 	<div class="span3">
-				       			<span>
+				       			
 					       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos">
 					       				<i class="icon-list-alt"></i>proyectos
 					       			</a>
-				       			</span>
+				       			
 				       	 	</div>  
 				       	 	<div class="span3">
-				       			<span>
+				       		
 					       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores/">
 					       				<i class=" icon-user"></i>evaluadores
 					       			</a>
-				       			</span>
+				       			
 				       	 	</div>  
 						</div> 
 		       		</c:forEach>

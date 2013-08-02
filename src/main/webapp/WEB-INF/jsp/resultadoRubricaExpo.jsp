@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-collapse.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resolver/js/global"></script>
 	
 </head>
 <body >
