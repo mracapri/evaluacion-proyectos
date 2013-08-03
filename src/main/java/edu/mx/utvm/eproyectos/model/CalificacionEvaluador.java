@@ -2,7 +2,13 @@ package edu.mx.utvm.eproyectos.model;
 
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class CalificacionEvaluador {
+	
+	protected final Log log = LogFactory.getLog(getClass());
+	
 	private Evaluador evaluador;
 	private Map<Integer, Double> resultadoPorItem;
 	private Rubrica rubrica;
@@ -12,8 +18,7 @@ public class CalificacionEvaluador {
 			Map<Integer, Double> resultadoPorItem, Rubrica rubrica) {
 		this.evaluador = evaluador;
 		this.resultadoPorItem = resultadoPorItem;
-		this.rubrica = rubrica;
-		totalRubrica = calcularTotal();
+		this.rubrica = rubrica;		
 	}
 	
 	public Evaluador getEvaluador() {
@@ -29,8 +34,18 @@ public class CalificacionEvaluador {
 		for(Integer key : resultadoPorItem.keySet()){
 			total = total + resultadoPorItem.get(key);
 		}
-		total = total / resultadoPorItem.size();
-		return 0.0;
+		
+		if(resultadoPorItem.size() == 0){
+			return 0.0;
+		}else{
+			/*log.info("===============");
+			log.info("total="+total);
+			log.info("Div="+resultadoPorItem.size());*/			
+			total = total / resultadoPorItem.size();
+			//log.info("Result--->"+total);
+			this.totalRubrica = total;
+			return total;
+		}		
 	}
 
 	public Rubrica getRubrica() {

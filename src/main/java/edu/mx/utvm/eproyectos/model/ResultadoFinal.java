@@ -2,7 +2,13 @@ package edu.mx.utvm.eproyectos.model;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 public class ResultadoFinal {
+	
+	protected final Log log = LogFactory.getLog(getClass());
+	
 	private List<CalificacionEvaluador> calificacionEvaluadores;
 	private double calificacionPorCategoria = 0;
 	private double calificacionPorPresentacion = 0;
@@ -23,16 +29,23 @@ public class ResultadoFinal {
 	
 	private Double calcularPorTipoRubrica(Class rubrica){
 		double total = 0;
-		int numeroCategorias = 0;
-		
-		/*for (CalificacionEvaluador calificacionEvaluador : calificacionEvaluadores) {
-			if(calificacionEvaluador.getRubrica().getClass() == rubrica){
+		int numeroCategorias = 0;								
+		for (CalificacionEvaluador calificacionEvaluador : calificacionEvaluadores) {			
+			//if(calificacionEvaluador.getRubrica().getClass() == rubrica){
 				total = total + calificacionEvaluador.calcularTotal();
 				numeroCategorias++;
-			}
-		}*/
-		//total = total / numeroCategorias;
-		return 0.0;
+			//}
+		}		
+		if(numeroCategorias == 0){
+			return 0.0;
+		}else{
+			log.info("================");
+			log.info("total="+total);
+			log.info("div="+numeroCategorias);
+			total = total / numeroCategorias;
+			log.info("ResultadoFinal--->>>"+total);
+			return total;
+		}			
 	}
 	
 	public Double calcularPorCategoria(){

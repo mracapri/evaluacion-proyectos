@@ -117,16 +117,20 @@ public class ManagerController {
 		response.setHeader("content-type", "application/json");	
 		
 		/*Obtener proyectos por evaluacion*/
-		Evaluacion evaluacion = evaluacionService.read("25bbdcd06c32d477f7fa1c3e4a91b032");
+		Evaluacion evaluacion = evaluacionService.read("25bbdcd06c32d477f7fa1c3e4a91b032");				
 		
 		/*
 		 * Ciclo de proyectos
 		 * */
 		for (String idProyecto : evaluacion.getProyectos().keySet()) {
 			Proyecto proyecto = evaluacion.getProyectos().get(idProyecto);
+						
 			
 			/*Lista de resultados por proyecto*/
 			List<Resultado> resultados = resultadoService.findAllByProyecto(proyecto.getIdProyecto());
+			
+			/*Cantidad de evaluadores*/
+			
 			
 			/*Lista vacia de calificacion evaluadores*/
 			List<CalificacionEvaluador> calificacionEvaluadores = new ArrayList<CalificacionEvaluador>();
@@ -140,10 +144,12 @@ public class ManagerController {
 			/*Mapa resultados por item*/
 			Map<Integer, Double> resultadoPorItem = new HashMap<Integer, Double>();
 			
+			/*Ojeto calificacion evaluador*/
+			
 			/*
 			 * Ciclo de resultados
 			 * */
-			for (Resultado resultado : resultados) {
+			for (Resultado resultado : resultados) {								
 				/*Evaluador por proyecto*/
 				evaluador = evaluadorService.read(resultado.getIdEvaluador());				
 				
@@ -153,10 +159,9 @@ public class ManagerController {
 				/*Asignando Calificaciones*/						
 				resultadoPorItem.put(resultado.getIdItemRubrica(), resultado.getCalificacion());
 				
-			}
-			
-			CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(evaluador, resultadoPorItem, rubrica);
-			calificacionEvaluadores.add(calificacionEvaluador);
+				CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(evaluador, resultadoPorItem, rubrica);
+				calificacionEvaluadores.add(calificacionEvaluador);	
+			}	
 			
 			ResultadoFinal resultadoFinal = new ResultadoFinal(calificacionEvaluadores);			
 			
