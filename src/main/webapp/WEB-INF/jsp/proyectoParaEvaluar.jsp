@@ -31,7 +31,9 @@
 			<div class="proyectoEvaluar">
 				<div class="row-fluid">
 				    <div class="span12 show-grid">
-				    	<span class="titulo-ventana">Evaluaci&oacuten de Proyectos</span>
+				    	<span class="titulo-ventana">
+				    		Evaluaci&oacuten de Proyectos
+				    	</span>
 				    </div>
 				</div> 
 		        <div class="control-group">
@@ -43,7 +45,7 @@
 					    </div>
 					    <div class="span2">
 						 	<h5 class="hidden-phone">
-								Rubrica Exposicion
+								Rubrica Exposici&oacuten
 							</h5>
 					    </div>
 					    <div class="span2">
@@ -61,11 +63,16 @@
 								</span>
 						    </div>
 						    <div class="span2">
-								<a class="btn btn-mini btn-primary"  href="#"><i class="icon-comment icon-white"></i> Exposición</a>
-				               	
+								<a class="btn btn-mini btn-primary" href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/presentacion/${proyecto.value.idProyecto}">
+								<i class="icon-comment icon-white"></i>
+								Exposici&oacuten
+							</a>
 						    </div>
 						    <div class="span2">
-								<a class="btn btn-mini btn-primary"href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/${proyecto.value.idProyecto}"><i class="icon-list-alt icon-white"></i>Categoria</a>
+								<a class="btn btn-mini btn-primary" href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/${proyecto.value.idProyecto}">
+									<i class="icon-list-alt icon-white"></i>
+									Categoria
+								</a>
 						    </div>
 						</div> 
 					</c:forEach>

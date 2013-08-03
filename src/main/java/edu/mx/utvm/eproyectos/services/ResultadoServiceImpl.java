@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.mx.utvm.eproyectos.dao.ResultadoDao;
+import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
+import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Resultado;
 /*
  * Implementacion del servicio <Resultado>
@@ -23,33 +26,33 @@ public class ResultadoServiceImpl implements ResultadoService {
 
 	@Override
 	public void create(Resultado newInstance) {
-		resultadoDao.create(newInstance);
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
 	public Resultado read(Integer id) {		
-		return resultadoDao.read(id);
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
 	public void update(Resultado transientObject) {
-		resultadoDao.update(transientObject);
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
 	public void delete(Resultado persistentObject) {
-		resultadoDao.delete(persistentObject);
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
 	public List<Resultado> findAll() {
-		return resultadoDao.findAll();
+		throw new UnsupportedOperationException("Metodo no implementado");
 	}
 
 	@Override
-	public List<Resultado> findAllByProyecto(String id) {		
-		return resultadoDao.findAllByProyecto(id);
+	public void create(CalificacionEvaluador newInstance,
+			Evaluacion evaluacion, Proyecto proyecto) {
+		resultadoDao.create(newInstance, evaluacion, proyecto);
 	}
-	
 	
 }

@@ -36,10 +36,10 @@ public class EvaluadorDaoImpl extends JdbcTemplate implements EvaluadorDao {
 
 	@Override
 	public Evaluador read(String id) {
-		String sql = "";
+		String sql = "";		
 		sql += "SELECT e.id_evaluador, e.nombre, e.especialidad, u.nombre_usuario, u.clave ";
 		sql += "FROM evaluador e, usuario u, usuario_evaluador eu ";
-		sql += "WHERE eu.id_evaluador = ? and u.nombre_usuario = eu.nombre_usuario";
+		sql += "WHERE e.id_evaluador = ? and e.id_evaluador = eu.id_evaluador and u.nombre_usuario = eu.nombre_usuario";
 		try {
 			Evaluador resultado = this.queryForObject(sql, new Object[] { id },
 					new RowMapper<Evaluador>() {

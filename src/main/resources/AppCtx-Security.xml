@@ -13,11 +13,11 @@
         <http-basic/>
         
 		<intercept-url pattern='/index.htm' filters='none' access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-    	<intercept-url pattern='/login.htm' filters='none'/>
+    	<intercept-url pattern='/login' filters='none'/>
     	<intercept-url pattern='/resolver/articulo/new' access="hasRole('VENDEDOR')"/>  
     	
 	    
-        <form-login login-page="/resolver/login.htm" 
+        <form-login login-page="/resolver/login" 
         			default-target-url="/resolver/index.htm" 
         			always-use-default-target="true"
         			authentication-success-handler-ref="securityHandler" 
@@ -40,11 +40,11 @@
 			<jdbc-user-service
 				authorities-by-username-query="select u.nombre_usuario, r.role from usuario u, usuario_roles ur, roles r where u.nombre_usuario = ?  and ur.nombre_usuario =  u.nombre_usuario and ur.id_role = r.id_role"
 				data-source-ref="dataSource"
-				users-by-username-query="select nombre_usuario, clave, activo from usuario where nombre_usuario = ?" />
+				users-by-username-query="select nombre_usuario, clave as password, activo as enabled from usuario where nombre_usuario = ?" />
 		</authentication-provider>
 	</authentication-manager>
 	 
-	<beans:bean id="securityHandler" class="edu.utvm.gencuesta.security.SecurityHandler"/>
+	<beans:bean id="securityHandler" class="edu.mx.utvm.eproyectos.security.SecurityHandler"/>
 	 
 	 
 </beans:beans>

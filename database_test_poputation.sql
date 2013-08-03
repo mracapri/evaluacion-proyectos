@@ -141,10 +141,6 @@ insert into usuario_roles (nombre_usuario, id_role) values ('alfredop',1);
 insert into usuario ( nombre_usuario, clave, fecha_creacion, activo)
 values ('mayri_022', '1452546', '2013-06-15', 1);
 
-/*Usuario evaluador*/
-insert into usuario_evaluador ( nombre_usuario, id_evaluador)
-values ('mayri_022', '68a9e49bbc88c02083a062a78ab3bf30');
-
 /*Resultados*/
 insert into resultado ( id_evaluacion, id_proyecto, id_evaluador, id_rubrica, id_item_rubrica, calificacion)
 values ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 1, 9.0),
@@ -152,3 +148,10 @@ values ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 
 ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 3, 8.0),
 ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 4, 9.0),
 ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 5, 9.0);
+
+insert into resultado ( id_evaluacion, id_proyecto, id_evaluador, id_rubrica, id_item_rubrica, calificacion)
+values ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 1, 9.0),
+('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 2, 6.0),
+('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 3, 7.0),
+('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 4, 4.0),
+('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 5, 9.0);

@@ -849,4 +849,8 @@ var DEMO = {
 $(document).ready(function(){
 	DEMO.main();
 	
+	$("#si-guardar").click(function(){
+		$("#formProyectoEvaluar").submit();
+	});
+	
 });
