@@ -1,6 +1,8 @@
 package edu.mx.utvm.eproyectos.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
+import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
@@ -74,15 +77,6 @@ public class TestDaoResultado {
 	}
 	
 	@Test
-	public void findAll() {
-		log.info("-----------------Test1--------------");
-		Assert.assertNotNull(resultadoDao);		
-		List<Resultado> all = resultadoDao.findAll();
-		log.info(all.size());
-		Assert.assertTrue(all.size() == 0);
-	}
-	
-	@Test
 	public void insertAndFindAll(){
 		log.info("-----------------Test2--------------");
 		Assert.assertNotNull(resultadoDao);
@@ -103,65 +97,17 @@ public class TestDaoResultado {
 		ItemRubrica itemRubrica = new ItemRubrica(1, "Deseño", "Caracteristicas e implementacion del diseño", escala1);
 		itemRubricaDao.create(itemRubrica, rubrica);
 		
+		// agregando el item a la rubrica
+		rubrica.getItems().add(itemRubrica);
+		
 		/*Evalaudor*/
 		Evaluador evaluador = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Emmanuel", "TIC", "mayri", "asdasd12");
 		evaluadorDao.create(evaluador, evaluacion);
 		
-		/*
-		 * Resultado
-		 * */
-		Resultado resultado = new Resultado("25bbdcd06c32d477f7fa1c3e4a91b032","130101", "68a9e49bbc88c02083a062a78ab3bf30","1301", 1, 10);
-		resultadoDao.create(resultado);
+		Map<Integer, Double> resultadoPorItem = new HashMap<Integer, Double>();
 		
-		List<Resultado> all = resultadoDao.findAll();
-		log.info("Tamano-->"+all.size());
-		log.info("idEvaluacion-->"+all.get(0).getIdEvaluacion());
-		log.info("idProyecto-->"+all.get(0).getIdProyecto());
-		log.info("idRubrica-->"+all.get(0).getIdRubrica());
-		log.info("idItemRubrica-->"+all.get(0).getIdItemRubrica());
-		log.info("calificacion-->"+all.get(0).getCalificacion());
-		Assert.assertTrue(all.size() == 1);
-	}
-	
-	@Test
-	public void insertAndFindAllByProyecto(){
-		log.info("-----------------Test3--------------");
-		Assert.assertNotNull(resultadoDao);					
+		CalificacionEvaluador cal = new CalificacionEvaluador(evaluador, resultadoPorItem, rubrica);
 		
-		/*Create evaluacion*/
-		Evaluacion evaluacion = new Evaluacion("25bbdcd06c32d477f7fa1c3e4a91b032", "Evaluacion 2013");
-		evaluacionDao.create(evaluacion);
-		
-		/*Create proyecto*/		
-		Proyecto proyecto = new Proyecto("130101", "Kinect", categoria1, "Israel Paz");
-		proyectoDao.create(proyecto, evaluacion);
-		
-		/*Create Rubrica*/						
-		RubricaCategoria rubrica = new RubricaCategoria("1301",categoria1);
-		rubricaDao.create(rubrica);
-		
-		/*Create Item rubrica*/
-		ItemRubrica itemRubrica = new ItemRubrica(1, "Deseño", "Caracteristicas e implementacion del diseño", escala1);
-		itemRubricaDao.create(itemRubrica, rubrica);
-		
-		/*Evalaudor*/
-		Evaluador evaluador = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Emmanuel", "TIC", "mayri", "asdasd12");
-		evaluadorDao.create(evaluador, evaluacion);		
-		
-		/*
-		 * Resultado
-		 * */
-		Resultado resultado = new Resultado("25bbdcd06c32d477f7fa1c3e4a91b032","130101", "68a9e49bbc88c02083a062a78ab3bf30", "1301", 1, 10);
-		resultadoDao.create(resultado);
-		
-		List<Resultado> all = resultadoDao.findAllByProyecto("130101");
-		
-		log.info("Tamano-->"+all.size());
-		log.info("idEvaluacion-->"+all.get(0).getIdEvaluacion());
-		log.info("idProyecto-->"+all.get(0).getIdProyecto());
-		log.info("idRubrica-->"+all.get(0).getIdRubrica());
-		log.info("idItemRubrica-->"+all.get(0).getIdItemRubrica());
-		log.info("calificacion-->"+all.get(0).getCalificacion());
-		Assert.assertTrue(all.size() == 1);
+		resultadoDao.create(cal, evaluacion, proyecto);
 	}
 }

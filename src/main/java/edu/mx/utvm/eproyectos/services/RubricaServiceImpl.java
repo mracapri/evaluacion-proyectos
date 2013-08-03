@@ -10,6 +10,7 @@ import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Rubrica;
 import edu.mx.utvm.eproyectos.model.RubricaCategoria;
+import edu.mx.utvm.eproyectos.model.RubricaPresentacion;
 /*
  * Implementacion del servicio para Rubrica
  * 
@@ -33,6 +34,19 @@ public class RubricaServiceImpl implements RubricaService{
 						.getCategoria().getIdCategoria()) {
 					return rubricaCategoria;
 				}
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public Rubrica obtenerRubricaPorPresentacion() {
+		Map<String, Rubrica> rubricas = catalogos.getRubricas();
+		Set<String> keySet = rubricas.keySet();
+		for(String key : keySet){
+			Rubrica rubrica = rubricas.get(key);
+			if(rubrica.getClass() == RubricaPresentacion.class){
+				return rubrica;
 			}
 		}
 		return null;

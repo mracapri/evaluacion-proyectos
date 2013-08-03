@@ -16,18 +16,18 @@
 <body>		
 	<div class="container" >
 		
-			<form class="form-login">
+			<form class="form-login" action="${pageContext.request.contextPath}/j_spring_security_check">
 				<h2 class="form-signin-heading">Login...</h2>
 	            <div class="control-group">
 	              <label for="usuario" class="control-label">Usuario</label>
 	              <div class="controls">
-	                <input type="text" placeholder="Email" id="usuario">
+	                <input type="text" placeholder="Email" id="usuario" name="j_username">
 	              </div>
 	            </div>
 	            <div class="control-group">
 	              <label for="password" class="control-label">Contraseña</label>
 	              <div class="controls">
-	                <input type="password" placeholder="Password" id="password">
+	                <input type="password" placeholder="Password" id="password" name="j_password">
 	              </div>
 	            </div>
 	            <div class="control-group">
