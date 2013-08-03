@@ -1,9 +1,10 @@
 package edu.mx.utvm.eproyectos.services;
 
-import java.util.List;
-
+import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
+import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Resultado;
 
 public interface ResultadoService extends Service<Resultado, Integer> {
-	List<Resultado> findAllByProyecto(String id);
+	void create(CalificacionEvaluador newInstance, Evaluacion evaluacion, Proyecto proyecto);
 }

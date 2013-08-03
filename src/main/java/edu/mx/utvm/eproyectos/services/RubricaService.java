@@ -10,4 +10,5 @@ import edu.mx.utvm.eproyectos.model.Rubrica;
 
 public interface RubricaService {
 	Rubrica obtenerRubricaPorCategoriaDeProyecto(Proyecto proyecto);
+	Rubrica obtenerRubricaPorPresentacion();
 }

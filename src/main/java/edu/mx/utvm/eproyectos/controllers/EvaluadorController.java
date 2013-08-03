@@ -1,6 +1,8 @@
 package edu.mx.utvm.eproyectos.controllers;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Proyecto;
@@ -27,7 +30,7 @@ import edu.mx.utvm.eproyectos.services.RubricaService;
 
 @Controller
 @RequestMapping("/evaluador")
-@SessionAttributes({"evaluacion"})
+@SessionAttributes({"evaluacion", "proyecto", "evaluador", "rubrica"})
 public class EvaluadorController {
 	
 	@Autowired
@@ -42,6 +45,62 @@ public class EvaluadorController {
 	protected final Log log = LogFactory.getLog(getClass());
 	
 	/*Lista de evaluaciones por evaluador*/
+	@RequestMapping(value="/evaluacion/rubrica/save", method=RequestMethod.POST)
+    public ModelAndView saveCalificacionRubrica(
+    		HttpServletRequest request,
+    		HttpServletResponse response,
+    		@ModelAttribute("evaluacion") Evaluacion evaluacion, 
+    		@ModelAttribute("evaluador") Evaluador evaluador,
+    		@ModelAttribute("proyecto") Proyecto proyecto,
+    		@ModelAttribute("rubrica") Rubrica rubrica)
+            throws ServletException, IOException {
+		ModelAndView model = new ModelAndView("redirect:/resolver/evaluador/proyectos");	
+		log.debug("Guardando rubrica evaluacion");
+		log.debug("idEvaluacion: " + evaluacion.getIdEvaluacion());
+		log.debug("idEvaluador: " + evaluador.getIdEvaluador());
+		log.debug("idProyecto: " + proyecto.getIdProyecto());
+		Map<Integer, Double> resultadoPorItem = new HashMap<Integer, Double>();
+		
+		// saca los parametros de la peticion
+		for(Object key : request.getParameterMap().keySet()){
+			String keyString = (String) key;
+			int indexItemRubrica = Integer.parseInt(keyString.substring(7, keyString.length()));
+			String value = (String) request.getParameter(keyString);
+			double calificacion = Double.parseDouble(value);
+			resultadoPorItem.put(indexItemRubrica, calificacion);
+		}
+		
+		// Crea la calificacion del evaluador
+		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(evaluador, resultadoPorItem, rubrica);
+		
+		return model;
+    }
+	
+	/*Lista de evaluaciones por evaluador*/
+	@RequestMapping(value="/evaluacion/mostrar/rubrica/presentacion/{idProyecto}", method=RequestMethod.GET)
+    public ModelAndView mostrarRubricaPresentacionEvaluacion(
+    		HttpServletRequest request,
+    		HttpServletResponse response,
+    		@ModelAttribute("evaluacion") Evaluacion evaluacion, 
+    		@PathVariable("idProyecto") String idProyecto)
+            throws ServletException, IOException {
+		ModelAndView model = new ModelAndView("muestraRubricaAEvaluar");	
+		log.debug("idEvaluacion: " + evaluacion.getIdEvaluacion());
+		
+		Proyecto proyecto = evaluacion.getProyectos().get(idProyecto);
+		log.debug("Proyecto: " + proyecto);
+		
+		if(proyecto != null){
+			Rubrica rubrica = rubricaService.obtenerRubricaPorPresentacion();
+			model.addObject("rubrica", rubrica);
+			model.addObject("proyecto", proyecto);
+			model.addObject("tipoRubrica", "porPresentacion");
+		}
+		
+		return model;
+    }
+	
+	/*Lista de evaluaciones por evaluador*/
 	@RequestMapping(value="/evaluacion/mostrar/rubrica/categoria/{idProyecto}", method=RequestMethod.GET)
     public ModelAndView mostrarRubricaCategoriaEvaluacion(
     		HttpServletRequest request,
@@ -49,14 +108,19 @@ public class EvaluadorController {
     		@ModelAttribute("evaluacion") Evaluacion evaluacion, 
     		@PathVariable("idProyecto") String idProyecto)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("rubricaCategoria");	
+		ModelAndView model = new ModelAndView("muestraRubricaAEvaluar");	
 		log.debug("idEvaluacion: " + evaluacion.getIdEvaluacion());
 		
 		Proyecto proyecto = evaluacion.getProyectos().get(idProyecto);
 		log.debug("Proyecto: " + proyecto);
 		
-		Rubrica rubrica = rubricaService.obtenerRubricaPorCategoriaDeProyecto(proyecto);
-		model.addObject("rubrica", rubrica);
+		if(proyecto != null){
+			Rubrica rubrica = rubricaService.obtenerRubricaPorCategoriaDeProyecto(proyecto);
+			model.addObject("rubrica", rubrica);
+			model.addObject("proyecto", proyecto);
+			model.addObject("tipoRubrica", "porCategoria");
+		}
+	
 		return model;
     }
 	
@@ -84,6 +148,7 @@ public class EvaluadorController {
 		if(readByNombreUsuario !=  null){
 			Evaluacion evaluacion = evaluacionService.readByIdEvalauador(readByNombreUsuario.getIdEvaluador());
 			model.addObject("evaluacion", evaluacion);
+			model.addObject("evaluador", readByNombreUsuario);
 		}
 		return model;
     }

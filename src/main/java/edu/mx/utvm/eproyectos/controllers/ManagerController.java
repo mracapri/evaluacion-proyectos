@@ -24,7 +24,6 @@ import com.google.gson.Gson;
 
 import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
-import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.Proyecto;
@@ -127,7 +126,9 @@ public class ManagerController {
 						
 			
 			/*Lista de resultados por proyecto*/
-			List<Resultado> resultados = resultadoService.findAllByProyecto(proyecto.getIdProyecto());
+			//List<Resultado> resultados = resultadoService.findAllByProyecto(proyecto.getIdProyecto());
+			
+			List<Resultado> resultados = new ArrayList<Resultado>();
 			
 			/*Cantidad de evaluadores*/
 			
