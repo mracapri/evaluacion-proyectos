@@ -9,5 +9,5 @@ import edu.mx.utvm.eproyectos.model.Proyecto;
  public interface ResultadoDao extends Dao<CalificacionEvaluador, Integer> {
  	void create(CalificacionEvaluador newInstance, Evaluacion evaluacion, Proyecto proyecto);
 	List<CalificacionEvaluador> findAllByProyecto(String proyecto);
- 	boolean laRubricaYaFueCapurada(String idRubrica, String idEvaluador);
+ 	boolean laRubricaYaFueCapuradaParaElProyecto(Proyecto proyecto, CalificacionEvaluador calificacionEvaluador);
  }

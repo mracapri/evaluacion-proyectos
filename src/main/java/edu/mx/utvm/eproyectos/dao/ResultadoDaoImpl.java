@@ -44,12 +44,18 @@ public class ResultadoDaoImpl extends JdbcTemplate implements ResultadoDao {
 	}
 
 	@Override
-	public boolean laRubricaYaFueCapurada(String idRubrica, String idEvaluador) {
-		String sql = "select count(1) from resultado where id_rubrica = ? and id_evaluador = ?";
-		try {
-			int queryForInt = this.queryForInt(sql, new Object[]{ idRubrica, idEvaluador });
+	public boolean laRubricaYaFueCapuradaParaElProyecto(Proyecto proyecto, CalificacionEvaluador calificacion) {
+		String sql = "select count(1) from resultado where id_proyecto = ? and id_rubrica = ? and id_evaluador = ?";
+
+		int queryForInt = this.queryForInt(sql,new Object[] { 
+				proyecto.getIdProyecto(),
+				calificacion.getRubrica().getId(),
+				calificacion.getEvaluador().getIdEvaluador() 
+		});
+		
+		if(queryForInt > 0){
 			return true;
-		} catch (EmptyResultDataAccessException accessException) {
+		}else{
 			return false;
 		}
 	}

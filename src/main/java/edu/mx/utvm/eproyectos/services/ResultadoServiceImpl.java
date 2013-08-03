@@ -35,8 +35,7 @@ public class ResultadoServiceImpl implements ResultadoService {
 	@Override
 	public void create(CalificacionEvaluador newInstance,
 			Evaluacion evaluacion, Proyecto proyecto) {
-		boolean laRubricaYaFueCapurada = resultadoDao.laRubricaYaFueCapurada(newInstance.getRubrica().getId(),
-				newInstance.getEvaluador().getIdEvaluador());
+		boolean laRubricaYaFueCapurada = resultadoDao.laRubricaYaFueCapuradaParaElProyecto(proyecto, newInstance);
 		if(!laRubricaYaFueCapurada){
 			resultadoDao.create(newInstance, evaluacion, proyecto);	
 		}

@@ -95,22 +95,21 @@ public class TestDaoResultado {
 		/* Create Rubrica */
 		RubricaCategoria rubrica = new RubricaCategoria("1301", categoria1);
 		rubricaDao.create(rubrica);
+		
+		RubricaPresentacion rubricaPresentacion = new RubricaPresentacion("1305");
+		rubricaDao.create(rubricaPresentacion);
 
 		/* Create Item rubrica */
-		ItemRubrica itemRubrica = new ItemRubrica(1, "Dese“o",
-				"Caracteristicas e implementacion del dise“o", escala1);
+		ItemRubrica itemRubrica = new ItemRubrica(1, "Desenio",
+				"Caracteristicas e implementacion del disenio", escala1);
 		itemRubricaDao.create(itemRubrica, rubrica);
 
-		ItemRubrica itemRubrica2 = new ItemRubrica(2, "Dese“o",
+		ItemRubrica itemRubrica2 = new ItemRubrica(2, "Desenio",
 				"Caracteristicas de desarrollo de interfaces", escala1);
 		itemRubricaDao.create(itemRubrica2, rubrica);
 
-		RubricaPresentacion rubricaPresentacion = new RubricaPresentacion(
-				"1305");
-		rubricaDao.create(rubricaPresentacion);
-
 		ItemRubrica itemRubricaP1 = new ItemRubrica(3, "Ortografia",
-				"Caracteristicas e implementacion del dise“o", escala1);
+				"Caracteristicas e implementacion del disenio", escala1);
 		itemRubricaDao.create(itemRubricaP1, rubricaPresentacion);
 
 		// agregando el item a la rubrica
@@ -151,13 +150,16 @@ public class TestDaoResultado {
 		resultadoDao.create(cal, evaluacion, proyecto);
 		resultadoDao.create(cal2, evaluacion, proyecto);
 		resultadoDao.create(cal3, evaluacion, proyecto);
-		
-		Assert.assertFalse(resultadoDao.laRubricaYaFueCapurada(rubricaPresentacion.getId(), evaluador3.getIdEvaluador()));
-		resultadoDao.create(cal4, evaluacion, proyecto);
-		Assert.assertTrue(resultadoDao.laRubricaYaFueCapurada(rubricaPresentacion.getId(), evaluador3.getIdEvaluador()));
 
 		List<CalificacionEvaluador> findAllByProyecto = resultadoDao
 				.findAllByProyecto("130101");
+		
+		Assert.assertFalse(resultadoDao.laRubricaYaFueCapuradaParaElProyecto(proyecto, cal4));
+		resultadoDao.create(cal4, evaluacion, proyecto);
+		Assert.assertTrue(resultadoDao.laRubricaYaFueCapuradaParaElProyecto(proyecto, cal4));
+
+		findAllByProyecto = resultadoDao.findAllByProyecto("130101");
+		
 		for (CalificacionEvaluador calEva : findAllByProyecto) {
 			log.debug("TOTAL POR EVALUADOR: " + calEva.calcularTotal() + "   "
 					+ calEva.getRubrica() + "   "
