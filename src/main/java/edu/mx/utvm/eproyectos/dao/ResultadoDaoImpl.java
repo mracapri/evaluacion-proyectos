@@ -45,7 +45,7 @@ public class ResultadoDaoImpl extends JdbcTemplate implements ResultadoDao {
 
 	@Override
 	public boolean laRubricaYaFueCapurada(String idRubrica, String idEvaluador) {
-		String sql = "select 1 from resultado where id_rubrica = ? and id_evaluador = ?";
+		String sql = "select count(1) from resultado where id_rubrica = ? and id_evaluador = ?";
 		try {
 			int queryForInt = this.queryForInt(sql, new Object[]{ idRubrica, idEvaluador });
 			return true;
