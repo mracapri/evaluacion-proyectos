@@ -84,7 +84,7 @@
 					<div class="row-fluid">
 						<div class="span12" style="text-align:center; margin-top:2em">                       	
 							<button class="btn btn-success fileinput-button" type="submit"><i class="icon-file icon-white"></i>Guardar</button>							
-							<a class="btn btn-danger fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores">CANCELAR</a>							
+							<a class="btn btn-danger fileinput-button" href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores/${evaluacion.idEvaluacion}">CANCELAR</a>							
 						</div>
 					</div> 
 				 </form:form>                   

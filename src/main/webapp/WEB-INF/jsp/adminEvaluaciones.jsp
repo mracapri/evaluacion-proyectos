@@ -42,7 +42,7 @@
 				       	 	</div>  
 				       	 	<div class="span3">
 				       		
-					       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores/">
+					       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores/${evaluacion.idEvaluacion}">
 					       				<i class=" icon-user"></i>evaluadores
 					       			</a>
 				       			

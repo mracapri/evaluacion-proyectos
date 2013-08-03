@@ -105,12 +105,16 @@ public class EvaluacionController {
     }
 	
 	/*Lista de evaluadores*/
-	@RequestMapping(value="/evaluadores", method=RequestMethod.GET)
-    public ModelAndView getEvaluadoresList(HttpServletRequest request,     		
+	@RequestMapping(value="/evaluadores/{idEvaluacion}", method=RequestMethod.GET)
+    public ModelAndView getEvaluadoresList(HttpServletRequest request, 
+    		@PathVariable("idEvaluacion") String idEvaluacion,
     		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("adminEvaluadores");		
-				
+		
+		Evaluacion read = evaluacionService.read(idEvaluacion);		
+		model.addObject("evaluacion", read);
+		
 		model.addObject("evaluadores",evaluadorService.findAll());				
 		return model;
     }
@@ -130,15 +134,13 @@ public class EvaluacionController {
 	@RequestMapping(value="/evaluadores/form", method=RequestMethod.POST)
     public ModelAndView getEvaluadoresFormSave(HttpServletRequest request,      		
     		@ModelAttribute("formEvaluador") @Valid FormEvaluador formEvaluador,
+    		@ModelAttribute("evaluacion") Evaluacion evaluacion,
     		BindingResult result)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("nuevoEvaluador");				
-		if(!result.hasErrors()){
-			
-			Evaluador evaluador = new Evaluador(KeyGenerator.uuid(), formEvaluador.getNombre(), formEvaluador.getEspecialidad(), formEvaluador.getUsuario(), formEvaluador.getPassword());
-			//Evaluacion evaluacion = new Evaluacion("25bbdcd06c32d477f7fa1c3e4a91b032", "otra");
-			//evaluadorService.create(evaluador,evaluacion);
-			log.info("xxxxxxxxxxxxxxxxxxxxxxxxxx"+request.getSession().getAttribute("evaluacionObj"));
+		if(!result.hasErrors()){			
+			Evaluador evaluador = new Evaluador(KeyGenerator.uuid(), formEvaluador.getNombre(), formEvaluador.getEspecialidad(), formEvaluador.getUsuario(), formEvaluador.getPassword());			
+			evaluadorService.create(evaluador,evaluacion);			
 			model.addObject("message", "Evaluador Almacenado");
 			model.setViewName("nuevoEvaluador");	
 		}
