@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -42,6 +43,17 @@ public class ResultadoDaoImpl extends JdbcTemplate implements ResultadoDao {
 		super.setDataSource(dataSource);
 	}
 
+	@Override
+	public boolean laRubricaYaFueCapurada(String idRubrica, String idEvaluador) {
+		String sql = "select 1 from resultado where id_rubrica = ? and id_evaluador = ?";
+		try {
+			int queryForInt = this.queryForInt(sql, new Object[]{ idRubrica, idEvaluador });
+			return true;
+		} catch (EmptyResultDataAccessException accessException) {
+			return false;
+		}
+	}
+ 	
 	@Override
 	public void create(CalificacionEvaluador newInstance,
 			Evaluacion evaluacion, Proyecto proyecto) {

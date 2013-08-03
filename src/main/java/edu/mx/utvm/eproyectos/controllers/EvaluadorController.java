@@ -1,6 +1,7 @@
 package edu.mx.utvm.eproyectos.controllers;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Rubrica;
 import edu.mx.utvm.eproyectos.services.EvaluacionService;
 import edu.mx.utvm.eproyectos.services.EvaluadorService;
+import edu.mx.utvm.eproyectos.services.ResultadoService;
 import edu.mx.utvm.eproyectos.services.RubricaService;
 
 @Controller
@@ -41,6 +43,9 @@ public class EvaluadorController {
 	
 	@Autowired
 	private RubricaService rubricaService;	
+	
+	@Autowired
+	private ResultadoService resultadoService;
 
 	protected final Log log = LogFactory.getLog(getClass());
 	
@@ -72,7 +77,7 @@ public class EvaluadorController {
 		
 		// Crea la calificacion del evaluador
 		CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(evaluador, resultadoPorItem, rubrica);
-		
+		resultadoService.create(calificacionEvaluador, evaluacion, proyecto);
 		return model;
     }
 	
@@ -139,11 +144,11 @@ public class EvaluadorController {
 	@RequestMapping(value="/proyectos", method=RequestMethod.GET)
     public ModelAndView getProyectosPorEvaluador(
     		HttpServletRequest request,
-    		HttpServletResponse response)
+    		HttpServletResponse response, Principal authentication)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("proyectoParaEvaluar");
 		
-		String usuario = "mracapri";
+		String usuario = authentication.getName();
 		Evaluador readByNombreUsuario = evaluadorService.readByNombreUsuario(usuario);
 		if(readByNombreUsuario !=  null){
 			Evaluacion evaluacion = evaluacionService.readByIdEvalauador(readByNombreUsuario.getIdEvaluador());
