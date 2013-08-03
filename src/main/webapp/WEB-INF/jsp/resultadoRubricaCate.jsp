@@ -14,7 +14,9 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-collapse.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/angular/js/angular.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resolver/js/global"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
+	
 		
 	
 </head>

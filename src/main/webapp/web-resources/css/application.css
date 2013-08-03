@@ -59,8 +59,13 @@
 }
 
 .tdResultados {
-    font-size: 24.5px;
+    font-size: 39.5px;
 }
+
+.thResultados {
+    font-size: 39.5px;
+}
+
 
 .checkbox-inline {
 display: inline-block;

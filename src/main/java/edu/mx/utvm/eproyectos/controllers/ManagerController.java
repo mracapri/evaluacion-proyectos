@@ -99,10 +99,10 @@ public class ManagerController {
 	@RequestMapping(value="/resultados/finales", method=RequestMethod.GET)
     public ModelAndView getResultadoPorProyecto(
     		HttpServletRequest request,    		
-    		BindingResult result)
-            throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("resultadoFinal");
-		return model;
+		HttpServletResponse response)
+	            throws ServletException, IOException {
+			ModelAndView model = new ModelAndView("resultadoFinal");	
+			return model;
     }
 	
 	@RequestMapping(value="/resultados-categoria.json", method = RequestMethod.GET)
