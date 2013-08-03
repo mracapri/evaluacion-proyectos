@@ -16,7 +16,7 @@
 <body>		
 	<div class="container" >
 		
-			<form class="form-login" action="${pageContext.request.contextPath}/j_spring_security_check">
+			<form class="form-login" method="post" action="${pageContext.request.contextPath}/j_spring_security_check">
 				<h2 class="form-signin-heading">Login...</h2>
 	            <div class="control-group">
 	              <label for="usuario" class="control-label">Usuario</label>
