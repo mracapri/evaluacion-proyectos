@@ -4,7 +4,9 @@ import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Resultado;
+import edu.mx.utvm.eproyectos.model.ResultadoFinal;
 
-public interface ResultadoService extends Service<Resultado, Integer> {
-	void create(CalificacionEvaluador newInstance, Evaluacion evaluacion, Proyecto proyecto);
+public interface ResultadoService {
+ 	void create(CalificacionEvaluador newInstance, Evaluacion evaluacion, Proyecto proyecto);
+ 	ResultadoFinal read(String idProyecto);
 }

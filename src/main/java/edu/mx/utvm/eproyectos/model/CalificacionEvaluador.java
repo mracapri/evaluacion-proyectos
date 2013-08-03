@@ -19,6 +19,7 @@ public class CalificacionEvaluador {
 		this.evaluador = evaluador;
 		this.resultadoPorItem = resultadoPorItem;
 		this.rubrica = rubrica;		
+		totalRubrica = calcularTotal();
 	}
 	
 	public Evaluador getEvaluador() {
@@ -34,18 +35,8 @@ public class CalificacionEvaluador {
 		for(Integer key : resultadoPorItem.keySet()){
 			total = total + resultadoPorItem.get(key);
 		}
-		
-		if(resultadoPorItem.size() == 0){
-			return 0.0;
-		}else{
-			/*log.info("===============");
-			log.info("total="+total);
-			log.info("Div="+resultadoPorItem.size());*/			
-			total = total / resultadoPorItem.size();
-			//log.info("Result--->"+total);
-			this.totalRubrica = total;
-			return total;
-		}		
+		total = total / resultadoPorItem.size();
+		return total;
 	}
 
 	public Rubrica getRubrica() {

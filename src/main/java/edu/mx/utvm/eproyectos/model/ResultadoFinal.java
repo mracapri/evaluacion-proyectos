@@ -28,24 +28,16 @@ public class ResultadoFinal {
 	}
 	
 	private Double calcularPorTipoRubrica(Class rubrica){
-		double total = 0;
-		int numeroCategorias = 0;								
+		double total = 0;					
+		int numeroCategorias = 0;
 		for (CalificacionEvaluador calificacionEvaluador : calificacionEvaluadores) {			
-			//if(calificacionEvaluador.getRubrica().getClass() == rubrica){
+			if(calificacionEvaluador.getRubrica().getClass() == rubrica){
 				total = total + calificacionEvaluador.calcularTotal();
 				numeroCategorias++;
-			//}
-		}		
-		if(numeroCategorias == 0){
-			return 0.0;
-		}else{
-			log.info("================");
-			log.info("total="+total);
-			log.info("div="+numeroCategorias);
-			total = total / numeroCategorias;
-			log.info("ResultadoFinal--->>>"+total);
-			return total;
-		}			
+			}
+		}
+		total = total / numeroCategorias;
+		return total;
 	}
 	
 	public Double calcularPorCategoria(){

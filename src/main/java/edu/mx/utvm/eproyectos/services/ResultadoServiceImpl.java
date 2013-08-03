@@ -12,6 +12,7 @@ import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Resultado;
+import edu.mx.utvm.eproyectos.model.ResultadoFinal;
 /*
  * Implementacion del servicio <Resultado>
  * 
@@ -25,28 +26,10 @@ public class ResultadoServiceImpl implements ResultadoService {
 	ResultadoDao resultadoDao;
 
 	@Override
-	public void create(Resultado newInstance) {
-		throw new UnsupportedOperationException("Metodo no implementado");
-	}
-
-	@Override
-	public Resultado read(Integer id) {		
-		throw new UnsupportedOperationException("Metodo no implementado");
-	}
-
-	@Override
-	public void update(Resultado transientObject) {
-		throw new UnsupportedOperationException("Metodo no implementado");
-	}
-
-	@Override
-	public void delete(Resultado persistentObject) {
-		throw new UnsupportedOperationException("Metodo no implementado");
-	}
-
-	@Override
-	public List<Resultado> findAll() {
-		throw new UnsupportedOperationException("Metodo no implementado");
+	public ResultadoFinal read(String idProyecto) {		
+		List<CalificacionEvaluador> evaluaciones = resultadoDao.findAllByProyecto(idProyecto);
+		ResultadoFinal resultadoFinal = new ResultadoFinal(evaluaciones);
+		return resultadoFinal;
 	}
 
 	@Override
