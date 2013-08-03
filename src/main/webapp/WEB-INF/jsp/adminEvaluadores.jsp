@@ -47,12 +47,27 @@
 				<section id="evaluadores">
 						<c:forEach var="evaluador" items="${evaluadores}">
 							<div class="row-fluid">
-			       				<div class="span6">
+			       				<div class="span10">
 			       					<b>${evaluador.nombre}</b>
+			       					<div id="demo" class="collapse">
+										<div class="alert ">
+											<div class="row-fluid">
+				       							<div class="span5">
+													<span>Especialidad:</span>
+					       							<span class="label label-info">${evaluador.especialidad}</span>
+					       						</div>
+					       						<div class="span5">
+													<span>Password:</span>
+					       							<span class="label label-info">${evaluador.clave}</span>
+					       						</div>
+					       					</div>	
+										</div>
+									</div>	
 				       	 		</div>
-				       	 		<div class="span6">
-				       	 			<span>Especialidad:</span>
-			       					<span class="label label-info">${evaluador.especialidad}</span>
+				       	 		<div class="span2">
+				       	 			<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo">
+										<i class="icon-info-sign icon-white"></i>
+									</a>
 				       	 		</div>
 				       	 	</div>													
 						</c:forEach>

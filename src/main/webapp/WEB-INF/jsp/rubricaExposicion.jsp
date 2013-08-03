@@ -22,7 +22,7 @@
 		<div class="proyectoEvaluar">
 			<div class="row-fluid">
 			    <div class="span12 show-grid">
-			    	<span class="titulo-ventana">Rubrica por Categor&iacutea - ${evaluacion.descripcion}</span>	
+			    	<span class="titulo-ventana">Rubrica por Exposicion - ${evaluacion.descripcion}</span>	
 			    </div>
 			</div> 
 			<div class="control-group">

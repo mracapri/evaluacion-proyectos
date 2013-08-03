@@ -17,7 +17,6 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/jquery/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-collapse.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/angular/js/angular.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
 	
 </head>
@@ -29,8 +28,8 @@
 			    	<span class="titulo-ventana">Evaluaci&oacuten de Proyectos Categoria</span>	
 			    </div>
 			</div> 
-<<<<<<< HEAD
-			<div class="control-group">
+
+			<!--<div class="control-group">
 				<div class="row-fluid">
 
 			    	<div class="span1">
@@ -40,8 +39,9 @@
 					<div class="span9">
 						Implementacion de dise&ntilde;o en casacada segun lo marca la w3e y el  estandar de programadores
 						
-						<div id="demo" class="collapse">
-=======
+						<div id="demo" class="collapse">-->
+			
+			
 			<div class="control-group">											
 				<c:forEach items="${rubrica.items}" var="itemRubrica" varStatus="row">
 				<div class="row-fluid">	
@@ -63,28 +63,27 @@
 													
 						</div>
 						<div id="demo-${itemRubrica.idItemRubrica}" class="collapse">
->>>>>>> ad01145955bf373324bf5ece861cccea4a71e3f0
+
 							<div class="alert alert-info">
 								<p class="text-info">
 									${itemRubrica.descripcionLarga}
 								</p>
 							</div>
 						</div>	
-<<<<<<< HEAD
+
 					</div>
 					
-					<div class="span1">
+					<!--  <div class="span1">
 						<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo">
 							<i class="icon-info-sign icon-white"></i>
 						</a>
-					</div>	
+					</div>
 					<div class="span1">
 					 	<select id="escala">
-=======
-				    </div>
+
+				    </div>-->	
 				    <div class="span2">
 					 	<select id="escala-${itemRubrica.idItemRubrica}">
->>>>>>> ad01145955bf373324bf5ece861cccea4a71e3f0
 					 		<option>1</option>
 					 		<option>2</option>
 					 		<option>3</option>
