@@ -17,6 +17,7 @@ import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Escala;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
+import edu.mx.utvm.eproyectos.model.Evaluador;
 import edu.mx.utvm.eproyectos.model.ItemRubrica;
 import edu.mx.utvm.eproyectos.model.Proyecto;
 import edu.mx.utvm.eproyectos.model.Resultado;
@@ -85,12 +86,9 @@ public class TestDaoResultado {
 	public void insertAndFindAll(){
 		log.info("-----------------Test2--------------");
 		Assert.assertNotNull(resultadoDao);
-		
-		
-		
-		
+	
 		/*Create evaluacion*/
-		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion("25bbdcd06c32d477f7fa1c3e4a91b032", "Evaluacion 2013");
 		evaluacionDao.create(evaluacion);
 
 		/*Create proyecto*/		
@@ -104,6 +102,10 @@ public class TestDaoResultado {
 		/*Create Item rubrica*/
 		ItemRubrica itemRubrica = new ItemRubrica(1, "Deseño", "Caracteristicas e implementacion del diseño", escala1);
 		itemRubricaDao.create(itemRubrica, rubrica);
+		
+		/*Evalaudor*/
+		Evaluador evaluador = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Emmanuel", "TIC", "mayri", "asdasd12");
+		evaluadorDao.create(evaluador, evaluacion);
 		
 		/*
 		 * Resultado
@@ -127,7 +129,7 @@ public class TestDaoResultado {
 		Assert.assertNotNull(resultadoDao);					
 		
 		/*Create evaluacion*/
-		Evaluacion evaluacion = new Evaluacion("1", "Evaluacion 2013");
+		Evaluacion evaluacion = new Evaluacion("25bbdcd06c32d477f7fa1c3e4a91b032", "Evaluacion 2013");
 		evaluacionDao.create(evaluacion);
 		
 		/*Create proyecto*/		
@@ -141,6 +143,10 @@ public class TestDaoResultado {
 		/*Create Item rubrica*/
 		ItemRubrica itemRubrica = new ItemRubrica(1, "Deseño", "Caracteristicas e implementacion del diseño", escala1);
 		itemRubricaDao.create(itemRubrica, rubrica);
+		
+		/*Evalaudor*/
+		Evaluador evaluador = new Evaluador("68a9e49bbc88c02083a062a78ab3bf30", "Emmanuel", "TIC", "mayri", "asdasd12");
+		evaluadorDao.create(evaluador, evaluacion);		
 		
 		/*
 		 * Resultado
