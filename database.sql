@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS item_rubrica (
   descripcion_larga varchar(300) NOT NULL,
   id_escala int(2) NOT NULL,
   PRIMARY KEY (id_item_rubrica),
-  FOREIGN KEY (id_escala) REFERENCES escala(id_escala)
+  FOREIGN KEY (id_escala) REFERENCES escala(id_escala) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS rubrica_items_rubrica (
@@ -98,11 +98,11 @@ CREATE TABLE IF NOT EXISTS resultado (
   id_rubrica varchar(32) NOT NULL,
   id_item_rubrica int(4) NOT NULL,
   calificacion double NULL,
-  FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion),
-  FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto),
-   FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador),
-  FOREIGN KEY (id_rubrica) REFERENCES rubrica(id_rubrica),
-  FOREIGN KEY (id_item_rubrica) REFERENCES item_rubrica(id_item_rubrica)
+  FOREIGN KEY (id_evaluacion) REFERENCES evaluacion(id_evaluacion) ON DELETE CASCADE,
+  FOREIGN KEY (id_proyecto) REFERENCES proyecto(id_proyecto) ON DELETE CASCADE,
+  FOREIGN KEY (id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE,
+  FOREIGN KEY (id_rubrica) REFERENCES rubrica(id_rubrica) ON DELETE CASCADE,
+  FOREIGN KEY (id_item_rubrica) REFERENCES item_rubrica(id_item_rubrica) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS usuario (

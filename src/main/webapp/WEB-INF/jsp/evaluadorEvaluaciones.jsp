@@ -22,7 +22,7 @@
 		<div class="masthead">
 		  <ul class="nav nav-pills pull-right">
 		    <li class="active"><a href="#">Home</a></li>
-		    <li><a href="#">Salir</a></li>
+		    <li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Salir</a></li>
 		  </ul>
 		  <h3 class="muted">Evaluaci&oacuten de proyectos</h3>
 		</div>

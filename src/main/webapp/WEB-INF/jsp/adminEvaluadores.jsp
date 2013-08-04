@@ -34,7 +34,7 @@
 		<div class="masthead">
 		  <ul class="nav nav-pills pull-right">
 		    <li class="active"><a href="#">Home</a></li>
-		    <li><a href="#">Salir</a></li>
+		    <li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Salir</a></li>
 		  </ul>
 		  <h3 class="muted">Evaluaci&oacuten de proyectos</h3>
 		</div>
@@ -52,27 +52,30 @@
 			</div>
 			<div class="control-group">												
 				<section id="evaluadores">
-						<c:forEach var="evaluador" items="${evaluadores}">
+						<c:forEach var="evaluador" items="${evaluadores}" varStatus="row">
 							<div class="row-fluid">
 			       				<div class="span10">
-			       					<b>${evaluador.nombre}</b>
-			       					<div id="demo" class="collapse">
+									<span><b>${evaluador.value.nombre}</b></span>
+									<a href="#">
+						       			<i class="icon-trash"></i> eliminar
+						       		</a>
+			       					<div id="demo-${row.count}" class="collapse">
 										<div class="alert ">
 											<div class="row-fluid">
 				       							<div class="span5">
 													<span>Especialidad:</span>
-					       							<span class="label label-info">${evaluador.especialidad}</span>
+					       							<span class="label label-info">${evaluador.value.especialidad}</span>
 					       						</div>
 					       						<div class="span5">
 													<span>Password:</span>
-					       							<span class="label label-info">${evaluador.clave}</span>
+					       							<span class="label label-info">${evaluador.value.clave}</span>
 					       						</div>
 					       					</div>	
 										</div>
 									</div>	
 				       	 		</div>
 				       	 		<div class="span2">
-				       	 			<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo">
+				       	 			<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#demo-${row.count}">
 										<i class="icon-info-sign icon-white"></i>
 									</a>
 				       	 		</div>

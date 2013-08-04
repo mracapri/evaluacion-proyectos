@@ -1,6 +1,7 @@
 package edu.mx.utvm.eproyectos.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,6 @@ public class EvaluadorServiceImpl implements EvaluadorService{
 
 	@Autowired
 	private EvaluadorDao dao;
-	
 
 	@Override
 	public Evaluador read(String id) {
@@ -59,6 +59,11 @@ public class EvaluadorServiceImpl implements EvaluadorService{
 	@Override
 	public Evaluador readByNombreUsuario(String nombreUsuario) {
 		return dao.readByNombreUsuario(nombreUsuario);
+	}
+
+	@Override
+	public Map<String, Evaluador> findAllByIdEvaluacion(String idEvaluacion) {
+		return dao.findAllByIdEvaluacion(idEvaluacion);
 	}
 
 }

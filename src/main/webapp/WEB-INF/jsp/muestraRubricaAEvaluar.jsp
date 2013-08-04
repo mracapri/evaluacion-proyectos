@@ -73,12 +73,9 @@
 						<div class="span1"></div>	
 					    <div class="span9">
 							<div class="row">
-						    	<div class="span1">
-						    		<b>${row.count}</b>
-						    	</div>
-						    	
-								<div class="span10">
-									${itemRubrica.descripcionCorta}
+							
+								<div class="span11">
+									<b>${row.count}.- </b>${itemRubrica.descripcionCorta}
 								</div>
 								
 								<div class="span1">

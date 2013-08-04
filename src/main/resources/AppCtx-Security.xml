@@ -18,8 +18,11 @@
     	<intercept-url pattern='/resolver/evaluador/proyectos' access="hasRole('EVALUADOR')"/>
     	<intercept-url pattern='/resolver/evaluador/evaluacion/mostrar/rubrica/presentacion/*' access="hasRole('EVALUADOR')"/>
     	<intercept-url pattern='/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/*' access="hasRole('EVALUADOR')"/>
-    	<intercept-url pattern='/resolver/resolver/evaluador/evaluacion/rubrica/save' access="hasRole('EVALUADOR')"/>
-    	
+    	<intercept-url pattern='/resolver/evaluador/evaluacion/rubrica/save' access="hasRole('EVALUADOR')"/>
+    	<intercept-url pattern='/resolver/evaluacion/all' access="hasRole('ADMINISTRADOR')"/>
+    	<intercept-url pattern='/resolver/evaluacion/*/proyectos' access="hasRole('ADMINISTRADOR')"/>
+    	<intercept-url pattern='/resolver/evaluacion/evaluadores/*' access="hasRole('ADMINISTRADOR')"/>
+    	<intercept-url pattern='/resolver/evaluacion/evaluadores/form' access="hasRole('ADMINISTRADOR')"/>
     	
 	    
 	    
@@ -32,7 +35,7 @@
         
         <logout 
         	invalidate-session="true" 
-        	logout-success-url="/resolver/index.htm" 
+        	logout-success-url="/resolver/login" 
         	logout-url="/j_spring_security_logout"/>
         
 		<remember-me key="generador-encuestas" />

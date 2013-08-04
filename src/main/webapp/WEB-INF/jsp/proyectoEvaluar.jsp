@@ -34,7 +34,7 @@
 		<div class="masthead">
 		  <ul class="nav nav-pills pull-right">
 		    <li class="active"><a href="#">Home</a></li>
-		    <li><a href="#">Salir</a></li>
+		    <li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Salir</a></li>
 		  </ul>
 		  <h3 class="muted">Evaluaci&oacuten de proyectos</h3>
 		</div>
@@ -60,7 +60,10 @@
 					<c:forEach var="proyecto" items="${proyectos}">
 						<div class="row-fluid">
 			    			<div class="span11">
-								<span>${proyecto.value.nombre}</span>
+								<span><b>${proyecto.value.nombre}</b></span>
+								<a href="#">
+					       			<i class="icon-trash"></i> eliminar
+					       		</a>
 							</div>
 							<div class="span1">
 								<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle-${proyecto.value.idProyecto}"><i class="icon-question-sign icon-white"></i></a>

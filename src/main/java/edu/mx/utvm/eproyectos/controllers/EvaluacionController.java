@@ -28,6 +28,7 @@ import edu.mx.utvm.eproyectos.bootstrap.Catalogos;
 import edu.mx.utvm.eproyectos.controllers.formbeans.FormEvaluacion;
 import edu.mx.utvm.eproyectos.controllers.formbeans.FormEvaluador;
 import edu.mx.utvm.eproyectos.controllers.formbeans.FormProyecto;
+import edu.mx.utvm.eproyectos.controllers.validator.UserUniqueValidator;
 import edu.mx.utvm.eproyectos.model.Categoria;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Evaluador;
@@ -55,6 +56,9 @@ public class EvaluacionController {
 	
 	@Autowired
 	private Catalogos catalogos;
+	
+	@Autowired
+	private UserUniqueValidator validator;
 	
 	/*Lista de evaluaciones*/
 	@RequestMapping(value="/all", method=RequestMethod.GET)
@@ -94,10 +98,6 @@ public class EvaluacionController {
 			
 			evaluacionService.create(evaluacion);
 			
-			model.addObject("evaluacionObj",evaluacion);
-			request.getSession().setAttribute("evaluacionObj", evaluacion);
-			
-			
 			return new ModelAndView("redirect:/resolver/evaluacion/all");		
 		}
 		return model;
@@ -114,7 +114,7 @@ public class EvaluacionController {
 		Evaluacion read = evaluacionService.read(idEvaluacion);		
 		model.addObject("evaluacion", read);
 		
-		model.addObject("evaluadores",evaluadorService.findAll());				
+		model.addObject("evaluadores",evaluadorService.findAllByIdEvaluacion(idEvaluacion));				
 		return model;
     }
 	
@@ -131,17 +131,24 @@ public class EvaluacionController {
 	
 	/*Formulario evalaudores POST*/
 	@RequestMapping(value="/evaluadores/form", method=RequestMethod.POST)
-    public ModelAndView getEvaluadoresFormSave(HttpServletRequest request,      		
-    		@ModelAttribute("formEvaluador") @Valid FormEvaluador formEvaluador,
+    public ModelAndView getEvaluadoresFormSave(HttpServletRequest request,      
     		@ModelAttribute("evaluacion") Evaluacion evaluacion,
+    		@ModelAttribute("formEvaluador") @Valid FormEvaluador formEvaluador,
     		BindingResult result)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("nuevoEvaluador");				
 		if(!result.hasErrors()){			
-			Evaluador evaluador = new Evaluador(KeyGenerator.uuid(), formEvaluador.getNombre(), formEvaluador.getEspecialidad(), formEvaluador.getUsuario(), formEvaluador.getPassword());			
+			Evaluador evaluador = new Evaluador(
+					KeyGenerator.uuid(), 
+					formEvaluador.getNombre(), 
+					formEvaluador.getEspecialidad(), 
+					formEvaluador.getUsuario(), 
+					formEvaluador.getPassword());			
 			evaluadorService.create(evaluador,evaluacion);			
 			model.addObject("message", "Evaluador Almacenado");
 			model.setViewName("nuevoEvaluador");	
+		}else{
+			model.addObject("result", result);
 		}
 		return model;
     }
@@ -225,8 +232,6 @@ public class EvaluacionController {
 			proyecto.setArchivoPresentacion(formProyecto.getFilePdf().getBytes());
 			proyecto.setFoto(formProyecto.getFotoEquipo().getBytes());
 			
-			log.info("clase..........."+request.getSession().getAttribute("evaluacionObj"));			
-			
 			proyectoService.create(proyecto,evaluacion);
 			
 			model.addObject("message", "Proyecto Almacenado");
@@ -239,7 +244,8 @@ public class EvaluacionController {
 		return model;
     }
 	
-	@InitBinder("formProyecto")
+	@InitBinder({"formProyecto", "formEvaluador", "formEvaluacion"})
 	protected void initBinder(WebDataBinder webDataBinder) {
+		webDataBinder.setValidator(validator);
 	}
 }
