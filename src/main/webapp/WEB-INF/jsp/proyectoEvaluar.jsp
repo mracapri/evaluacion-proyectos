@@ -30,7 +30,14 @@
 </head>
 <body>
 	<div class="container">
-
+		<!-- Encabezado menu Logout -->
+		<div class="masthead">
+		  <ul class="nav nav-pills pull-right">
+		    <li class="active"><a href="#">Home</a></li>
+		    <li><a href="#">Salir</a></li>
+		  </ul>
+		  <h3 class="muted">Evaluaci&oacuten de proyectos</h3>
+		</div>
 		<div class="detalleProyecto">
 			<span class="titulo-ventana">Proyectos a Evaluar</span>
 			<div class="control-group">

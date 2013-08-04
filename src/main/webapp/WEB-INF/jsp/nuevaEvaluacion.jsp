@@ -24,6 +24,14 @@
 <body>
 		
 	<div class="container" >
+	<!-- Encabezado menu Logout -->
+		<div class="masthead">
+		  <ul class="nav nav-pills pull-right">
+		    <li class="active"><a href="#">Home</a></li>
+		    <li><a href="#">Salir</a></li>
+		  </ul>
+		  <h3 class="muted">Evaluaci&oacuten de proyectos</h3>
+		</div>
 		<div class="proyectoEvaluar">
 			<div class="control-group">
 				<form:form method="post" modelAttribute="formEvaluacion">												
