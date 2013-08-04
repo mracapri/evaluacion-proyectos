@@ -40,5 +40,11 @@ public class ResultadoServiceImpl implements ResultadoService {
 			resultadoDao.create(newInstance, evaluacion, proyecto);	
 		}
 	}
+
+	@Override
+	public boolean laRubricaYaFueCapuradaParaElProyecto(Proyecto proyecto,
+			CalificacionEvaluador calificacionEvaluador) {
+		return resultadoDao.laRubricaYaFueCapuradaParaElProyecto(proyecto, calificacionEvaluador);
+	}
 	
 }

@@ -6,29 +6,10 @@ SET NAMES 'latin1';
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-/*Evaluaciones*/
-insert into evaluacion (id_evaluacion, descripcion, descripcion_detallada, fecha) 
-values ('25bbdcd06c32d477f7fa1c3e4a91b032', 'Evaluacion TIC 2013', 'Descripcion detallada Software', '2013-07-29'),
-('fcd04e26e900e94b9ed6dd604fed2b64', 'Evaluacion TIC 2014', 'Descripcion detallada Software', '2014-07-29');
-
 /*Categorias*/
 insert into categoria ( id_categoria, descripcion ) 
-values (1, 'Software Multimedia'),
-(2, 'Software Escritorio'),
-(3, 'Software Moviles'),
-(4, 'Software Web');
+values (1, 'Software Multimedia'),(2, 'Software Escritorio'),(3, 'Software Moviles'),(4, 'Software Web');
 
-/*Proyectos*/
-insert into proyecto (id_proyecto, nombre, id_categoria, logo, archivo_presentacion, foto, responsable, integrantes) 
-values ('96a3be3cf272e017046d1b2674a52bd3', 'Aplicacion para kinect', 2, null, null, null, 'Joel Morales', null),
-('a2ef406e2c2351e0b9e80029c909242d', 'Pagina para el IFE', 4, null, null, null, 'Andres Dominguez', null),
-('e88a49bccde359f0cabb40db83ba6080', 'Aplicacion para Automoviles', 3, null, null, null, 'Jonatan Gutierrez', null);
-
-/*Proyectos por evaluacion*/
-INSERT INTO evaluacion_proyectos (id_evaluacion,id_proyecto) VALUES 
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3'),
-('25bbdcd06c32d477f7fa1c3e4a91b032', 'a2ef406e2c2351e0b9e80029c909242d'),
-('fcd04e26e900e94b9ed6dd604fed2b64', 'e88a49bccde359f0cabb40db83ba6080');
 
 /*Rubricas*/
 insert into rubrica ( id_rubrica, id_categoria ) 
@@ -41,14 +22,6 @@ values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
 /*Escalas*/
 insert into escala ( id_escala, inicio, fin)
 values (1, 0, 100);
-
-/*Calificacion Criterios*/
-/*insert into calificacion_criterios ( id_calificacion, inicio, fin, etiqueta ) 
-values (1, 0, 50, 'Deficiente'),
-(2, 51, 70, 'No aceptable'),
-(3, 71, 80, 'Regular'),
-(4, 81, 90, 'Satisfactorio'),
-(5, 91, 100, 'Excelente');*/
 
 /*Items Rubricas*/
 insert into item_rubrica ( id_item_rubrica, descripcion_corta, descripcion_larga, id_escala ) 
@@ -124,34 +97,7 @@ values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
 ('7d0665438e81d8eceb98c1e31fca80c1', 31),
 ('751d31dd6b56b26b29dac2c0e1839e34', 32);
 
-/*evaluadores*/
-insert into evaluador ( id_evaluador, nombre, especialidad)
-values ('cd3dc8b6cffb41e4163dcbd857ca87da', 'Alfredo Perez', 'TIC'),
-('68a9e49bbc88c02083a062a78ab3bf30', 'Mario Rivera', 'TIC');
 
-insert into evaluacion_evaluadores(id_evaluacion, id_evaluador) values('25bbdcd06c32d477f7fa1c3e4a91b032', 'cd3dc8b6cffb41e4163dcbd857ca87da');
-insert into evaluacion_evaluadores(id_evaluacion, id_evaluador) values('25bbdcd06c32d477f7fa1c3e4a91b032', '68a9e49bbc88c02083a062a78ab3bf30');
+insert into usuario (nombre_usuario, clave, fecha_creacion, activo) values('mracapri','Riam82120$',now(), 1);
+insert into usuario_roles (nombre_usuario, id_role) values ('mracapri',2);
 
-insert into usuario (nombre_usuario, clave, fecha_creacion, activo) values('mracapri','12345',now(), 1), ('alfredop','12345',now(), 1);
-insert into usuario_evaluador (nombre_usuario, id_evaluador) values('mracapri','68a9e49bbc88c02083a062a78ab3bf30'),('alfredop','cd3dc8b6cffb41e4163dcbd857ca87da');
-insert into usuario_roles (nombre_usuario, id_role) values ('mracapri',1);
-insert into usuario_roles (nombre_usuario, id_role) values ('alfredop',1);
-
-/*Usuarios*/
-insert into usuario ( nombre_usuario, clave, fecha_creacion, activo)
-values ('mayri_022', '1452546', '2013-06-15', 1);
-
-/*Resultados*/
-insert into resultado ( id_evaluacion, id_proyecto, id_evaluador, id_rubrica, id_item_rubrica, calificacion)
-values ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 1, 9.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 2, 8.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 3, 8.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 4, 9.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', '68a9e49bbc88c02083a062a78ab3bf30','dc5c7986daef50c1e02ab09b442ee34f', 5, 9.0);
-
-insert into resultado ( id_evaluacion, id_proyecto, id_evaluador, id_rubrica, id_item_rubrica, calificacion)
-values ('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 1, 9.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 2, 6.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 3, 7.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 4, 4.0),
-('25bbdcd06c32d477f7fa1c3e4a91b032', '96a3be3cf272e017046d1b2674a52bd3', 'cd3dc8b6cffb41e4163dcbd857ca87da','dc5c7986daef50c1e02ab09b442ee34f', 5, 9.0);

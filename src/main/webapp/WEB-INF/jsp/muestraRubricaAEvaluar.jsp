@@ -113,7 +113,7 @@
 							<div class="alert">
 								<p class="text-info">
 									Esta seguro de guardar la evaluaci&oacuten?
-									<a id="si-guardar" class="btn btn-mini btn-success" href="#">Si</a>
+									<button type="submit" id="si-guardar" class="btn btn-mini btn-success" href="#">Si</button>
 									<a class="btn btn-mini btn-danger" data-toggle="collapse" data-target="#confirmacion" href="#">No</a>
 								</p>
 							</div>
