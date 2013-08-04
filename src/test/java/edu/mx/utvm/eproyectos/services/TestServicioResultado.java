@@ -163,6 +163,9 @@ public class TestServicioResultado {
 		resultadoService.create(cal2, evaluacion, proyecto);
 		resultadoService.create(cal3, evaluacion, proyecto);
 		resultadoService.create(cal4, evaluacion, proyecto);
+		// repitiendo la captura de la misma rubrica por el mismo evaluador
+		resultadoService.create(cal4, evaluacion, proyecto);
+		resultadoService.create(cal4, evaluacion, proyecto);
 
 		List<CalificacionEvaluador> findAllByProyecto = resultadoDao
 				.findAllByProyecto("130101");
