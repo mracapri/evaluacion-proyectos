@@ -53,7 +53,7 @@ public class ProyectoServiceImpl implements ProyectoService{
 
 	@Override
 	public Map<String, Proyecto> findAllByIdEvaluacion(String id) {		
-		return dao.findAllByIdEvaluacion(id);
+		return dao.findAllByIdEvaluacion(id);		
 	}
 
 	@Override

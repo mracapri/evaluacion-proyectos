@@ -126,45 +126,46 @@ public class ManagerController {
 						
 			
 			/*Lista de resultados por proyecto*/
-			//List<Resultado> resultados = resultadoService.findAllByProyecto(proyecto.getIdProyecto());
+			List<CalificacionEvaluador> resultados = resultadoService.findAllByProyecto(idProyecto);
+					//findAllByProyecto(proyecto.getIdProyecto());
 			
-			List<Resultado> resultados = new ArrayList<Resultado>();
+			//List<Resultado> resultados = new ArrayList<Resultado>();
 			
 			/*Cantidad de evaluadores*/
 			
 			
 			/*Lista vacia de calificacion evaluadores*/
-			List<CalificacionEvaluador> calificacionEvaluadores = new ArrayList<CalificacionEvaluador>();
+			//List<CalificacionEvaluador> calificacionEvaluadores = new ArrayList<CalificacionEvaluador>();
 			
 			/*Objeto evaluador*/
-			Evaluador evaluador = null;
+			//Evaluador evaluador = null;
 			
 			/*Objeto rubrica*/
-			Rubrica rubrica = null;
+			//Rubrica rubrica = null;
 			
 			/*Mapa resultados por item*/
-			Map<Integer, Double> resultadoPorItem = new HashMap<Integer, Double>();
+			//Map<Integer, Double> resultadoPorItem = new HashMap<Integer, Double>();
 			
 			/*Ojeto calificacion evaluador*/
 			
 			/*
 			 * Ciclo de resultados
 			 * */
-			for (Resultado resultado : resultados) {								
-				/*Evaluador por proyecto*/
+			/*for (Resultado resultado : resultados) {								
+				
 				evaluador = evaluadorService.read(resultado.getIdEvaluador());				
 				
-				/*Rubrica*/
+				
 				rubrica = catalogos.getRubricas().get(resultado.getIdRubrica());				
 				
-				/*Asignando Calificaciones*/						
+										
 				resultadoPorItem.put(resultado.getIdItemRubrica(), resultado.getCalificacion());
 				
 				CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(evaluador, resultadoPorItem, rubrica);
 				calificacionEvaluadores.add(calificacionEvaluador);	
-			}	
+			}	*/
 			
-			ResultadoFinal resultadoFinal = new ResultadoFinal(calificacionEvaluadores);			
+			ResultadoFinal resultadoFinal = new ResultadoFinal(resultados);			
 			
 			proyecto.setResultado(resultadoFinal);		
 		}

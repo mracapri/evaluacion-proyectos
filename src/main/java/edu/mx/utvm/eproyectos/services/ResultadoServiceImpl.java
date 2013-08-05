@@ -46,5 +46,11 @@ public class ResultadoServiceImpl implements ResultadoService {
 			CalificacionEvaluador calificacionEvaluador) {
 		return resultadoDao.laRubricaYaFueCapuradaParaElProyecto(proyecto, calificacionEvaluador);
 	}
+
+	@Override
+	public List<CalificacionEvaluador> findAllByProyecto(String idProyecto) {
+		return resultadoDao.findAllByProyecto(idProyecto);
+	}
+	
 	
 }

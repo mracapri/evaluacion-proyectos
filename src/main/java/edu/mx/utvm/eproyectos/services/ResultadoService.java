@@ -1,5 +1,7 @@
 package edu.mx.utvm.eproyectos.services;
 
+import java.util.List;
+
 import edu.mx.utvm.eproyectos.model.CalificacionEvaluador;
 import edu.mx.utvm.eproyectos.model.Evaluacion;
 import edu.mx.utvm.eproyectos.model.Proyecto;
@@ -9,4 +11,5 @@ public interface ResultadoService {
  	void create(CalificacionEvaluador newInstance, Evaluacion evaluacion, Proyecto proyecto);
  	ResultadoFinal read(String idProyecto);
  	boolean laRubricaYaFueCapuradaParaElProyecto(Proyecto proyecto, CalificacionEvaluador calificacionEvaluador);
+ 	List<CalificacionEvaluador> findAllByProyecto(String idProyecto);
 }
