@@ -27,16 +27,16 @@
 			<a id="showProyectos" data-toggle="collapse" data-target="#activarProyecto"><i class=" icon-chevron-down"></i></a>
 			<div id="activarProyecto" class="row  collapse">
 				<div  class="span12">				
-					<select id="listProyectos" name="listProyectos">${proyectos}
+					<select id="listProyectos" name="listProyectos">
 						<c:forEach var="proyecto" items="${proyectos}">
-							<option> ${proyecto}</option>
+							<option value="${proyecto.value.idProyecto}">${proyecto.value.nombre}</option>
 						</c:forEach>
 					</select>
 				</div>
 			</div>
 			<div class="row">
-				<div class="span12">
-					<h3>DESARROLLO DE APLICACIONES MOBILES PARA ESTUDIANTES</h3>
+				<div class="span12" id="nombreProyecto">
+					
 				</div>
 			</div>
 			<div class="control-group">

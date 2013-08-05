@@ -96,11 +96,7 @@ public class ManagerController {
     		@PathVariable("idEvaluacion") String idEvaluacion,
     		HttpServletResponse response)
             throws ServletException, IOException {
-
 		ModelAndView model = new ModelAndView("resultadoRubricaCate");	
-		Map<String, Proyecto> proyectos = proyectoService.findAllByIdEvaluacion(idEvaluacion);
-		model.addObject("proyectos", proyectos);
-
 		return model;
     }
 	
@@ -112,6 +108,8 @@ public class ManagerController {
     		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("resultadoRubricaExpo");	
+		Map<String, Proyecto> proyectos = proyectoService.findAllByIdEvaluacion(idEvaluacion);
+		model.addObject("proyectos", proyectos);
 		return model;
     }
 	

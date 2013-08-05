@@ -4,12 +4,13 @@ var DEMO = {
 		rubricaCategoria:'',
 	main : function(){
 		this.init();
-		$(".slider .block:first").fadeIn(3000); //carga el primer block de la animacion
+		//carga el primer block de la animacion
+		$(".slider .block:first").fadeIn(3000);
 	},
 	init: function(){
 		$this = this;
-		//$this.cargaTablaResultadosPresentacion();
-		//$this.cargaTablaRankinPosiciones();
+		$this.cargaTablaResultadosPresentacion();
+		$this.cargaTablaRankinPosiciones();
 		$this.updateResultadosCategoria();
 		$this.changeSlider();
 		$this.controlDeTiempo();
@@ -43,8 +44,7 @@ var DEMO = {
 									
 									 htmll=htmll+'<tr><td><span class="tdResultados">'+val.evaluador.nombre+'</span></td>';
 									 
-									 $.each(val.resultadoPorItem, function (llav, vale) { //entra calificacion evaluadores
-										
+									 $.each(val.resultadoPorItem, function (llav, vale) { 										
 	   									 htmll=htmll+'<td><span class="tdResultados">'+vale+'</span></td>';							 
 	   			   					});
 									 
@@ -76,7 +76,7 @@ var DEMO = {
 						dataType: "JSON",
 						url:URL_APP_SERVICE + "/manager/resultados-ranking/086eb61907.json",
 						success: function(data){
-		
+								
 								htmll=htmll+'<table class="table table-bordered table-striped">'+
 								'<thead><tr><th><h3>POSICION</h3></th><th><h3>LOGO</h3></th><th><h3>PROYECTO</h3></th><th><h3>PUNTAJE</h3></th>'+
 								'</tr></thead>';
@@ -86,8 +86,7 @@ var DEMO = {
 									// Obtengo el nombre
 									htmll = htmll + '<tbody><tr><td>'+posicion+'</td>';
 									htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
-									htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+ value.resultado.calificacionGlobal + '</h3></td></tr></tbody>';
-								
+									htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+ value.resultado.calificacionGlobal + '</h3></td></tr></tbody>';						
 								});
 								$("#divtablaResulFinal").html(htmll+'</table>');													
 							}				
@@ -103,47 +102,50 @@ var DEMO = {
 	//********************************** Carga datos de la tabla de resultados por Presentacion ***********************************************************/
 	cargaTablaResultadosPresentacion: function (){
 	
-			 $("#listProyectos").live('change', function(){
-			 $("table#tablaResulExpo td").remove();
-			 $('#showProyectos').trigger('click');
-
-			/*carga de JSON a tabla resultados proyectos presentacion*/ 
-			 htmll='';
-				$.ajax({
-					type: "GET",
-					dataType: "JSON",
-					url:URL_APP_SERVICE + "/manager/resultados-categoria/086eb61907.json",
-					success: function(data){
-						htmll='';
-						$.each(data.proyectos, function (key, value) {	
-							var idProyecto = value.idProyecto;
-								
-								 $.each(value.resultado, function (llave, valor) {
-									 $.each(valor, function (cle, val) {
-										 var rubricaPresentacion= val.rubrica.categoria;
-										 
-										 if (rubricaPresentacion == undefined){
-											 htmll=htmll+'<tr><td><span class="tdResultados">'+val.evaluador.nombre+'</span></td>';
+		$("#listProyectos").live('change', function(){
+				 $("table#tablaResulExpo td").remove();
+				 $('#showProyectos').trigger('click');
+				 
+				var idProyecto= $("#listProyectos option:selected").val();
+				/*carga de JSON a tabla resultados proyectos presentacion*/ 
+				 htmll='';
+					$.ajax({
+						type: "GET",
+						dataType: "JSON",
+						url:URL_APP_SERVICE + "/manager/resultados-categoria/086eb61907.json",
+						success: function(data){
+							htmll='';
+							$.each(data.proyectos, function (key, value) {	
+								if(idProyecto==value.idProyecto){
+									$("#nombreProyecto").text("");
+									$("#nombreProyecto").html('<h3>'+value.nombre+'</h3>');
+										 $.each(value.resultado, function (llave, valor) {
+											 $.each(valor, function (cle, val) {
+												 
+												 var rubricaPresentacion= val.rubrica.categoria;
+												 												 
+												 if (rubricaPresentacion == undefined){
+													 
+													 htmll=htmll+'<tr><td><span class="tdResultados">'+val.evaluador.nombre+'</span></td>';
+													 
+													 $.each(val.resultadoPorItem, function (llav, vale) { //entra calificacion evaluadores
+					   									 htmll=htmll+'<td><span class="tdResultados">'+vale+'</span></td>';							 
+					   			   					 });
+													 htmll=htmll+'<td><span class="tdResultados">'+val.totalRubrica+'</span></td></tr>';
+												 }
+					
+						  					});
 											 
-											 $.each(val.resultadoPorItem, function (llav, vale) { //entra calificacion evaluadores
-			   									 htmll=htmll+'<td><span class="tdResultados">'+vale+'</span></td>';							 
-			   			   					 });
-											 htmll=htmll+'<td><span class="tdResultados">'+val.totalRubrica+'</span></td></tr>';
-										 }
-			
-				  					});
-									 
-								 });
-								 
-								 htmll=htmll+'<tr><td colspan="6"><h3>CALIFICACI&OacuteN TOTAL</h3></td><td><h3>'+value.resultado.calificacionPorCategoria+'</h3></td></tr>';
+										 });
+										 htmll=htmll+'<tr><td colspan="6"><h1>CALIFICACI&OacuteN TOTAL</h1></td><td><h1>'+value.resultado.calificacionPorCategoria+'</h1></td></tr>';
+								}
 							});
-					}
-					 
-				});	
+							 $("table#tablaResulExpo").append(htmll);
+						}						 
+					});	
 				
-				 $("table#tablaResulExpo").append(htmll);
-		   
-			//******************************/
+				
+
 		});
 
 		//$this.cargaFunciones();
