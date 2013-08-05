@@ -844,8 +844,28 @@ var DEMO = {
 	
 };//Fin var demo
 
-
+var bootStrapLabel = {
+		/* 
+		 * esconde las etiquetas definidas por
+		 * bootstrap from twitter 
+		 *  */
+		hideEmptyLabels: function(){
+			$this = this;
+			
+			var labelsInfo = $(".label-info");
+			window.console.info(labelsInfo);
+			$.each(labelsInfo, function(key, value){
+				var label = $(value);
+				if($(value).html().trim() == ''){
+					label.hide();
+				}
+			});
+		}
+};
 
 $(document).ready(function(){
+	
+	bootStrapLabel.hideEmptyLabels();
+	
 	DEMO.main();
 });

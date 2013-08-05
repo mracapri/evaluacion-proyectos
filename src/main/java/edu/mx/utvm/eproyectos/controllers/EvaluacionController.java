@@ -98,7 +98,48 @@ public class EvaluacionController {
 			evaluacionService.create(evaluacion);
 			
 			return new ModelAndView("redirect:/resolver/evaluacion/all");		
+		}else{
+			model.addObject("result", result);
 		}
+		return model;
+    }
+
+	/* elimina evaluacion */
+	@RequestMapping(value="/delete/{idEvaluacion}", method=RequestMethod.GET)
+    public ModelAndView deleteEvaluacion(HttpServletRequest request, 
+    		@PathVariable("idEvaluacion") String idEvaluacion,
+    		HttpServletResponse response)
+            throws ServletException, IOException {
+		ModelAndView model = new ModelAndView("redirect:/resolver/evaluacion/all");		
+		
+		Evaluacion read = evaluacionService.read(idEvaluacion);		
+		evaluacionService.delete(read);
+		
+		return model;
+    }
+	
+	/* elimina proyecto */
+	@RequestMapping(value="/delete/proyecto/{idProyecto}", method=RequestMethod.GET)
+    public ModelAndView deleteProyecto(HttpServletRequest request, 
+    		@PathVariable("idProyecto") String idProyecto,
+    		HttpServletResponse response)
+            throws ServletException, IOException {
+		ModelAndView model = new ModelAndView("redirect:/resolver/evaluacion/all");		
+		Proyecto read = proyectoService.read(idProyecto);
+		proyectoService.delete(read);
+		
+		return model;
+    }
+	
+	/* elimina evaluador */
+	@RequestMapping(value="/delete/evaluador/{idEvaluador}", method=RequestMethod.GET)
+    public ModelAndView deleteEvaluador(HttpServletRequest request, 
+    		@PathVariable("idEvaluador") String idEvaluador,
+    		HttpServletResponse response)
+            throws ServletException, IOException {
+		ModelAndView model = new ModelAndView("redirect:/resolver/evaluacion/all");		
+		Evaluador read = evaluadorService.read(idEvaluador);
+		evaluadorService.delete(read);
 		return model;
     }
 	
@@ -145,7 +186,8 @@ public class EvaluacionController {
 					formEvaluador.getPassword());			
 			evaluadorService.create(evaluador,evaluacion);			
 			model.addObject("message", "Evaluador Almacenado");
-			model.setViewName("nuevoEvaluador");	
+			model.setViewName("nuevoEvaluador");
+			model.addObject("formEvaluador", new FormEvaluador());
 		}else{
 			model.addObject("result", result);
 		}
@@ -235,6 +277,7 @@ public class EvaluacionController {
 			
 			model.addObject("message", "Proyecto Almacenado");
 			model.setViewName("nuevoProyecto");
+			model.addObject("formProyecto", new FormProyecto());
 						
 		}else{
 			model.addObject("result", result);
@@ -245,6 +288,7 @@ public class EvaluacionController {
 	
 	@InitBinder({"formEvaluador"})
 	protected void initBinder(WebDataBinder webDataBinder) {
+		
 		webDataBinder.setValidator(validator);
 	}
 }

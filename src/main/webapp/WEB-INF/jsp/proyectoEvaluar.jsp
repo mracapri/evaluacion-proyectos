@@ -56,22 +56,42 @@
 			</div>
 			<div class="control-group">
 				<section id="proyectos">
-
-					<c:forEach var="proyecto" items="${proyectos}">
+		       		<div id="alert-for-delete" class="collapse">
+						<div class="alert">
+		       				<b>Atenci&oacuten:</b> 
+		       				eliminar implica, desaparecer todos los datos capturados
+		       				al proyecto, resultados, calificaciones y toda 
+		       				informaci&oacuten se perder&aacute!
+		       			</div>		
+		       		</div>
+					<c:forEach var="proyecto" items="${proyectos}" varStatus="row">
 						<div class="row-fluid">
 			    			<div class="span11">
 								<span><b>${proyecto.value.nombre}</b></span>
-								<a href="#">
+								<a data-toggle="collapse" 
+									data-target="#delete-proyecto-${row.count}, #alert-for-delete"
+									href="#">
 					       			<i class="icon-trash"></i> eliminar
 					       		</a>
+					       		<div id="delete-proyecto-${row.count}" class="collapse">
+									<a class="btn btn-mini btn-danger" 
+										href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/delete/${proyecto.value.idProyecto}">Aceptar</a>
+									<a class="btn btn-mini btn-info" data-toggle="collapse" 
+										data-target="#delete-proyecto-${row.count}, #alert-for-delete"
+										href="#">Cancelar</a>
+									<br/><br/>
+					       		</div>
 							</div>
 							<div class="span1">
-								<a class="btn btn-mini btn-info" data-toggle="collapse" data-target="#detalle-${proyecto.value.idProyecto}"><i class="icon-question-sign icon-white"></i></a>
+								<a class="btn btn-mini btn-info" data-toggle="collapse" 
+									data-target="#detalle-${row.count}">
+									<i class="icon-question-sign icon-white"></i>
+								</a>
 							</div>
 						</div>
 						
 						<!-- Detalles del proyecto -->
-						<div id="detalle-${proyecto.value.idProyecto}" class="collapse">
+						<div id="detalle-${row.count}" class="collapse">
 							<div>
 								<div class="row-fluid">
 									<div class="span6">

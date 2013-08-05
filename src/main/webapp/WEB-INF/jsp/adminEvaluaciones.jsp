@@ -35,14 +35,33 @@
 					</div>  
 				</div>
 		       <section id="proyectos">
+		       
+		       		<div id="alert-for-delete" class="collapse">
+						<div class="alert">
+		       				<b>Atenci&oacuten:</b> 
+		       				eliminar implica, desaparecer todos los datos capturados
+		       				a la evaluaci&oacuten, como lo son: evaluadores, proyectos
+		       				calificaciones y toda informaci&oacuten se perder&aacute!
+		       			</div>		
+		       		</div>
+		       		
 		       		</br>
-		       		<c:forEach var="evaluacion" items="${evaluaciones}">
+		       		<c:forEach var="evaluacion" items="${evaluaciones}" varStatus="row">
 		       			<div class="row-fluid">
 			       			<div class="span6">
 				       			<span><b>${evaluacion.descripcion}</b></span>
-								<a href="#">
+								<a data-toggle="collapse" 
+									data-target="#delete-evaluacion-${row.count}, #alert-for-delete"
+									href="#">
 					       			<i class="icon-trash"></i> eliminar
 					       		</a>
+					       		<div id="delete-evaluacion-${row.count}" class="collapse">
+									<a class="btn btn-mini btn-danger" 
+										href="${pageContext.request.contextPath}/resolver/evaluacion/delete/${evaluacion.idEvaluacion}">Aceptar</a>
+									<a class="btn btn-mini btn-info" data-toggle="collapse" 
+										data-target="#delete-evaluacion-${row.count}, #alert-for-delete"
+										href="#">Cancelar</a>
+					       		</div>
 				       	 	</div>
 				       	 	<div class="span3">
 				       			

@@ -101,19 +101,3 @@ values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
 insert into usuario (nombre_usuario, clave, fecha_creacion, activo) values('mracapri','Riam82120$',now(), 1);
 insert into usuario_roles (nombre_usuario, id_role) values ('mracapri',2);
 
-insert into resultado (id_evaluacion, id_proyecto, id_evaluador, id_rubrica, id_item_rubrica, calificacion) 
-values('6b35ec05f0','aa848b8399', 'd18c24d426', 'e45ee7ce7e88149af8dd32b27f9512ce', 13, 9),
-('6b35ec05f0','aa848b8399', 'd18c24d426', 'e45ee7ce7e88149af8dd32b27f9512ce', 14, 7),
-('6b35ec05f0','aa848b8399', 'd18c24d426', 'e45ee7ce7e88149af8dd32b27f9512ce', 15, 5),
-('6b35ec05f0','aa848b8399', 'd18c24d426', 'e45ee7ce7e88149af8dd32b27f9512ce', 16, 8),
-('6b35ec05f0','aa848b8399', 'd18c24d426', 'e45ee7ce7e88149af8dd32b27f9512ce', 17, 9),
-('6b35ec05f0','aa848b8399', 'd18c24d426', 'e45ee7ce7e88149af8dd32b27f9512ce', 18, 10),
-('6b35ec05f0','aa848b8399', 'd18c24d426', 'e45ee7ce7e88149af8dd32b27f9512ce', 19, 9),
-('6b35ec05f0','aa848b8399', '626e061ebb', 'e45ee7ce7e88149af8dd32b27f9512ce', 13, 8),
-('6b35ec05f0','aa848b8399', '626e061ebb', 'e45ee7ce7e88149af8dd32b27f9512ce', 14, 8),
-('6b35ec05f0','aa848b8399', '626e061ebb', 'e45ee7ce7e88149af8dd32b27f9512ce', 15, 7),
-('6b35ec05f0','aa848b8399', '626e061ebb', 'e45ee7ce7e88149af8dd32b27f9512ce', 16, 6),
-('6b35ec05f0','aa848b8399', '626e061ebb', 'e45ee7ce7e88149af8dd32b27f9512ce', 17, 5),
-('6b35ec05f0','aa848b8399', '626e061ebb', 'e45ee7ce7e88149af8dd32b27f9512ce', 18, 9),
-('6b35ec05f0','aa848b8399', '626e061ebb', 'e45ee7ce7e88149af8dd32b27f9512ce', 19, 9);
-

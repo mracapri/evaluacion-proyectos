@@ -16,17 +16,23 @@ public class UserUniqueValidator implements Validator {
 	@Autowired
 	private UsuarioDao usuarioDao;
 
+	@Autowired
+	private Validator validator;
+	
 	@Override
 	public void validate(Object target, Errors errors) {
-
-		if(target.getClass() == FormEvaluador.class){
+		
+		validator.validate(target, errors);
+		
+		if(FormEvaluador.class.isAssignableFrom(target.getClass())){
 			FormEvaluador formEvaluador = (FormEvaluador) target;
 			String usuario = formEvaluador.getUsuario();
 
 			if (usuarioDao.read(usuario) != null) {
 				errors.rejectValue("usuario", "usuario.ya.existente");
 			}	
-		}
+		}		
+
 	}
 
 	@Override
