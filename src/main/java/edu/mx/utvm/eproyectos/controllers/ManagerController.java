@@ -2,6 +2,8 @@ package edu.mx.utvm.eproyectos.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +38,7 @@ import edu.mx.utvm.eproyectos.services.EvaluacionService;
 import edu.mx.utvm.eproyectos.services.EvaluadorService;
 import edu.mx.utvm.eproyectos.services.ProyectoService;
 import edu.mx.utvm.eproyectos.services.ResultadoService;
+import edu.mx.utvm.eproyectos.util.ProyectoRankingComparator;
 
 @Controller
 @RequestMapping("/manager")
@@ -159,6 +162,7 @@ public class ManagerController {
 		/*Obtener proyectos por evaluacion*/
 		Evaluacion evaluacion = evaluacionService.read(idEvaluacion);
 		
+		List<Proyecto> proyectos = new ArrayList<Proyecto>();
 		/*
 		 * Ciclo de proyectos
 		 * */
@@ -167,16 +171,22 @@ public class ManagerController {
 			
 			proyecto.setFoto(null);
 			proyecto.setLogo(null);
-			proyecto.setArchivoPresentacion(null);
+			proyecto.setArchivoPresentacion(null);			
 			
 			/*Lista de resultados por proyecto*/
 			List<CalificacionEvaluador> resultados = resultadoService.findAllByProyecto(idProyecto);
 
-			ResultadoFinal resultadoFinal = new ResultadoFinal(resultados);			
+			/* agreando resultado final */
+			ResultadoFinal resultadoFinal = new ResultadoFinal(resultados);						
+			proyecto.setResultado(resultadoFinal);
 			
-			proyecto.setResultado(resultadoFinal);		
+			/* agrengando a la lista de proyectos */
+			proyectos.add(proyecto);
 		}
 		
-		return gson.toJson(evaluacion); 
+		// ordenando la lista para el ranking
+		Collections.sort( proyectos, new ProyectoRankingComparator());
+		
+		return gson.toJson(proyectos); 
 	}
 }

@@ -12,10 +12,12 @@ public class ResultadoFinal {
 	private List<CalificacionEvaluador> calificacionEvaluadores;
 	private double calificacionPorCategoria = 0;
 	private double calificacionPorPresentacion = 0;
+	private double calificacionGlobal = 0;
 	public ResultadoFinal(List<CalificacionEvaluador> calificacionEvaluadores){		
 		this.calificacionEvaluadores = calificacionEvaluadores;
 		calificacionPorCategoria = calcularPorCategoria();
 		calificacionPorPresentacion = calcularPorPresentacion();
+		calificacionGlobal = calcularCalificacionGlobal();
 	}
 	
 	public Double calcularTotal(){
@@ -43,6 +45,11 @@ public class ResultadoFinal {
 			return total;
 		}		
 	}
+	
+	public Double calcularCalificacionGlobal(){
+		calificacionGlobal = (calificacionPorCategoria + calificacionPorPresentacion)/2;
+		return calificacionGlobal;
+	}	
 	
 	public Double calcularPorCategoria(){
 		return calcularPorTipoRubrica(RubricaCategoria.class);
