@@ -15,9 +15,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -37,6 +39,7 @@ import edu.mx.utvm.eproyectos.services.ResultadoService;
 
 @Controller
 @RequestMapping("/manager")
+@SessionAttributes({"idEvaluacion"})
 public class ManagerController {
 	
 	protected final Log log = LogFactory.getLog(getClass());
@@ -71,29 +74,35 @@ public class ManagerController {
     }
 	
 	/*Opcion de resultados por categoria o por exposicion*/
-	@RequestMapping(value="/option", method=RequestMethod.GET)
+	@RequestMapping(value="/option/{idEvaluacion}", method=RequestMethod.GET)
     public ModelAndView optionResult(
-    		HttpServletRequest request,    		
+    		HttpServletRequest request,  
+    		@PathVariable("idEvaluacion") String idEvaluacion,
     		HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("managerOptions");	
+		ModelAndView model = new ModelAndView("managerOptions");
+
+		model.addObject("idEvalaucion", idEvaluacion);
 		return model;
     }
 	
 	/*Resultados slide por categoria*/
-	@RequestMapping(value="/resultados/categoria", method=RequestMethod.GET)
+	@RequestMapping(value="/resultados/categoria/{idEvaluacion}", method=RequestMethod.GET)
     public ModelAndView getResultadoFinal(
-    		HttpServletRequest request,    		
+    		HttpServletRequest request, 
+    		@PathVariable("idEvaluacion") String idEvaluacion,
     		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("resultadoRubricaCate");	
+		log.info("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"+idEvaluacion);
 		return model;
     }
 	
 	/*lista de proyectos*/
-	@RequestMapping(value="/resultados/exposicion", method=RequestMethod.GET)
+	@RequestMapping(value="/resultados/exposicion/{idEvaluacion}", method=RequestMethod.GET)
     public ModelAndView getListProyectos(
-    		HttpServletRequest request,    		
+    		HttpServletRequest request, 
+    		@PathVariable("idEvaluacion") String idEvaluacion,
     		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("resultadoRubricaExpo");	
@@ -101,22 +110,24 @@ public class ManagerController {
     }
 	
 	/*Resultados por proyecto generales*/
-	@RequestMapping(value="/resultados/finales", method=RequestMethod.GET)
+	@RequestMapping(value="/resultados/finales/{idEvaluacion}", method=RequestMethod.GET)
     public ModelAndView getResultadoPorProyecto(
-    		HttpServletRequest request,    		
+    		HttpServletRequest request,
+    		@PathVariable("idEvaluacion") String idEvaluacion,
 		HttpServletResponse response)
 	            throws ServletException, IOException {
 			ModelAndView model = new ModelAndView("resultadoFinal");	
 			return model;
     }
 	
-	@RequestMapping(value="/resultados-categoria.json", method = RequestMethod.GET)
-	public @ResponseBody String getResultadosEvaluacion(HttpServletRequest request,			
+	@RequestMapping(value="/resultados-categoria.json/{idEvaluacion}", method = RequestMethod.GET)
+	public @ResponseBody String getResultadosEvaluacion(HttpServletRequest request,	
+			@PathVariable("idEvaluacion") String idEvaluacion,
 			HttpServletResponse response){								 				
 		response.setHeader("content-type", "application/json");	
 		
 		/*Obtener proyectos por evaluacion*/
-		Evaluacion evaluacion = evaluacionService.read("086eb61907");
+		Evaluacion evaluacion = evaluacionService.read(idEvaluacion);
 		
 		/*
 		 * Ciclo de proyectos
@@ -139,13 +150,14 @@ public class ManagerController {
 		return gson.toJson(evaluacion); 
 	}
 	
-	@RequestMapping(value="/resultados-proyecto.json", method = RequestMethod.GET)
-	public @ResponseBody String getResultadosProyecto(HttpServletRequest request,			
+	@RequestMapping(value="/resultados-ranking.json/{idEvaluacion}", method = RequestMethod.GET)
+	public @ResponseBody String getResultadosProyecto(HttpServletRequest request,
+			@PathVariable("idEvaluacion") String idEvaluacion,
 			HttpServletResponse response){								 				
 		response.setHeader("content-type", "application/json");	
 		
 		/*Obtener proyectos por evaluacion*/
-		Evaluacion evaluacion = evaluacionService.read("086eb61907");
+		Evaluacion evaluacion = evaluacionService.read(idEvaluacion);
 		
 		/*
 		 * Ciclo de proyectos

@@ -40,7 +40,7 @@
 	       			<c:forEach var="evaluacion" items="${evaluaciones}">
 		       			<span>
 		       				${evaluacion.descripcion}
-			       			<a href="${pageContext.request.contextPath}/resolver/manager/option">
+			       			<a href="${pageContext.request.contextPath}/resolver/manager/option/${evaluacion.idEvaluacion}">
 			       				- proyectos
 			       			</a>			       			
 		       			</span>
