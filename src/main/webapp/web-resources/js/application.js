@@ -5,7 +5,7 @@ var DEMO = {
 		rubricaCategoria:'',
 	main : function(){
 		this.init();
-		//carga el primer block de la animacion
+		//carga el primer block de la animacion categoria
 		$(".slider .block:first").fadeIn(3000);
 	},
 	init: function(){
@@ -22,6 +22,9 @@ var DEMO = {
 				break;
 			case 'finales':
 				$this.cargaTablaRankinPosiciones();
+				setInterval(function(){	
+					$this.cargaTablaRankinPosiciones();
+				}, 9000);
 				break;
 			default:
 				$this.formsFunction();
@@ -47,17 +50,16 @@ var DEMO = {
 					htmll=htmll+'<th><h1> 3 </h1></th><th><h1> 4 </h1></th><th><h1> 5 </h1></th>';
 					htmll=htmll+'</tr></thead><tbody>';					
 						 $.each(value.resultado, function (llave, valor) {
-							 $.each(valor, function (cle, val) {
-								 
+							 $.each(valor, function (cle, val) {								 
 								 var rubricaCategoria= val.rubrica.categoria;
 								 if (rubricaCategoria != undefined){
 									
 									 htmll=htmll+'<tr><td><span class="tdResultados">'+val.evaluador.nombre+'</span></td>';
 									 
-									 $.each(val.resultadoPorItem, function (llav, vale) { 										
-	   									 htmll=htmll+'<td><span class="tdResultados">'+vale+'</span></td>';							 
+									 $.each(val.resultadoPorItem, function (llave, valoritem) { 										
+	   									 htmll=htmll+'<td><span class="tdResultados">'+valoritem+'</span></td>';							 
 	   			   					});									 
-									 htmll=htmll+'<td><span class="tdResultados">'+val.totalRubrica+'</span></td></tr>';
+									htmll=htmll+'<td><span class="tdResultados">'+val.totalRubrica+'</span></td></tr>';
 								 }
 	
 		  					});
@@ -78,7 +80,7 @@ var DEMO = {
 	
 	//**********************************Carga Ranking de posiciones**********************************************////
 	cargaTablaRankinPosiciones: function (){
-		setInterval(function(){	
+	
 			htmll='';
 			$.ajax({
 				type: "GET",
@@ -99,60 +101,52 @@ var DEMO = {
 					$("#divtablaResulFinal").html(htmll+'</table>');													
 				}				
 			});	
-		}, 9000);
 
-	},
-
-	//**********************************Fin ranking de posiciones***********************************************************/
+	},//*Fin ranking de posiciones****//
 	
 	
 	//********************************** Carga datos de la tabla de resultados por Presentacion ***********************************************************/
 	cargaTablaResultadosPresentacion: function (){
 	
 		$("#listProyectos").live('change', function(){
-				 $("table#tablaResulExpo td").remove();
-				 $('#showProyectos').trigger('click');
-				 
-				var idProyecto= $("#listProyectos option:selected").val();
-				/*carga de JSON a tabla resultados proyectos presentacion*/ 
-				 htmll='';
-					$.ajax({
-						type: "GET",
-						dataType: "JSON",
-						url:URL_APP_SERVICE + "/manager/resultados-categoria/"+$this.idEvalucacionEncabezado+".json",
-						success: function(data){
-							htmll='';
-							$.each(data.proyectos, function (key, value) {	
-								if(idProyecto==value.idProyecto){
-									$("#nombreProyecto").text("");
-									$("#nombreProyecto").html('<h3>'+value.nombre+'</h3>');
-										 $.each(value.resultado, function (llave, valor) {
-											 $.each(valor, function (cle, val) {
-												 
-												 var rubricaPresentacion= val.rubrica.categoria;
-												 												 
-												 if (rubricaPresentacion == undefined){
-													 
-													 htmll=htmll+'<tr><td><span class="tdResultados">'+val.evaluador.nombre+'</span></td>';
-													 
-													 $.each(val.resultadoPorItem, function (llav, vale) { //entra calificacion evaluadores
-					   									 htmll=htmll+'<td><span class="tdResultados">'+vale+'</span></td>';							 
-					   			   					 });
-													 htmll=htmll+'<td><span class="tdResultados">'+val.totalRubrica+'</span></td></tr>';
-												 }
-					
-						  					});
+			 $("table#tablaResulExpo td").remove();
+			 $('#showProyectos').trigger('click');
+		 
+			var idProyecto= $("#listProyectos option:selected").val();
+			/*carga de JSON a tabla resultados proyectos presentacion*/ 
+			 htmll='';
+			$.ajax({
+				type: "GET",
+				dataType: "JSON",
+				url:URL_APP_SERVICE + "/manager/resultados-categoria/"+$this.idEvalucacionEncabezado+".json",
+				success: function(data){
+					htmll='';
+					$.each(data.proyectos, function (key, value) {	
+						
+						if(idProyecto==value.idProyecto){
+								$("#nombreProyecto").text("");
+								$("#nombreProyecto").html('<h3>'+value.nombre+'</h3>');
+								 $.each(value.resultado, function (llave, valor) {
+									 $.each(valor, function (cle, val) {
+										 var rubricaPresentacion= val.rubrica.categoria; 												 
+										 if (rubricaPresentacion == undefined){
 											 
-										 });
-										 htmll=htmll+'<tr><td colspan="6"><h1>CALIFICACI&OacuteN TOTAL</h1></td><td><h1>'+value.resultado.calificacionPorCategoria+'</h1></td></tr>';
-								}
-							});
-							 $("table#tablaResulExpo").append(htmll);
-						}						 
-					});	
-				
-				
-
+											 htmll=htmll+'<tr><td><span class="tdResultados">'+val.evaluador.nombre+'</span></td>';
+											 
+											 $.each(val.resultadoPorItem, function (llav, vale) { //entra calificacion evaluadores
+			   									 htmll=htmll+'<td><span class="tdResultados">'+vale+'</span></td>';							 
+			   			   					 });
+											 htmll=htmll+'<td><span class="tdResultados">'+val.totalRubrica+'</span></td></tr>';
+										 }
+			
+				  					}); 
+								 });
+								 htmll=htmll+'<tr><td colspan="6"><h1>CALIFICACI&OacuteN TOTAL</h1></td><td><h1>'+value.resultado.calificacionPorCategoria+'</h1></td></tr>';
+						}
+					});
+					 $("table#tablaResulExpo").append(htmll);
+				}						 
+			});	
 		});
 
 		//$this.cargaFunciones();
