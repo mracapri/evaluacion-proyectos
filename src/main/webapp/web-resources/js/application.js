@@ -438,303 +438,32 @@ var DEMO = {
 	
 	//**********************************Carga Ranking de posiciones**********************************************////
 	cargaTablaRankinPosiciones: function (){
-		
-
-			var data= {
-			"idEvaluacion":"25bbdcd06c32d477f7fa1c3e4a91b032",
-			"descripcion":"Evaluacion TIC 2013",
-			"fechaCreacion":"Aug 2, 2013 5:31:25 PM",
-			"proyectos":{
-			"a2ef406e2c2351e0b9e80029c909242d":{
-			"idProyecto":"a2ef406e2c2351e0b9e80029c909242d",
-			"nombre":"Pagina para el IFE",
-			"categoria":{
-			"idCategoria":4,
-			"descripcion":"Software Web"
-			},
-			"responsable":"Andres Dominguez",
-			"integrantes":[
-			null
-			],
-			"resultado":{
-			"calificacionEvaluadores":[
-			{
-			"evaluador":{
-			"idEvaluador":"68a9e49bbc88c02083a062a78ab3bf30",
-			"especialidad":"TIC",
-			"nombre":"Mario Angeles",
-			"usuario":"aaaaa",
-			"clave":"12345",
-			"activo":1
-			},
-			"resultadoPorItem":{
-			"1":9.0,
-			"2":9.0,
-			"3":9.0,
-			"4":9.0,
-			"5":9.0
-			},
-			"rubrica":{},
-			"totalRubrica":9.0
-			},
-			{
-			"evaluador":{
-			 "idEvaluador":"68a9e49bbc88c02083a062a78ab3bf30",
-			 "especialidad":"TIC",
-			 "nombre":"Alonso Aguirre",
-			 "usuario":"aaaaa",
-			 "clave":"12345",
-			 "activo":1
-			},
-			"resultadoPorItem":{
-			 "1":3.0,
-			 "2":4.0,
-			 "3":3.0,
-			 "4":9.0,
-			 "5":10.0
-			},
-			"rubrica":{},
-			"totalRubrica":35
-			},
-			{
-			  "evaluador":{
-			     "idEvaluador":"68a9e49bbc88c02083a062a78ab3bf30",
-			     "especialidad":"TIC",
-			     "nombre":"Margaro ledesma",
-			     "usuario":"aaaaa",
-			     "clave":"12345",
-			     "activo":1
-			  },
-			  "resultadoPorItem":{
-			     "1":9.0,
-			     "2":34.0,
-			     "3":32.0,
-			     "4":94.0,
-			     "5":100.0
-			  },
-			  "rubrica":{},
-			  "totalRubrica":35
-			}
-			
-			],
-			"calificacionPorCategoria":9.0
-			}
-			},
-			"a2ef406e2c2351e0b9e80029c9092434":{
-				"idProyecto":"a2ef406e2c2351e0b9e80029c9092434",
-				"nombre":"Software de calidad",
-				"categoria":{
-				"idCategoria":4,
-				"descripcion":"Software Web"
-				},
-				"responsable":"Andres Dominguez",
-				"integrantes":[
-				null
-				],
-				"resultado":{
-				"calificacionEvaluadores":[
-				{
-				"evaluador":{
-				"idEvaluador":"68a9e49bbc88c02083a062a78ab3bf30",
-				"especialidad":"TIC",
-				"nombre":"Mario Angeles",
-				"usuario":"aaaaa",
-				"clave":"12345",
-				"activo":1
-				},
-				"resultadoPorItem":{
-				"1":9.0,
-				"2":9.0,
-				"3":9.0,
-				"4":9.0,
-				"5":9.0
-				},
-				"rubrica":{},
-				"totalRubrica":9.0
-				},
-				{
-				"evaluador":{
-				 "idEvaluador":"68a9e49bbc88c02083a062a78ab3bf30",
-				 "especialidad":"TIC",
-				 "nombre":"Alonso Aguirre",
-				 "usuario":"aaaaa",
-				 "clave":"12345",
-				 "activo":1
-				},
-				"resultadoPorItem":{
-				 "1":3.0,
-				 "2":4.0,
-				 "3":3.0,
-				 "4":9.0,
-				 "5":10.0
-				},
-				"rubrica":{},
-				"totalRubrica":35
-				},
-				{
-				  "evaluador":{
-				     "idEvaluador":"68a9e49bbc88c02083a062a78ab3bf30",
-				     "especialidad":"TIC",
-				     "nombre":"Margaro ledesma",
-				     "usuario":"aaaaa",
-				     "clave":"12345",
-				     "activo":1
-				  },
-				  "resultadoPorItem":{
-				     "1":9.0,
-				     "2":34.0,
-				     "3":32.0,
-				     "4":94.0,
-				     "5":100.0
-				  },
-				  "rubrica":{},
-				  "totalRubrica":35
-				}
-				
-				],
-				"calificacionPorCategoria":9.0
-				}
-				},
-			"96a3be3cf272e017046d1b2674a52bd3":{
-			"idProyecto":"96a3be3cf272e017046d1b2674a52bd3",
-			"nombre":"Aplicacion para kinect",
-			"categoria":{
-			"idCategoria":2,
-			"descripcion":"Software Escritorio"
-			},
-			"responsable":"Joel Morales",
-			"integrantes":[
-			null
-			],
-			"resultado":{
-			"calificacionEvaluadores":[
-			{
-			"evaluador":{
-			"idEvaluador":"68a9e49bbc88c02083a062a78ab3bf30",
-			"especialidad":"TIC",
-			"nombre":"Margarito",
-			"usuario":"aaaaa",
-			"clave":"12345",
-			"activo":1
-			},
-			"resultadoPorItem":{
-			"1":5.0,
-			"2":5.0,
-			"3":5.0,
-			"4":5.0,
-			"5":5.0
-			},
-			"rubrica":{
-			"categoria":{
-			"idCategoria":1,
-			"descripcion":"Software Multimedia"
-			},
-			"id":"dc5c7986daef50c1e02ab09b442ee34f",
-			"items":[
-			{
-			   "idItemRubrica":1,
-			   "descripcionCorta":"No hay faltas de ortograf�a ni errores gramaticales presentadas en el contenido",
-			   "descripcionLarga":"No hay faltas de ortograf�a ni errores gramaticales presentadas en el contenido",
-			   "escala":{
-			      "idEscala":1,
-			      "inicio":0,
-			      "fin":100
-			   }
-			},
-			{
-			   "idItemRubrica":2,
-			   "descripcionCorta":"La organizaci�n del material es adecuada para el usuario o grupo al que va dirigido",
-			   "descripcionLarga":"La organizaci�n del material es adecuada para el usuario o grupo al que va dirigido",
-			   "escala":{
-			      "idEscala":1,
-			      "inicio":0,
-			      "fin":100
-			   }
-			},
-			{
-			   "idItemRubrica":3,
-			   "descripcionCorta":"El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)",
-			   "descripcionLarga":"El producto final demuestra gran originalidad (las ideas son creativas e ingeniosas)",
-			   "escala":{
-			      "idEscala":1,
-			      "inicio":0,
-			      "fin":100
-			   }
-			},
-			{
-			   "idItemRubrica":4,
-			   "descripcionCorta":"Manejo diestro del software de dise�o, con mucha habilidad y uso de herramientas especiales",
-			   "descripcionLarga":"Manejo diestro del software de dise�o, con mucha habilidad y uso de herramientas especiales",
-			   "escala":{
-			      "idEscala":1,
-			      "inicio":0,
-			      "fin":100
-			   }
-			},
-			{
-			   "idItemRubrica":5,
-			   "descripcionCorta":"Cubre la informaci�n necesaria para el tema del proyecto. La presentaci�n y distribuci�n de la informaci�n es excelente",
-			   "descripcionLarga":"Cubre la informaci�n necesaria para el tema del proyecto. La presentaci�n y distribuci�n de la informaci�n es excelente",
-			   "escala":{
-			      "idEscala":1,
-			      "inicio":0,
-			      "fin":100
-			   }
-			}
-			]
-			},
-			"totalRubrica":9.0
-			}
-			],
-			"calificacionPorCategoria":9.0
-			}
-			}
-			},
-			"evaluadores":{
-			"68a9e49bbc88c02083a062a78ab3bf30":{
-			"idEvaluador":"68a9e49bbc88c02083a062a78ab3bf30",
-			"especialidad":"Aplicaciones Moviles",
-			"nombre":"Cobijas 33",
-			"usuario":"mayri_022",
-			"clave":"1452546",
-			"activo":1
-			},
-			"cd3dc8b6cffb41e4163dcbd857ca87da":{
-			"idEvaluador":"cd3dc8b6cffb41e4163dcbd857ca87da",
-			"especialidad":"TIC",
-			"nombre":"Alfredo de Jesus Perez de los Robles y Rebolledo",
-			"usuario":"alfredop",
-			"clave":"12345",
-			"activo":1
-			}
-			}
-			}
-			
-					
-					htmll='';
-					htmll=htmll+'<table class="table table-bordered table-striped">'+
-					'<thead><tr><th><h3>POSICION</h3></th><th><h3>LOGO</h3></th><th><h3>PROYECTO</h3></th><th><h3>PUNTAJE</h3></th>'+
-					'</tr></thead>';
-					
-					$.each(data.proyectos, function (key, value) {
-					//Obtengo el nombre
-					htmll=htmll+'<tbody><tr><td>1</td>';
-					//htmll=htmll+'<td><div class="logo"> <img src="'+URL_APP_SERVICE+ '/evaluacion/proyecto/logo/b1ba9a6770" width /> </div></td>';
-					htmll=htmll+'<td>'+value.nombre+'</td><td><h3>'+value.resultado.calificacionPorCategoria+'</h3></td></tr></tbody>';
-					
-					});
-				$("#divtablaResulFinal").html(htmll+'</table>');
-				//Implementar setInterval(function(){}, 3000);
-				/*$.ajax({
+						//Implementar setInterval(function(){}, 3000);
+				/*
+				 * Ajax ranking
+				 * */
+				htmll='';
+				$.ajax({
 				type: "GET",
 				dataType: "JSON",
-				url:URL_APP_SERVICE + "/manager/resultados-categoria.json",
+				url:URL_APP_SERVICE + "/manager/resultados-ranking/086eb61907.json",
 				success: function(data){
-								
-				
-				}
-				
-				});	*/
+					
+						htmll=htmll+'<table class="table table-bordered table-striped">'+
+						'<thead><tr><th><h3>POSICION</h3></th><th><h3>LOGO</h3></th><th><h3>PROYECTO</h3></th><th><h3>PUNTAJE</h3></th>'+
+						'</tr></thead>';
+						var posicion = 0;
+						$.each(data, function (key, value) {
+							posicion = key + 1;
+							// Obtengo el nombre
+							htmll = htmll + '<tbody><tr><td>'+posicion+'</td>';
+							htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
+							htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+ value.resultado.calificacionGlobal + '</h3></td></tr></tbody>';
+						
+						});
+						$("#divtablaResulFinal").html(htmll+'</table>');													
+					}				
+				}, 3000);	
 			
 			
 			

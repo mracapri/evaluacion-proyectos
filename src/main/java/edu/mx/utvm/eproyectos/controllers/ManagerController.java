@@ -96,8 +96,7 @@ public class ManagerController {
     		@PathVariable("idEvaluacion") String idEvaluacion,
     		HttpServletResponse response)
             throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("resultadoRubricaCate");	
-		log.info("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"+idEvaluacion);
+		ModelAndView model = new ModelAndView("resultadoRubricaCate");			
 		return model;
     }
 	
