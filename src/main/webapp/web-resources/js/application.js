@@ -14,6 +14,7 @@ var DEMO = {
 		$this.cargaTablaRankinPosiciones();
 		$this.changeSlider();
 		$this.controlDeTiempo();
+		$this.formsFunction();
 	},
 	
 	//Carga tablas resultados rubrica categoria
@@ -718,7 +719,7 @@ var DEMO = {
 					$.each(data.proyectos, function (key, value) {
 					//Obtengo el nombre
 					htmll=htmll+'<tbody><tr><td>1</td>';
-					htmll=htmll+'<td><div class="logo"> <img src="'+URL_APP_SERVICE+ '/evaluacion/proyecto/logo/b1ba9a6770" width /> </div></td>';
+					//htmll=htmll+'<td><div class="logo"> <img src="'+URL_APP_SERVICE+ '/evaluacion/proyecto/logo/b1ba9a6770" width /> </div></td>';
 					htmll=htmll+'<td>'+value.nombre+'</td><td><h3>'+value.resultado.calificacionPorCategoria+'</h3></td></tr></tbody>';
 					
 					});
@@ -807,7 +808,6 @@ var DEMO = {
 		});
 
 		//$this.cargaFunciones();
-		//$this.formsFunction();
 	},
 	
 

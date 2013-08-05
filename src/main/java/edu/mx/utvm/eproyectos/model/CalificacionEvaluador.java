@@ -35,8 +35,12 @@ public class CalificacionEvaluador {
 		for(Integer key : resultadoPorItem.keySet()){
 			total = total + resultadoPorItem.get(key);
 		}
-		total = total / resultadoPorItem.size();
-		return total;
+		if (resultadoPorItem.size() == 0) {
+			return 0.0;
+		}else{
+			total = total / resultadoPorItem.size();
+			return total;
+		}		
 	}
 
 	public Rubrica getRubrica() {

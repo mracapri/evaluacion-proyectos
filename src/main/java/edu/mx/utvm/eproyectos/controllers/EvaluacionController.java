@@ -89,10 +89,9 @@ public class EvaluacionController {
     		BindingResult result)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("nuevaEvaluacion");
-		if(!result.hasErrors()){
-			
+		if(!result.hasErrors()){			
 			/*Save evaluacion*/					
-			Evaluacion evaluacion = new Evaluacion(KeyGenerator.uuid(), formEvalaucion.getDescripcion());
+			Evaluacion evaluacion = new Evaluacion(KeyGenerator.uuid(), formEvalaucion.getDescripcion(), formEvalaucion.getExposicion_por());
 			evaluacion.setDescripcionDetallada(formEvalaucion.getDescripcionDetallada());
 			evaluacion.setFechaCreacion(new Date());
 			
@@ -244,7 +243,7 @@ public class EvaluacionController {
 		return model;
     }
 	
-	@InitBinder({"formProyecto", "formEvaluador", "formEvaluacion"})
+	@InitBinder({"formEvaluador"})
 	protected void initBinder(WebDataBinder webDataBinder) {
 		webDataBinder.setValidator(validator);
 	}

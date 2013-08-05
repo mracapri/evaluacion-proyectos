@@ -96,7 +96,7 @@ public class TestServicioResultado {
 
 		/* Create evaluacion */
 		Evaluacion evaluacion = new Evaluacion(
-				"25bbdcd06c32d477f7fa1c3e4a91b032", "Evaluacion 2013");
+				"25bbdcd06c32d477f7fa1c3e4a91b032", "Evaluacion 2013",3);
 		evaluacionDao.create(evaluacion);
 
 		/* Create proyecto */

@@ -58,7 +58,7 @@ public class TestDaoEvaluacion {
 		log.info("------------Test Insert and Find All EVALUACION----------------------");
 		Assert.assertNotNull(evaluacionDao);
 		
-		Evaluacion evaluacion = new Evaluacion(generateId32(), "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(generateId32(), "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 
@@ -77,7 +77,7 @@ public class TestDaoEvaluacion {
 		
 		Assert.assertNotNull(evaluacionDao);
 		String id = generateId32();
-		Evaluacion evaluacion = new Evaluacion(id, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(id, "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 
@@ -96,7 +96,7 @@ public class TestDaoEvaluacion {
 
 		Assert.assertNotNull(evaluacionDao);
 		String id = generateId32();
-		Evaluacion evaluacion = new Evaluacion(id, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(id, "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
@@ -126,7 +126,7 @@ public class TestDaoEvaluacion {
 		
 		Assert.assertNotNull(evaluacionDao);
 		String id32 = generateId32();
-		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
@@ -147,7 +147,7 @@ public class TestDaoEvaluacion {
 		
 		Assert.assertNotNull(evaluacionDao);
 		String id32 = generateId32();
-		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
@@ -192,7 +192,7 @@ public class TestDaoEvaluacion {
 		
 		Assert.assertNotNull(evaluacionDao);
 		String id32 = generateId32();
-		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		

@@ -53,7 +53,7 @@ public class TestDaoProyecto {
 		Assert.assertNotNull(proyectoDao);
 
 		String id32 = generateId32();		
-		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 
@@ -69,7 +69,7 @@ public class TestDaoProyecto {
 		Assert.assertNotNull(proyectoDao);
 
 		String id32 = generateId32();
-		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
@@ -98,7 +98,7 @@ public class TestDaoProyecto {
 		Assert.assertNotNull(proyectoDao);
 
 		String id32 = generateId32();
-		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
@@ -145,7 +145,7 @@ public class TestDaoProyecto {
 		Assert.assertNotNull(proyectoDao);
 
 		String id32 = generateId32();
-		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO");
+		Evaluacion evaluacion = new Evaluacion(id32, "Evaluacion UNO",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		

@@ -55,13 +55,21 @@
 							<div class="form-group">
 									<label>
 									 Exposicion por:
+									</label>									
+									<label class="checkbox-inline">
+									  <form:radiobutton value="1" path="exposicion_por"/> Presentaci&oacuten									  
 									</label>
 									<label class="checkbox-inline">
-									  <form:checkbox value="1" path="noPresentacion"/> Presentaci&oacuten									  
+									  <form:radiobutton value="2" path="exposicion_por"/> Categoria									  
 									</label>
 									<label class="checkbox-inline">
-									  <form:checkbox value="2" path="noCategoria"/> Categoria									  
+									  <form:radiobutton value="3" path="exposicion_por"/> Ambos									  
 									</label>
+									<spring:hasBindErrors name="formEvaluacion">								
+										<span class="label label-info">
+											<form:errors path="exposicion_por" />
+										</span>
+									</spring:hasBindErrors>
 							</div>						
 						</div>
 					</div>   					

@@ -12,11 +12,13 @@ public class Evaluacion {
 	private Date fechaCreacion;
 	private Map<String, Proyecto> proyectos;
 	private String descripcionDetallada;
+	private int exposicionPor;
 	private Map<String, Evaluador> evaluadores;
 
-	public Evaluacion(String idEvaluacion, String descripcion) {
+	public Evaluacion(String idEvaluacion, String descripcion, int exposicionPor) {
 		this.idEvaluacion = idEvaluacion;
 		this.descripcion = descripcion;
+		this.exposicionPor = exposicionPor;
 		this.fechaCreacion = new Date();
 		this.proyectos = new HashMap<String,Proyecto>();
 		this.evaluadores = new HashMap<String,Evaluador>();		
@@ -43,6 +45,14 @@ public class Evaluacion {
 
 	public void setDescripcionDetallada(String descripcionDetallada) {
 		this.descripcionDetallada = descripcionDetallada;
+	}
+
+	public int getExposicionPor() {
+		return exposicionPor;
+	}
+
+	public void setExposicionPor(int exposicionPor) {
+		this.exposicionPor = exposicionPor;
 	}
 
 	public Date getFechaCreacion() {

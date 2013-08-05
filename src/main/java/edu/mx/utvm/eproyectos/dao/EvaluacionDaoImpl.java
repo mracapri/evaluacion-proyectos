@@ -42,12 +42,13 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	public void create(Evaluacion newInstance) {
 		this.update(
 				"INSERT INTO " +
-				"evaluacion(id_evaluacion, descripcion, descripcion_detallada, fecha) " +
-				"VALUES(?,?,?,?)",
+				"evaluacion(id_evaluacion, descripcion, descripcion_detallada, exposicion_por, fecha) " +
+				"VALUES(?,?,?,?,?)",
 				new Object[] {
 						newInstance.getIdEvaluacion(),
 						newInstance.getDescripcion(),
 						newInstance.getDescripcionDetallada(),
+						newInstance.getExposicionPor(),
 						newInstance.getFechaCreacion()
 				});
 		
@@ -63,9 +64,7 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 						public Evaluacion mapRow(ResultSet rs, int rowNum)
 								throws SQLException {
 							
-							Evaluacion evaluacion = new Evaluacion(
-									rs.getString("id_evaluacion"), 
-									rs.getString("descripcion"));
+							Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), rs.getString("descripcion"), rs.getInt("exposicion_por"));
 
 							return evaluacion;
 						}
@@ -83,10 +82,12 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	public void update(Evaluacion transientObject) {
 		this.update(
 				"UPDATE evaluacion " +
-				"SET descripcion = ? " +
+				"SET descripcion = ?, " +
+				"exposicion_por = ? " +		
 				"WHERE id_evaluacion = ?",
 				new Object[] {
 						transientObject.getDescripcion(),
+						transientObject.getExposicionPor(),
 						transientObject.getIdEvaluacion()
 				}
 			);			
@@ -114,7 +115,7 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 				Map<String, Evaluador> evaluadores= evaluadorDao.findAllByIdEvaluacion(rs.getString("id_evaluacion"));
 				Map<String, Proyecto> proyecto= findProyectosByIdEvalaucion(rs.getString("id_evaluacion")); //Carga a la lista proyectos el id de la evaluacion
 				
-				Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), rs.getString("descripcion"));
+				Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), rs.getString("descripcion"), rs.getInt("exposicion_por"));
 					evaluacion.setFechaCreacion(rs.getDate("fecha"));
 					
 					evaluacion.getProyectos().putAll(proyecto);
@@ -161,7 +162,7 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 	@Override
 	public Evaluacion readByIdEvalauador(String idEvaluador) {
 		String sql = "";
-		sql += "select e.id_evaluacion, e.descripcion ";
+		sql += "select e.id_evaluacion, e.descripcion, e.exposicion_por ";
 		sql += "from evaluacion e, evaluacion_evaluadores ee ";
 		sql += "where ee.id_evaluador = ? and e.id_evaluacion = ee.id_evaluacion";
 		try {
@@ -170,9 +171,8 @@ public class EvaluacionDaoImpl extends JdbcTemplate implements EvaluacionDao{
 						@Override
 						public Evaluacion mapRow(ResultSet rs, int rowNum)
 								throws SQLException {
-							Evaluacion evaluacion = new Evaluacion(rs
-									.getString("id_evaluacion"), rs
-									.getString("descripcion"));
+							Evaluacion evaluacion = new Evaluacion(rs.getString("id_evaluacion"), 
+									rs.getString("descripcion"), rs.getInt("exposicion_por"));
 							return evaluacion;
 						}
 					});

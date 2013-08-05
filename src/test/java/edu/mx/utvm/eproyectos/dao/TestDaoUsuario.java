@@ -40,7 +40,7 @@ public class TestDaoUsuario {
 		String id32Evaluacion = generateId32();
 		String id32Evaluador = generateId32();
 		
-		Evaluacion evaluacion = new Evaluacion(id32Evaluacion,"Evaluacion");
+		Evaluacion evaluacion = new Evaluacion(id32Evaluacion,"Evaluacion",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
@@ -70,7 +70,7 @@ public class TestDaoUsuario {
 		String id32Evaluacion = generateId32();
 		String id32Evaluador = generateId32();
 		
-		Evaluacion evaluacion = new Evaluacion(id32Evaluacion,"Evaluacion");
+		Evaluacion evaluacion = new Evaluacion(id32Evaluacion,"Evaluacion",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		
@@ -103,7 +103,7 @@ public class TestDaoUsuario {
 		String id32Evaluacion = generateId32();
 		String id32Evaluador = generateId32();
 		
-		Evaluacion evaluacion = new Evaluacion(id32Evaluacion,"Evaluacion");
+		Evaluacion evaluacion = new Evaluacion(id32Evaluacion,"Evaluacion",3);
 		Assert.assertNotNull(evaluacion);
 		evaluacionDao.create(evaluacion);
 		

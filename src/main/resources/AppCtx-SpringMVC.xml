@@ -35,8 +35,8 @@
 	<import resource="AppCtx-Security.xml" />
 	
 	<!-- Fabrica de validaciones -->
-	<bean id="validator"
-		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	
 	<!-- json -->
 	<bean id="gson" class="com.google.gson.Gson" />
 </beans>

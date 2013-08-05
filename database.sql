@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS evaluacion (
   id_evaluacion varchar(32) NOT NULL,  
   descripcion varchar(200) NOT NULL,
   descripcion_detallada varchar(300) NULL,
+  exposicion_por int(1) NOT NULL COMMENT '1-exposicion,2-presentacion,3-ambos',
   fecha date NULL,  
   PRIMARY KEY (id_evaluacion)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -116,7 +116,7 @@ public class ManagerController {
 		response.setHeader("content-type", "application/json");	
 		
 		/*Obtener proyectos por evaluacion*/
-		Evaluacion evaluacion = evaluacionService.read("25bbdcd06c32d477f7fa1c3e4a91b032");				
+		Evaluacion evaluacion = evaluacionService.read("6b35ec05f0");
 		
 		/*
 		 * Ciclo de proyectos

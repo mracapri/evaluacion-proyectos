@@ -36,8 +36,12 @@ public class ResultadoFinal {
 				numeroCategorias++;
 			}
 		}
-		total = total / numeroCategorias;
-		return total;
+		if(numeroCategorias == 0){
+			return 0.0;
+		}else{
+			total = total / numeroCategorias;
+			return total;
+		}		
 	}
 	
 	public Double calcularPorCategoria(){

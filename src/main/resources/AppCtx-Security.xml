@@ -23,6 +23,7 @@
     	<intercept-url pattern='/resolver/evaluacion/*/proyectos' access="hasRole('ADMINISTRADOR')"/>
     	<intercept-url pattern='/resolver/evaluacion/evaluadores/*' access="hasRole('ADMINISTRADOR')"/>
     	<intercept-url pattern='/resolver/evaluacion/evaluadores/form' access="hasRole('ADMINISTRADOR')"/>
+    	<intercept-url pattern='/resolver/manager/*' />
     	
 	    
 	    
