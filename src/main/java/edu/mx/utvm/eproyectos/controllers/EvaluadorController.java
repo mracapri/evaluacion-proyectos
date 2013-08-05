@@ -86,6 +86,7 @@ public class EvaluadorController {
     public ModelAndView mostrarRubricaPresentacionEvaluacion(
     		HttpServletRequest request,
     		HttpServletResponse response,
+    		@ModelAttribute("evaluador") Evaluador evaluador,
     		@ModelAttribute("evaluacion") Evaluacion evaluacion, 
     		@PathVariable("idProyecto") String idProyecto)
             throws ServletException, IOException {
@@ -100,6 +101,17 @@ public class EvaluadorController {
 			model.addObject("rubrica", rubrica);
 			model.addObject("proyecto", proyecto);
 			model.addObject("tipoRubrica", "porPresentacion");
+			
+			CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(
+					evaluador, new HashMap<Integer, Double>(), rubrica);
+			
+			boolean laRubricaYaFueCapuradaParaElProyecto = resultadoService
+					.laRubricaYaFueCapuradaParaElProyecto(proyecto,
+							calificacionEvaluador);
+			
+			if (laRubricaYaFueCapuradaParaElProyecto) {
+				model.setViewName("evaluacionCapturada");
+			}
 		}
 		
 		return model;
@@ -110,6 +122,7 @@ public class EvaluadorController {
     public ModelAndView mostrarRubricaCategoriaEvaluacion(
     		HttpServletRequest request,
     		HttpServletResponse response,
+    		@ModelAttribute("evaluador") Evaluador evaluador,
     		@ModelAttribute("evaluacion") Evaluacion evaluacion, 
     		@PathVariable("idProyecto") String idProyecto)
             throws ServletException, IOException {
@@ -124,6 +137,17 @@ public class EvaluadorController {
 			model.addObject("rubrica", rubrica);
 			model.addObject("proyecto", proyecto);
 			model.addObject("tipoRubrica", "porCategoria");
+			
+			CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(
+					evaluador, new HashMap<Integer, Double>(), rubrica);
+			
+			boolean laRubricaYaFueCapuradaParaElProyecto = resultadoService
+					.laRubricaYaFueCapuradaParaElProyecto(proyecto,
+							calificacionEvaluador);
+			
+			if (laRubricaYaFueCapuradaParaElProyecto) {
+				model.setViewName("evaluacionCapturada");
+			}
 		}
 	
 		return model;
