@@ -58,7 +58,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 							proyecto.setLogo(rs.getBytes("logo"));
 							proyecto.setArchivoPresentacion(rs.getBytes("archivo_presentacion"));
 							proyecto.setFoto(rs.getBytes("foto"));
-							proyecto.getIntegrantes().add(rs.getString("integrantes"));
+							proyecto.setIntegrantes(rs.getString("integrantes"));
 							return proyecto;
 						}
 						
@@ -111,7 +111,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 				proyecto.setLogo(rs.getBytes("logo"));
 				proyecto.setArchivoPresentacion(rs.getBytes("archivo_presentacion"));
 				proyecto.setFoto(rs.getBytes("foto"));
-				proyecto.getIntegrantes().add(rs.getString("integrantes"));
+				proyecto.setIntegrantes(rs.getString("integrantes"));
 				return proyecto;
 			}
 		});
@@ -162,7 +162,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 				proyecto.setLogo(rs.getBytes("logo"));
 				proyecto.setArchivoPresentacion(rs.getBytes("archivo_presentacion"));
 				proyecto.setFoto(rs.getBytes("foto"));
-				proyecto.getIntegrantes().add(rs.getString("integrantes"));
+				proyecto.setIntegrantes(rs.getString("integrantes"));
 				return proyecto;
 			}
 		});

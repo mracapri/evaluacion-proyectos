@@ -123,7 +123,7 @@ public class ManagerController {
 			return model;
     }
 	
-	@RequestMapping(value="/resultados-categoria.json/{idEvaluacion}", method = RequestMethod.GET)
+	@RequestMapping(value="/resultados-categoria/{idEvaluacion}.json", method = RequestMethod.GET)
 	public @ResponseBody String getResultadosEvaluacion(HttpServletRequest request,	
 			@PathVariable("idEvaluacion") String idEvaluacion,
 			HttpServletResponse response){								 				
@@ -153,7 +153,7 @@ public class ManagerController {
 		return gson.toJson(evaluacion); 
 	}
 	
-	@RequestMapping(value="/resultados-ranking.json/{idEvaluacion}", method = RequestMethod.GET)
+	@RequestMapping(value="/resultados-ranking/{idEvaluacion}.json", method = RequestMethod.GET)
 	public @ResponseBody String getResultadosProyecto(HttpServletRequest request,
 			@PathVariable("idEvaluacion") String idEvaluacion,
 			HttpServletResponse response){								 				

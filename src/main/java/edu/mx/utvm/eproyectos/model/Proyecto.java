@@ -11,15 +11,14 @@ public class Proyecto {
 	private byte[] archivoPresentacion;
 	private byte[] foto;
 	private String responsable;
-	private List<String> integrantes;
+	private String integrantes;
 	private ResultadoFinal resultado;	 
 	
 	public Proyecto(String idProyecto, String nombre, Categoria categoria, String responsable) {
 		this.idProyecto = idProyecto;
 		this.nombre = nombre;
 		this.categoria = categoria;
-		this.responsable = responsable;
-		integrantes = new ArrayList<String>();			
+		this.responsable = responsable;				
 	}
 
 
@@ -83,8 +82,13 @@ public class Proyecto {
 	}
 
 
-	public List<String> getIntegrantes() {
+	public String getIntegrantes() {
 		return integrantes;
+	}
+
+
+	public void setIntegrantes(String integrantes) {
+		this.integrantes = integrantes;
 	}
 
 

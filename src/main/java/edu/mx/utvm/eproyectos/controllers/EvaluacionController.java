@@ -268,7 +268,7 @@ public class EvaluacionController {
 			Categoria categoria = catalogos.getCategorias().get(formProyecto.getIdCategoria());
 			
 			Proyecto proyecto = new Proyecto(KeyGenerator.uuid(), formProyecto.getNombre(), categoria, formProyecto.getLider());			
-			proyecto.getIntegrantes().add(formProyecto.getIntegrantes());
+			proyecto.setIntegrantes(formProyecto.getIntegrantes());
 			proyecto.setLogo(formProyecto.getLogo().getBytes());
 			proyecto.setArchivoPresentacion(formProyecto.getFilePdf().getBytes());
 			proyecto.setFoto(formProyecto.getFotoEquipo().getBytes());
