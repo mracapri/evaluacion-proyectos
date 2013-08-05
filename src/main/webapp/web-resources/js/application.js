@@ -1,6 +1,7 @@
 var DEMO = {
 		//declaracion de variables globales
-		i:0,
+		i:0,		
+		idEvalucacionEncabezado:self.location.href.match( /\/([^/]+)$/ )[1],
 		rubricaCategoria:'',
 	main : function(){
 		this.init();
@@ -10,7 +11,6 @@ var DEMO = {
 	init: function(){
 		$this = this;
 		var nombrePagina = self.location.href.split("/")[7];
-		alert(nombrePagina);
 		switch (nombrePagina){
 			case 'categoria':
 				$this.updateResultadosCategoria();
@@ -32,23 +32,20 @@ var DEMO = {
 	
 	//Carga tablas resultados rubrica categoria
 	cargaTablaResultadosCategoria: function (){
-
 		$.ajax({
 			type: "GET",
 			dataType: "JSON",
-			url:URL_APP_SERVICE + "/manager/resultados-categoria/086eb61907.json",
+			url:URL_APP_SERVICE + "/manager/resultados-categoria/"+$this.idEvalucacionEncabezado+".json",
 			success: function(data){
 				htmll='';
 				$.each(data.proyectos, function (key, value) {
-					
 					htmll=htmll+'<article class="block"><div class="row"><div class="span12"><h1>'+value.nombre+'</h1></div></div>';
 					htmll=htmll+'<table class="table table-bordered table-striped"><thead>';
 					htmll=htmll+'<tr><th rowspan="2"><h1>Nombre del Evaluador</h1></th><th colspan="5"><h1>Criterios</h1></th><th rowspan="2"><h1>Total</h1></th></tr>';
 				
 					htmll=htmll+'<tr><th><h1>1</h1></th><th><h1>2</h1></th>';
 					htmll=htmll+'<th><h1> 3 </h1></th><th><h1> 4 </h1></th><th><h1> 5 </h1></th>';
-					htmll=htmll+'</tr></thead><tbody>';
-					
+					htmll=htmll+'</tr></thead><tbody>';					
 						 $.each(value.resultado, function (llave, valor) {
 							 $.each(valor, function (cle, val) {
 								 
@@ -59,8 +56,7 @@ var DEMO = {
 									 
 									 $.each(val.resultadoPorItem, function (llav, vale) { 										
 	   									 htmll=htmll+'<td><span class="tdResultados">'+vale+'</span></td>';							 
-	   			   					});
-									 
+	   			   					});									 
 									 htmll=htmll+'<td><span class="tdResultados">'+val.totalRubrica+'</span></td></tr>';
 								 }
 	
@@ -82,32 +78,30 @@ var DEMO = {
 	
 	//**********************************Carga Ranking de posiciones**********************************************////
 	cargaTablaRankinPosiciones: function (){
-			setInterval(function(){	
-					htmll='';
-					$.ajax({
-						type: "GET",
-						dataType: "JSON",
-						url:URL_APP_SERVICE + "/manager/resultados-ranking/086eb61907.json",
-						success: function(data){
-								
-								htmll=htmll+'<table class="table table-bordered table-striped">'+
-								'<thead><tr><th><h3>POSICION</h3></th><th><h3>LOGO</h3></th><th><h3>PROYECTO</h3></th><th><h3>PUNTAJE</h3></th>'+
-								'</tr></thead>';
-								var posicion = 0;
-								$.each(data, function (key, value) {
-									posicion = key + 1;
-									// Obtengo el nombre
-									htmll = htmll + '<tbody><tr><td>'+posicion+'</td>';
-									htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
-									htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr></tbody>';
-								});
-								$("#divtablaResulFinal").html(htmll+'</table>');													
-						}				
-					});	
-			}, 9000);
+		setInterval(function(){	
+			htmll='';
+			$.ajax({
+				type: "GET",
+				dataType: "JSON",
+				url:URL_APP_SERVICE + "/manager/resultados-ranking/"+$this.idEvalucacionEncabezado+".json",
+				success: function(data){								
+					htmll=htmll+'<table class="table table-bordered table-striped">'+
+					'<thead><tr><th><h3>POSICION</h3></th><th><h3>LOGO</h3></th><th><h3>PROYECTO</h3></th><th><h3>PUNTAJE</h3></th>'+
+					'</tr></thead>';
+					var posicion = 0;
+					$.each(data, function (key, value) {
+						posicion = key + 1;
+						// Obtengo el nombre
+						htmll = htmll + '<tbody><tr><td>'+posicion+'</td>';
+						htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
+						htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr></tbody>';
+					});
+					$("#divtablaResulFinal").html(htmll+'</table>');													
+				}				
+			});	
+		}, 9000);
 
 	},
-
 
 	//**********************************Fin ranking de posiciones***********************************************************/
 	
@@ -125,7 +119,7 @@ var DEMO = {
 					$.ajax({
 						type: "GET",
 						dataType: "JSON",
-						url:URL_APP_SERVICE + "/manager/resultados-categoria/086eb61907.json",
+						url:URL_APP_SERVICE + "/manager/resultados-categoria/"+$this.idEvalucacionEncabezado+".json",
 						success: function(data){
 							htmll='';
 							$.each(data.proyectos, function (key, value) {	
