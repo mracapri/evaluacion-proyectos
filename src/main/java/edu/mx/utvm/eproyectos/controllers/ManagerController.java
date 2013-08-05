@@ -111,60 +111,26 @@ public class ManagerController {
     }
 	
 	@RequestMapping(value="/resultados-categoria.json", method = RequestMethod.GET)
-	public @ResponseBody String getEncuestas(HttpServletRequest request,			
+	public @ResponseBody String getResultadosEvaluacion(HttpServletRequest request,			
 			HttpServletResponse response){								 				
 		response.setHeader("content-type", "application/json");	
 		
 		/*Obtener proyectos por evaluacion*/
-		Evaluacion evaluacion = evaluacionService.read("6b35ec05f0");
+		Evaluacion evaluacion = evaluacionService.read("086eb61907");
 		
 		/*
 		 * Ciclo de proyectos
 		 * */
 		for (String idProyecto : evaluacion.getProyectos().keySet()) {
 			Proyecto proyecto = evaluacion.getProyectos().get(idProyecto);
-						
+			
+			proyecto.setFoto(null);
+			proyecto.setLogo(null);
+			proyecto.setArchivoPresentacion(null);
 			
 			/*Lista de resultados por proyecto*/
 			List<CalificacionEvaluador> resultados = resultadoService.findAllByProyecto(idProyecto);
-					//findAllByProyecto(proyecto.getIdProyecto());
-			
-			//List<Resultado> resultados = new ArrayList<Resultado>();
-			
-			/*Cantidad de evaluadores*/
-			
-			
-			/*Lista vacia de calificacion evaluadores*/
-			//List<CalificacionEvaluador> calificacionEvaluadores = new ArrayList<CalificacionEvaluador>();
-			
-			/*Objeto evaluador*/
-			//Evaluador evaluador = null;
-			
-			/*Objeto rubrica*/
-			//Rubrica rubrica = null;
-			
-			/*Mapa resultados por item*/
-			//Map<Integer, Double> resultadoPorItem = new HashMap<Integer, Double>();
-			
-			/*Ojeto calificacion evaluador*/
-			
-			/*
-			 * Ciclo de resultados
-			 * */
-			/*for (Resultado resultado : resultados) {								
-				
-				evaluador = evaluadorService.read(resultado.getIdEvaluador());				
-				
-				
-				rubrica = catalogos.getRubricas().get(resultado.getIdRubrica());				
-				
-										
-				resultadoPorItem.put(resultado.getIdItemRubrica(), resultado.getCalificacion());
-				
-				CalificacionEvaluador calificacionEvaluador = new CalificacionEvaluador(evaluador, resultadoPorItem, rubrica);
-				calificacionEvaluadores.add(calificacionEvaluador);	
-			}	*/
-			
+
 			ResultadoFinal resultadoFinal = new ResultadoFinal(resultados);			
 			
 			proyecto.setResultado(resultadoFinal);		
@@ -173,4 +139,32 @@ public class ManagerController {
 		return gson.toJson(evaluacion); 
 	}
 	
+	@RequestMapping(value="/resultados-proyecto.json", method = RequestMethod.GET)
+	public @ResponseBody String getResultadosProyecto(HttpServletRequest request,			
+			HttpServletResponse response){								 				
+		response.setHeader("content-type", "application/json");	
+		
+		/*Obtener proyectos por evaluacion*/
+		Evaluacion evaluacion = evaluacionService.read("086eb61907");
+		
+		/*
+		 * Ciclo de proyectos
+		 * */
+		for (String idProyecto : evaluacion.getProyectos().keySet()) {
+			Proyecto proyecto = evaluacion.getProyectos().get(idProyecto);
+			
+			proyecto.setFoto(null);
+			proyecto.setLogo(null);
+			proyecto.setArchivoPresentacion(null);
+			
+			/*Lista de resultados por proyecto*/
+			List<CalificacionEvaluador> resultados = resultadoService.findAllByProyecto(idProyecto);
+
+			ResultadoFinal resultadoFinal = new ResultadoFinal(resultados);			
+			
+			proyecto.setResultado(resultadoFinal);		
+		}
+		
+		return gson.toJson(evaluacion); 
+	}
 }

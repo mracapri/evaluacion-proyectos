@@ -7,8 +7,6 @@ import org.apache.commons.logging.LogFactory;
 
 public class CalificacionEvaluador {
 	
-	protected final Log log = LogFactory.getLog(getClass());
-	
 	private Evaluador evaluador;
 	private Map<Integer, Double> resultadoPorItem;
 	private Rubrica rubrica;
