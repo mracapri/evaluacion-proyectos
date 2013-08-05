@@ -97,7 +97,9 @@ public class ManagerController {
     		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("resultadoRubricaCate");	
-		log.info("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"+idEvaluacion);
+		Map<String, Proyecto> proyectos = proyectoService.findAllByIdEvaluacion(idEvaluacion);
+		log.info("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+proyectos);
+		model.addObject("proyectos", proyectos);
 		return model;
     }
 	

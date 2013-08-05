@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 
 <html lang="es">
@@ -23,10 +25,11 @@
 		<div class="contenedor">
 			<a id="showProyectos" data-toggle="collapse" data-target="#activarProyecto"><i class=" icon-chevron-down"></i></a>
 			<div id="activarProyecto" class="row  collapse">
-				<div  class="span12">
-					<select id="listProyectos" name="listProyectos">
-						<option>Proyecto de evaluacion</option>
-						<option>Proyecto de evaluacion11</option>
+				<div  class="span12">				
+					<select id="listProyectos" name="listProyectos">${proyectos}
+						<c:forEach var="proyecto" items="${proyectos}">
+							<option> ${proyecto}</option>
+						</c:forEach>
 					</select>
 				</div>
 			</div>
