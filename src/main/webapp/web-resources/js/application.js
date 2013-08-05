@@ -9,12 +9,25 @@ var DEMO = {
 	},
 	init: function(){
 		$this = this;
-		$this.cargaTablaResultadosPresentacion();
-		$this.cargaTablaRankinPosiciones();
-		$this.updateResultadosCategoria();
-		$this.changeSlider();
-		$this.controlDeTiempo();
-		$this.formsFunction();
+		var nombrePagina = self.location.href.split("/")[7];
+		alert(nombrePagina);
+		switch (nombrePagina){
+			case 'categoria':
+				$this.updateResultadosCategoria();
+				$this.changeSlider();
+				$this.controlDeTiempo();
+				break;
+			case 'exposicion':
+				$this.cargaTablaResultadosPresentacion();
+				break;
+			case 'finales':
+				$this.cargaTablaRankinPosiciones();
+				break;
+			default:
+				$this.formsFunction();
+				break;
+		}
+				
 	},
 	
 	//Carga tablas resultados rubrica categoria
@@ -86,10 +99,10 @@ var DEMO = {
 									// Obtengo el nombre
 									htmll = htmll + '<tbody><tr><td>'+posicion+'</td>';
 									htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
-									htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+ value.resultado.calificacionGlobal + '</h3></td></tr></tbody>';						
+									htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr></tbody>';
 								});
 								$("#divtablaResulFinal").html(htmll+'</table>');													
-							}				
+						}				
 					});	
 			}, 9000);
 
