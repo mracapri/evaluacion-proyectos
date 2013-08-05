@@ -9,7 +9,7 @@ var DEMO = {
 	init: function(){
 		$this = this;
 		//$this.cargaTablaResultadosPresentacion();
-		//$this.cargaTablaRankinPosiciones();
+		$this.cargaTablaRankinPosiciones();
 		$this.updateResultadosCategoria();
 		$this.changeSlider();
 		$this.controlDeTiempo();
@@ -86,7 +86,7 @@ var DEMO = {
 									// Obtengo el nombre
 									htmll = htmll + '<tbody><tr><td>'+posicion+'</td>';
 									htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
-									htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+ value.resultado.calificacionGlobal + '</h3></td></tr></tbody>';
+									htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr></tbody>';
 								
 								});
 								$("#divtablaResulFinal").html(htmll+'</table>');													
