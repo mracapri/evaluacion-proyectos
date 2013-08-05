@@ -44,10 +44,10 @@ var DEMO = {
 				$.each(data.proyectos, function (key, value) {
 					htmll=htmll+'<article class="block"><div class="row"><div class="span12"><h1>'+value.nombre+'</h1></div></div>';
 					htmll=htmll+'<table class="table table-bordered table-striped"><thead>';
-					htmll=htmll+'<tr><th rowspan="2"><h1>Nombre del Evaluador</h1></th><th colspan="5"><h1>Criterios</h1></th><th rowspan="2"><h1>Total</h1></th></tr>';
+					htmll=htmll+'<tr><th rowspan="2"><h1>Nombre del Evaluador</h1></th><th colspan="5" class="tdCentrado"><h2>Criterios</h2></th><th rowspan="2" class="tdCentrado"><h1>Total</h1></th></tr>';
 				
-					htmll=htmll+'<tr><th><h1>1</h1></th><th><h1>2</h1></th>';
-					htmll=htmll+'<th><h1> 3 </h1></th><th><h1> 4 </h1></th><th><h1> 5 </h1></th>';
+					htmll=htmll+'<tr><th class="tdCentrado"><h3>1</h3></th><th class="tdCentrado"><h3>2</h3></th>';
+					htmll=htmll+'<th class="tdCentrado"><h3> 3 </h3></th><th class="tdCentrado"><h3> 4 </h3></th><th class="tdCentrado"><h3> 5 </h3></th>';
 					htmll=htmll+'</tr></thead><tbody>';					
 						 $.each(value.resultado, function (llave, valor) {
 							 $.each(valor, function (cle, val) {								 
@@ -57,16 +57,16 @@ var DEMO = {
 									 htmll=htmll+'<tr><td><span class="tdResultados">'+val.evaluador.nombre+'</span></td>';
 									 
 									 $.each(val.resultadoPorItem, function (llave, valoritem) { 										
-	   									 htmll=htmll+'<td><span class="tdResultados">'+valoritem+'</span></td>';							 
+	   									 htmll=htmll+'<td class="tdCentrado"><span class="tdResultados">'+valoritem+'</span></td>';							 
 	   			   					});									 
-									htmll=htmll+'<td><span class="tdResultados">'+val.totalRubrica+'</span></td></tr>';
+									htmll=htmll+'<td><span class="tdResultados tdCentrado" >'+val.totalRubrica+'</span></td></tr>';
 								 }
 	
 		  					});
 							 
 						 });
 						 
-						 htmll=htmll+'<tr><td colspan="6"><h3>CALIFICACI&OacuteN TOTAL</h3></td><td><h3>'+value.resultado.calificacionPorCategoria+'</h3></td>';
+						 htmll=htmll+'<tr><td colspan="6"><h3>CALIFICACI&OacuteN TOTAL</h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionPorCategoria.toFixed(2)+'</h3></td>';
 						 htmll=htmll+'</tr></tbody></table></article>';
 							
 						 $("#seccion1").html(htmll);
@@ -88,15 +88,15 @@ var DEMO = {
 				url:URL_APP_SERVICE + "/manager/resultados-ranking/"+$this.idEvalucacionEncabezado+".json",
 				success: function(data){								
 					htmll=htmll+'<table class="table table-bordered table-striped">'+
-					'<thead><tr><th><h3>POSICION</h3></th><th><h3>LOGO</h3></th><th><h3>PROYECTO</h3></th><th><h3>PUNTAJE</h3></th>'+
+					'<thead><tr><th class="tdCentrado"><h3>POSICION</h3></th><th class="tdCentrado"><h3>LOGO</h3></th><th class="tdCentrado"><h3>PROYECTO</h3></th><th class="tdCentrado"><h3>PUNTAJE</h3></th>'+
 					'</tr></thead>';
 					var posicion = 0;
 					$.each(data, function (key, value) {
 						posicion = key + 1;
 						// Obtengo el nombre
-						htmll = htmll + '<tbody><tr><td>'+posicion+'</td>';
+						htmll = htmll + '<tbody><tr><td class="tdCentrado"><h3>'+posicion+'</h3></td>';
 						htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
-						htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr></tbody>';
+						htmll = htmll + '<td><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr></tbody>';
 					});
 					$("#divtablaResulFinal").html(htmll+'</table>');													
 				}				
@@ -131,12 +131,12 @@ var DEMO = {
 										 var rubricaPresentacion= val.rubrica.categoria; 												 
 										 if (rubricaPresentacion == undefined){
 											 
-											 htmll=htmll+'<tr><td><span class="tdResultados">'+val.evaluador.nombre+'</span></td>';
+											 htmll=htmll+'<tr><td><span class="tdResultados"><h2>'+val.evaluador.nombre+'</h2></span></td>';
 											 
 											 $.each(val.resultadoPorItem, function (llav, vale) { //entra calificacion evaluadores
-			   									 htmll=htmll+'<td><span class="tdResultados">'+vale+'</span></td>';							 
+			   									 htmll=htmll+'<td class="tdCentrado"><span class="tdResultados"><h3>'+vale+'</h3></span></td>';							 
 			   			   					 });
-											 htmll=htmll+'<td><span class="tdResultados">'+val.totalRubrica+'</span></td></tr>';
+											 htmll=htmll+'<td><span class="tdCentrado"><h3>'+val.totalRubrica+'</h3></span></td></tr>';
 										 }
 			
 				  					}); 

@@ -54,14 +54,18 @@
 }
 
 .logo {
-	width: 80px;
-	height: 80px;
+	width: 70px;
 	text-align: center;
+	margin-left: 5px;
 }
 
 .tdResultados {
     font-size: 39.5px;
 }
+.tdCentrado {
+    text-align: center !important;
+}
+
 
 .thResultados {
     font-size: 39.5px;

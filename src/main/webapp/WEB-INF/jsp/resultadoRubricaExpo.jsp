@@ -35,22 +35,24 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="span12" id="nombreProyecto">
-					
-				</div>
+				<div class="span12" id="nombreProyecto"></div>
 			</div>
 			<div class="control-group">
 				<table class="table table-bordered table-striped" id="tablaResulExpo" name="tablaResulExpo">
 					<thead>
 						<tr>
-							<th><h3>Nombre del Evaluador</h3></th>
-							<th><h3>Criterio 1</h3></th>
-							<th><h3>Criterio 2</h3></th>
-							<th><h3>Criterio 3</h3></th>
-							<th><h3>Criterio 4</h3></th>
-							<th><h3>Criterio 5</h3></th>
-							<th><h3>Total</h3></th>
+							<th rowspan="2"><h3>Nombre del Evaluador</h3></th>
+							<th colspan="5" class="tdCentrado">CRITERIO</th>
+							<th rowspan="2" class="tdCentrado"><h3>Total</h3></th>
 						</tr>
+						<tr>
+							<th class="tdCentrado"><h3>1</h3></th>
+							<th class="tdCentrado"><h3>2</h3></th>
+							<th class="tdCentrado"><h3>3</h3></th>
+							<th class="tdCentrado"><h3>4</h3></th>
+							<th class="tdCentrado"><h3>5</h3></th>
+						</tr>
+						
 					</thead>
 					<tbody>
 						
