@@ -69,34 +69,33 @@ var DEMO = {
 	
 	//**********************************Carga Ranking de posiciones**********************************************////
 	cargaTablaRankinPosiciones: function (){
-
-				htmll='';
-				htmll=htmll+'<table class="table table-bordered table-striped">'+
-				'<thead><tr><th><h3>POSICION</h3></th><th><h3>LOGO</h3></th><th><h3>PROYECTO</h3></th><th><h3>PUNTAJE</h3></th>'+
-				'</tr></thead>';
-				
-				$.each(data.proyectos, function (key, value) {
-				//Obtengo el nombre
-				htmll=htmll+'<tbody><tr><td>1</td>';
-				//htmll=htmll+'<td><div class="logo"> <img src="'+URL_APP_SERVICE+ '/evaluacion/proyecto/logo/b1ba9a6770" width /> </div></td>';
-				htmll=htmll+'<td>'+value.nombre+'</td><td><h3>'+value.resultado.calificacionPorCategoria+'</h3></td></tr></tbody>';
-				
-				});
-				$("#divtablaResulFinal").html(htmll+'</table>');
-				//Implementar setInterval(function(){
-				/*$.ajax({
-				type: "GET",
-				dataType: "JSON",
-				url:URL_APP_SERVICE + "/manager/resultados-categoria.json",
-				success: function(data){
-								
-				
-				}
-				
-				});
-				}, 3000);*/
+			setInterval(function(){	
+					htmll='';
+					$.ajax({
+						type: "GET",
+						dataType: "JSON",
+						url:URL_APP_SERVICE + "/manager/resultados-ranking/086eb61907.json",
+						success: function(data){
 		
+								htmll=htmll+'<table class="table table-bordered table-striped">'+
+								'<thead><tr><th><h3>POSICION</h3></th><th><h3>LOGO</h3></th><th><h3>PROYECTO</h3></th><th><h3>PUNTAJE</h3></th>'+
+								'</tr></thead>';
+								var posicion = 0;
+								$.each(data, function (key, value) {
+									posicion = key + 1;
+									// Obtengo el nombre
+									htmll = htmll + '<tbody><tr><td>'+posicion+'</td>';
+									htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
+									htmll = htmll + '<td>' + value.nombre + '</td><td><h3>'+ value.resultado.calificacionGlobal + '</h3></td></tr></tbody>';
+								
+								});
+								$("#divtablaResulFinal").html(htmll+'</table>');													
+							}				
+					});	
+			}, 9000);
+
 	},
+
 
 	//**********************************Fin ranking de posiciones***********************************************************/
 	

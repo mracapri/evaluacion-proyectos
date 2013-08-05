@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/jquery/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/bootstrap/js/bootstrap-tooltip.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resolver/js/global"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
 	
 </head>
