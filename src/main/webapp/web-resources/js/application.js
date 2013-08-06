@@ -86,7 +86,6 @@ var DEMO = {
 	
 	//**********************************Carga Ranking de posiciones**********************************************////
 	cargaTablaRankinPosiciones: function (){
-	
 			htmll='';
 			$.ajax({
 				type: "GET",
@@ -105,7 +104,8 @@ var DEMO = {
 						htmll = htmll + '<td><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr>';
 					});
 					$("#divtablaResulFinal").html(htmll+'</tbody></table>');
-					
+					$("#divtablaResulFinal").hide();
+					$("#divtablaResulFinal").fadeIn(3000);
 				}				
 			});				
 
