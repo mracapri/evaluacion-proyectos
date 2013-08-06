@@ -17,7 +17,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
 	
 </head>
-<body ng-app="myApp">
+<body class="hideScroll">
 	
 		<div class="container" >
 			

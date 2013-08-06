@@ -71,6 +71,10 @@
     font-size: 39.5px;
 }
 
+.hideScroll{
+	overflow:hidden;
+}
+
 
 .checkbox-inline {
 display: inline-block;

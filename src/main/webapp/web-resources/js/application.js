@@ -23,10 +23,8 @@ var DEMO = {
 				$this.cargaTablaResultadosPresentacionPrimer();
 				break;
 			case 'finales':
-				$this.cargaTablaRankinPosiciones();
-				setInterval(function(){	
-					$this.cargaTablaRankinPosiciones();
-				}, 50000);
+				 $this.cargaTablaRankinPosiciones(); 
+				$this.updateRankingPosiciones();
 				break;
 			default:
 				$this.formsFunction();
@@ -95,21 +93,21 @@ var DEMO = {
 				dataType: "JSON",
 				url:URL_APP_SERVICE + "/manager/resultados-ranking/"+$this.idEvalucacionEncabezado+".json",
 				success: function(data){								
-					htmll=htmll+'<table class="table table-bordered table-striped">'+
+					htmll=htmll+'<table class="table table-bordered table-striped" id="tablaPosicion">'+
 					'<thead><tr><th class="tdCentrado"><h3>POSICION</h3></th><th class="tdCentrado"><h3>LOGO</h3></th><th class="tdCentrado"><h3>PROYECTO</h3></th><th class="tdCentrado"><h3>PUNTAJE</h3></th>'+
-					'</tr></thead>';
+					'</tr></thead><tbody>';
 					var posicion = 0;
 					$.each(data, function (key, value) {
 						posicion = key + 1;
 						// Obtengo el nombre
-						htmll = htmll + '<tbody><tr><td class="tdCentrado"><h3>'+posicion+'</h3></td>';
+						htmll = htmll + '<tr><td class="tdCentrado"><h3>'+posicion+'</h3></td>';
 						htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
-						htmll = htmll + '<td><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr></tbody>';
+						htmll = htmll + '<td><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr>';
 					});
-					$("#divtablaResulFinal").html(htmll+'</table>');
+					$("#divtablaResulFinal").html(htmll+'</tbody></table>');
 					
 				}				
-			});	
+			});				
 
 	},//*Fin ranking de posiciones****//
 	
@@ -244,6 +242,23 @@ var DEMO = {
 			$this.cargaTablaResultadosCategoria();
 		}, 300000);
 	},
+	
+	//Funcion encargada de actualizar el ranking de posiciones
+	updateRankingPosiciones:function(){ 
+		 setInterval(function(){
+			 
+			 var numeroProyectos= $("#tablaPosicion tbody tr").length;
+			 if (numeroProyectos > 0){
+				 
+				 $("table tbody").fadeOut(3000, function(){  $("table tr").slice(1,4).remove(); $("table tbody").fadeIn(3000); });
+				 
+			 }else{
+				 $this.cargaTablaRankinPosiciones(); 
+			 }
+			 
+		 }, 8000);
+	},
+	
 	
 };//Fin var demo
 
