@@ -68,6 +68,13 @@
 				    </div>
 				</div> 
 				<div class="control-group">
+					<div class="row-fluid">
+						<div class="span12 pagination-centered">
+							<h3 class="text-info">${proyecto.nombre}</h3>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
 					<c:forEach items="${rubrica.items}" var="itemRubrica" varStatus="row">
 					<div class="row-fluid">
 						<div class="span1"></div>	
