@@ -1,6 +1,7 @@
 var DEMO = {
 		//declaracion de variables globales
-		i:0,		
+		i:0,
+		numeroDeElementos:0,
 		idEvalucacionEncabezado:self.location.href.match( /\/([^/]+)$/ )[1],
 		rubricaCategoria:'',
 	main : function(){
@@ -13,18 +14,19 @@ var DEMO = {
 		var nombrePagina = self.location.href.split("/")[7];
 		switch (nombrePagina){
 			case 'categoria':
+				$this.cargaTablaResultadosCategoria();
 				$this.updateResultadosCategoria();
 				$this.changeSlider();
-				$this.controlDeTiempo();
 				break;
 			case 'exposicion':
 				$this.cargaTablaResultadosPresentacion();
+				$this.cargaTablaResultadosPresentacionPrimer();
 				break;
 			case 'finales':
 				$this.cargaTablaRankinPosiciones();
 				setInterval(function(){	
 					$this.cargaTablaRankinPosiciones();
-				}, 9000);
+				}, 50000);
 				break;
 			default:
 				$this.formsFunction();
@@ -66,16 +68,22 @@ var DEMO = {
 							 
 						 });
 						 
-						 htmll=htmll+'<tr><td colspan="6"><h3>CALIFICACI&OacuteN TOTAL</h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionPorCategoria.toFixed(2)+'</h3></td>';
+						 htmll=htmll+'<tr><td colspan="6" class="tdResultados">CALIFICACI&OacuteN TOTAL</h3></td><td class="tdCentrado tdResultados">'+value.resultado.calificacionPorCategoria.toFixed(2)+'</td>';
 						 htmll=htmll+'</tr></tbody></table></article>';
 							
 						 $("#seccion1").html(htmll);
+						
 					});
 				
 					$(".slider .block:first").fadeIn(3000);
+					$this.numeroDeElementos = $("#seccion1").children().size();
+					$this.controlDeTiempo();
 			}
 			 
-		});					
+		});
+		
+	
+		
 	},
 	
 	//**********************************Carga Ranking de posiciones**********************************************////
@@ -98,7 +106,8 @@ var DEMO = {
 						htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
 						htmll = htmll + '<td><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr></tbody>';
 					});
-					$("#divtablaResulFinal").html(htmll+'</table>');													
+					$("#divtablaResulFinal").html(htmll+'</table>');
+					
 				}				
 			});	
 
@@ -148,6 +157,51 @@ var DEMO = {
 				}						 
 			});	
 		});
+	},
+	
+	cargaTablaResultadosPresentacionPrimer: function (){
+		
+			$("#listProyectos").eq(0).val();
+			 $("table#tablaResulExpo td").remove();
+			 $('#showProyectos').trigger('click');
+		 
+			var idProyecto= $("#listProyectos option:selected").val();
+			/*carga de JSON a tabla resultados proyectos presentacion*/ 
+			 htmll='';
+			$.ajax({
+				type: "GET",
+				dataType: "JSON",
+				url:URL_APP_SERVICE + "/manager/resultados-categoria/"+$this.idEvalucacionEncabezado+".json",
+				success: function(data){
+					htmll='';
+					$.each(data.proyectos, function (key, value) {	
+						
+						if(idProyecto==value.idProyecto){
+								$("#nombreProyecto").text("");
+								$("#nombreProyecto").html('<h3>'+value.nombre+'</h3>');
+								 $.each(value.resultado, function (llave, valor) {
+									 $.each(valor, function (cle, val) {
+										 var rubricaPresentacion= val.rubrica.categoria; 												 
+										 if (rubricaPresentacion == undefined){
+											 
+											 htmll=htmll+'<tr><td><span class="tdResultados"><h2>'+val.evaluador.nombre+'</h2></span></td>';
+											 
+											 $.each(val.resultadoPorItem, function (llav, vale) { //entra calificacion evaluadores
+			   									 htmll=htmll+'<td class="tdCentrado"><span class="tdResultados"><h3>'+vale+'</h3></span></td>';							 
+			   			   					 });
+											 htmll=htmll+'<td><span class="tdCentrado"><h3>'+val.totalRubrica+'</h3></span></td></tr>';
+										 }
+			
+				  					}); 
+								 });
+								 htmll=htmll+'<tr><td colspan="6"><h1>CALIFICACI&OacuteN TOTAL</h1></td><td><h1>'+value.resultado.calificacionPorCategoria+'</h1></td></tr>';
+						}
+					});
+					 $("table#tablaResulExpo").append(htmll);
+					
+				}						 
+				
+		});
 
 		//$this.cargaFunciones();
 	},
@@ -168,8 +222,11 @@ var DEMO = {
 	
 	
 	controlDeTiempo:function(){
-		$this.cargaTablaResultadosCategoria();
-		var timer = setInterval(this.changeSlider, 8000);
+		if ($this.numeroDeElementos > 1){
+			var timer = setInterval(this.changeSlider, 8000);
+		}else{
+			$(".slider .block:first").fadeIn(3000);
+		}
 	},
 	
 	changeSlider:function() {
@@ -185,7 +242,7 @@ var DEMO = {
 	updateResultadosCategoria:function(){
 		setInterval(function(){	
 			$this.cargaTablaResultadosCategoria();
-		}, 40000);
+		}, 300000);
 	},
 	
 };//Fin var demo
