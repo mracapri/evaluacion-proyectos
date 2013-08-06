@@ -52,6 +52,11 @@
 							<form:input path="nombre" placeholder="Nombre del Proyecto"/>														
 						</div>
 						<div class="span6">
+							<spring:hasBindErrors name="formProyecto">								
+								<span class="label label-info">
+									<form:errors path="logo" />
+								</span>
+							</spring:hasBindErrors>
 							<div class="fileupload fileupload-new" data-provides="fileupload">
 								<div class="fileupload-new thumbnail" style="width: 50px; height: 50px;"><img src="${pageContext.request.contextPath}/web-resources/img/cincuenta.gif" /></div>
 								<div class="fileupload-preview fileupload-exists thumbnail" style="width: 50px; height: 50px;"></div>

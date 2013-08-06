@@ -45,10 +45,10 @@
 		        <div class="control-group">
 			        <div class="row-fluid">			        	
 					    <div class="span4">
-							<a class="btn btn-danger btn-large btn-block" href="${pageContext.request.contextPath}/resolver/manager/resultados/exposicion/${idEvalaucion}">Exposicion</a>
+							<a class="btn btn-danger btn-large btn-block" href="${pageContext.request.contextPath}/resolver/manager/resultados/exposicion/${idEvalaucion}">Exposici&oacuten</a>
 					    </div>
 					    <div class="span4">
-						 	<a class="btn btn-primary btn-large btn-block" href="${pageContext.request.contextPath}/resolver/manager/resultados/categoria/${idEvalaucion}">Categoria</a>
+						 	<a class="btn btn-primary btn-large btn-block" href="${pageContext.request.contextPath}/resolver/manager/resultados/categoria/${idEvalaucion}">Categor&iacutea</a>
 					    </div>
 					    <div class="span4">
 						 	<a class="btn btn-success btn-large btn-block" href="${pageContext.request.contextPath}/resolver/manager/resultados/finales/${idEvalaucion}">Ranking</a>

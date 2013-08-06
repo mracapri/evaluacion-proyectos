@@ -1,7 +1,9 @@
 package edu.mx.utvm.eproyectos.controllers.formbeans;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -17,8 +19,8 @@ public class FormProyecto {
 	
 	@Min(1)
 	private int idCategoria;	
-	
-	private CommonsMultipartFile logo;
+		
+	private CommonsMultipartFile logo;	
 	private CommonsMultipartFile filePdf;
 	private CommonsMultipartFile fotoEquipo;
 		
