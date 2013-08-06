@@ -66,7 +66,7 @@ public class EvaluacionController {
     		HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("adminEvaluaciones");
-		List<Evaluacion> evaluaciones = evaluacionService.findAll();
+		List<Evaluacion> evaluaciones = evaluacionService.findAll();				
 		model.addObject("evaluaciones", evaluaciones);		
 		return model;
     }
@@ -89,7 +89,7 @@ public class EvaluacionController {
     		BindingResult result)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("nuevaEvaluacion");
-		if(!result.hasErrors()){			
+		if(!result.hasErrors()){						
 			/*Save evaluacion*/					
 			Evaluacion evaluacion = new Evaluacion(KeyGenerator.uuid(), formEvalaucion.getDescripcion(), formEvalaucion.getExposicion_por());
 			evaluacion.setDescripcionDetallada(formEvalaucion.getDescripcionDetallada());

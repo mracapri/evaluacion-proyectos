@@ -2,7 +2,7 @@
 
 <html lang="es">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=Latin1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 	<link media="screen" type="text/css" href="${pageContext.request.contextPath}/web-resources/bootstrap/css/bootstrap.css" rel="stylesheet"/>
@@ -21,7 +21,7 @@
 	            <div class="control-group">
 	              <label for="usuario" class="control-label">Usuario</label>
 	              <div class="controls">
-	                <input type="text" placeholder="Email" id="usuario" name="j_username">
+	                <input type="text" placeholder="Usuario" id="usuario" name="j_username">
 	              </div>
 	            </div>
 	            <div class="control-group">
@@ -39,9 +39,11 @@
 	              </div>
 	            </div>
 	            
+	            <!--
 	            <div class="control-group">
-	            	<p class="pagination-centered"> Power by <a href="${pageContext.request.contextPath}/resolver/blog">Cordinacion de sistemas</a></p>
+	            	  <p class="pagination-centered"> Power by <a href="${pageContext.request.contextPath}/resolver/blog">Cordinacion de sistemas</a></p>
 	            </div>
+	            -->
 	       </form>
 	</div>
 </body>

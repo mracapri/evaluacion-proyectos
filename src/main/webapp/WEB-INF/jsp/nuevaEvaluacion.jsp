@@ -5,7 +5,7 @@
 
 <html lang="es">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=Latin1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 	<link media="screen" type="text/css" href="${pageContext.request.contextPath}/web-resources/bootstrap/css/bootstrap.css" rel="stylesheet"/>
@@ -49,7 +49,7 @@
 									<form:errors path="descripcion" />
 								</span>
 							</spring:hasBindErrors>
-							<form:input path="descripcion" placeholder="Descripcion..."/>													
+							<form:input path="descripcion" placeholder="Descripcíon..."/>													
 						</div>
 						 <div class="span6">	
 							<div class="form-group">
@@ -60,7 +60,7 @@
 									  <form:radiobutton value="1" path="exposicion_por"/> Presentaci&oacuten									  
 									</label>
 									<label class="checkbox-inline">
-									  <form:radiobutton value="2" path="exposicion_por"/> Categoria									  
+									  <form:radiobutton value="2" path="exposicion_por"/> Categor&iacutea 									  
 									</label>
 									<label class="checkbox-inline">
 									  <form:radiobutton value="3" path="exposicion_por"/> Ambos									  
