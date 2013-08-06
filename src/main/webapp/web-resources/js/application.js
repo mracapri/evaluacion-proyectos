@@ -161,7 +161,6 @@ var DEMO = {
 		
 			$("#listProyectos").eq(0).val();
 			 $("table#tablaResulExpo td").remove();
-			 $('#showProyectos').trigger('click');
 		 
 			var idProyecto= $("#listProyectos option:selected").val();
 			/*carga de JSON a tabla resultados proyectos presentacion*/ 
