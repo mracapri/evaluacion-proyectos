@@ -46,7 +46,7 @@
 		       			Estimado evaluador, en este secci&oacuten podr&aacute
 		       			entrar a evaluar los proyectos destinados a la
 		       			evaluaci&oacuten la cual fue asignado, por favor click
-		       			en -<b>Exposici&oacuten</b>- &oacute -<b>C&aacutetegoria</b>- Gracias!
+		       			en -<b>Exposici&oacuten</b>- &oacute -<b>Categor&iacutea</b>- Gracias!
 		       		</div>
 				    </div>
 				</div> 

@@ -129,7 +129,7 @@ public class ManagerController {
 			@PathVariable("idEvaluacion") String idEvaluacion,
 			HttpServletResponse response){								 				
 		response.setHeader("content-type", "application/json");	
-		
+		response.setHeader("content-type", "text/html; charset=Latin1");	
 		/*Obtener proyectos por evaluacion*/
 		Evaluacion evaluacion = evaluacionService.read(idEvaluacion);
 		
@@ -159,6 +159,7 @@ public class ManagerController {
 			@PathVariable("idEvaluacion") String idEvaluacion,
 			HttpServletResponse response){								 				
 		response.setHeader("content-type", "application/json");	
+		response.setHeader("content-type", "text/html; charset=Latin1");	
 		
 		/*Obtener proyectos por evaluacion*/
 		Evaluacion evaluacion = evaluacionService.read(idEvaluacion);

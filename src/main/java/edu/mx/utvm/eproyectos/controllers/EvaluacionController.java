@@ -177,7 +177,7 @@ public class EvaluacionController {
     		BindingResult result)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("nuevoEvaluador");				
-		if(!result.hasErrors()){			
+		if(!result.hasErrors()){				
 			Evaluador evaluador = new Evaluador(
 					KeyGenerator.uuid(), 
 					formEvaluador.getNombre(), 
@@ -286,7 +286,7 @@ public class EvaluacionController {
 		return model;
     }
 	
-	@InitBinder({"formEvaluador"})
+	@InitBinder({"formEvaluador", "formProyecto"})
 	protected void initBinder(WebDataBinder webDataBinder) {
 		
 		webDataBinder.setValidator(validator);
