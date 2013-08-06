@@ -81,14 +81,18 @@
 
 			       					<div id="demo-${row.count}" class="collapse">
 										<div class="alert ">
-											<div class="row-fluid">
-				       							<div class="span5">
-													<span>Especialidad:</span>
-					       							<span class="label label-info">${evaluador.value.especialidad}</span>
+											<div class="row-fluid">																       							
+					       						<div class="span3">
+													<span>Usuario:</span>
+					       							<span class="label label-info">${evaluador.value.usuario}</span>
 					       						</div>
-					       						<div class="span5">
+					       						<div class="span3">
 													<span>Password:</span>
 					       							<span class="label label-info">${evaluador.value.clave}</span>
+					       						</div>
+					       						<div class="span3">
+													<span>Especialidad:</span>
+					       							<span class="label label-info">${evaluador.value.especialidad}</span>
 					       						</div>
 					       					</div>	
 										</div>

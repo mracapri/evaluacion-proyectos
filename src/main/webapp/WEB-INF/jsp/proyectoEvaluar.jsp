@@ -75,7 +75,7 @@
 					       		</a>
 					       		<div id="delete-proyecto-${row.count}" class="collapse">
 									<a class="btn btn-mini btn-danger" 
-										href="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/delete/${proyecto.value.idProyecto}">Aceptar</a>
+										href="${pageContext.request.contextPath}/resolver/evaluacion/delete/proyecto/${proyecto.value.idProyecto}">Aceptar</a>
 									<a class="btn btn-mini btn-info" data-toggle="collapse" 
 										data-target="#delete-proyecto-${row.count}, #alert-for-delete"
 										href="#">Cancelar</a>
