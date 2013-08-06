@@ -38,6 +38,10 @@
 	                <button class="btn btn-large btn-primary" type="submit">Entrar</button>
 	              </div>
 	            </div>
+	            
+	            <div class="control-group">
+	            	<p class="pagination-centered"> Power by <a href="${pageContext.request.contextPath}/resolver/blog">Cordinacion de sistemas</a></p>
+	            </div>
 	       </form>
 	</div>
 </body>

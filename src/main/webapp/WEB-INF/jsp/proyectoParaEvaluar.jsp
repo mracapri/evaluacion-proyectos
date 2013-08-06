@@ -40,6 +40,14 @@
 				    	<span class="titulo-ventana">
 				    		Evaluaci&oacuten de Proyectos
 				    	</span>
+		       		<br/>
+		       		<br/>
+		       		<div class="alert alert-info">
+		       			Estimado evaluador, en este secci&oacuten podr&aacute
+		       			entrar a evaluar los proyectos destinados a la
+		       			evaluaci&oacuten la cual fue asignado, por favor click
+		       			en -<b>Exposici&oacuten</b>- &oacute -<b>C&aacutetegoria</b>- Gracias!
+		       		</div>
 				    </div>
 				</div> 
 		        <div class="control-group">
@@ -63,9 +71,9 @@
 					<c:forEach var="proyecto" items="${evaluacion.proyectos}" varStatus="row">
 						<div class="row-fluid  show-grid">
 						    <div class="span8">
-								<b>${row.count}</b>
+								<b>${row.count}.-</b>
 								<span>
-									${proyecto.value.nombre}
+									<b>${proyecto.value.nombre}</b>
 								</span>
 						    </div>
 						    <div class="span2">

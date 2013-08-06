@@ -26,5 +26,12 @@ public class IndexController {
 		ModelAndView model = new ModelAndView("login");
 		return model;
 	}
+	
+	@RequestMapping(value = "/blog", method = RequestMethod.GET)
+	public ModelAndView handleBlog(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		ModelAndView model = new ModelAndView("blog");
+		return model;
+	}
 
 }

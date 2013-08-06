@@ -32,6 +32,14 @@
 				<div class="row-fluid">
 				    <div class="span12 show-grid">
 				    	<span class="titulo-ventana">Opciones de Resultados</span>
+			       		<br/><br/>
+			       		<div class="alert alert-info">
+			       			Estimado manager, en esta secci&oacuten podr&aacute
+			       			entrar a seleccionar el tipo de monitoreo ya sea por
+			       			exposici&oacuten, por categoria y/o ranking de proyectos 
+			       			por favor click en -<b>cualquiera de las opciones</b>- Gracias!
+			       		</div>
+		       			<br>
 				    </div>
 				</div> 
 		        <div class="control-group">
