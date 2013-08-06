@@ -8,7 +8,7 @@ SET NAMES 'latin1';
 
 /*Categorias*/
 insert into categoria ( id_categoria, descripcion ) 
-values (1, 'Software Multimedia'),(2, 'Software Escritorio'),(3, 'Software Moviles'),(4, 'Software Web');
+values (1, 'Software Multimedia'),(2, 'Software Escritorio'),(3, 'Software Móviles'),(4, 'Software Web');
 
 
 /*Rubricas*/

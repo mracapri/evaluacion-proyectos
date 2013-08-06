@@ -66,7 +66,7 @@ public class EvaluacionController {
     		HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("adminEvaluaciones");
-		List<Evaluacion> evaluaciones = evaluacionService.findAll();
+		List<Evaluacion> evaluaciones = evaluacionService.findAll();				
 		model.addObject("evaluaciones", evaluaciones);		
 		return model;
     }
