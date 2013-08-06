@@ -16,24 +16,29 @@
     	<intercept-url pattern='/login' filters='none'/>
   
 		<!-- Evaluacion -->
-		<intercept-url pattern='/resolver/evaluacion/*' access="hasRole('ADMINISTRADOR')"/>
-		
+		<intercept-url pattern='/resolver/evaluacion/*' access="hasRole('ADMINISTRADOR')"/>		
+    	<intercept-url pattern='/resolver/evaluacion/*/proyectos' access="hasRole('ADMINISTRADOR')"/>
+    	<intercept-url pattern='/resolver/evaluacion/evaluadores/*' access="hasRole('ADMINISTRADOR')"/>    	
+    	
 		<!-- Evaluador -->  
-    	<intercept-url pattern='/resolver/evaluador/*' access="hasRole('EVALUADOR')"/>
+    	<intercept-url pattern='/resolver/evaluador/*' access="hasRole('EVALUADOR')"/>    	
+    	<intercept-url pattern='/resolver/evaluador/evaluacion/*' access="hasRole('EVALUADOR')"/>
+    	<intercept-url pattern='/resolver/evaluador/rubrica/form/*' access="hasRole('EVALUADOR')"/>
+    	<intercept-url pattern='/resolver/evaluador/rubrica/form/save/*' access="hasRole('EVALUADOR')"/>
+    	<intercept-url pattern='/resolver/evaluador/evaluacion/rubrica/*' access="hasRole('EVALUADOR')"/>
+    	<intercept-url pattern='/resolver/evaluador/evaluacion/mostrar/rubrica/presentacion/*' access="hasRole('EVALUADOR')"/>
+    	<intercept-url pattern='/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/*' access="hasRole('EVALUADOR')"/>
     	
     	<!-- Manager -->
     	<intercept-url pattern='/resolver/manager/*' access="hasRole('MANAGER')"/>
+    	<intercept-url pattern='/resolver/manager/option/*' access="hasRole('MANAGER')"/>
+    	<intercept-url pattern='/resolver/manager/resultados/categoria/*' access="hasRole('MANAGER')"/>
+    	<intercept-url pattern='/resolver/manager/resultados/exposicion/*' access="hasRole('MANAGER')"/>
+    	<intercept-url pattern='/resolver/manager/resultados/finales/*' access="hasRole('MANAGER')"/>
+    	<intercept-url pattern='/resolver/manager/resultados-categoria/*' access="hasRole('MANAGER')"/>
+    	<intercept-url pattern='/resolver/manager/resultados-ranking/*' access="hasRole('MANAGER')"/>
     	
-    	<!-- <intercept-url pattern='/resolver/evaluador/evaluacion/mostrar/rubrica/presentacion/*' access="hasRole('EVALUADOR')"/>
-    	<intercept-url pattern='/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/*' access="hasRole('EVALUADOR')"/>
-    	<intercept-url pattern='/resolver/evaluador/evaluacion/rubrica/save' access="hasRole('EVALUADOR')"/>
-    	<intercept-url pattern='/resolver/evaluacion/all' access="hasRole('ADMINISTRADOR')"/>
-    	<intercept-url pattern='/resolver/evaluacion/*/proyectos' access="hasRole('ADMINISTRADOR')"/>
-    	<intercept-url pattern='/resolver/evaluacion/evaluadores/*' access="hasRole('ADMINISTRADOR')"/>
-    	<intercept-url pattern='/resolver/evaluacion/evaluadores/form' access="hasRole('ADMINISTRADOR')"/> -->   	
     	
-	    
-	    
         <form-login login-page="/resolver/login" 
         			default-target-url="/resolver/index.htm" 
         			always-use-default-target="true"
