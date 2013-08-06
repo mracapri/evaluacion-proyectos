@@ -23,8 +23,31 @@
 </head>
 <body>		
 	<div class="container" >
-		Evaluacion capturada
-		<a class="btn btn-info" href="${pageContext.request.contextPath}/resolver/evaluador/proyectos">Regresar</a>
+			<!-- Encabezado menu Logout -->
+			<div class="masthead">
+			  <ul class="nav nav-pills pull-right">
+			    <li class="active"><a href="#">Home</a></li>
+			    <li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Salir</a></li>
+			  </ul>
+			  <h3 class="muted">Evaluaci&oacuten de proyectos</h3>
+			</div>
+			<div class="proyectoEvaluar">
+				<div class="row-fluid">
+				    <div class="span12 show-grid">
+				    	<span class="titulo-ventana">
+				    		Evaluaci&oacuten de Proyectos
+				    	</span>
+			       		<br/>
+			       		<br/>
+			       		<div class="alert alert-info">
+			       			Estimado evaluador, esta evaluaci&oacuten ya ha sido registrada,
+			       			le pedimos de favor dar click en el boton -<b>Regresar</b>- Gracias!
+			       		</div>
+						<a class="btn btn-danger" href="${pageContext.request.contextPath}/resolver/evaluador/proyectos">Regresar</a>
+				    </div>
+				</div> 
+			</div>
+
 	</div>
 </body>
 </html>

@@ -29,19 +29,21 @@
 		</div>
 		<div class="detalleProyecto">
 			<span class="titulo-ventana">Evaluaciones</span>
-			<div class="control-group">
-				<div class="controls">
-					<a class="btn btn-primary nav pull-right"href="${pageContext.request.contextPath}/jsp/nuevaEvaluacion.jsp"><i class="icon-plus-sign icon-white"></i> Nuevo</a>
-				</div>
-			</div>
+
 			<div class="control-group">
 		       <section id="proyectos">
+		       		<br/>
+		       		<div class="alert alert-info">
+		       			Estimado manager, en esta secci&oacuten podr&aacute
+		       			entrar a seleccionar los proyectos que desea monitorear, 
+		       			por favor click en -<b>Supervisar proyectos</b>- Gracias!
+		       		</div>
 	       			<br>
-	       			<c:forEach var="evaluacion" items="${evaluaciones}">
+	       			<c:forEach var="evaluacion" items="${evaluaciones}" varStatus="row">
 		       			<span>
-		       				${evaluacion.descripcion}
+		       				${row.count}.- <b>${evaluacion.descripcion}</b> - 
 			       			<a href="${pageContext.request.contextPath}/resolver/manager/option/${evaluacion.idEvaluacion}">
-			       				- proyectos
+			       				<b>Supervisar proyectos</b>
 			       			</a>			       			
 		       			</span>
 		       			<br>
