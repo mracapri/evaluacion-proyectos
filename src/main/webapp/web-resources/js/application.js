@@ -23,8 +23,8 @@ var DEMO = {
 				$this.cargaTablaResultadosPresentacionPrimer();
 				break;
 			case 'finales':
-				 $this.cargaTablaRankinPosiciones(); 
-				$this.updateRankingPosiciones();
+				 //$this.cargaTablaRankinPosiciones(); 
+				 $this.runProcessRanking();
 				break;
 			default:
 				$this.formsFunction();
@@ -91,7 +91,8 @@ var DEMO = {
 				type: "GET",
 				dataType: "JSON",
 				url:URL_APP_SERVICE + "/manager/resultados-ranking/"+$this.idEvalucacionEncabezado+".json",
-				success: function(data){								
+				success: function(data){
+					$("#tablaPosicion").remove();
 					htmll=htmll+'<table class="table table-bordered table-striped" id="tablaPosicion">'+
 					'<thead><tr><th class="tdCentrado"><h3>POSICION</h3></th><th class="tdCentrado"><h3>LOGO</h3></th><th class="tdCentrado"><h3>PROYECTO</h3></th><th class="tdCentrado"><h3>PUNTAJE</h3></th>'+
 					'</tr></thead><tbody>';
@@ -104,8 +105,8 @@ var DEMO = {
 						htmll = htmll + '<td><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr>';
 					});
 					$("#divtablaResulFinal").html(htmll+'</tbody></table>');
-					$("#divtablaResulFinal").hide();
-					$("#divtablaResulFinal").fadeIn(3000);
+					$("table tr").hide();
+					$("table tr").slice(1,6).show(3000);
 				}				
 			});				
 
@@ -242,21 +243,42 @@ var DEMO = {
 		}, 300000);
 	},
 	
-	//Funcion encargada de actualizar el ranking de posiciones
-	updateRankingPosiciones:function(){ 
-		 setInterval(function(){
+	
+	//******Funciones de Rnaking posiciones********///
+	updateRankingPosiciones:function(){
+		 var numeroProyectos= $("#tablaPosicion tbody tr").length;
+		 if (numeroProyectos > 0){
 			 
-			 var numeroProyectos= $("#tablaPosicion tbody tr").length;
-			 if (numeroProyectos > 0){
+			 $("table tbody").fadeOut(3000, function(){ 
 				 
-				 $("table tbody").fadeOut(3000, function(){  $("table tr").slice(1,4).remove(); $("table tbody").fadeIn(3000); });
+				 $("table tr").slice(1,6).remove(); 
+				 $("table tbody").fadeIn(3000);
+				 $("table tr").hide();
+				 $("table tr").slice(1,6).show();
+				 numeroProyectos= $("#tablaPosicion tbody tr").length;
+				 if(numeroProyectos == 0){
+					 window.clearTimeout(0);
+					 $this.cargaTablaRankinPosiciones();
+				 }
 				 
-			 }else{
-				 $this.cargaTablaRankinPosiciones(); 
-			 }
+			 });
+			 
+		 }else{
+			 $this.cargaTablaRankinPosiciones();
+		 }
+	},
+	//Funcion encargada de actualizar el ranking de posiciones
+	runProcessRanking:function(){ 
+		$this.updateRankingPosiciones();
+		setInterval(function(){
+			 
+			$this.updateRankingPosiciones();
 			 
 		 }, 8000);
 	},
+	
+	
+	
 	
 	
 };//Fin var demo
