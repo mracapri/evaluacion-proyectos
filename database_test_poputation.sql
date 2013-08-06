@@ -1,10 +1,9 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET NAMES 'latin1';
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES latin1 */;
 
 /*Categorias*/
 insert into categoria ( id_categoria, descripcion ) 
@@ -66,41 +65,6 @@ values (1, 'No hay faltas de ortograf�a ni errores gramaticales presentadas en
 (35,'Item Rubrica de exposicion4', 'Item Rubrica de exposicion4',1),
 (36,'Item Rubrica de exposicion5', 'Item Rubrica de exposicion5',1);
 
-/*
-insert into rubrica_items_rubrica ( id_rubrica,  id_item_rubrica ) 
-values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
-('dc5c7986daef50c1e02ab09b442ee34f', 2),
-('dc5c7986daef50c1e02ab09b442ee34f', 3),
-('dc5c7986daef50c1e02ab09b442ee34f', 4),
-('dc5c7986daef50c1e02ab09b442ee34f', 5),
-('93dd4de5cddba2c733c65f233097f05a', 6),
-('93dd4de5cddba2c733c65f233097f05a', 7),
-('93dd4de5cddba2c733c65f233097f05a', 8),
-('93dd4de5cddba2c733c65f233097f05a', 9),
-('93dd4de5cddba2c733c65f233097f05a', 10),
-('93dd4de5cddba2c733c65f233097f05a', 11),
-('93dd4de5cddba2c733c65f233097f05a', 12),
-('e45ee7ce7e88149af8dd32b27f9512ce', 13),
-('e45ee7ce7e88149af8dd32b27f9512ce', 14),
-('e45ee7ce7e88149af8dd32b27f9512ce', 15),
-('e45ee7ce7e88149af8dd32b27f9512ce', 16),
-('e45ee7ce7e88149af8dd32b27f9512ce', 17),
-('e45ee7ce7e88149af8dd32b27f9512ce', 18),
-('e45ee7ce7e88149af8dd32b27f9512ce', 19),
-('7d0665438e81d8eceb98c1e31fca80c1', 20),
-('7d0665438e81d8eceb98c1e31fca80c1', 21),
-('7d0665438e81d8eceb98c1e31fca80c1', 22),
-('7d0665438e81d8eceb98c1e31fca80c1', 23),
-('7d0665438e81d8eceb98c1e31fca80c1', 24),
-('7d0665438e81d8eceb98c1e31fca80c1', 25),
-('7d0665438e81d8eceb98c1e31fca80c1', 26),
-('7d0665438e81d8eceb98c1e31fca80c1', 27),
-('7d0665438e81d8eceb98c1e31fca80c1', 28),
-('7d0665438e81d8eceb98c1e31fca80c1', 29),
-('7d0665438e81d8eceb98c1e31fca80c1', 30),
-('7d0665438e81d8eceb98c1e31fca80c1', 31),
-('751d31dd6b56b26b29dac2c0e1839e34', 32);
-*/
 insert into rubrica_items_rubrica ( id_rubrica,  id_item_rubrica ) 
 values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
 ('dc5c7986daef50c1e02ab09b442ee34f', 2),
@@ -131,4 +95,3 @@ values ('dc5c7986daef50c1e02ab09b442ee34f', 1),
 
 insert into usuario (nombre_usuario, clave, fecha_creacion, activo) values('mracapri','Riam82120$',now(), 1);
 insert into usuario_roles (nombre_usuario, id_role) values ('mracapri',2);
-
