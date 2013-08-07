@@ -222,7 +222,7 @@ var DEMO = {
 	
 	controlDeTiempo:function(){
 		if ($this.numeroDeElementos > 1){
-			var timer = setInterval(this.changeSlider, 8000);
+			var timer = setInterval(this.changeSlider, 16000);
 		}else{
 			$(".slider .block:first").fadeIn(3000);
 		}
@@ -286,7 +286,7 @@ var DEMO = {
 		$this.updateRankingPosiciones();
 		$this.time = setInterval(function(){
 			$this.updateRankingPosiciones(); 
-		 }, 8000);
+		 }, 16000);
 	},
 	
 	

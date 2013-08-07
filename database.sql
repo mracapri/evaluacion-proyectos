@@ -136,8 +136,6 @@ CREATE TABLE IF NOT EXISTS usuario_evaluador (
   FOREIGN KEY(id_evaluador) REFERENCES evaluador(id_evaluador) ON DELETE CASCADE
 ) ;
 
-
-
 insert into roles (id_role, role) values (1, 'EVALUADOR');
 insert into roles (id_role, role) values (2, 'ADMINISTRADOR');
 insert into roles (id_role, role) values (3, 'MANAGER');
