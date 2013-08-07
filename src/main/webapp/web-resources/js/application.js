@@ -150,7 +150,7 @@ var DEMO = {
 			
 				  					}); 
 								 });
-								 htmll=htmll+'<tr><td colspan="6"><h1>CALIFICACI&OacuteN TOTAL</h1></td><td><h1>'+value.resultado.calificacionPorCategoria+'</h1></td></tr>';
+								 htmll=htmll+'<tr><td colspan="6"><h1>CALIFICACI&OacuteN TOTAL</h1></td><td><h1>'+value.resultado.calificacionPorPresentacion.toFixed(2)+'</h1></td></tr>';
 						}
 					});
 					 $("table#tablaResulExpo").append(htmll);
@@ -193,7 +193,7 @@ var DEMO = {
 			
 				  					}); 
 								 });
-								 htmll=htmll+'<tr><td colspan="6"><h1>CALIFICACI&OacuteN TOTAL</h1></td><td><h1>'+value.resultado.calificacionPorCategoria+'</h1></td></tr>';
+								 htmll=htmll+'<tr><td colspan="6"><h1>CALIFICACI&OacuteN TOTAL</h1></td><td><h1>'+value.resultado.calificacionPorPresentacion.toFixed(2)+'</h1></td></tr>';
 						}
 					});
 					 $("table#tablaResulExpo").append(htmll);
