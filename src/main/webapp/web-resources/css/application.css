@@ -76,6 +76,10 @@
 	overflow:hidden;
 }
 
+#divtablaResulFinal{
+	border-color: #FFFFFF;
+}
+
 
 .checkbox-inline {
 display: inline-block;

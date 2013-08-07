@@ -4,6 +4,7 @@ var DEMO = {
 		numeroDeElementos:0,
 		idEvalucacionEncabezado:self.location.href.match( /\/([^/]+)$/ )[1],
 		rubricaCategoria:'',
+		time:0,
 	main : function(){
 		this.init();
 		//carga el primer block de la animacion categoria
@@ -105,8 +106,8 @@ var DEMO = {
 						htmll = htmll + '<td><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr>';
 					});
 					$("#divtablaResulFinal").html(htmll+'</tbody></table>');
-					$("table tr").hide();
-					$("table tr").slice(1,6).show(3000);
+					$("#tablaPosicion tr").hide();
+					$("#tablaPosicion tr").slice(0,5).show(3000);
 				}				
 			});				
 
@@ -248,20 +249,33 @@ var DEMO = {
 	updateRankingPosiciones:function(){
 		 var numeroProyectos= $("#tablaPosicion tbody tr").length;
 		 if (numeroProyectos > 0){
-			 
-			 $("table tbody").fadeOut(3000, function(){ 
-				 
-				 $("table tr").slice(1,6).remove(); 
-				 $("table tbody").fadeIn(3000);
-				 $("table tr").hide();
-				 $("table tr").slice(1,6).show();
-				 numeroProyectos= $("#tablaPosicion tbody tr").length;
-				 if(numeroProyectos == 0){
-					 window.clearTimeout(0);
-					 $this.cargaTablaRankinPosiciones();
-				 }
-				 
-			 });
+			 		
+					 $("#tablaPosicion tbody").fadeOut(3000, function(){ 
+							 
+							 
+							 $("#tablaPosicion tbody tr").slice(0,4).remove();
+//									alert(numeroProyectos);
+							 $("#tablaPosicion tbody").fadeIn(3000);
+							 $("#tablaPosicion tr").slice(0,5).show();	
+							if (numeroProyectos == 5){
+								
+								 window.clearTimeout($this.time);
+								 
+									 $("#tablaPosicion").delay(5000).fadeOut(3000, function(){  
+										 $("#tablaPosicion").remove();
+										 $this.runProcessRanking();
+									 }); 
+								
+								 
+								 
+								 
+							}
+								
+								 //$this.cargaTablaRankinPosiciones();
+							
+							 
+						 });
+				
 			 
 		 }else{
 			 $this.cargaTablaRankinPosiciones();
@@ -270,10 +284,8 @@ var DEMO = {
 	//Funcion encargada de actualizar el ranking de posiciones
 	runProcessRanking:function(){ 
 		$this.updateRankingPosiciones();
-		setInterval(function(){
-			 
-			$this.updateRankingPosiciones();
-			 
+		$this.time = setInterval(function(){
+			$this.updateRankingPosiciones(); 
 		 }, 8000);
 	},
 	
