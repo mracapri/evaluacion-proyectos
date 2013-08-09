@@ -27,10 +27,10 @@ public class IndexController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/blog", method = RequestMethod.GET)
+	@RequestMapping(value = "/creditos", method = RequestMethod.GET)
 	public ModelAndView handleBlog(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		ModelAndView model = new ModelAndView("blog");
+		ModelAndView model = new ModelAndView("creditos");
 		return model;
 	}
 
