@@ -14,6 +14,9 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/js/application.js"></script>
 	
 	<style>
+		body{
+			background-color: white;
+		}
 		.titulo {
 		    margin-top: 27px;
 		    font-size: 19px;
@@ -36,25 +39,14 @@
 					<p>
 						Muchos saludos y fuertes abrazos a todo el equipo de trabajo que colabor&oacute
 						arduamente para la realizaci&oacuten de este producto, donde la frase 
-						<b>-la noche es larga y el cafe barato-</b> nunca aplico en nuestro proceso de desarrollo.				
+						<b>-la noche es larga y el cafe barato-</b> nunca aplic&oacute en nuestro proceso de desarrollo.				
 					</p>	
 				</div>					
-			</div>
-			
-			<div class="row-fluid">	
-			    <div class="span12">			
-					<p class="titulo"><b>Descripci&oacuten</b></p>
-					<p>
-						El siguiente documento, describe las cualidades del producto, 
-						su objetivo general, una breve rese&ntildea acerca de la metodolog&iacutea
-						y las herramientas que permitieron el desarrollo y liberaci&oacuten del mismo. 
-					</p>
-				</div>
 			</div>
 
 			<div class="row-fluid">
 			    <div class="span12">
-					<p class="titulo"><b>Objetivo</b></p>
+					<p class="titulo"><b>Descripci&oacuten</b></p>
 					<p>
 						Este producto, tiene como objetivo fundamental, proporcionar un sencillo mecanismo
 						para la evaluaci&oacuten de proyectos, dichas evaluaciones son calificadas en base 
@@ -83,7 +75,7 @@
 			    <div class="span12">							
 					<p class="titulo"><b>Acerca del producto y su gesti&oacuten</b></p>
 					<p>
-						El proceso de desarrollo del producto se llevo a cabo con la Metodolog&iacutea
+						El proceso de desarrollo del producto se llev&oacute a cabo con la Metodolog&iacutea
 						<a href="http://es.wikipedia.org/wiki/Scrum" target="_blank">SCRUM</a>, ya que el 
 						proyecto tiene un esfuerzo de tiempo de 2 meses, y consta de 1 sprints, cada uno de 
 						ellos determina las liberaciones funcionales del conjunto total de requerimientos , 
@@ -115,8 +107,8 @@
 				</p>
 				<p>
 					Una de las principales cualidades del software es asegurar que el software 
-					se escribio y se probo unitariamente para asegurar la cobertura entre requerimientos
-					capas y niveles de desarrollo, para este producto se adoptaron 2 tecnicas de desarrrollo: 
+					se escribi&oacute y se prob&oacute unitariamente para asegurar la cobertura entre requerimientos
+					capas y niveles de desarrollo, para este producto se adoptaron 2 t&eacutecnicas de desarrrollo: 
 					<a href="http://en.wikipedia.org/wiki/Test-driven_development" target="_blank">TDD (Test Driven Developtment)</a> y
 					<a href="http://en.wikipedia.org/wiki/Behavior-driven_development" target="_blank">BDD (Behavior Driven Development)</a>, 
 					que precisan <b>"probar lo que no tienes"</b> y desarrollar en base a ello. Esto asegura un &eacutexito
@@ -139,9 +131,9 @@
 					<a href="http://angularjs.org/" target="_blank">AngularJS</a> como inyector de depencias
 					<a href="http://en.wikipedia.org/wiki/Javascript" target="_blank">javascript</a>.
 					
-					Del proceso 
+					Del proceso, 
 					<a href="http://en.wikipedia.org/wiki/Maven" target="_blank">Maven</a> como gestor automatizado del proceso de desarrollo
-					y <a href="http://en.wikipedia.org/wiki/Git" target="_blank">GIT</a> como admnistrador de codigo fuente.						
+					y <a href="http://en.wikipedia.org/wiki/Git" target="_blank">GIT</a> como admnistrador de codigo fuente.
 					
 				</p>
 			</div>
