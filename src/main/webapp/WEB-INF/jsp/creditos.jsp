@@ -29,7 +29,7 @@
 		<div class="control-group">
 			<div class="row-fluid">	
 			    <div class="span12">												
-					<h2 class="pagination-centered">Creditos</h2>
+					<h2 class="pagination-centered">Cr&eacuteditos</h2>
 				</div>					
 			</div>
 
@@ -39,7 +39,7 @@
 					<p>
 						Muchos saludos y fuertes abrazos a todo el equipo de trabajo que colabor&oacute
 						arduamente para la realizaci&oacuten de este producto, donde la frase 
-						<b>-la noche es larga y el cafe barato-</b> nunca aplic&oacute en nuestro proceso de desarrollo.				
+						<b>-la noche es larga y el caf&eacute barato-</b> nunca aplic&oacute en nuestro proceso de desarrollo.				
 					</p>	
 				</div>					
 			</div>
@@ -63,7 +63,7 @@
 							<li>Evaluaci&oacuten de proyectos</li>
 							<li>Repositorio de proyectos por evaluaci&oacuten</li>
 							<li>Repositorio de proyectos por evaluadores</li>
-							<li>Pantallas de resultados (por evaluacion, por categoria y ranking)</li>
+							<li>Pantallas de resultados (por evaluaci&oacuten, por categor&iacutea y ranking)</li>
 							<li>Administraci&oacuten de rubricas</li>
 							<li>Administraci&oacuten de roles</li>
 						</ol>							
@@ -95,7 +95,7 @@
 							<li>Evaluaci&oacuten de proyectos</li>
 							<li>Repositorio de proyectos por evaluaci&oacuten</li>
 							<li>Repositorio de proyectos por evaluadores</li>
-							<li>Pantallas de resultados (por evaluacion, por categoria y ranking)</li>
+							<li>Pantallas de resultados (por evaluaci&oacuten, por categor&iacutea y ranking)</li>
 						</ol>							 
 					</p>
 				</div>
@@ -108,7 +108,7 @@
 				<p>
 					Una de las principales cualidades del software es asegurar que el software 
 					se escribi&oacute y se prob&oacute unitariamente para asegurar la cobertura entre requerimientos
-					capas y niveles de desarrollo, para este producto se adoptaron 2 t&eacutecnicas de desarrrollo: 
+					capas y niveles de desarrollo, para este producto se adoptaron 2 t&eacutecnicas de desarrollo: 
 					<a href="http://en.wikipedia.org/wiki/Test-driven_development" target="_blank">TDD (Test Driven Developtment)</a> y
 					<a href="http://en.wikipedia.org/wiki/Behavior-driven_development" target="_blank">BDD (Behavior Driven Development)</a>, 
 					que precisan <b>"probar lo que no tienes"</b> y desarrollar en base a ello. Esto asegura un &eacutexito
@@ -119,21 +119,21 @@
 					<a href="http://es.wikipedia.org/wiki/Java_%28lenguaje_de_programaci%C3%B3n%29" target="_blank">Java</a> 
 					para definir el core (coraz&oacuten) del producto, 
 					<a href="http://es.wikipedia.org/wiki/Spring_Framework" target="_blank">Spring framework</a> como inyector
-					de depencias, MVC y Test Integration, 
-					<a href="http://en.wikipedia.org/wiki/Spring_Security" target="_blank">Spring Security</a> para menajo de seguridad,
+					de dependencias, MVC y Test Integration, 
+					<a href="http://en.wikipedia.org/wiki/Spring_Security" target="_blank">Spring Security</a> para manejo de seguridad,
 					<a href="http://en.wikipedia.org/wiki/Junit" target="_blank">JUnit</a> para pruebas unitarias e integrales,
 					<a href="http://en.wikipedia.org/wiki/Mockito" target="_blank">Mockito Framework</a> para pruebas de estado y comportamiento.						
 					
 					Para web <a href="http://en.wikipedia.org/wiki/JSTL" target="_blank">JSTL (JavaServer Pages Standard Tag Library)</a>,
-					para la resolucion de docmentos web,
+					para la resoluci&oacuten de documentos web,
 					<a href="http://en.wikipedia.org/wiki/Jquery" target="_blank">jQuery</a> como modificador del documento HTML,  
 					<a href="http://getbootstrap.com/" target="_blank">Bootstrap from twitter</a> como framework de dise&ntildeo y 
-					<a href="http://angularjs.org/" target="_blank">AngularJS</a> como inyector de depencias
+					<a href="http://angularjs.org/" target="_blank">AngularJS</a> como inyector de dependencias
 					<a href="http://en.wikipedia.org/wiki/Javascript" target="_blank">javascript</a>.
 					
 					Del proceso, 
 					<a href="http://en.wikipedia.org/wiki/Maven" target="_blank">Maven</a> como gestor automatizado del proceso de desarrollo
-					y <a href="http://en.wikipedia.org/wiki/Git" target="_blank">GIT</a> como admnistrador de codigo fuente.
+					y <a href="http://en.wikipedia.org/wiki/Git" target="_blank">GIT</a> como administrador de c&oacutedigo fuente.
 					
 				</p>
 			</div>

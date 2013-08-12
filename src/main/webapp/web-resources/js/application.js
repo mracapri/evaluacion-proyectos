@@ -247,39 +247,36 @@ var DEMO = {
 	
 	//******Funciones de Rnaking posiciones********///
 	updateRankingPosiciones:function(){
-		 var numeroProyectos= $("#tablaPosicion tbody tr").length;
-		 if (numeroProyectos > 0){
-			 		
-					 $("#tablaPosicion tbody").fadeOut(3000, function(){ 
-							 
-							 
-							 $("#tablaPosicion tbody tr").slice(0,4).remove();
-//									alert(numeroProyectos);
-							 $("#tablaPosicion tbody").fadeIn(3000);
-							 $("#tablaPosicion tr").slice(0,5).show();	
-							if (numeroProyectos == 5){
-								
-								 window.clearTimeout($this.time);
-								 
-									 $("#tablaPosicion").delay(5000).fadeOut(3000, function(){  
-										 $("#tablaPosicion").remove();
-										 $this.runProcessRanking();
-									 }); 
-								
-								 
-								 
-								 
-							}
-								
-								 //$this.cargaTablaRankinPosiciones();
-							
-							 
-						 });
-				
-			 
-		 }else{
-			 $this.cargaTablaRankinPosiciones();
-		 }
+		var numeroProyectos= $("#tablaPosicion tbody tr").length;
+        if (numeroProyectos > 0){
+                if (numeroProyectos > 4){
+                        $("#tablaPosicion tbody").fadeOut(3000, function(){
+
+                                $("#tablaPosicion tbody tr").slice(0,4).remove();
+                        $("#tablaPosicion tbody").fadeIn(3000);
+                        $("#tablaPosicion tr").slice(0,5).show();
+
+                        if (numeroProyectos >= 5 && numeroProyectos <9){
+                                window.clearTimeout($this.time);
+
+                                $("#tablaPosicion").delay(5000).fadeOut(3000, function(){
+                                        $("#tablaPosicion").remove();
+                                        $this.runProcessRanking();
+                                });
+                        }
+                         //$this.cargaTablaRankinPosiciones();
+               });
+            }else{
+                    $("#tablaPosicion").fadeOut(3000, function(){
+                            $("#tablaPosicion").remove();
+                            window.clearTimeout($this.time);
+                            $this.runProcessRanking();
+                    });
+            }
+
+        }else{
+                $this.cargaTablaRankinPosiciones();
+        }
 	},
 	//Funcion encargada de actualizar el ranking de posiciones
 	runProcessRanking:function(){ 
