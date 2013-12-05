@@ -161,7 +161,7 @@ var DEMO = {
 						// Obtengo el nombre
 						htmll = htmll + '<tr><td class="tdCentrado"><h3>'+posicion+'</h3></td>';
 						htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
-						htmll = htmll + '<td><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr>';
+						htmll = htmll + '<td class="nombre-proyecto"><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr>';
 					});
 					$("#divtablaResulFinal").html(htmll+'</tbody></table>');
 					$("#tablaPosicion tr").hide();
