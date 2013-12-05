@@ -14,42 +14,38 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/web-resources/angular/js/angular.js"></script>	
 </head>
 <body>
-	<div class="row">
-		<div class="span5">
-			<div class="container" >		
-					<form class="form-login" method="post" action="${pageContext.request.contextPath}/j_spring_security_check">
-						<h2 class="form-signin-heading">Evaluaci&oacuten de proyectos</h2>
-			            <div class="control-group">
-			              <label for="usuario" class="control-label">Usuario</label>
-			              <div class="controls">
-			                <input type="text" placeholder="Usuario" id="usuario" name="j_username">
-			              </div>
-			            </div>
-			            <div class="control-group">
-			              <label for="password" class="control-label">Contraseña</label>
-			              <div class="controls">
-			                <input type="password" placeholder="Password" id="password" name="j_password">
-			              </div>
-			            </div>
-			            <div class="control-group">
-			              <div class="controls">
-			                <label class="checkbox">
-			                  <input type="checkbox"> Recordarme
-			                </label>
-			                <button class="btn btn-large btn-primary" type="submit">Entrar</button>
-			              </div>
-			            </div>	            
-			       </form>
+
+	<div class="container">
+		<div class="row">
+			<div class="span5">
+				<form class="form-login" method="post" action="${pageContext.request.contextPath}/j_spring_security_check">
+					<h2 class="form-signin-heading">Evaluaci&oacuten de proyectos</h2>
+		            <div class="control-group">
+		              <label for="usuario" class="control-label">Usuario</label>
+		              <div class="controls">
+		                <input type="text" placeholder="Usuario" id="usuario" name="j_username">
+		              </div>
+		            </div>
+		            <div class="control-group">
+		              <label for="password" class="control-label">Contraseña</label>
+		              <div class="controls">
+		                <input type="password" placeholder="Password" id="password" name="j_password">
+		              </div>
+		            </div>
+		            <div class="control-group">
+		              <div class="controls">
+		                <label class="checkbox">
+		                  <input type="checkbox"> Recordarme
+		                </label>
+		                <button class="btn btn-large btn-primary" type="submit">Entrar</button>
+		              </div>
+		            </div>	            
+		       </form>
 			</div>
-		</div>
-		<div id="creditos" class="span7">
-		
+			<div class="span7 center">
+				
+			</div>
 		</div>
 	</div>
 </body>
 </html>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#creditos").load('${pageContext.request.contextPath}/resolver/creditos');
-	});
-</script>

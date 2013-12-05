@@ -181,7 +181,7 @@ public class TestServicioResultado {
 		
 		Assert.assertTrue(findAllByProyecto.size() == 4);
 		
-		ResultadoFinal read = resultadoService.read(proyecto.getIdProyecto());
+		ResultadoFinal read = resultadoService.read(proyecto.getIdProyecto(), evaluacion.getExposicionPor());
 		
 		Assert.assertTrue(read.calcularTotal() == 9.125);
 		Assert.assertTrue(read.calcularPorPresentacion() == 8);

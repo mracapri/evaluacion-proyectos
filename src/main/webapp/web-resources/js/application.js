@@ -2,7 +2,7 @@ var DEMO = {
 		//declaracion de variables globales
 		i:0,
 		numeroDeElementos:0,
-		idEvalucacionEncabezado:self.location.href.match( /\/([^/]+)$/ )[1],
+		idEvalucacionEncabezado:self.location.href.match(/\/([^/]+)$/)[1],
 		rubricaCategoria:'',
 		time:0,
 	main : function(){
@@ -43,34 +43,92 @@ var DEMO = {
 			success: function(data){
 				htmll='';
 				$.each(data.proyectos, function (key, value) {
-					htmll=htmll+'<article class="block"><div class="row"><div class="span12"><h1>'+value.nombre+'</h1></div></div>';
-					htmll=htmll+'<table class="table table-bordered table-striped"><thead>';
-					htmll=htmll+'<tr><th rowspan="2"><h1>Nombre del Evaluador</h1></th><th colspan="5" class="tdCentrado"><h2>Criterios</h2></th><th rowspan="2" class="tdCentrado"><h1>Total</h1></th></tr>';
-				
-					htmll=htmll+'<tr><th class="tdCentrado"><h3>1</h3></th><th class="tdCentrado"><h3>2</h3></th>';
-					htmll=htmll+'<th class="tdCentrado"><h3> 3 </h3></th><th class="tdCentrado"><h3> 4 </h3></th><th class="tdCentrado"><h3> 5 </h3></th>';
-					htmll=htmll+'</tr></thead><tbody>';					
-						 $.each(value.resultado, function (llave, valor) {
-							 $.each(valor, function (cle, val) {								 
-								 var rubricaCategoria= val.rubrica.categoria;
-								 if (rubricaCategoria != undefined){
-									
-									 htmll=htmll+'<tr><td><span class="tdResultados">'+val.evaluador.nombre+'</span></td>';
-									 
-									 $.each(val.resultadoPorItem, function (llave, valoritem) { 										
-	   									 htmll=htmll+'<td class="tdCentrado"><span class="tdResultados">'+valoritem+'</span></td>';							 
-	   			   					});									 
-									htmll=htmll+'<td><span class="tdResultados tdCentrado" >'+val.totalRubrica+'</span></td></tr>';
-								 }
-	
-		  					});
-							 
-						 });
-						 
-						 htmll=htmll+'<tr><td colspan="6" class="tdResultados">CALIFICACI&OacuteN TOTAL</h3></td><td class="tdCentrado tdResultados">'+value.resultado.calificacionPorCategoria.toFixed(2)+'</td>';
-						 htmll=htmll+'</tr></tbody></table></article>';
+					htmll=htmll+'<article class="block">';
+					htmll=htmll+	'<div class="row">';
+					htmll=htmll+		'<div class="span12">';
+					htmll=htmll+			'<h1>'+value.nombre+'</h1>';
+					htmll=htmll+		'</div>';
+					htmll=htmll+	'</div>';
+										
+					var columna = 1;
+					$.each(value.resultado.calificacionEvaluadores, function(llave, valor){
+						if(valor != undefined){
+							columna = 1;
+							$.each(valor.resultadoPorItem, 
+									function (key, value) {
+								columna++;
+							});							
+						}
+					});
 							
-						 $("#seccion1").html(htmll);
+
+					
+					htmll=htmll+	'<table class="table table-bordered table-striped">';
+					htmll=htmll+		'<thead>';
+					htmll=htmll+			'<tr>';
+					htmll=htmll+				'<th rowspan="2">';
+					htmll=htmll+					'<h1>Nombre del Evaluador</h1>';
+					htmll=htmll+				'</th>';
+					htmll=htmll+				'<th colspan="' + columna + '" class="tdCentrado">';
+					htmll=htmll+					'<h2>Criterios</h2>';
+					htmll=htmll+				'</th>';
+					htmll=htmll+			'</tr>';
+				
+					htmll=htmll+			'<tr>';
+					
+					for(var iteraCol = 1; iteraCol < columna; iteraCol++){
+						htmll=htmll+				'<th class="tdCentrado"><h3>' + iteraCol + '</h3></th>';	
+					}
+					htmll=htmll+					'<th rowspan="2" class="tdCentrado">';
+					htmll=htmll+						'<h1>Total</h1>';
+					htmll=htmll+					'</th>';
+					
+					htmll=htmll+			'</tr>';
+					htmll=htmll+		'</thead>';					
+					htmll=htmll+		'<tbody>';	
+					
+					 $.each(value.resultado, function (llave, valor) {
+						 $.each(valor, function (cle, val) {
+							 var rubricaCategoria= val.rubrica.categoria;
+							 if (rubricaCategoria != undefined){
+								
+								 htmll=htmll+'<tr>';
+								 htmll=htmll+	'<td>';
+								 htmll=htmll+		'<span class="tdResultados">';
+								 htmll=htmll+ 			val.evaluador.nombre;
+								 htmll=htmll+		'</span>';
+								 htmll=htmll+	'</td>';
+								 								 
+								 $.each(val.resultadoPorItem, function (llave, valoritem) { 										
+									 htmll=htmll+'<td class="tdCentrado">';
+									 htmll=htmll+	'<span class="tdResultados">';
+									 htmll=htmll+		valoritem;
+									 htmll=htmll+	'</span>';
+									 htmll=htmll+'</td>';
+									 
+			   					 });
+								 
+								 htmll=htmll+	'<td>';
+								 htmll=htmll+		'<span class="tdResultados tdCentrado" >';
+								 htmll=htmll+			val.totalRubrica;
+								 htmll=htmll+		'</span>';
+								 htmll=htmll+'	</td>';
+								 htmll=htmll+'</tr>';
+							 }
+	  					});
+					 });
+						 
+					 htmll=htmll+			'<tr>';
+					 htmll=htmll+				'<td colspan="' + (iteraCol) + '" class="tdResultados"><h3>CALIFICACI&OacuteN TOTAL</h3></td>';
+					 htmll=htmll+				'<td class="tdCentrado tdResultados">';
+					 htmll=htmll+					value.resultado.calificacionPorCategoria.toFixed(2);
+					 htmll=htmll+				'</td>';					 
+					 htmll=htmll+			'</tr>';
+					 htmll=htmll+		'</tbody>';
+					 htmll=htmll+	'</table>';
+					 htmll=htmll+'</article>';
+							
+					 $("#seccion1").html(htmll);
 						
 					});
 				

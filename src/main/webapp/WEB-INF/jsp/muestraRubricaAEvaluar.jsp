@@ -37,43 +37,17 @@
 							    </c:when>
 							</c:choose>
 				    	</span>
+						
+						<h4 class="text-info">${proyecto.nombre}</h4>
+						<img src="${pageContext.request.contextPath}/resolver/evaluacion/proyecto/logo/${proyecto.idProyecto}" class="img-polaroid" style="width: 140px; height: 140px;"/>
+						<p><b>Responsable: </b></p>
+						<p>${proyecto.responsable}</p>
+						<p><b>Integrantes: </b></p>
+						<p>${proyecto.integrantes}</p>
+						<hr/>						
 				    </div>
-				</div> 
-				<div class="row-fluid">
-				    <div class="span12">
-					    <table class="table table-condensed">
-						    <tbody>
-							    <tr>
-								    <td>0 - 50</td>
-								    <td>Deficiente</td>
-							    </tr>
-							    <tr>
-								    <td>51 - 70</td>
-								    <td>No aceptable</td>
-							    </tr>
-							    <tr>
-								    <td>71 - 80</td>
-								    <td>Regular</td>
-							    </tr>
-							    <tr>
-								    <td>81 - 90</td>
-								    <td>Satisfactorio</td>
-							    </tr>
-							    <tr>
-								    <td>91 - 100</td>
-								    <td>Excelente</td>
-							    </tr>
-						    </tbody>
-					    </table>
-				    </div>
-				</div> 
-				<div class="control-group">
-					<div class="row-fluid">
-						<div class="span12 pagination-centered">
-							<h3 class="text-info">${proyecto.nombre}</h3>
-						</div>
-					</div>
 				</div>
+				 				
 				<div class="control-group">
 					<c:forEach items="${rubrica.items}" var="itemRubrica" varStatus="row">
 					<div class="row-fluid">

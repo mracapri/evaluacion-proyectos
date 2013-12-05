@@ -26,9 +26,9 @@ public class ResultadoServiceImpl implements ResultadoService {
 	ResultadoDao resultadoDao;
 
 	@Override
-	public ResultadoFinal read(String idProyecto) {		
+	public ResultadoFinal read(String idProyecto, int exposicionPor) {		
 		List<CalificacionEvaluador> evaluaciones = resultadoDao.findAllByProyecto(idProyecto);
-		ResultadoFinal resultadoFinal = new ResultadoFinal(evaluaciones);
+		ResultadoFinal resultadoFinal = new ResultadoFinal(evaluaciones, exposicionPor);
 		return resultadoFinal;
 	}
 

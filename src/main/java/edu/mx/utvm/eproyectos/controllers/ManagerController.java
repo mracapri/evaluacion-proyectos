@@ -84,8 +84,8 @@ public class ManagerController {
     		HttpServletResponse response)
             throws ServletException, IOException {
 		ModelAndView model = new ModelAndView("managerOptions");
-
-		model.addObject("idEvalaucion", idEvaluacion);
+		Evaluacion read = evaluacionService.read(idEvaluacion);
+		model.addObject("evaluacion", read);
 		return model;
     }
 	
@@ -146,7 +146,7 @@ public class ManagerController {
 			/*Lista de resultados por proyecto*/
 			List<CalificacionEvaluador> resultados = resultadoService.findAllByProyecto(idProyecto);
 
-			ResultadoFinal resultadoFinal = new ResultadoFinal(resultados);			
+			ResultadoFinal resultadoFinal = new ResultadoFinal(resultados, evaluacion.getExposicionPor());			
 			
 			proyecto.setResultado(resultadoFinal);		
 		}
@@ -173,13 +173,13 @@ public class ManagerController {
 			
 			proyecto.setFoto(null);
 			proyecto.setLogo(null);
-			proyecto.setArchivoPresentacion(null);			
+			proyecto.setArchivoPresentacion(null);
 			
 			/*Lista de resultados por proyecto*/
 			List<CalificacionEvaluador> resultados = resultadoService.findAllByProyecto(idProyecto);
 
 			/* agreando resultado final */
-			ResultadoFinal resultadoFinal = new ResultadoFinal(resultados);						
+			ResultadoFinal resultadoFinal = new ResultadoFinal(resultados, evaluacion.getExposicionPor());
 			proyecto.setResultado(resultadoFinal);
 			
 			/* agrengando a la lista de proyectos */

@@ -13,11 +13,14 @@ public class ResultadoFinal {
 	private double calificacionPorCategoria = 0;
 	private double calificacionPorPresentacion = 0;
 	private double calificacionGlobal = 0;
-	public ResultadoFinal(List<CalificacionEvaluador> calificacionEvaluadores){		
+	private int exposicionPor = 0;
+	
+	public ResultadoFinal(List<CalificacionEvaluador> calificacionEvaluadores, int exposicionPor){		
 		this.calificacionEvaluadores = calificacionEvaluadores;
 		calificacionPorCategoria = calcularPorCategoria();
 		calificacionPorPresentacion = calcularPorPresentacion();
 		calificacionGlobal = calcularCalificacionGlobal();
+		this.exposicionPor = exposicionPor;
 	}
 	
 	public Double calcularTotal(){
@@ -47,7 +50,13 @@ public class ResultadoFinal {
 	}
 	
 	public Double calcularCalificacionGlobal(){
-		calificacionGlobal = (calificacionPorCategoria + calificacionPorPresentacion)/2;
+		if(exposicionPor == 1){
+			calificacionGlobal = calificacionPorPresentacion;
+		} else if(exposicionPor == 2){
+			calificacionGlobal = calificacionPorCategoria;
+		}else if(exposicionPor == 3){
+			calificacionGlobal = (calificacionPorCategoria + calificacionPorPresentacion)/2;	
+		}		
 		return calificacionGlobal;
 	}	
 	

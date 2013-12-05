@@ -57,16 +57,32 @@
 								Nombre de proyecto
 							</h5>
 					    </div>
-					    <div class="span2">
-						 	<h5 class="hidden-phone">
-								Rubrica Exposici&oacuten
-							</h5>
-					    </div>
-					    <div class="span2">
-						 	<h5 class="hidden-phone">
-								Rubrica Categoria
-							</h5>
-					    </div>
+					    <c:if test="${evaluacion.exposicionPor == '3'}">
+						    <div class="span2">
+							 	<h5 class="hidden-phone">
+									Rubrica Exposici&oacuten
+								</h5>
+						    </div>
+						    <div class="span2">
+							 	<h5 class="hidden-phone">
+									Rubrica Categoria
+								</h5>
+						    </div>
+					    </c:if>
+					    <c:if test="${evaluacion.exposicionPor == '2'}">
+						    <div class="span2">
+							 	<h5 class="hidden-phone">
+									Rubrica Categoria
+								</h5>
+						    </div>
+					    </c:if>
+					    <c:if test="${evaluacion.exposicionPor == '1'}">
+						    <div class="span2">
+							 	<h5 class="hidden-phone">
+									Rubrica Exposici&oacuten
+								</h5>
+						    </div>
+					    </c:if>
 					</div> 
 					<c:forEach var="proyecto" items="${evaluacion.proyectos}" varStatus="row">
 						<div class="row-fluid  show-grid">
@@ -76,22 +92,44 @@
 									<b>${proyecto.value.nombre}</b>
 								</span>
 						    </div>
-						    <div class="span2">
-								<a class="btn btn-mini btn-primary" href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/presentacion/${proyecto.value.idProyecto}">
-								<i class="icon-comment icon-white"></i>
-								Exposici&oacuten
-							</a>
-						    </div>
-						    <div class="span2">
-								<a class="btn btn-mini btn-primary" href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/${proyecto.value.idProyecto}">
-									<i class="icon-list-alt icon-white"></i>
-									Categoria
-								</a>
-						    </div>
-						</div> 
+						    
+						    <c:if test="${evaluacion.exposicionPor == '3'}">
+							    <div class="span2">
+									<a class="btn btn-mini btn-primary" href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/presentacion/${proyecto.value.idProyecto}">
+										<i class="icon-comment icon-white"></i>
+										Exposici&oacuten
+									</a>
+							    </div>
+							    <div class="span2">
+									<a class="btn btn-mini btn-primary" href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/${proyecto.value.idProyecto}">
+										<i class="icon-list-alt icon-white"></i>
+										Categoria
+									</a>
+								</div>
+						    </c:if>
+						    
+						    <c:if test="${evaluacion.exposicionPor == '1'}">
+							    <div class="span2">
+									<a class="btn btn-mini btn-primary" href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/presentacion/${proyecto.value.idProyecto}">
+										<i class="icon-comment icon-white"></i>
+										Exposici&oacuten
+									</a>
+							    </div>
+						    </c:if>
+						    
+						    <c:if test="${evaluacion.exposicionPor == '2'}">
+							    <div class="span2">
+									<a class="btn btn-mini btn-primary" href="${pageContext.request.contextPath}/resolver/evaluador/evaluacion/mostrar/rubrica/categoria/${proyecto.value.idProyecto}">
+										<i class="icon-list-alt icon-white"></i>
+										Categoria
+									</a>
+								</div>
+						    </c:if>
+
 					</c:forEach>
 			        
 		        </div>  
+						    </div>
 			</div>
 
 	</div>
