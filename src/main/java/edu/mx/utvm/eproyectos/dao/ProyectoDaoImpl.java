@@ -107,10 +107,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 				int idcategoria =  rs.getInt("id_categoria");
 				Categoria categoria = catalogos.getCategorias().get(idcategoria);				
 				
-				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));			
-				proyecto.setLogo(rs.getBytes("logo"));
-				proyecto.setArchivoPresentacion(rs.getBytes("archivo_presentacion"));
-				proyecto.setFoto(rs.getBytes("foto"));
+				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));
 				proyecto.setIntegrantes(rs.getString("integrantes"));
 				return proyecto;
 			}
@@ -158,10 +155,7 @@ public class ProyectoDaoImpl extends JdbcTemplate implements ProyectoDao{
 				int idcategoria =  rs.getInt("id_categoria");
 				Categoria categoria = catalogos.getCategorias().get(idcategoria);
 				
-				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));			
-				proyecto.setLogo(rs.getBytes("logo"));
-				proyecto.setArchivoPresentacion(rs.getBytes("archivo_presentacion"));
-				proyecto.setFoto(rs.getBytes("foto"));
+				Proyecto proyecto = new Proyecto(rs.getString("id_proyecto"), rs.getString("nombre"), categoria, rs.getString("responsable"));
 				proyecto.setIntegrantes(rs.getString("integrantes"));
 				return proyecto;
 			}
