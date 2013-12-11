@@ -152,18 +152,61 @@ var DEMO = {
 				url:URL_APP_SERVICE + "/manager/resultados-ranking/"+$this.idEvalucacionEncabezado+".json",
 				success: function(data){
 					$("#tablaPosicion").remove();
-					htmll=htmll+'<table class="table table-bordered table-striped" id="tablaPosicion">'+
-					'<thead><tr><th class="tdCentrado"><h3>POSICION</h3></th><th class="tdCentrado"><h3>LOGO</h3></th><th class="tdCentrado"><h3>PROYECTO</h3></th><th class="tdCentrado"><h3>PUNTAJE</h3></th>'+
-					'</tr></thead><tbody>';
+					htmll = htmll + '<table class="table table-bordered table-striped" id="tablaPosicion">';
+					htmll = htmll + 	'<thead>';
+					htmll = htmll + 		'<tr>';
+					htmll = htmll + 			'<th class="tdCentrado">';
+					htmll = htmll + 				'<h3>POSICION</h3>';
+					htmll = htmll + 			'</th>';
+					htmll = htmll + 			'<th class="tdCentrado">';
+					htmll = htmll + 				'<h3>LOGO</h3>';
+					htmll = htmll + 			'</th>';
+					htmll = htmll + 			'<th class="tdCentrado">';
+					htmll = htmll + 				'<h3>PROYECTO</h3>';
+					htmll = htmll + 			'</th>';
+					htmll = htmll + 			'<th class="tdCentrado">';
+					htmll = htmll + 			'</th>';
+					htmll = htmll + 			'<th class="tdCentrado">';
+					htmll = htmll + 				'<h3>PUNTAJE</h3>';
+					htmll = htmll + 			'</th>';
+					htmll = htmll + 		'</tr>';
+					htmll = htmll + 	'</thead>';
+					htmll = htmll + 	'<tbody>';
+					
 					var posicion = 0;
 					$.each(data, function (key, value) {
 						posicion = key + 1;
-						// Obtengo el nombre
-						htmll = htmll + '<tr><td class="tdCentrado"><h3>'+posicion+'</h3></td>';
-						htmll=htmll+'<td><div class="logo"><img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" width /></div></td>';
-						htmll = htmll + '<td class="nombre-proyecto"><h3>' + value.nombre + '<h3></td><td class="tdCentrado"><h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3></td></tr>';
+												
+						
+						htmll = htmll + 		'<tr>';
+						htmll = htmll + 			'<td class="tdCentrado">';
+						htmll = htmll + 				'<h3>'+posicion+'</h3>';
+						htmll = htmll + 			'</td>';
+						htmll = htmll + 			'<td>';
+						htmll = htmll + 				'<div class="logo">';
+						htmll = htmll + 					'<img src="'+URL_APP_SERVICE+'/evaluacion/proyecto/logo/'+value.idProyecto+'" />';
+						htmll = htmll + 				'</div>';
+						htmll = htmll + 			'</td>';
+						htmll = htmll + 			'<td class="nombre-proyecto">';
+						htmll = htmll + 				'<h3>' + value.nombre + '</h3>';
+						htmll = htmll + 			'</td>';
+						htmll = htmll + 			'<td>';
+						
+						$.each(value.resultado.calificacionEvaluadores, function(key, value){
+							htmll = htmll + 				'<span class="evaluador-indicator">*</span>';
+						});
+						
+						htmll = htmll + 			'</td>';
+						htmll = htmll + 			'<td class="tdCentrado">';
+						htmll = htmll + 				'<h3>'+value.resultado.calificacionGlobal.toFixed(2)+'</h3>';
+						htmll = htmll + 			'</td>';
+						htmll = htmll + 		'</tr>';
 					});
-					$("#divtablaResulFinal").html(htmll+'</tbody></table>');
+					
+					htmll = htmll + 	'</tbody>';
+					htmll = htmll + '</table>';
+					
+					$("#divtablaResulFinal").html(htmll);
 					$("#tablaPosicion tr").hide();
 					$("#tablaPosicion tr").slice(0,5).show(3000);
 				}				

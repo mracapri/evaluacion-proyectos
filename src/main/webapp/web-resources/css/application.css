@@ -1,3 +1,14 @@
+.evaluador-indicator {
+    background: none repeat scroll 0 0 green;
+    color: white;
+    display: inline-block;
+    font-size: 30px;
+    height: 12px;
+    padding-top: 6px;
+    text-align: center;
+    width: 14px;
+}
+
 .nombre-proyecto {
     width: 550px;
 }
