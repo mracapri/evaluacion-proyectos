@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>	
@@ -27,65 +28,59 @@
 		  <h3 class="muted">Evaluaci&oacuten de proyectos</h3>
 		</div>
 		<div class="detalleProyecto">
-			<span class="titulo-ventana">Evaluaciones</span>
+			<span class="titulo-ventana">Categorias</span>
 			<div class="control-group">
 				<div class="row-fluid">
 			    	<div class="span12">
 						<a class="btn btn-primary nav pull-right" 
-							href="${pageContext.request.contextPath}/resolver/evaluacion/form">
-							<i class="icon-plus-sign icon-white"></i> 
-							Nuevo
+							href="${pageContext.request.contextPath}/resolver/evaluacion/all"> 
+							Regresar
 						</a>
-						
 						<a class="btn btn-primary nav pull-right" 
-							href="${pageContext.request.contextPath}/resolver/categoria/all"> 
-							Categorias
+							href="${pageContext.request.contextPath}/resolver/categoria/new">
+							<i class="icon-plus-sign icon-white"></i> 
+							Nueva
 						</a>
 					</div>  
 				</div>
 		       <section id="proyectos">
 		       
-		       		<div id="alert-for-delete" class="collapse">
-						<div class="alert">
-		       				<b>Atenci&oacuten:</b> 
-		       				eliminar implica, desaparecer todos los datos capturados
-		       				a la evaluaci&oacuten, como lo son: evaluadores, proyectos
-		       				calificaciones y toda informaci&oacuten se perder&aacute!
-		       			</div>		
-		       		</div>
-		       		
-		       		</br>
-		       		<c:forEach var="evaluacion" items="${evaluaciones}" varStatus="row">
+		       		<c:if test="${mensajeError != null}">
+					    <div class="alert">
+					    	<button type="button" class="close" data-dismiss="alert">&times;</button>
+					    	<strong>Atenci&oacuten!</strong> ${mensajeError} 
+					    </div>
+		       		</c:if>
+		       
+		       		<c:forEach var="categoria" items="${categorias}" varStatus="row">
 		       			<div class="row-fluid">
-			       			<div class="span6">
-				       			<span><b>${evaluacion.descripcion}</b></span>
+			       			<div class="span12">
+				       			<span class="label-info-col">
+				       				<b>${categoria.descripcion}</b>
+				       			</span>
+				       			
+			       				<span style="font-size: 12px;">
+			       					<fmt:formatDate pattern="yyyy-MM-dd" value="${categoria.fechaCreacion}"/>
+			       				</span>
+			       				
 								<a data-toggle="collapse" 
 									data-target="#delete-evaluacion-${row.count}, #alert-for-delete"
 									href="#">
 					       			<i class="icon-trash"></i> eliminar
 					       		</a>
+								<a href="${pageContext.request.contextPath}/resolver/categoria/modify/${categoria.idCategoria}">
+					       			<i class="icon-trash"></i> modificar
+					       		</a>
+					       		
 					       		<div id="delete-evaluacion-${row.count}" class="collapse">
 									<a class="btn btn-mini btn-danger" 
-										href="${pageContext.request.contextPath}/resolver/evaluacion/delete/${evaluacion.idEvaluacion}">Aceptar</a>
+										href="${pageContext.request.contextPath}/resolver/categoria/delete/${categoria.idCategoria}">Aceptar</a>
+										
 									<a class="btn btn-mini btn-info" data-toggle="collapse" 
 										data-target="#delete-evaluacion-${row.count}, #alert-for-delete"
 										href="#">Cancelar</a>
 					       		</div>
 				       	 	</div>
-				       	 	<div class="span3">
-				       			
-					       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/${evaluacion.idEvaluacion}/proyectos">
-					       				<i class="icon-list-alt"></i> proyectos
-					       			</a>
-				       			
-				       	 	</div>  
-				       	 	<div class="span3">
-				       		
-					       			<a href="${pageContext.request.contextPath}/resolver/evaluacion/evaluadores/${evaluacion.idEvaluacion}">
-					       				<i class=" icon-user"></i> evaluadores
-					       			</a>
-				       			
-				       	 	</div>  
 						</div> 
 		       		</c:forEach>
 		       </section>

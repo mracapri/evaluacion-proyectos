@@ -1,0 +1,1 @@
+alter table categoria add column fecha_creacion date after descripcion;

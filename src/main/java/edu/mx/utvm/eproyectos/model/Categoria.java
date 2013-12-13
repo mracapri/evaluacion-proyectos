@@ -1,11 +1,12 @@
 package edu.mx.utvm.eproyectos.model;
 
-import org.springframework.data.annotation.Id;
+import java.util.Date;
 
 public class Categoria {
 	
 	private int idCategoria;
 	private String descripcion;
+	private Date fechaCreacion;
 	
 	public Categoria(int idCategoria, String descripcion){
 		this.idCategoria = idCategoria;
@@ -18,5 +19,13 @@ public class Categoria {
 
 	public String getDescripcion() {
 		return descripcion;
+	}
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}	
 }

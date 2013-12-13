@@ -1,6 +1,7 @@
 package edu.mx.utvm.eproyectos.bootstrap;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
@@ -43,6 +44,10 @@ public class Catalogos implements InitializingBean{
 		rubricas = rubricaDao.findAllMap();
 	}
 
+	public List<Categoria> getCatalogoCategorias(){
+		return categoriaDao.findAll();
+	}
+	
 	public Map<Integer, Categoria> getCategorias() {
 		return categorias;
 	}

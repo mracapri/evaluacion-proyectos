@@ -1,7 +1,5 @@
 package edu.mx.utvm.eproyectos.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,11 +7,12 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import edu.mx.utvm.eproyectos.dao.mapper.CategoriaRowMapper;
 import edu.mx.utvm.eproyectos.model.Categoria;
 
 @Repository
@@ -29,8 +28,8 @@ public class CategoriaDaoImpl extends JdbcTemplate implements CategoriaDao{
 	public void create(Categoria newInstance) {
 		this.update(
 				"INSERT INTO " +
-				"categoria(id_categoria, descripcion) " +
-				"VALUES(?,?)",
+				"categoria(id_categoria, descripcion, fecha_creacion) " +
+				"VALUES(?,?,now())",
 				new Object[] {
 						newInstance.getIdCategoria(),
 						newInstance.getDescripcion()
@@ -41,15 +40,7 @@ public class CategoriaDaoImpl extends JdbcTemplate implements CategoriaDao{
 	public Categoria read(Integer id) {
 	    String sql = "select * from categoria where id_categoria = ?";
 		try {
-			Categoria resultado = this.queryForObject(sql,
-					new Object[] { id },
-					new RowMapper<Categoria>() {
-						@Override
-						public Categoria mapRow(ResultSet rs, int rowNum) throws SQLException {
-							Categoria categoria = new Categoria(rs.getInt("id_categoria"), rs.getString("descripcion"));							
-							return categoria;
-						}
-					});
+			Categoria resultado = this.queryForObject(sql,new Object[] { id }, new CategoriaRowMapper());
 			return resultado;
 		} catch (EmptyResultDataAccessException accessException) {
 			return null;
@@ -60,7 +51,7 @@ public class CategoriaDaoImpl extends JdbcTemplate implements CategoriaDao{
 	public void update(Categoria transientObject) {
 		this.update(
 			"UPDATE categoria " +
-			"SET descripcion = ? " +
+			"SET descripcion = ?, fecha_creacion = now() " +
 			"WHERE id_categoria = ?",
 			new Object[] {
 					transientObject.getDescripcion(),
@@ -70,7 +61,7 @@ public class CategoriaDaoImpl extends JdbcTemplate implements CategoriaDao{
 	}
 
 	@Override
-	public void delete(Categoria persistentObject) {
+	public void delete(Categoria persistentObject) throws DataIntegrityViolationException{
 		this.update(
 				"DELETE FROM categoria " +
 				"WHERE id_categoria = ?",
@@ -83,13 +74,7 @@ public class CategoriaDaoImpl extends JdbcTemplate implements CategoriaDao{
 	@Override
 	public List<Categoria> findAll() {
 		String sql = "SELECT * FROM categoria";
-		List<Categoria> result = this.query(sql, new RowMapper<Categoria>() {
-			@Override
-			public Categoria mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Categoria categoria = new Categoria(rs.getInt("id_categoria"), rs.getString("descripcion"));
-				return categoria;
-			}
-		});
+		List<Categoria> result = this.query(sql, new CategoriaRowMapper());
 		return result;
 	}
 
@@ -101,6 +86,11 @@ public class CategoriaDaoImpl extends JdbcTemplate implements CategoriaDao{
 			findAllMap.put(categoria.getIdCategoria(), categoria);
 		}
 		return findAllMap;
+	}
+
+	@Override
+	public Integer getId() {
+		return this.queryForInt("select coalesce(max(id_categoria)+1,1) from categoria");
 	}
 
 }
